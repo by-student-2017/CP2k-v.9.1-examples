@@ -1,0 +1,225 @@
+###################################
+## CHP (PM6) on Cu(111) (EAM)   ###
+###################################
+
+@SET LIBDIR ../cp2klib
+
+&GLOBAL
+  PROJECT run-GEO 
+  RUN_TYPE GEO_OPT 
+  PRINT_LEVEL LOW
+&END GLOBAL
+
+&MOTION
+  &GEO_OPT
+    OPTIMIZER LBFGS
+  &END GEO_OPT
+  &PRINT
+    &TRAJECTORY
+      FORMAT XYZ
+      &EACH
+        MD 100
+      &END
+    &END TRAJECTORY
+    &RESTART OFF
+    &END
+  &END PRINT
+&END MOTION
+
+&MULTIPLE_FORCE_EVALS
+  MULTIPLE_SUBSYS .TRUE.
+  FORCE_EVAL_ORDER 2 3
+&END
+
+########################
+## How to mix QM & MM ##
+########################
+
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX       # User defines how to couple force evals
+    &GENERIC                 # Here: simply add energies together
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2 
+      VARIABLES E1 E2
+    &END GENERIC
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1         # Atoms of CHP molecule
+            1 60
+         &END
+         &FRAGMENT 2         # Atoms of Cu(111) slab
+            61 1788
+         &END
+       &END FORCE_EVAL_MIXED
+       &FORCE_EVAL 1         # MM description of Cu(111) + interaction with CHP
+         DEFINE_FRAGMENTS 1
+       &END
+       &FORCE_EVAL 2         # QM description of CHP
+         DEFINE_FRAGMENTS 1 2
+       &END
+    &END MAPPING
+  &END MIXED
+
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp_on_cu.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL
+
+
+#######################
+## QM - CHP with PM6 ##
+#######################
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    &QS
+      METHOD PM6                 # Semi-empirical method based on Hartree-Fock
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+      &SE
+        &COULOMB
+          CUTOFF [angstrom] 20.0
+        &END
+        &EXCHANGE
+          CUTOFF [angstrom] 20.0
+        &END
+      &END SE
+    &END QS
+
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+      EPS_SCF 1.0E-6
+      &OT
+        PRECONDITIONER NONE
+        MINIMIZER DIIS
+        N_DIIS 7
+      &END
+      &OUTER_SCF
+        MAX_SCF 8
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART OFF
+        &END
+      &END
+    &END SCF
+
+    &POISSON
+     PERIODIC NONE           # no interaction between replica
+     POISSON_SOLVER WAVELET 
+     &WAVELET
+      SCF_TYPE 60
+     &END WAVELET
+   &END POISSON
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC  25 25 25
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+
+ 
+###############################################
+## MM - Cu(111) (EAM) + interaction with CHP ##
+###############################################
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       EPS_SPLINE 1.0E-7
+       EMAX_SPLINE 0.9
+     &END SPLINE
+     &CHARGE              # Setting all charges to zero
+       ATOM Cu
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED           # interaction described in section 2.1
+       &GENPOT
+          atoms Cu C
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 4.13643 1.33747 115.82004 2.206825 75.40708524085266692113
+          RCUT  15
+       &END GENPOT
+       &GENPOT
+          atoms Cu H
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 0.878363 1.33747 24.594164 2.206825 21.32834305207502214234
+          RCUT 15
+       &END GENPOT
+       &LENNARD-JONES      # Turning off Lennard-Jones
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+        &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &EAM                  # embedded atom for Cu-Cu interaction
+         atoms Cu Cu
+         PARM_FILE_NAME ${LIBDIR}/CU.pot
+       &END EAM
+     &END NONBONDED
+   &END FORCEFIELD
+
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END MM
+
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp_on_cu.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL
