@@ -15,6 +15,18 @@ sudo apt -y install gnuplot
 ```
 
 
+## molden installation (failed)
+- https://www.theochem.ru.nl/molden/howtoget.html
+```
+wget https://ftp.science.ru.nl/Molden/molden7.3.tar.gz
+tar zxvf molden7.3.tar.gz
+cd molden7.3
+sudo apt -y install gfortran
+sed -i "s/FC = gfortran/FC = gfortran -std=legacy -ffixed-form -ffixed-line-length-none -w/g" makefile
+make
+```
+
+
 ## Original files
 - Basic: https://www.cp2k.org/howto
 - QMMM, and NEB: https://www.cp2k.org/exercises
