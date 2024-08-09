@@ -28,3 +28,21 @@ sudo apt -y install cp2k
 
 ## Videos
 - https://www.youtube.com/@CP2K
+
+
+## PC specs used for test
+- OS: Microsoft Windows 11 Home 64 bit
+- BIOS: 1.14.0
+- CPU： 12th Gen Intel(R) Core(TM) i7-12700
+- Base Board：0R6PCT (A01)
+- Memory：32 GB
+- GPU: NVIDIA GeForce RTX3070
+- WSL2: VERSION="22.04.1 LTS (Jammy Jellyfish)"
+- Python 3.10.12
+
+
+## Acknowledgment
+- This project (modified version) is/was partially supported by the following :
+- meguREnergy Co., Ltd.
+- ATSUMITEC Co., Ltd.
+- Without the support of "meguREnergy Co., Ltd." and "ATSUMITEC Co., Ltd.", I would not have been able to develop the examples to the level shown on this github. I would like to express my sincere gratitude. 
