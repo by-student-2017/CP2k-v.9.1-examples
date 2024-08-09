@@ -15,15 +15,15 @@ sudo apt -y install gnuplot
 ```
 
 
-## molden installation (failed)
+## molden installation
 - https://www.theochem.ru.nl/molden/howtoget.html
 ```
 wget https://ftp.science.ru.nl/Molden/molden7.3.tar.gz
 tar zxvf molden7.3.tar.gz
 cd molden7.3
-sudo apt -y install gfortran
+sudo apt -y install gfortran build-essential libx11-6 libx11-dev libgl1-mesa-glx libgl1-mesa-dev mesa-common-dev libglu1-mesa-dev libxmu-dev xutils-dev wget
 sed -i "s/FC = gfortran/FC = gfortran -std=legacy -ffixed-form -ffixed-line-length-none -w/g" makefile
-make
+make molden
 ```
 
 
