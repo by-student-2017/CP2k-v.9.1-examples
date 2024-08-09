@@ -83,7 +83,7 @@
   METHOD Quickstep
   &DFT
     &QS
-      METHOD PM6                 # Semi-empirical method based on Hartree-Fock
+      METHOD PM6 # Semi-empirical method based on Hartree-Fock; others: AM1, PM3, RM1, PM6-FM, PDG, PNNL, XTB
       EXTRAPOLATION ASPC
       EXTRAPOLATION_ORDER 3
       &SE
