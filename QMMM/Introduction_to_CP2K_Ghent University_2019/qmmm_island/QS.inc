@@ -33,6 +33,6 @@
        &END MO_CUBES
        &V_HARTREE_CUBE
            STRIDE 2 2 2
-       &END
+       &END 
     &END PRINT
   &END DFT

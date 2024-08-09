@@ -1,0 +1,80 @@
+@SET METHOD = QMMM # FIST all classical treatment # QS all quantum treatment
+
+&GLOBAL
+  FLUSH_SHOULD_FLUSH
+  PRINT_LEVEL LOW
+  PROJECT KCl
+  RUN_TYPE GEO_OPT
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD $METHOD
+  @include QS.inc
+  @include MM.inc
+  &QMMM
+    #this defines the QS cell in the QMMM calc
+    &CELL
+      ABC 12.6 15.0 12.6
+      PERIODIC XZ
+    &END CELL
+    ECOUPL GAUSS # use GEEP method
+    NOCOMPATIBILITY
+    USE_GEEP_LIB 6  # use GEEP method
+    &PERIODIC # apply periodic potential
+      #in this case QM box = MM box in XZ so turn
+      #off coupling/recoupling of the QM multipole 
+      &MULTIPOLE OFF 
+      &END
+    &END PERIODIC
+    #these are just the ionic radii of K Cl
+    #but should be treated as parameters in general
+    #fit to some physical property
+    &MM_KIND K
+      RADIUS 1.52
+    &END MM_KIND
+    &MM_KIND Cl
+      RADIUS 1.67
+    &END MM_KIND
+    #define the model
+    &QM_KIND K
+      MM_INDEX 25..32 41..48
+    &END QM_KIND
+    &QM_KIND Cl
+      MM_INDEX 17..24 33..40
+    &END QM_KIND
+  &END QMMM
+
+  &SUBSYS
+    #this defines the cell of the whole system
+    #must be orthorhombic, I think
+    &CELL
+      ABC 12.6 100.0 12.6
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME kcl.xyz
+      COORD_FILE_FORMAT XYZ
+      &GENERATE
+         &ISOLATED_ATOMS
+         #ignores bonds dihedrals etc in classical part
+            LIST 1..48
+         &END
+      &END
+    &END
+    &KIND K
+      ELEMENT K
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q9
+    &END KIND
+    &KIND Cl
+      BASIS_SET DZVP-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q7
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+
+#should be able to use most motion sections
+#analytic stress tensor not available, I think
+@include motion.inc
+
+
+
