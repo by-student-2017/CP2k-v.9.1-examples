@@ -1,0 +1,37 @@
+  &DFT
+    BASIS_SET_FILE_NAME BASIS_MOLOPT
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      COMMENSURATE
+      CUTOFF 150
+    &END MGRID
+    &QS
+      EPS_DEFAULT 1.0E-12
+    &END QS
+    &SCF
+      EPS_SCF 1.0E-06
+      MAX_SCF 26
+      SCF_GUESS RESTART
+      &OT
+        MINIMIZER CG
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        ENERGY_GAP 0.001
+      &END OT
+      &OUTER_SCF
+        EPS_SCF 1.0E-05
+      &END OUTER_SCF
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+    &PRINT
+       &MO_CUBES
+           NLUMO 10
+           WRITE_CUBE T
+       &END MO_CUBES
+       &V_HARTREE_CUBE
+           STRIDE 2 2 2
+       &END
+    &END PRINT
+  &END DFT

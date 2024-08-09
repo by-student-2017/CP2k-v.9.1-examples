@@ -1,0 +1,2 @@
+How to Converge the CUTOFF and REL_CUTOFF
+https://manual.cp2k.org/trunk/methods/dft/cutoff.html

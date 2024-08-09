@@ -1,0 +1,29 @@
+#!/usr/local/bin/gnuplot -persist
+#------------------------------------------------
+set terminal pngcairo color enhanced font "Arial" fontscale 1.0
+set output "evplot.png"
+#------------------------------------------------
+#set key opaque box lc rgb "white" height 1
+set key box lw 1 lc "black"
+set key top center
+#-----------------------------------------------
+set title "Murnaghan equation of state"
+set xlabel "Volume, V / Angstrom^3"
+set ylabel "Total Energy, E / Hatree"
+set mxtics 5
+set mytics 5
+#-----------------------------------------------
+# Murnaghan equation of state
+f(x) = (a*x/(b*(b-1)))*(b*(1-c/x)+(c/x)**b-1)+d
+#-----------------------------------------------
+# new version [Ha] and [Angstrom^3] unit
+a=0.0402192 # Bulk modulus [Ha/Angstrom^3]
+b=4.31992   # Differential of bulk modulus
+c=642.853   # Unit cell volume [Angstrom^3]
+d=-4466.91  # Total energy in the volume of a stable unit cell [Ha]
+#-----------------------------------------------
+fit f(x) 'eos.txt' u ($1*$1*$1):2 via a,b,c,d 
+plot f(x) t "Murnaghan equation of state, f(x)", 'eos.txt' u ($1*$1*$1):2 t "DFT(CP2k) (cubic spline)" smooth csplines, 'eos.txt' u ($1*$1*$1):2 t "DFT(CP2k)" w p pt 1 ps 2
+#-----------------------------------------------
+# ve.data: V(bohr^3) vs. Etot(Ha)
+#-----------------------------------------------

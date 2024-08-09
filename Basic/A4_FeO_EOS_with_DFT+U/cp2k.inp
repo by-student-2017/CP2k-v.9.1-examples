@@ -1,0 +1,213 @@
+# FeO (#225, Fm-3m, wustite, antiferromagnetic along [111])
+ 
+# f094 = 0.94^(1/3) .. f120 = 1.20^(1/3)
+@SET f094      0.9795861087155615099
+@SET f096      0.9864848297321880954
+@SET f098      0.9932883883792685831
+@SET f100      1.0000000000000000000
+@SET f102      1.0066227095601130159
+@SET f104      1.0131594038201774399
+@SET f106      1.0196128224222165137
+@SET f108      1.0259855680060181936
+@SET f110      1.0322801154563671592
+@SET f112      1.0384988203702208052
+@SET f120      1.0626585691826110661
+ 
+@SET run_type  energy_force
+@SET system    FeO
+@SET project   ${system}-2x2x2
+ 
+@SET a         8.56*${f100}
+@SET b         ${a}
+@SET c         ${a}
+ 
+@SET a_ref     ${a}*${f120}
+@SET b_ref     ${a_ref}
+@SET c_ref     ${a_ref}
+ 
+@SET PLUS_U    on
+@SET U_Fe      1.9
+ 
+&GLOBAL
+  PRINT_LEVEL low
+  PROJECT ${project}
+  RUN_TYPE ${run_type}
+  WALLTIME 1800
+&END GLOBAL
+ 
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    LSD
+    PLUS_U_METHOD Mulliken
+    BASIS_SET_FILE_NAME BASIS_MOLOPT
+    POTENTIAL_FILE_NAME GTH_POTENTIALS
+    &MGRID
+      CUTOFF 600.0
+      REL_CUTOFF 60.0
+    &END MGRID
+    &QS
+      EPS_DEFAULT 1.0E-12
+    &END QS
+    &SCF
+      EPS_SCF 3.0E-7
+      MAX_SCF 21
+      SCF_GUESS restart
+      &OT on
+        MINIMIZER CG
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        STEPSIZE 0.1
+      &END OT
+      &OUTER_SCF on
+        EPS_SCF 3.0E-7
+        MAX_SCF 20
+      &END OUTER_SCF
+      &PRINT
+        &RESTART
+          BACKUP_COPIES 0
+          &EACH
+            QS_SCF 10
+          &END EACH
+        &END RESTART
+      &END PRINT
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC ${a} ${b} ${c}
+      &CELL_REF
+        ABC ${a_ref} ${b_ref} ${c_ref}
+      &END CELL_REF
+    &END CELL
+    &COORD
+      SCALED
+      Fe_a                0                   0                   0
+      Fe_b                0                 1/4                 1/4
+      Fe_b              1/4                   0                 1/4
+      Fe_b              1/4                 1/4                   0
+      Fe_b                0                   0                 1/2
+      Fe_b              1/2                   0                   0
+      Fe_b                0                 1/2                   0
+      Fe_a                0                 1/4                 3/4
+      Fe_a              1/2                 1/4                 1/4
+      Fe_a                0                 3/4                 1/4
+      Fe_a              1/4                   0                 3/4
+      Fe_a              3/4                   0                 1/4
+      Fe_a              1/4                 1/2                 1/4
+      Fe_a              1/4                 1/4                 1/2
+      Fe_a              3/4                 1/4                   0
+      Fe_a              1/4                 3/4                   0
+      Fe_a                0                 1/2                 1/2
+      Fe_a              1/2                   0                 1/2
+      Fe_a              1/2                 1/2                   0
+      Fe_b                0                 3/4                 3/4
+      Fe_b              1/2                 1/4                 3/4
+      Fe_b              1/2                 3/4                 1/4
+      Fe_b              1/4                 1/2                 3/4
+      Fe_b              3/4                   0                 3/4
+      Fe_b              3/4                 1/2                 1/4
+      Fe_b              1/4                 3/4                 1/2
+      Fe_b              3/4                 1/4                 1/2
+      Fe_b              3/4                 3/4                   0
+      Fe_b              1/2                 1/2                 1/2
+      Fe_a              1/2                 3/4                 3/4
+      Fe_a              3/4                 1/2                 3/4
+      Fe_a              3/4                 3/4                 1/2
+      O                 1/4                 1/4                 1/4
+      O                 3/4                 3/4                 3/4
+      O                 3/4                 3/4                 1/4
+      O                 1/4                 1/4                 3/4
+      O                 3/4                 1/4                 3/4
+      O                 1/4                 3/4                 1/4
+      O                 1/4                 3/4                 3/4
+      O                 3/4                 1/4                 1/4
+      O                 1/4                 1/2                 1/2
+      O                 3/4                   0                   0
+      O                 3/4                   0                 1/2
+      O                 1/4                 1/2                   0
+      O                 3/4                 1/2                   0
+      O                 1/4                   0                 1/2
+      O                 1/4                   0                   0
+      O                 3/4                 1/2                 1/2
+      O                 1/2                 1/4                 1/2
+      O                   0                 3/4                   0
+      O                   0                 3/4                 1/2
+      O                 1/2                 1/4                   0
+      O                   0                 1/4                   0
+      O                 1/2                 3/4                 1/2
+      O                 1/2                 3/4                   0
+      O                   0                 1/4                 1/2
+      O                 1/2                 1/2                 1/4
+      O                   0                   0                 3/4
+      O                   0                   0                 1/4
+      O                 1/2                 1/2                 3/4
+      O                   0                 1/2                 3/4
+      O                 1/2                   0                 1/4
+      O                 1/2                   0                 3/4
+      O                   0                 1/2                 1/4
+    &END COORD
+    &KIND O
+      BASIS_SET DZVP-MOLOPT-SR-GTH-q6
+      POTENTIAL GTH-PBE-q6
+      # O(2-): 2s2 2p6
+      &BS on
+        &ALPHA
+          N    2
+          L    1
+          NEL  2
+        &END ALPHA
+        &BETA
+          N    2
+          L    1
+          NEL  2
+        &END BETA
+      &END BS
+    &END KIND
+    &KIND Fe_a
+      BASIS_SET DZVP-MOLOPT-SR-GTH-q16
+      POTENTIAL GTH-PBE-q16
+      # Fe(2+): 3d6 (alpha, spin up)
+      &BS on
+        &ALPHA
+          N    4   3
+          L    0   2
+          NEL -2   4
+        &END ALPHA
+        &BETA
+          N    4   3
+          L    0   2
+          NEL -2  -4
+        &END BETA
+      &END BS
+      &DFT_PLUS_U on
+        L 2
+        U_MINUS_J [eV] ${U_Fe}
+      &END DFT_PLUS_U
+    &END KIND
+    &KIND Fe_b
+      BASIS_SET DZVP-MOLOPT-SR-GTH-q16
+      POTENTIAL GTH-PBE-q16
+      # Fe(2+); 3d6 (beta, spin down)
+      &BS on
+        &ALPHA
+          N    4   3
+          L    0   2
+          NEL -2  -4
+        &END ALPHA
+        &BETA
+          N    4   3
+          L    0   2
+          NEL -2   4
+        &END BETA
+      &END BS
+      &DFT_PLUS_U on
+        L 2
+        U_MINUS_J [eV] ${U_Fe}
+      &END DFT_PLUS_U
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

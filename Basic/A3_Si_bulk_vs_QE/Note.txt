@@ -1,0 +1,25 @@
+#---------------------------------------------------------------------------------------------------
+How to run calculations like Quantum ESPRESSO
+https://www.cp2k.org/howto:running_qe_computation
+
+Note: You need to install sirius (="electronic-structure/SIRIUS") before you can do this.
+
+1. bash convet_UPF_to_json.sh
+  (you can get Ge.json and Si.json)
+2. bash run.sh
+#---------------------------------------------------------------------------------------------------
+electronic-structure/SIRIUS
+https://github.com/electronic-structure/SIRIUS/tree/develop
+
+1. git clone https://github.com/spack/spack.git
+2. . spack/share/spack/setup-env.sh
+3. spack install sirius ^openmpi ^fftw ^openblas %gcc +fortran
+
+==> Error: sirius-7.5.2-epkrtgwiilpgdt4dvyo374k47gvf3bde: Package was not installed
+==> Error: Installation request failed.  Refer to reported errors for failing package(s).
+
+#---------------------------------------------------------------------------------------------------
+pesudo potentials
+https://www.physics.rutgers.edu/gbrv/
+For example, you can get "ge_lda_v1.4.uspp.F.UPF" and "si_lda_v1.uspp.F.UPF"
+#---------------------------------------------------------------------------------------------------

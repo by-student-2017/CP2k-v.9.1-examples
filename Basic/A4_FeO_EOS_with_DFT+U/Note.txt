@@ -1,0 +1,2 @@
+How to run a DFT+U calculation
+https://www.cp2k.org/howto:dft_u
