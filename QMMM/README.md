@@ -1,6 +1,6 @@
 # Groups with the same content
 
-## QM/MM: Cyclohexaphenylene on Cu(111)
+## QM/MM: Cyclohexaphenylene (PM6) on Cu(111) (EAM potential)
 - 2014_Molecular_Simulations_UZH
 - 2015_Molecular_Simulations_UZH
 
