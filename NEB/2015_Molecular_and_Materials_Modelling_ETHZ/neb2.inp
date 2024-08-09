@@ -1,0 +1,101 @@
+&GLOBAL
+   RUN_TYPE BAND            
+   PROJECT_NAME neb2        
+&END GLOBAL
+&MOTION
+  &CONSTRAINT             
+   &FIXED_ATOMS
+    COMPONENTS_TO_FIX Z
+    LIST 1..7
+   &END
+  &END
+  &BAND
+   NPROC_REP 1             
+   BAND_TYPE IT-NEB        
+   NUMBER_OF_REPLICA 20    
+    &OPTIMIZE_BAND         
+      OPT_TYPE DIIS
+      &DIIS
+       MAX_STEPS 1000
+       N_DIIS 3
+      &END
+    &END
+    &REPLICA    
+     &COORD             
+        -0.0000000000        0.0000000000       -0.0000000000
+         3.8030201671       -0.0000003430       -0.0000000000
+        -3.8030201671        0.0000003430        0.0000000000
+         1.9019125593        3.2944696295       -0.0000000000
+         1.9019119654       -3.2944699726        0.0000000000
+        -1.9019119654        3.2944699726        0.0000000000
+        -1.9019125593       -3.2944696295        0.0000000000 
+     &END
+    &END REPLICA
+    &REPLICA 
+     &COORD                
+        3.8030201671       -0.0000003430       -0.0000000000
+        1.9019125593        3.2944696295       -0.0000000000
+       -3.8030201671        0.0000003430        0.0000000000
+        0 0 0
+        1.9019119654       -3.2944699726        0.0000000000
+       -1.9019119654        3.2944699726        0.0000000000
+       -1.9019125593       -3.2944696295        0.0000000000
+      &END
+    &END REPLICA
+    &REPLICA 
+     &COORD               
+         1.9019125593        3.2944696295       -0.0000000000
+         0 0 0
+        -3.8030201671        0.0000003430        0.0000000000
+         3.8030201671       -0.0000003430       -0.0000000000
+         1.9019119654       -3.2944699726        0.0000000000
+        -1.9019119654        3.2944699726        0.0000000000
+        -1.9019125593       -3.2944696295        0.0000000000    
+      &END                                                      
+    &END REPLICA
+   &END BAND
+&END MOTION
+
+&FORCE_EVAL        
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      &SPLINE
+      EMAX_SPLINE 10000
+      &END
+      &NONBONDED
+        &LENNARD-JONES
+          atoms  Ar Ar
+          EPSILON    [K_e] 119.8
+          SIGMA [angstrom]   3.401
+          RCUT  [angstrom]  25.0
+        &END LENNARD-JONES
+      &END NONBONDED
+      &CHARGE
+        ATOM Ar
+        CHARGE 0.0
+      &END CHARGE
+    &END FORCEFIELD
+    &POISSON
+    PERIODIC NONE
+      &EWALD
+        EWALD_TYPE none
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+    ABC [angstrom] 20 20 20
+      PERIODIC NONE
+   &END CELL
+   &COORD        
+Ar        -0.0000000000        0.0000000000       -0.0000000000
+Ar         3.8030201671       -0.0000003430       -0.0000000000
+Ar        -3.8030201671        0.0000003430        0.0000000000
+Ar         1.9019125593        3.2944696295       -0.0000000000
+Ar         1.9019119654       -3.2944699726        0.0000000000
+Ar        -1.9019119654        3.2944699726        0.0000000000
+Ar        -1.9019125593       -3.2944696295        0.0000000000 
+  &END COORD
+  &END SUBSYS
+&END FORCE_EVAL
