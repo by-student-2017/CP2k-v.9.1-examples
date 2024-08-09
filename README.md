@@ -1,7 +1,7 @@
 # CP2k-v.9.1-examples
 
 
-## CP2k installation
+## CP2k installation (OS: Ubuntu)
 
 ```
 sudo apt update
