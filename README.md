@@ -9,6 +9,12 @@ sudo apt -y install cp2k
 ```
 
 
+## gnuplot installation
+```
+sudo apt -y install gnuplot
+```
+
+
 ## Original files
 - Basic: https://www.cp2k.org/howto
 - QMMM, and NEB: https://www.cp2k.org/exercises
