@@ -1,0 +1,101 @@
+&GLOBAL
+   RUN_TYPE BAND            
+   PROJECT_NAME neb1        ! the neb calculation will produce a few output files, that will be labeled with this name
+&END GLOBAL
+&MOTION
+  &CONSTRAINT               ! we are working in 2d, and to keep things simple, we fix the z position of all the atoms (atom 1 to atom7)
+   &FIXED_ATOMS
+    COMPONENTS_TO_FIX Z
+    LIST 1..7
+   &END
+  &END
+  &BAND
+   NPROC_REP 1              ! numebr of processors needed for each replica 
+   BAND_TYPE IT-NEB         ! type of NEB to be performed
+   NUMBER_OF_REPLICA 10     ! number of replicas required 
+    &OPTIMIZE_BAND          ! parameters for the optimizer. This section is required and should not be changed 
+      OPT_TYPE DIIS
+      &DIIS
+       MAX_STEPS 1000
+       N_DIIS 3
+      &END
+    &END
+    &REPLICA                ! coordinates of the satting configuration (REQUIRED: has to be the first one in the input)
+     &COORD
+             -0.0000000000        0.0000000000       -0.0000000000
+              3.8030201671       -0.0000003430       -0.0000000000
+             -3.8030201671        0.0000003430        0.0000000000
+              1.9019125593        3.2944696295       -0.0000000000
+              1.9019119654       -3.2944699726        0.0000000000
+             -1.9019119654        3.2944699726        0.0000000000
+             -1.9019125593       -3.2944696295        0.0000000000
+      &END 
+    &END REPLICA
+    &REPLICA                ! intermediate configuration
+     &COORD
+              2.215467       -0.734540        0.000000
+              2.144383        0.900403        0.000000
+             -3.803020        0.000000        0.000000
+              1.901913        3.294470       -0.000000
+              1.901912       -3.294470        0.000000 
+             -1.901912        3.294470        0.000000
+             -1.901913       -3.294470        0.000000
+     &END
+    &END REPLICA
+    &REPLICA                ! ending configuration (REQUIRED: has to be the last one in the input)
+      &COORD
+              3.8030201671       -0.0000003430       -0.0000000000
+              0.0000000000        0.0000000000       -0.0000000000
+             -3.8030201671        0.0000003430        0.0000000000
+              1.9019125593        3.2944696295       -0.0000000000
+              1.9019119654       -3.2944699726        0.0000000000
+             -1.9019119654        3.2944699726        0.0000000000
+             -1.9019125593       -3.2944696295        0.0000000000
+       &END
+    &END REPLICA 
+   &END BAND
+&END MOTION
+
+&FORCE_EVAL        ! this section is the same as usual
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      &SPLINE
+      EMAX_SPLINE 10000
+      &END
+      &NONBONDED
+        &LENNARD-JONES
+          atoms  Ar Ar
+          EPSILON    [K_e] 119.8
+          SIGMA [angstrom]   3.401
+          RCUT  [angstrom]  25.0
+        &END LENNARD-JONES
+      &END NONBONDED
+      &CHARGE
+        ATOM Ar
+        CHARGE 0.0
+      &END CHARGE
+    &END FORCEFIELD
+    &POISSON
+    PERIODIC NONE
+      &EWALD
+        EWALD_TYPE none
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+    ABC [angstrom] 20 20 20
+      PERIODIC NONE
+   &END CELL
+   &COORD        !starting coordinates, to be repeated here.
+      Ar        -0.0000000000        0.0000000000       -0.0000000000
+      Ar         3.8030201671       -0.0000003430       -0.0000000000
+      Ar        -3.8030201671        0.0000003430        0.0000000000
+      Ar         1.9019125593        3.2944696295       -0.0000000000
+      Ar         1.9019119654       -3.2944699726        0.0000000000
+      Ar        -1.9019119654        3.2944699726        0.0000000000
+      Ar        -1.9019125593       -3.2944696295        0.0000000000
+  &END COORD
+  &END SUBSYS
+&END FORCE_EVAL

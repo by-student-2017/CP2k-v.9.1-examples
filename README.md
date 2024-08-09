@@ -11,7 +11,7 @@ sudo apt -y install cp2k
 
 ## Original files
 - Basic: https://www.cp2k.org/howto
-- QMMM: https://www.cp2k.org/exercises
+- QMMM, and NEB: https://www.cp2k.org/exercises
 
 
 ## QM/MM
