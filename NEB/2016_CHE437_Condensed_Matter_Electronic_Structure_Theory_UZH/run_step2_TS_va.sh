@@ -4,7 +4,7 @@ NoTS=`awk 'BEGIN{E0=-999999.99} /E =/ {i=i+1; if($6>E0){No=i; E0=$6}} END{printf
 
 tail -n 10 "ethane_neb_aba-pos-Replica_nr_${NoTS}-1.xyz" >> ethane_neb_aba_TS.xyz
 
-molden_adress="./../molden7.3/bin"
+molden_adress="${HOME}/molden7.3/bin"
 
 cp2k_adress="/usr/bin"
 NCPUs=8

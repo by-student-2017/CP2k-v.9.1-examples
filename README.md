@@ -18,6 +18,7 @@ sudo apt -y install gnuplot
 ## molden installation
 - https://www.theochem.ru.nl/molden/howtoget.html
 ```
+cd $HOME
 wget https://ftp.science.ru.nl/Molden/molden7.3.tar.gz
 tar zxvf molden7.3.tar.gz
 cd molden7.3
