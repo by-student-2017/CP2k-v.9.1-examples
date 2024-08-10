@@ -16,3 +16,5 @@ mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i ethane_TS_va.inp | tee ethane_TS_va.o
 echo "check Norm. Mode on Molden Control"
 
 ${molden_adress}/molden ethane_TS_va-VIBRATIONS-1.mol
+
+grep "VIB|Frequency" ethane_TS_va.out
