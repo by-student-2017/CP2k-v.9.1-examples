@@ -1,0 +1,296 @@
+&MULTIPLE_FORCE_EVALS
+  FORCE_EVAL_ORDER 2 3
+  MULTIPLE_SUBSYS T
+&END
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX
+    GROUP_PARTITION 2 16 
+    &GENERIC
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2
+      VARIABLES E1 E2
+    &END
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1
+            1 56
+         &END
+         &FRAGMENT 2
+            57 2936
+         &END
+       &END
+       &FORCE_EVAL 1
+         DEFINE_FRAGMENTS 1 2
+       &END
+       &FORCE_EVAL 2
+         DEFINE_FRAGMENTS 1
+       &END
+    &END
+  &END
+  &SUBSYS
+   &COLVAR
+    &DISTANCE
+     ATOMS 49 50
+    &END
+   &END
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./xyz/QM_and_MM_region.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+&END
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       EPS_SPLINE 1.0E-6
+       EMAX_SPLINE 0.9
+     &END
+     &CHARGE
+       ATOM Cu
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED
+       &GENPOT
+          atoms Cu C
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 4.13643 1.33747 115.82004 2.206825 75.40708524085266692113
+          RCUT  15
+       &END GENPOT
+       &GENPOT
+          atoms Cu H
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 0.878363 1.33747 24.594164 2.206825 21.32834305207502214234
+          RCUT 15
+       &END GENPOT
+       &LENNARD-JONES
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+        &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &EAM
+         atoms Cu Cu
+         PARM_FILE_NAME ./../Files/CU.pot
+       &END EAM
+     &END NONBONDED
+   &END FORCEFIELD
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./xyz/QM_and_MM_region.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+&END
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME ./BASIS_MOLOPT
+    POTENTIAL_FILE_NAME ./GTH_POTENTIALS
+#   RESTART_FILE_NAME constr_3cc_2h_41_RESTART.wfn
+    &QS
+      METHOD GPW # GAPW, GPW, LRIGPW, RIGPW, OFGPW
+      EXTRAPOLATION USE_GUESS
+    &END QS
+    &MGRID
+      CUTOFF 300
+      NGRIDS 5
+    &END
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-6
+      &OT
+        PRECONDITIONER  FULL_SINGLE_INVERSE
+        MINIMIZER DIIS
+        N_DIIS 7
+      &END
+      &OUTER_SCF
+        MAX_SCF 10
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART
+          &EACH
+            QS_SCF 0
+          &END
+          ADD_LAST NUMERIC
+        &END
+        &RESTART_HISTORY OFF
+        &END
+      &END
+    &END SCF
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER WAVELET
+      &WAVELET
+        SCF_TYPE 60
+      &END
+    &END POISSON
+    &XC
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+    &END XC
+!   &PRINT
+!     &MO_CUBES
+!       NHOMO 15
+!       NLUMO 15
+!       WRITE_CUBE T
+!       LOG_PRINT_KEY
+!     &END
+!   &END
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC  30 30 30
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./xyz/QM_region.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+    &KIND H
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+    &KIND C
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-BLYP-q4
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT DH_NEB
+  RUN_TYPE BAND
+  WALLTIME 28000
+&END GLOBAL
+&MOTION
+  &BAND
+    NPROC_REP 18
+    BAND_TYPE CI-NEB
+    NUMBER_OF_REPLICA 14
+    K_SPRING 0.05
+    &CONVERGENCE_CONTROL
+      #MAX_DR 0.01
+      MAX_FORCE 0.0010
+      #RMS_DR 0.02
+      RMS_FORCE 0.0050
+    &END
+    ROTATE_FRAMES F
+    ALIGN_FRAMES F
+    &CI_NEB
+       NSTEPS_IT  2
+    &END
+    &OPTIMIZE_BAND
+      OPT_TYPE DIIS
+      OPTIMIZE_END_POINTS F
+      &DIIS
+        MAX_STEPS 1000
+      &END
+    &END
+#
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s1_ini_eq.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s2_due.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s3_tre.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s4_quattro.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s5_cinque.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s6_sei.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s7_sette.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s8_otto.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s9_nove.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s10_dieci.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s11_undici.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s12_dodici.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s13_tredici.xyz
+    &END
+
+    &REPLICA
+      COORD_FILE_NAME  ./xyz/s14_fin_eq.xyz
+    &END
+ &END
+
+&END
+!&EXT_RESTART
+!  RESTART_FILE_NAME constr_3cc_2h_41_dft-1.restart
+!&END

@@ -1,0 +1,18 @@
+#---------------------------------------------------------------------
+# Usage (QM=PM6)
+1. cd Exercise1_NEB_EX2
+2. bash run_neb_PM6.sh
+3. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+# Usage (QM=GPW)
+1. cd Exercise1_NEB_EX2
+2. bash run_neb_GPW.sh
+3. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+Nanostructures and adsorption on metallic surfaces
+https://www.cp2k.org/exercises:2015_cecam_tutorial:neb
+
+wget http://cp2k.org/static/exercises/2015_cecam_tutorial/NEB.tar.xz
+
+tar xvf NEB.tar.xz
+#---------------------------------------------------------------------

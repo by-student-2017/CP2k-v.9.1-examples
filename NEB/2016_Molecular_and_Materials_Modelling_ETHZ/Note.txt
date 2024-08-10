@@ -1,0 +1,13 @@
+#---------------------------------------------------------------------
+# Usage (neb1) direct exchange
+1. bash run_neb1.sh
+2. (drag&drop xyz file on Ovito)
+
+# Usage (neb2) Coordinated rotation
+1. bash run_neb2.sh
+2. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+Nudged Elastic Band
+https://www.cp2k.org/exercises:2016_ethz_mmm:nudged_elastic_band
+
+#---------------------------------------------------------------------
