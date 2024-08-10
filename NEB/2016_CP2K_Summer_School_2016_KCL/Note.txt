@@ -4,7 +4,7 @@
 2. bash run_neb_PM6.sh
 3. (drag&drop xyz file on Ovito)
 #---------------------------------------------------------------------
-# Usage (QM=GPW)
+# Usage (QM=GPW) (failed)
 1. cd Exercise1_NEB_EX2
 2. bash run_neb_GPW.sh
 3. (drag&drop xyz file on Ovito)
