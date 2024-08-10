@@ -25,3 +25,6 @@
 - 2020_Statistical_Mechanics_and_Molecular_Simulations_UZH
 - 2021_Statistical_Mechanics_and_Molecular_Simulations_UZH
 
+
+## Buckingham database
+- https://www5.hp-ez.com/hp/calculations/page515

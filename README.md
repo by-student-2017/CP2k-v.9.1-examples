@@ -45,6 +45,10 @@ make molden
 - https://www.cp2k.org/tools:cp2k-basis
 
 
+## Buckingham database
+- https://www5.hp-ez.com/hp/calculations/page515
+
+
 ## Videos
 - https://www.youtube.com/@CP2K
 
