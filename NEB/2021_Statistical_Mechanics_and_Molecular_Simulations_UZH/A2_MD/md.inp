@@ -1,0 +1,110 @@
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT ch3cl
+  RUN_TYPE MD                 # Molecular Dynamics
+&END GLOBAL
+&MOTION
+  &MD                         # MD parameters
+    ENSEMBLE NVT
+    STEPS 200000
+    TIMESTEP 0.5
+    TEMPERATURE 1000.0
+    &THERMOSTAT
+      TYPE NOSE
+      &NOSE
+        TIMECON 100.
+      &END NOSE
+    &END THERMOSTAT
+  &END MD
+  &CONSTRAINT                 # Restraints to keep Cl from going too far
+    &COLLECTIVE
+      INTERMOLECULAR
+      COLVAR 1
+      TARGET 1.8
+      &RESTRAINT
+        K 0.005
+      &END
+    &END
+    &COLLECTIVE
+      INTERMOLECULAR
+      COLVAR 2
+      TARGET 1.8
+      &RESTRAINT
+        K 0.005
+      &END
+    &END
+  &END
+
+  &FREE_ENERGY                 # Section to print out the values of CVs every step
+    &METADYN
+      DO_HILLS .FALSE.
+      &METAVAR
+        SCALE 0.2
+        COLVAR 1
+      &END
+      &METAVAR
+        SCALE 0.2
+        COLVAR 2
+      &END
+      &PRINT
+        &COLVAR
+          COMMON_ITERATION_LEVELS 3
+          &EACH
+            MD 1
+          &END
+        &END COLVAR
+      &END PRINT
+    &END METADYN
+  &END FREE_ENERGY
+&END MOTION
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+   CHARGE -1                      # There is a negatively charged anion
+    &QS
+      METHOD PM6                  # Parametrization Method 6
+      &SE
+      &END SE
+    &END QS
+    &SCF                          # Convergence parameters for force evaluation
+      SCF_GUESS ATOMIC
+      EPS_SCF 1.0E-5
+      MAX_SCF 50
+       &OUTER_SCF
+          EPS_SCF 1.0E-7
+          MAX_SCF 500
+       &END
+    &END SCF
+    &POISSON                      # POISSON solver for non-periodic calculation
+      PERIODIC NONE
+      PSOLVER WAVELET
+    &END
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC 10.0 10.0 10.0
+      PERIODIC NONE
+    &END CELL
+    &COORD
+C      -4.03963494       0.97427857      -0.29785096
+H      -3.97152206       2.11080568      -0.35500445
+H      -3.95108814       0.19729141       0.53163699
+H      -3.95810737       0.47922964      -1.32151084
+Cl     -5.77885435       1.07089312      -0.04609427
+Cl     -1.77974793       0.99422072      -0.29785096
+    &END COORD
+
+    &COLVAR                    # CV definitions
+      &DISTANCE
+        ATOMS 1 5
+      &END
+    &END COLVAR
+    &COLVAR
+      &DISTANCE
+        ATOMS 1 6
+      &END
+    &END COLVAR
+   &END SUBSYS
+&END FORCE_EVAL
