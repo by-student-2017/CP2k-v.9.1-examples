@@ -16,7 +16,6 @@
 ## Nanostructures and adsorption on metallic surfaces
 - 2016_CP2K_Summer_School_2016_KCL
 - 2018_CP2K-UK_Summer_School_UoL_STFC
-- 2019_CONEXS_Summer_School_NU
 - 2019_Introduction_to_CP2K_GU
 
 
