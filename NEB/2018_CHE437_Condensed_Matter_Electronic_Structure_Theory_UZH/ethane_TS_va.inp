@@ -1,0 +1,66 @@
+&GLOBAL
+  PROJECT ethane_TS_va
+  RUN_TYPE NORMAL_MODES
+  PRINT_LEVEL MEDIUM
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Quickstep              ! Electronic structure method (DFT,...)
+  &DFT
+    BASIS_SET_FILE_NAME  BASIS_MOLOPT
+    POTENTIAL_FILE_NAME  POTENTIAL
+
+    &POISSON                    ! Solver requested for non periodic calculations
+      PERIODIC XYZ
+    &END POISSON
+    &SCF                        ! Parameters controlling the convergence of the scf. This section should not be changed. 
+      SCF_GUESS ATOMIC
+      EPS_SCF 1.0E-7
+      MAX_SCF 300
+    &END SCF
+    &XC                        ! Parametes needed to compute the electronic exchange potential 
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC 12. 12. 12.
+      PERIODIC XYZ
+    &END CELL
+    &TOPOLOGY                    ! Section used to center the atomic coordinates in the given box. Useful for big molecules
+      &CENTER_COORDINATES
+      &END
+      COORD_FILE_FORMAT xyz
+      COORD_FILE_NAME  ./ethane_neb_aba_TS.xyz
+    &END
+    &KIND H
+      ELEMENT H
+      BASIS_SET DZVP-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+    &KIND C
+      ELEMENT C
+      BASIS_SET DZVP-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+
+&VIBRATIONAL_ANALYSIS
+  NPROC_REP 1
+  DX 0.01
+  FULLY_PERIODIC
+  &PRINT
+    &MOLDEN_VIB
+    &END
+    &CARTESIAN_EIGS
+    &END
+    &PROGRAM_RUN_INFO
+      &EACH
+        REPLICA_EVAL 1
+      &END
+    &END
+  &END
+&END

@@ -1,0 +1,13 @@
+#---------------------------------------------------------------------
+# Usage (neb calculation)e
+1. bash run_step1_neb.sh
+2. (drag&drop xyz file on Ovito)
+
+# Usage (vibration analysis)
+1. bash run_step2_TS_va.sh
+2. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+Nudged Elastic Band
+https://www.cp2k.org/exercises:2018_uzh_cmest:path_optimization_neb
+
+#---------------------------------------------------------------------

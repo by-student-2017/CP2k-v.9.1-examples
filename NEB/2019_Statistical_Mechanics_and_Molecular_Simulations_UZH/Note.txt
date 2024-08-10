@@ -1,0 +1,16 @@
+#---------------------------------------------------------------------
+# Usage (NEB activation barrier)
+1. cd A1_NEB
+2. bash run_step1_geo.sh
+3. bash run_step2_neb.sh
+4. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+# Usage (Free energy surface)
+1. cd A2_MD
+2. bash run.sh
+3. python3 plot.py
+#---------------------------------------------------------------------
+Nudged elastic band and free energy calculations
+https://www.cp2k.org/exercises:2021_uzh_acpc2:ex03
+
+#---------------------------------------------------------------------
