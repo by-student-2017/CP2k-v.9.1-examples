@@ -8,7 +8,17 @@
 # Usage (Free energy surface)
 1. cd A2_MD
 2. bash run.sh
+(you can get fes.png)
+
 3. python3 plot.py
+(you can get fes.png)
+
+You may encounter a warning like the following:
+***********************************************
+plot.py:24: RuntimeWarning: divide by zero encountered in log
+  fes = -kb * temperature * np.log(prob)
+***********************************************
+Don't worry about this, the script still works as expected and produces the plot in the file fes.png.
 #---------------------------------------------------------------------
 Nudged elastic band and free energy calculations
 https://www.cp2k.org/exercises:2020_uzh_acpc2:ex03
