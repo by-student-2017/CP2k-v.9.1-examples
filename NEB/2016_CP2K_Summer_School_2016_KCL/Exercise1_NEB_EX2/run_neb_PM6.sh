@@ -14,4 +14,7 @@ for ((i=1;i<=${ndata};i++)); do
   tail -n $((2+2936)) "NEB-pos-Replica_nr_${a}-1.xyz" >> neb_aba_14r.xyz
 done
 
-awk 'BEGIN{E0=-999999.99} /E =/ {i=i+1; printf "No.%s, %16.8f [Ha], Line:%d \n", i, $6, NR; if($6>E0){No=i; E0=$6; Line=NR}} END{printf "Emax: No. %d, %16.8f [Ha], Line:%d \n", No, E0, Line}' neb_aba_14r.xyz
+echo "# No.    Energy[Ha]     Line"
+awk 'BEGIN{E0=-999999.99} /E =/ {i=i+1; printf "%s %16.8f %d \n", i, $6, NR; if($6>E0){No=i; E0=$6; Line=NR}} END{printf "# Emax: No. %d, %16.8f [Ha], Line:%d \n", No, E0, Line}' neb_aba_14r.xyz | tee neb_profile
+
+echo "plot 'neb_profile' w lp pt 7; set xlabel 'Step' ; set ylabel 'Energy / Hartree' ; pause mouse" |  gnuplot
