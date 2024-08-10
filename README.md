@@ -33,7 +33,7 @@ make molden
 - QMMM, and NEB: https://www.cp2k.org/exercises
 
 
-## QM/MM and NEB
+## EAM potential (required for QM/MM or NEB etc)
 - Probably most of the potential at NIST (for Lammps) is not available in CP2k without converting the files.
 
 
