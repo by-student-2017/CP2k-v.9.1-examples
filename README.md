@@ -9,13 +9,13 @@ sudo apt -y install cp2k
 ```
 
 
-## gnuplot installation
+## Gnuplot installation
 ```
 sudo apt -y install gnuplot
 ```
 
 
-## molden installation
+## Molden installation
 - https://www.theochem.ru.nl/molden/howtoget.html
 ```
 cd $HOME
