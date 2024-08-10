@@ -1,0 +1,2 @@
+plot  'WALK1/META-COLVAR.metadynLog'   u 2:3 pt 7.0 ps 1.0 t "",\
+      'WALK2/META-COLVAR.metadynLog'   u 2:3 pt 7.0 ps 1.0 t ""

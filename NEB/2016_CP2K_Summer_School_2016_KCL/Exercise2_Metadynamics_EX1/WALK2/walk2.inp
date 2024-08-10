@@ -1,0 +1,356 @@
+&MULTIPLE_FORCE_EVALS
+  FORCE_EVAL_ORDER 2 3
+  MULTIPLE_SUBSYS T
+&END
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX
+    GROUP_PARTITION 2 6 
+    &GENERIC
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2
+      VARIABLES E1 E2
+    &END
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1
+            1 56
+         &END
+         &FRAGMENT 2
+            57 2936
+         &END
+       &END
+       &FORCE_EVAL 1
+         DEFINE_FRAGMENTS 1 2
+       &END
+       &FORCE_EVAL 2
+         DEFINE_FRAGMENTS 1
+       &END
+    &END
+  &END
+  &SUBSYS
+    &COLVAR
+       &COMBINE_COLVAR
+          &COLVAR
+             &DISTANCE
+                ATOMS 4 50
+             &END
+          &END COLVAR
+          &COLVAR
+             &DISTANCE
+                ATOMS 7 49
+             &END
+          &END COLVAR
+          FUNCTION CV1+CV2
+          VARIABLES CV1 CV2
+          ERROR_LIMIT 1.0E-8
+       &END
+    &END
+    &COLVAR
+     &DISTANCE
+      ATOMS 49 50
+     &END
+    &END
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ../../Files/QM_and_MM_region.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+    &KIND CU_FIX
+       ELEMENT CU
+       MASS 1000000000.
+    &END
+  &END SUBSYS
+&END
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       EPS_SPLINE 1.0E-6
+       EMAX_SPLINE 0.9
+     &END
+     &CHARGE
+       ATOM Cu
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM CU_FIX
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED
+       &GENPOT
+          atoms Cu C
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 4.13643 1.33747 115.82004 2.206825 75.40708524085266692113
+          RCUT  15
+       &END GENPOT
+       &GENPOT
+          atoms CU_FIX C
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 4.13643 1.33747 115.82004 2.206825 75.40708524085266692113
+          RCUT  15
+       &END GENPOT
+       &GENPOT
+          atoms Cu H
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 0.878363 1.33747 24.594164 2.206825 21.32834305207502214234
+          RCUT 15
+       &END GENPOT
+       &GENPOT
+          atoms CU_FIX H
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 0.878363 1.33747 24.594164 2.206825 21.32834305207502214234
+          RCUT 15
+       &END GENPOT
+       &LENNARD-JONES
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+        &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &EAM
+         atoms Cu Cu
+         PARM_FILE_NAME ../../Files/CU.pot
+       &END EAM
+       &EAM
+         atoms CU_FIX Cu
+         PARM_FILE_NAME ../../Files/CU.pot
+       &END EAM
+       &EAM
+         atoms CU_FIX CU_FIX
+         PARM_FILE_NAME ../../Files/CU.pot
+       &END EAM
+     &END NONBONDED
+   &END FORCEFIELD
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ../../Files/QM_and_MM_region.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+&END
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    &QS
+      METHOD PM6
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+      &SE
+        &COULOMB
+          CUTOFF [angstrom] 20.0
+        &END
+        &EXCHANGE
+          CUTOFF [angstrom] 20.0
+        &END
+      &END
+    &END QS
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+      EPS_SCF 1.0E-6
+      &OT
+        PRECONDITIONER NONE
+        MINIMIZER DIIS
+        N_DIIS 7
+      &END
+      &OUTER_SCF
+        MAX_SCF 8
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART OFF
+        &END
+        &RESTART_HISTORY OFF
+        &END
+      &END
+    &END SCF
+    &POISSON
+     PERIODIC NONE
+     POISSON_SOLVER WAVELET
+     &WAVELET
+      SCF_TYPE 60
+     &END WAVELET
+    &END POISSON
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC  30 30 30
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ../../Files/QM_region.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT META
+  RUN_TYPE MD
+&END GLOBAL
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS    200000
+    TIMESTEP 0.5
+    TEMPERATURE 450.0
+    &THERMOSTAT
+       TYPE CSVR
+       REGION MASSIVE
+       &CSVR
+          TIMECON [fs] 200.0
+       &END
+    &END
+  &END MD
+  &FREE_ENERGY
+    &METADYN
+      DO_HILLS
+      NT_HILLS 50
+      WW 1.0e-3
+      &METAVAR
+        SCALE 0.1
+        COLVAR 1
+        &WALL
+          TYPE QUADRATIC
+          POSITION [angstrom] 5
+          &QUADRATIC
+             DIRECTION WALL_PLUS
+             K [kcalmol] 40.0
+          &END
+        &END
+        &WALL
+          TYPE QUADRATIC
+          POSITION [angstrom] 1.90
+          &QUADRATIC
+             DIRECTION WALL_MINUS
+             K [kcalmol] 40.0
+          &END
+        &END
+      &END METAVAR
+      &METAVAR
+        SCALE 0.1
+        COLVAR 2
+        &WALL
+          TYPE QUADRATIC
+          POSITION [angstrom] 3.80
+          &QUADRATIC
+             DIRECTION WALL_PLUS
+             K [kcalmol] 40.0
+          &END
+        &END
+        &WALL
+          TYPE QUADRATIC
+          POSITION [angstrom] 0.75
+          &QUADRATIC
+             DIRECTION WALL_MINUS
+             K [kcalmol] 40.0
+          &END
+        &END
+      &END METAVAR
+#     &METAVAR
+#       SCALE 0.1
+#       COLVAR 3
+#       &WALL
+#         TYPE QUADRATIC
+#         POSITION [angstrom] 4.00
+#         &QUADRATIC
+#            DIRECTION WALL_PLUS
+#            K [kcalmol] 40.0
+#         &END
+#       &END
+#       &WALL
+#         TYPE QUADRATIC
+#         POSITION [angstrom] 1.30
+#         &QUADRATIC
+#            DIRECTION WALL_MINUS
+#            K [kcalmol] 40.0
+#         &END
+#       &END
+#     &END METAVAR
+      &PRINT
+        &COLVAR
+         COMMON_ITERATION_LEVELS 4
+        &END
+      &END
+      &MULTIPLE_WALKERS
+        NUMBER_OF_WALKERS 2
+        WALKER_ID 2
+        WALKER_COMM_FREQUENCY 4 
+        &WALKERS_FILE_NAME
+           ../WALK_DATA_FILES/WALKER_1.data
+           ../WALK_DATA_FILES/WALKER_2.data
+        &END
+      &END
+    &END METADYN
+  &END
+  &PRINT
+    &TRAJECTORY
+      FORMAT DCD
+      &EACH
+        MD 100
+      &END
+    &END
+    &RESTART
+      &EACH
+        MD 100
+      &END
+      FILENAME META
+    &END
+    &VELOCITIES ON
+      &EACH
+        MD 5000
+      &END
+    &END
+    &RESTART_HISTORY OFF
+    &END
+  &END
+&END
+&EXT_RESTART
+ RESTART_FILE_NAME ../../Files/restart_file_2.txt
+&END

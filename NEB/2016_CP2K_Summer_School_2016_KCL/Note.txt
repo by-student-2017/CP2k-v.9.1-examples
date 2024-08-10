@@ -1,13 +1,23 @@
 #---------------------------------------------------------------------
-# Usage (QM=PM6)
+# Usage (QM=PM6), Exercise 1
 1. cd Exercise1_NEB_EX2
 2. bash run_neb_PM6.sh
 3. (drag&drop xyz file on Ovito)
 #---------------------------------------------------------------------
-# Usage (QM=GPW) (failed)
+# Usage (QM=GPW), Exercise 1 (failed)
 1. cd Exercise1_NEB_EX2
 2. bash run_neb_GPW.sh
 3. (drag&drop xyz file on Ovito)
+#---------------------------------------------------------------------
+# Usage, Exercise 2
+1. cd Exercise2_Metadynamics_EX1
+2. bash run.sh
+
+3. gnuplot < plot.gpl
+
+4. sudo apt -y install libmpich
+5. cd WALK1
+6. fes.popt -cp2k -mathlab -file META-META-1.restart -ndim 2 -ndw 1 2 -out fes_12.dat
 #---------------------------------------------------------------------
 Nanostructures and adsorption on metallic surfaces
 https://www.cp2k.org/exercises:2015_cecam_tutorial:neb
