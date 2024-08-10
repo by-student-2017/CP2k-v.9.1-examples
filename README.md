@@ -15,7 +15,7 @@ sudo apt -y install gnuplot
 ```
 
 
-## Molden installation
+## Molden installation (This code requires academic)
 - https://www.theochem.ru.nl/molden/howtoget.html
 ```
 cd $HOME
