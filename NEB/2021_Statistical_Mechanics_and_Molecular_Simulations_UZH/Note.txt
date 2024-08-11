@@ -5,7 +5,7 @@
 3. bash run_step2_neb.sh
 4. (drag&drop xyz file on Ovito)
 #---------------------------------------------------------------------
-# Usage (Free energy surface)
+# Usage (Free energy surface: about 1h45m)
 1. cd A2_MD
 2. bash run.sh
 (you can get fes.png)
