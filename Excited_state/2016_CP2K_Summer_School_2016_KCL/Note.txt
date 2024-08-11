@@ -8,6 +8,7 @@
 1. cd TDDFPT
 2. bash run.sh
 
+see "Excitation analysis" in input_tddfpt.out file
 #---------------------------------------------------------------------
 Excited states
 https://www.cp2k.org/exercises:2016_summer_school:excited

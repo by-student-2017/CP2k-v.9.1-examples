@@ -1,0 +1,19 @@
+#---------------------------------------------------------------------
+# Usage
+1. cd gapw_water_xas
+2. bash run.sh
+
+#---------------------------------------------------------------------
+# Usage
+1. cd gapw_ice1h_xas
+2. bash run.sh
+
+#---------------------------------------------------------------------
+Gaussian and Augmented Plane Wave Method
+https://www.cp2k.org/exercises:2017_uzh_cp2k-tutorial:gapw
+
+wget https://www.cp2k.org/_media/exercises:2017_uzh_cp2k-tutorial:tutorial_gapw.tar.gz
+
+tar zxvf tutorial_gapw.tar.gz
+
+#---------------------------------------------------------------------

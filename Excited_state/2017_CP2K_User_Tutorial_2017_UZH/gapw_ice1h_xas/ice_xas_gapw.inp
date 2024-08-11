@@ -1,0 +1,158 @@
+
+&FORCE_EVAL
+  METHOD QS
+  &DFT
+    ! the EMSL basis set file contains all electron basis sets
+    BASIS_SET_FILE_NAME  EMSL_BASIS_SETS
+    POTENTIAL_FILE_NAME  POTENTIAL
+    LSD
+    &MGRID
+      NGRIDS 5
+      CUTOFF 400
+      REL_CUTOFF 60
+    &END MGRID
+    &QS
+      ! We want to use the gaussian augmented plane wave method
+      ! to perform an all-electron calculation
+      ! to know more about the theory and implementation
+      ! look at DOI: 10.1007/s002140050523
+      ! To use the gaussian augmented plane wave method insert the right METHOD keyword
+      METHOD GAPW
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+      ! MAP_CONSISTENT # ABORT; found an unknown keyword MAP_CONSISTENT in section QS
+      EPS_DEFAULT 1.0E-10
+      ! parameters needed for the GAPW method
+      ! algorithm to construct the atomic radial grid for GAPW
+      ! look at the online manual, at the paper above and at examples in the test directory of cp2k for more details
+      QUADRATURE   GC_LOG
+      EPSFIT       1.E-4
+      EPSISO       1.0E-12
+      EPSRHO0      1.E-8
+      LMAXN0       4
+      LMAXN1       6
+      ALPHA0_H     10
+    &END QS
+    &SCF
+      MAX_SCF 20
+      EPS_SCF 1.0E-5
+      SCF_GUESS ATOMIC
+     
+      &MIXING
+         METHOD BROYDEN_MIXING
+         ALPHA 0.6
+      &END MIXING
+
+      &OUTER_SCF
+        EPS_SCF 1.0E-5
+        MAX_SCF 50
+      &END OUTER_SCF
+    &END SCF
+
+    &XC
+      &XC_FUNCTIONAL
+        &PBE
+        &END PBE
+      &END XC_FUNCTIONAL
+      &XC_GRID
+         XC_SMOOTH_RHO NN50
+         XC_DERIV NN50_SMOOTH
+      &END XC_GRID
+         &VDW_POTENTIAL
+            POTENTIAL_TYPE PAIR_POTENTIAL
+            &PAIR_POTENTIAL
+               PARAMETER_FILE_NAME dftd3.dat
+               TYPE DFTD3
+               REFERENCE_FUNCTIONAL PBE
+               R_CUTOFF [angstrom] 16
+            &END
+         &END VDW_POTENTIAL
+    &END XC
+
+    &XAS
+       RESTART F
+      ! specify below the method to use to compute the XAS spectra
+      ! half-core hole and the full core-hole are possible methods that can be used, choose the half-core hole
+      ! to know more about the implementation and theoretical details look at DOI: 10.1039/B615522G
+      !
+      METHOD        TP_HH
+      DIPOLE_FORM   VELOCITY
+      ! here we specify which states we want to compute the spectra from
+      ! in XAS experiments of water the 1s spectra of the O-atoms are resolved
+      ! edit below
+      STATE_TYPE    1s
+      ! here edit the list of atoms that you want to include for the calculation of XAS
+      ! you can look at the list of atoms to include in the .xyz file for the snapshot
+      ! suggestion: in order to include atoms from X to Y use the syntax X..Y
+      ATOMS_LIST    1..4  
+      ADDED_MOS     7
+      ! Here we add another SCF section to perform the calculation of the XAS spectrum
+      ! after having optimized the wave-function with GAPW     
+
+      &SCF 
+         EPS_SCF 1.0E-5
+         MAX_SCF 100
+         &MIXING
+            METHOD BROYDEN_MIXING
+            ALPHA 0.6
+         &END MIXING
+
+         &OUTER_SCF
+           EPS_SCF 1.0E-5
+           MAX_SCF 50
+         &END OUTER_SCF
+      &END SCF
+      &LOCALIZE
+      &END
+      &PRINT
+         &PROGRAM_RUN_INFO
+         &END
+         &RESTART
+             FILENAME ./ice1h
+             &EACH
+               XAS_SCF 15
+             &END
+             ADD_LAST NUMERIC
+         &END
+         &XAS_SPECTRUM
+           FILENAME ./ice1h
+         &END
+         &XES_SPECTRUM
+           FILENAME ./ice1h
+         &END
+      &END
+    &END XAS
+  &END DFT
+
+  &SUBSYS
+    &TOPOLOGY
+      COORD_FILE_NAME  ice1h_32H2O.xyz
+      COORDINATE XYZ
+    &END TOPOLOGY
+    &CELL
+             ABC 9.0397444    15.6572966     7.3588725000
+    &END CELL
+    &KIND H
+      BASIS_SET 6-31G*
+      POTENTIAL ALL
+      LEBEDEV_GRID 80
+      RADIAL_GRID 200
+    &END KIND
+    &KIND O
+      BASIS_SET 6-31G*
+      POTENTIAL ALL
+      LEBEDEV_GRID 80
+      RADIAL_GRID 200
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+
+&GLOBAL
+  PROJECT_NAME ICE1H
+  RUN_TYPE ENERGY
+  PRINT_LEVEL LOW
+  FLUSH_SHOULD_FLUSH T
+&END GLOBAL
+
+
+
