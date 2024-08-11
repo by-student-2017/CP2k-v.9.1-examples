@@ -1,0 +1,26 @@
+#---------------------------------------------------------------------
+# NWCHEM installation
+1. sudo apt update
+2. sudo apt -y install nwchem
+#---------------------------------------------------------------------
+# Usage (Calculation of the spectrum using linear response TDDFT) (TD-PBE0/6-31G** level)
+1. cd EXERCISE_6.2/LR-TDDFT
+2. bash run.sh
+3. (drag&drop *.cube file to VESTA)
+#---------------------------------------------------------------------
+# Usage (Resonant ultraviolet excitation of water) (TD-PBE0/6-31G** level)
+1. cd EXERCISE_6.2/RT-TDDFT
+2. bash run.sh
+
+#---------------------------------------------------------------------
+Absorption spectroscopy with time-dependent density functional theory
+https://www.cp2k.org/exercises:2014_ethz_mmm:uv
+
+tar zxvf exercise_11.1.tar.gz
+
+#---------------------------------------------------------------------
+# NWCHEM
+Absorption spectrum of water
+https://nwchemgit.github.io/RT-TDDFT.html#absorption-spectrum-of-water
+
+#---------------------------------------------------------------------
