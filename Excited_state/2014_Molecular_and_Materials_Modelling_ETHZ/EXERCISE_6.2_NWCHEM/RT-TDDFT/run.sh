@@ -7,6 +7,6 @@ export OMP_NUM_THREADS=1
 
 mpirun -np ${NCPUs} ${mwchem_adress}/nwchem h2o_resonant.nw | tee h2o_resonant.out
 
-bash createlist
+bash createlist.sh
 
 #vmd -e animate.cube.vmd

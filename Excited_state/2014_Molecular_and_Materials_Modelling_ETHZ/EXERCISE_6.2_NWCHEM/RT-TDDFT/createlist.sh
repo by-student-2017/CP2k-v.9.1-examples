@@ -1,11 +1,13 @@
+#!/bin/bash
+
 mkdir Cubes
-mv water.density*0.cube ./Cubes
-rm water.density*[1-9].cube
-rm *ao_re*
+mv density_subgs.*0.cube ./Cubes
+rm density_subgs.*[1-9].cube
+#rm *ao_re*
 
 cat header.animate.cube.vmd > animate.cube.vmd
 i=0
-for a in ./Cubes/water.density*0.cube; do
+for a in ./Cubes/density_subgs.*0.cube; do
 if (( i == 0 ))
 then
   echo "set updmol [mol new {$a} type cube waitfor all] " > listfiles
