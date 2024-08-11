@@ -21,7 +21,7 @@ FILE1="./../gapw_water_xas/spectrum.out"
 FILE2="./../gapw_ice1h_xas/spectrum.out"
 
 if [ -e "$FILE1" ] && [ -e "$FILE2" ]; then
-  echo "plot ${FILE1} using 1:5 with l,  ${FILE2} using 1:5 with l; set xlabel 'Energy / eV' ; set ylabel 'Intensity / arb.units' ; pause mouse" |  gnuplot
+  echo "plot \"${FILE1}\" using 1:5 with l, \"${FILE2}\" using 1:5 with l; set xlabel 'Energy / eV' ; set ylabel 'Intensity / arb.units' ; pause mouse" |  gnuplot
 else
   echo "One or both files do not exist."
 fi
