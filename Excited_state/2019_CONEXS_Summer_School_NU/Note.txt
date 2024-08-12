@@ -18,7 +18,24 @@
 #-------------------------------------
 
 #---------------------------------------------------------------------
-Linear-response TDDFT for XAS in CP2K: the XAS_TDP method
-https://www.cp2k.org/exercises:2019_conexs_newcastle:ex2
+# Usage (Linear-response TDDFT for XAS in CP2K: the XAS_TDP method)
+1. cd MgS_and_MgO_XAS
+#-------------------------------------
+2. cd Part_1_optimizing geometry
+3. cd MgS
+4. bash run_opt_MgS.sh
+#-------------------------------------
+2. cd Part_2_XAS_calculations
+3. cd MgS
+4. bash run_xas_MgS.sh
+#-------------------------------------
+2. cd Part_3_delta-SCF_calculations
+3. cd MgS
+4. bash run_dscf_MgS.sh
+#-------------------------------------
+
+#---------------------------------------------------------------------
+MgS and MgO: Periodic systems and XAS
+https://www.cp2k.org/exercises:2019_conexs_newcastle:ex3
 
 #---------------------------------------------------------------------

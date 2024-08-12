@@ -1,0 +1,82 @@
+&GLOBAL
+  PROJECT_NAME MgO
+  RUN_TYPE GEO_OPT
+  PRINT_LEVEL LOW
+  FLUSH_SHOULD_FLUSH .TRUE.
+&END GLOBAL
+
+&MOTION
+  &GEO_OPT
+    TYPE MINIMIZATION
+    OPTIMIZER BFGS
+    MAX_ITER 200
+  &END GEO_OPT
+&END MOTION
+
+&FORCE_EVAL
+  METHOD QS
+  STRESS_TENSOR ANALYTICAL
+
+  &DFT
+    ! in the geometry optimization there is no need to run an all-electron calculation, so we are 
+    ! going to make use of the GTH pseudopotentials for the core electrons.
+    BASIS_SET_FILE_NAME  GTH_BASIS_SETS  
+    POTENTIAL_FILE_NAME  GTH_POTENTIALS
+    
+    &MGRID
+      NGRIDS 5
+      CUTOFF 400
+      REL_CUTOFF 60
+    &END MGRID
+
+    &QS
+      METHOD GPW ! to optimize the geometry the GPW method will be used
+    &END QS
+
+    &SCF
+      MAX_SCF 200
+      EPS_SCF 1.0E-6
+      SCF_GUESS ATOMIC
+
+      &OT
+        MINIMIZER DIIS
+        PRECONDITIONER FULL_ALL
+      &END OT
+    &END SCF
+
+    &XC
+      &XC_FUNCTIONAL PBE  ! PBE exchange-correlation functional
+      &END XC_FUNCTIONAL
+
+      &XC_GRID
+         XC_SMOOTH_RHO NN50
+         XC_DERIV NN50_SMOOTH
+      &END XC_GRID
+   &END XC
+  &END DFT
+
+  &SUBSYS
+    &COORD
+      O     3.010000   1.737824   1.228827
+      Mg    0.000000   0.000000   0.000000
+    &END COORD
+
+    &CELL
+      PERIODIC XYZ  ! we are considering the system periodic in the three directions 
+      ALPHA_BETA_GAMMA 60 60 60
+      ABC 3.010 3.010 3.010
+    &END CELL
+
+    &KIND Mg
+      ELEMENT Mg
+      BASIS_SET DZVP-GTH    
+      POTENTIAL GTH-PBE-q10 
+    &END KIND
+
+    &KIND O
+      ELEMENT O
+      BASIS_SET DZVP-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
