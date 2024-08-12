@@ -14,3 +14,5 @@ gfortran ./../LIB_TOOLS/msd.f90 -o ./../LIB_TOOLS/msd.x  # compile msd.x executa
 ./../LIB_TOOLS/msd.x < msd.in # check input file 'msd.in' before you run!
 
 echo "plot 'msd-256.dat' using 1:2 with l; set xlabel 'Time / fs' ; set ylabel 'Mean squared displacement / Angstrom^2' ; pause mouse" |  gnuplot
+
+echo "set format y'%.2e'; plot 'msd-256.dat' using 1:(\$2/(2*3)/\$1)*((1e-8*1e-8)/1e-15) with l; set xlabel 'Time, t / fs' ; set ylabel 'Diffusion coefficient, D / (cm^2/s)' ; pause mouse" |  gnuplot
