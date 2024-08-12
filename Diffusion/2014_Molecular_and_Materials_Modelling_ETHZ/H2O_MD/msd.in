@@ -1,0 +1,3 @@
+H2O-64-pos-1.xyz   ! trajectory filename
+10.0               ! time between frames [fs]
+msd-64.dat         ! output filename

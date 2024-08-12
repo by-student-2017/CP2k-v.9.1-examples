@@ -1,0 +1,9 @@
+#---------------------------------------------------------------------
+# Usage (MD and Mean Squared Displacement (MSD))
+1. cd H2O_MD
+2. bash run.sh
+#---------------------------------------------------------------------
+Diffusion constant, viscosity and size effects
+https://www.cp2k.org/exercises:2014_uzh_molsim:h2o_diff
+
+#---------------------------------------------------------------------
