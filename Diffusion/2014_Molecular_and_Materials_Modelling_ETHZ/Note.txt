@@ -3,6 +3,12 @@
 1. cd H2O_MD
 2. bash run.sh
 
+3. bash ./get_t_sigma.sh run-H2O-256-pos-1.xyz
+
+4. ./../LIB_TOOLS/msd.x < msd.in
+5. echo "plot 'msd-256.dat' using 1:2 with l; set xlabel 'Time / fs' ; set ylabel 'Mean squared displacement / Angstrom^2' ; pause mouse" |  gnuplot
+6. echo "set format y'%.2e'; plot 'msd-256.dat' using 1:(\$2/(2*3)/\$1)*((1e-8*1e-8)/1e-15) with l; set xlabel 'Time, t / fs' ; set ylabel 'Diffusion coefficient, D / (cm^2/s)' ; pause mouse" |  gnuplot
+
 Note:
   **** **** ******  **  PROGRAM STARTED AT               2024-08-12 15:51:18.778
   **** **** ******  **  PROGRAM ENDED AT                 2024-08-12 16:46:56.656
