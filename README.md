@@ -1,7 +1,7 @@
 # CP2k-v.9.1-examples
 
 
-## CP2k installation (OS: Ubuntu)
+## CP2k installation (OS: Ubuntu, e.g., Ubuntu 22.04 LTS)
 
 ```
 sudo apt update
@@ -62,3 +62,4 @@ make molden
 - GPU: NVIDIA GeForce RTX3070
 - WSL2: VERSION="22.04.1 LTS (Jammy Jellyfish)"
 - Python 3.10.12
+- CP2k ver.9.1
