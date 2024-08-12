@@ -11,3 +11,13 @@ Diffusion constant, viscosity and size effects
 https://www.cp2k.org/exercises:2014_uzh_molsim:h2o_diff
 
 #---------------------------------------------------------------------
+MSD = <[x(t)-x(0)]^2> = 2*n-dimension*D*t
+
+For 3-dimensional Brownian motion,
+i.e., n-dimension=3, and D = MSD/(6*t)
+
+This case, units are 
+MSD [Angstrom^2]
+t [fs]
+D [Angstrom^2/fs] = 0.1 [cm^2/s] = 1.0e-5 [m^2/s]
+#---------------------------------------------------------------------
