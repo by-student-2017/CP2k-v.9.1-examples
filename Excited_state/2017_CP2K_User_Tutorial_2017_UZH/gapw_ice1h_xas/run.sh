@@ -5,7 +5,7 @@ NCPUs=4
 
 export OMP_NUM_THREADS=1
 
-#mpirun -np ${NCPUs} ${cp2k_adress}/cp2k ice_xas_gapw.inp | tee ice_xas_gapw.out
+mpirun -np ${NCPUs} ${cp2k_adress}/cp2k ice_xas_gapw.inp | tee ice_xas_gapw.out
 
 bash ./../LIB_TOOLS/get_average_spectrum.sh
 
