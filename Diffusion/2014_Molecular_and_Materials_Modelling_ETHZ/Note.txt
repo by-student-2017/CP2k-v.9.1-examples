@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------
-# Usage (MD and Mean Squared Displacement (MSD)) (about 1 hour, 8 CPUs)
+# Usage (MD and Mean Squared Displacement (MSD)) (about 1 hour for 8 CPUs)
 1. cd H2O_MD
 2. bash run.sh
 
