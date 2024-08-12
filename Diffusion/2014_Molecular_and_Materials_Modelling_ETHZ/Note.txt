@@ -1,7 +1,11 @@
 #---------------------------------------------------------------------
-# Usage (MD and Mean Squared Displacement (MSD))
+# Usage (MD and Mean Squared Displacement (MSD)) (about 1 hour, 8 CPUs)
 1. cd H2O_MD
 2. bash run.sh
+
+Note:
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-12 15:51:18.778
+  **** **** ******  **  PROGRAM ENDED AT                 2024-08-12 16:46:56.656
 #---------------------------------------------------------------------
 Diffusion constant, viscosity and size effects
 https://www.cp2k.org/exercises:2014_uzh_molsim:h2o_diff
