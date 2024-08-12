@@ -1,0 +1,99 @@
+&GLOBAL                                                                                              
+   PROJECT  part1                                                                                    
+   RUN_TYPE ENERGY                                                                                   
+&END GLOBAL                                                                                          
+                                                                                                     
+&FORCE_EVAL                                                                                          
+   METHOD QS                                                                                         
+   &DFT                                                                                              
+      BASIS_SET_FILE_NAME  EMSL_BASIS_SETS                                                           
+      POTENTIAL_FILE_NAME  POTENTIAL                                                                 
+      AUTO_BASIS RI_XAS MEDIUM            !automatically generates an RI basis                       
+                                                                                                     
+      &QS                                                                                            
+         METHOD GAPW                                                                                 
+      &END QS                                                                                        
+                                                                                                     
+      &POISSON                                                                                       
+         PERIODIC NONE                                                                               
+         POISSON_SOLVER MT                                                                           
+      &END POISSON                                                                                   
+                                                                                                     
+      &SCF                                                                                           
+         MAX_SCF    50                                                                               
+         EPS_SCF    1.0E-08                                                                          
+         SCF_GUESS  RESTART                                                                          
+      &END SCF                                                                                       
+                                                                                                     
+      &MGRID                                                                                         
+         CUTOFF 600                                                                                  
+      &END                                                                                           
+                                                                                                     
+      &XC                                                                                            
+         &XC_FUNCTIONAL                                                                              
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_C_PBE                                                                  
+            &END LIBXC                                                                               
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_X_PBE                                                                  
+            &END LIBXC                                                                               
+         &END XC_FUNCTIONAL                                                                          
+      &END XC                                                                                        
+                                                                                                     
+      !The section controlling the XAS calculations                                                  
+      &XAS_TDP                                                                                       
+                                                                                                     
+         CHECK_ONLY  F !set CHECK_ONLY to false for actual computation                               
+                                                                                                     
+         &DONOR_STATES                                                                               
+            DEFINE_EXCITED BY_KIND                                                                   
+            KIND_LIST Al                                                                             
+            STATE_TYPES 1s                                                                           
+            N_SEARCH 2                                                                               
+            LOCALIZE                                                                                 
+         &END DONOR_STATES                                                                           
+                                                                                                     
+         TAMM_DANCOFF         !For a full-TDDFT calculation, set TAMM_DANCOFF F 
+         DIPOLE_FORM LENGTH   !LENGTH or VELOCITY, it does not really matter           
+         GRID Al 100 100      !100x100 grid rather small but enough here
+         
+         &KERNEL                                                                                     
+            &XC_FUNCTIONAL                    !In principle, one could use a       
+               &LIBXC                         !different functional for the     
+                  FUNCTIONAL GGA_C_PBE        !kernel, but to be consistent   
+               &END LIBXC                     !one usually uses the same as            
+               &LIBXC                         !for the ground state. Only                     
+                  FUNCTIONAL GGA_X_PBE        !LIBXC functionals are available            
+               &END LIBXC                                                                            
+            &END XC_FUNCTIONAL                                                                       
+         &END KERNEL                                                                                 
+                                                                                                     
+      &END XAS_TDP                                                                                   
+                                                                                                     
+   &END DFT                                                                                          
+                                                                                                     
+   &SUBSYS                                                                                           
+      &CELL                                                                                          
+         ABC 10.0 10.0 10.0                                                                          
+         PERIODIC NONE                                                                               
+      &END CELL                                                                                      
+      &TOPOLOGY                                                                                      
+         COORD_FILE_NAME geometry.xyz                                                                
+         COORD_FILE_FORMAT xyz                                                                       
+         &CENTER_COORDINATES                                                                         
+         &END CENTER_COORDINATES                                                                     
+      &END TOPOLOGY                                                                                  
+    &KIND H                                                                                          
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END KIND                                                                                        
+    &KIND C                                                                                          
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+    &KIND Al                                                                                         
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+   &END SUBSYS                                                                                       
+&END FORCE_EVAL

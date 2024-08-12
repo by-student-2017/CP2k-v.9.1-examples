@@ -1,0 +1,71 @@
+!This input file is meant for a ground state calculation of Al2(CH3)6 before XAS_TDP                 
+&GLOBAL                                                                                              
+   PROJECT  part1             !project name, useful to keep track of produced files                  
+   RUN_TYPE ENERGY                                                                                   
+&END GLOBAL                                                                                          
+                                                                                                     
+&FORCE_EVAL                                                                                          
+   METHOD QS
+   &DFT                                                                                              
+      !where to find all-electron basis sets and potentials                                          
+      BASIS_SET_FILE_NAME  EMSL_BASIS_SETS                                                           
+      POTENTIAL_FILE_NAME  POTENTIAL                                                                 
+                                                                                                     
+      &QS                                                                                            
+         METHOD GAPW          !GAPW for all-electron                                                 
+      &END QS                                                                                        
+                                                                                                     
+      &POISSON                !Necessary to define POISSON section in non-perdiodic                  
+         PERIODIC NONE        !boudary conditions as the default assumes PBCs                        
+         POISSON_SOLVER MT                                                                           
+      &END POISSON                                                                                   
+                                                                                                     
+      &SCF                                                                                           
+         MAX_SCF    50                                                                               
+         EPS_SCF    1.0E-08  !high quality ground state required for XAS_TDP                         
+         SCF_GUESS  RESTART  !to avoid recomputing when we can                                       
+      &END SCF                                                                                       
+                                                                                                     
+      &MGRID                                                                                         
+         CUTOFF 600                                                                                  
+      &END                                                                                           
+                                                                                                     
+      &XC                                                                                            
+         &XC_FUNCTIONAL                !the stendard PBE functional, the LIBXC way                   
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_C_PBE                                                                  
+            &END LIBXC                                                                               
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_X_PBE                                                                  
+            &END LIBXC                                                                               
+         &END XC_FUNCTIONAL                                                                          
+      &END XC                                                                                        
+                                                                                                     
+   &END DFT                                                                                          
+                                                                                                     
+   &SUBSYS                                                                                           
+      &CELL                                                                                          
+         ABC 10.0 10.0 10.0           !Big enough cell, we don't want density to spread out of it    
+         PERIODIC NONE                !Need to specify non-periodicity here too                      
+      &END CELL                                                                                      
+      &TOPOLOGY                                                                                      
+         !define the structure externally => reuse the same file all the way                         
+         COORD_FILE_NAME geometry.xyz                                                                
+         COORD_FILE_FORMAT xyz                                                                       
+         &CENTER_COORDINATES                                                                         
+         &END CENTER_COORDINATES                                                                     
+      &END TOPOLOGY                                                                                  
+    &KIND H                                                                                          
+      BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and            
+      POTENTIAL ALL                   !double-zeta quality all-electron basis sets                   
+    &END KIND                                                                                        
+    &KIND C                                                                                          
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+    &KIND Al                                                                                         
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+   &END SUBSYS                                                                                       
+&END FORCE_EVAL

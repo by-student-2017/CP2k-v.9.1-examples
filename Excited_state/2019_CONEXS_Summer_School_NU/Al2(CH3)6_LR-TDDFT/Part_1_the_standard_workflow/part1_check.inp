@@ -1,0 +1,83 @@
+&GLOBAL                                                                                              
+   PROJECT  part1  !This is important to keep the same project name to be able to RESTART            
+   RUN_TYPE ENERGY                                                                                   
+&END GLOBAL                                                                                          
+                                                                                                     
+&FORCE_EVAL                                                                                          
+   METHOD QS                                                                                         
+   &DFT                                                                                              
+      BASIS_SET_FILE_NAME  EMSL_BASIS_SETS                                                           
+      POTENTIAL_FILE_NAME  POTENTIAL                                                                 
+                                                                                                     
+      &QS                                                                                            
+         METHOD GAPW                                                                                 
+      &END QS                                                                                        
+                                                                                                     
+      &POISSON                                                                                       
+         PERIODIC NONE                                                                               
+         POISSON_SOLVER MT                                                                           
+      &END POISSON                                                                                   
+                                                                                                     
+      &SCF                                                                                           
+         MAX_SCF    50                                                                               
+         EPS_SCF    1.0E-08                                                                          
+         SCF_GUESS  RESTART                                                                          
+      &END SCF                                                                                       
+                                                                                                     
+      &MGRID                                                                                         
+         CUTOFF 600                                                                                  
+      &END                                                                                           
+                                                                                                     
+      &XC                                                                                            
+         &XC_FUNCTIONAL                                                                              
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_C_PBE                                                                  
+            &END LIBXC                                                                               
+            &LIBXC                                                                                   
+               FUNCTIONAL GGA_X_PBE                                                                  
+            &END LIBXC                                                                               
+         &END XC_FUNCTIONAL                                                                          
+      &END XC                                                                                        
+                                                                                                     
+      !The section controlling the XAS calculations                                                  
+      &XAS_TDP                                                                                       
+                                                                                                     
+         CHECK_ONLY   !in order to verify our donor MOs                                              
+                                                                                                     
+         &DONOR_STATES                                                                               
+            DEFINE_EXCITED BY_KIND                                                                   
+            KIND_LIST Al                                                                             
+            STATE_TYPES 1s                                                                           
+            N_SEARCH 2       !We know that Al 1s are the 2 MOs with the lowest energy                
+            #LOCALIZE        !rmove the # to uncomment LOCALIZE                                     
+         &END DONOR_STATES                                                                           
+                                                                                                     
+      &END XAS_TDP                                                                                   
+                                                                                                     
+   &END DFT  
+   
+   &SUBSYS                                                                                           
+      &CELL                                                                                          
+         ABC 10.0 10.0 10.0                                                                          
+         PERIODIC NONE                                                                               
+      &END CELL                                                                                      
+      &TOPOLOGY                                                                                      
+         COORD_FILE_NAME geometry.xyz                                                                
+         COORD_FILE_FORMAT xyz                                                                       
+         &CENTER_COORDINATES                                                                         
+         &END CENTER_COORDINATES                                                                     
+      &END TOPOLOGY                                                                                  
+    &KIND H                                                                                          
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END KIND                                                                                        
+    &KIND C                                                                                          
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+    &KIND Al                                                                                         
+      BASIS_SET Ahlrichs-pVDZ                                                                        
+      POTENTIAL ALL                                                                                  
+    &END                                                                                             
+   &END SUBSYS                                                                                       
+&END FORCE_EVAL

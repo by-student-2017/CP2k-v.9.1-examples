@@ -1,0 +1,24 @@
+#---------------------------------------------------------------------
+# Usage (Linear-response TDDFT for XAS in CP2K: the XAS_TDP method)
+1. cd Al2(CH3)6_LR-TDDFT
+#-------------------------------------
+2. cd Part_1_the_standard_workflow
+3. bash run_step1_opt.sh
+4. bash run_step2_check.sh
+5. bash run_step3_check_on_LOCALIZE.sh
+6. bash run_step4_xas.sh
+#-------------------------------------
+2. cd Part_2_Higher_quality_hybrid_functional_calculation
+3. bash run_hybrid.sh
+4. python plot_spectrum.py hybrid.spectrum Al 1s 1.0 1545 1570 1000
+#-------------------------------------
+2. cd Part_3_L-edge_spectroscopy_extra
+3. bash run_xas.sh
+4. bash run_hybrid.sh
+#-------------------------------------
+
+#---------------------------------------------------------------------
+Linear-response TDDFT for XAS in CP2K: the XAS_TDP method
+https://www.cp2k.org/exercises:2019_conexs_newcastle:ex2
+
+#---------------------------------------------------------------------
