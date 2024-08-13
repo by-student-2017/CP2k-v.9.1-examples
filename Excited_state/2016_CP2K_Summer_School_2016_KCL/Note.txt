@@ -3,6 +3,19 @@
 1. cd impulse
 2. bash run.sh
 
+#----- test version -----
+3. grep "Z=" ch2o_pbe_rtp-output-moments.dat | awk '{i=i+1.0;printf "%8d %15.8f %15.8f %15.8f %15.8f \n", int(i), (i-1.0)*0.025, $2, $4, $6}' > dipole.txt
+4. python calc-ir-spectra.py
+5. echo "plot 'IR-data.txt' using (123.984/\$1):6 with l; set xlabel 'Energy / eV' ; set ylabel 'Intensity / arb.units' ; pause mouse" |  gnuplot
+6. echo "plot 'IR-data.txt' using 1:6 with l; set xlabel 'Wavenumber / cm^-1' ; set ylabel 'Intensity / arb.units' ; pause mouse" |  gnuplot
+#----- test version -----
+
+#----- test version -----
+3. grep "Z=" ch2o_pbe_rtp-output-moments.dat | awk '{i=i+1.0;if(i<=2^14){printf "%15.8f %15.8f \n", (i-1.0)*0.025, $6}}' > dipole_grace.txt
+4. sudo apt -y install grace
+5. xmgrace -batch fft.bat dipole_grace.txt
+#----- test version -----
+
 Note:
   **** **** ******  **  PROGRAM STARTED AT               2024-08-12 17:47:59.254
   **** **** ******  **  PROGRAM ENDED AT                 2024-08-13 05:11:55.184
