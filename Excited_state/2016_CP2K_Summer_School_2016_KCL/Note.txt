@@ -1,8 +1,11 @@
 #---------------------------------------------------------------------
-# Usage (impulse (delta kick)) (Note: This will require a very long time, on the order of days.)
+# Usage (impulse (delta kick)) (Note: This will require a very long time, on the order of half a days (11 hours).)
 1. cd impulse
 2. bash run.sh
 
+Note:
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-12 17:47:59.254
+  **** **** ******  **  PROGRAM ENDED AT                 2024-08-13 05:11:55.184
 #---------------------------------------------------------------------
 # Usage (TDDFPT)
 1. cd TDDFPT
