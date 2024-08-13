@@ -28,6 +28,20 @@ make molden
 ```
 
 
+## VMD (Version 1.9.4 LATEST ALPHA (2022-04-27) Platforms: LINUX_64 (RHEL 7+) OpenGL, CUDA, OptiX RTX, OSPRay
+- https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD
+```
+tar zxvf vmd-1.9.4*
+cd vmd-1.9.4a57
+./configure LINUXAMD64
+cd src
+sudo make install
+vmd
+```
+- check vmd adress: which vmd
+- Another setting: ./configure LINUXAMD64 OPENGL FLTK TK LIBTACHYON NETCDF COLVARS TCL PYTHON PTHREADS NUMPY SILENT NOSTATICPLUGINS CXX11
+
+
 ## Original files
 - Basic: https://www.cp2k.org/howto
 - QMMM, and NEB: https://www.cp2k.org/exercises
