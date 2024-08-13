@@ -1,0 +1,79 @@
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      parm_file_name toppar/par_all36m_prot.prm
+      parmtype CHM
+      &SPLINE
+         EMAX_SPLINE 1000000
+         RCUT_NB 10.0
+      &END
+      !
+      IGNORE_MISSING_CRITICAL_PARAMS TRUE
+      &BOND
+        ATOMS OT HT
+        KIND HARMONIC
+        R0 0.9572
+        K 450.0
+      &END BOND
+      !
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE spme
+        ALPHA .44
+        GMAX 36
+        O_SPLINE 6
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+      ABC 40.685 42.380 46.291
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME solvate.pdb
+      COORDINATE pdb
+      CONN_FILE_FORMAT psf
+      CONN_FILE_NAME solvate.psf
+    &END TOPOLOGY
+    !
+    &KIND CT2A
+      ELEMENT C
+      #BASIS_SET DZVP
+      #POTENTIAL GTH-PBE
+    &END KIND
+    !
+    &PRINT
+      &TOPOLOGY_INFO
+         PSF_INFO
+      &END
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PROJECT ubiquitin_md
+  RUN_TYPE MD
+&END GLOBAL
+
+&EXT_RESTART
+  RESTART_FILE_NAME ubiquitin_mini-1.restart
+  RESTART_DEFAULT F
+  RESTART_POS T
+&END EXT_RESTART
+
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS 1000
+    TIMESTEP 0.5
+    TEMPERATURE 298
+    &THERMOSTAT
+       REGION MASSIVE
+       TYPE CSVR
+       &CSVR
+         TIMECON 100.
+       &END
+    &END
+  &END MD
+&END MOTION

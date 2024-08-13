@@ -1,0 +1,26 @@
+#---------------------------------------------------------------------
+# Exercises of the 4th CP2K tutorial
+# Setting up a FIST calculation of a protein using VMD
+# https://www.cp2k.org/exercises:2015_cecam_tutorial:forcefields
+
+#----- test version -----
+1. vmd
+2. (VMD Main) Extensions -> Data -> PDB Database Query
+3. PDB Accession Code: [1ubq] -> [Load into new molecule in VMD] -> (close [x])
+4. (VMD Main) Extensions -> Modelling -> Automatic PSF Builder
+5. Topology files [Delete] (All files)
+6. Topology files [Add] (top_all36_prot.rtf)
+7. [I'm feeling lucky] -> OK -> (close [x])
+8. (VMD Main) Extensions -> Modelling -> Add Solvation Box
+9. Box Padding: [Min: x:5, y:5, z:5, Max: x:5, y:5, z:5] -> [Solvate] -> (close [x])
+  (you can get solvate.psf, solvate.pdb, etc)
+10. sed -i "s/PSF CMAP/PSF/g" solvate.psf
+11. curl https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/toppar_c36_jul24.tgz --output toppar_c36_jul24.tgz
+  (CHARMM Force Field Files: https://mackerell.umaryland.edu/charmm_ff.shtml)
+12. tar -zxvf toppar_c36_jul24.tgz
+13. bash run_step1_min.sh
+14. bash run_step2_eq.sh
+#----- test version -----
+
+Note 1: [CRYST1   40.685   42.380   46.291  90.00  90.00  90.00 P 1           1] in solvate.pdb
+Note 2: [ABC 40.685 42.380 46.291] in min.inp
