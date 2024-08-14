@@ -78,8 +78,8 @@
 &MOTION
   &MD
     ENSEMBLE NVT
-    STEPS 500000
-    TIMESTEP 0.01 # Decrease this value to avoid "GEOMETRY wrong or EMAX_SPLINE too small!"
+    STEPS 1000000
+    TIMESTEP 0.005 # Decrease this value to avoid "GEOMETRY wrong or EMAX_SPLINE too small!"
     TEMPERATURE 298
     &THERMOSTAT
        REGION MASSIVE
@@ -96,7 +96,7 @@
       FILENAME = Cytochrome-C_mini-md-nvt-1.xyz
       LOG_PRINT_KEY = TRUE
       &EACH
-        MD = 50
+        MD = 100
       &END EACH
     &END TRAJECTORY
   &END PRINT
