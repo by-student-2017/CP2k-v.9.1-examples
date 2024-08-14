@@ -10,7 +10,7 @@
       &END
       !
       ! SPC water model
-      IGNORE_MISSING_CRITICAL_PARAMS TRUE
+      !IGNORE_MISSING_CRITICAL_PARAMS TRUE
       !
       ! https://docs.lammps.org/Howto_tip3p.html
       !&BOND

@@ -6,17 +6,27 @@
       parm_file_name toppar/par_all36m_prot.prm
       parmtype CHM
       &SPLINE
-         EMAX_SPLINE 1000000
+         EMAX_SPLINE 1.0 # default 0.5
          RCUT_NB 10.0
       &END
       !
-      IGNORE_MISSING_CRITICAL_PARAMS TRUE
-      &BOND
-        ATOMS OT HT
-        KIND HARMONIC
-        R0 0.9572
-        K 450.0
-      &END BOND
+      ! SPC water model
+      !IGNORE_MISSING_CRITICAL_PARAMS TRUE
+      !
+      ! https://docs.lammps.org/Howto_tip3p.html
+      !&BOND
+      !  ATOMS OT HT
+      !  KIND CHARMM
+      !  R0 0.93944837 # [bohr]
+      !  K 450.0 # [Angstrom^-2*kcal/mol]
+      !&END BOND
+      ! https://docs.lammps.org/Howto_tip3p.html
+      !&BEND
+      !  ATOMS HT OT HT
+      !  KIND CHARMM
+      !  THETA0 1.82421813 # [rad], 104.52 [degree]
+      !  K 0.087648 # [rad^-2*hartree], 55.0 [rad^-2*kcal/mol]
+      !&END BEND
       !
     &END FORCEFIELD
     &POISSON
@@ -49,10 +59,12 @@
     !
   &END SUBSYS
 &END FORCE_EVAL
+
 &GLOBAL
   PROJECT Cytochrome-C_mini
   RUN_TYPE GEO_OPT
 &END GLOBAL
+
 &MOTION
   &GEO_OPT
     MINIMIZER LBFGS
