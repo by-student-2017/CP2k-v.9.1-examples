@@ -5,7 +5,7 @@
       parmtype CHM
       parm_file_name toppar/par_all36m_prot.prm
       &SPLINE
-         EMAX_SPLINE 1.0 # default 0.5
+         EMAX_SPLINE 1.0e6 # default 0.5
          RCUT_NB 10.0
       &END
       !
@@ -79,7 +79,7 @@
   &MD
     ENSEMBLE NVT
     STEPS 1000
-    TIMESTEP 0.5
+    TIMESTEP 0.05
     TEMPERATURE 298
     &THERMOSTAT
        REGION MASSIVE
