@@ -20,6 +20,7 @@
 12. tar -zxvf toppar_c36_jul24.tgz
 13. bash run_step1_min.sh
 14. bash run_step2_eq.sh
+(drag&drop *.xyz to Ovito or import VMD)
 #----- test version -----
 
 Note 1: [CRYST1   56.934   63.199   67.758  90.00  90.00  90.00 P 1           1] in solvate.pdb
