@@ -24,3 +24,32 @@
 
 Note 1: [CRYST1   40.685   42.380   46.291  90.00  90.00  90.00 P 1           1] in solvate.pdb
 Note 2: [ABC 40.685 42.380 46.291] in min.inp
+
+#---------------------------------------------------------------------
+PDB Accession Code:[PDB ID]
+#---------------------------------------------------------------------
+RCSB PDB or DrugPort: 1HSG, 4AG8, 2RH1
+1BL6: MAPK14, a target for anti-inflammatory drugs.
+4C8B: RIPK2, involved in immune response.
+1H07: CDK2, a key player in cell cycle regulation.
+6D1Y: NTRK1, a target for cancer therapy.
+3FDN: AURKA, involved in cell division.
+6JOJ: PDGFRA, a target for cancer treatment.
+#-----
+In drug discovery research targeting protein-protein interactions (PPIs), 
+PDB IDs such as 2ccy (Cytochrome C), 1z92 (IL2-IL2R), 2dyh (KEAP1-NRF2), 
+2xa0 (BCL-XL-BAD), and 1nkp (MYC-MAX) are referenced1.
+#-----
+In antibody drug discovery, the accuracy of the structural model is extremely important, 
+and careful organization and analysis of the structural information contained in 
+the PDB has been effective. Specific PDB IDs include 1G5J, 1JD5, 1KY7, and 1X11.
+#---------------------------------------------------------------------
+RCSB PDB or FPbase: 1GFL, 1BFP, 1MYW, 2Y0G, 2WUR, 2B3P, 1EMA
+#-----
+Green Fluorescent Protein (GFP): This protein is widely used in fluorescence microscopy. Its structure can be seen in PDB ID 1EMA1.
+Yellow Fluorescent Protein (YFP): A mutant of GFP that emits yellow fluorescence. Its structure can be seen in PDB ID 1YFP1.
+Cyan Fluorescent Protein (CFP): A mutant of GFP that emits cyan fluorescence. Its structure can be seen in PDB ID 1CFP1.
+#-----
+dsRED: This is a fluorescent protein found in another organism that emits different colors of light; its structure can be found in PDB ID 1G7K1.
+3m24、2q57、4ar7、2y0g、1huy、2h5o、2h5q
+#---------------------------------------------------------------------
