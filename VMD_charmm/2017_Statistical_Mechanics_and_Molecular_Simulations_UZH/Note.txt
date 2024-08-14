@@ -1,0 +1,17 @@
+#---------------------------------------------------------------------
+# Usage
+1. cd Task_1_Familiarize_yourself
+2. bash run.sh
+3. (drag&drop *.xyz to Ovito or import VMD)
+
+1. cd Task_2_Perform_constrained_MD_simulations
+2. bash run.sh
+3. (drag&drop *.xyz to Ovito or import VMD)
+#---------------------------------------------------------------------
+Protein Folding in Solution
+https://www.cp2k.org/exercises:2017_uzh_acpc2:prot_fol
+
+curl https://www.cp2k.org/_media/exercises:2017_uzh_acpc2:deca_ala.tar.gz --output deca_ala.tar.gz
+tar zxvf deca_ala.tar.gz
+
+#---------------------------------------------------------------------
