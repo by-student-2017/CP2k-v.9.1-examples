@@ -11,4 +11,5 @@ do
    sed "s/Y equal 12.3/Y equal ${i}/g" md_temp.inp > md_temp_R${i}.inp
    mpirun -np ${NCPUs} ${lammps_adress}/lmp -in md_temp_R${i}.inp
    mv mol_sub.xyz mol_sub_R${i}.xyz
+   mv log.lammps log_R${i}.lammps
 done
