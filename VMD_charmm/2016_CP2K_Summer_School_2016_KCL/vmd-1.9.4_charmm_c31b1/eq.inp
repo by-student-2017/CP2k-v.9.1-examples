@@ -1,0 +1,104 @@
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      parmtype CHM
+      parm_file_name toppar/par_all27_prot_lipid.prm
+      #parm_file_name toppar/par_all36m_prot.prm
+      &SPLINE
+         EMAX_SPLINE 1.0e6 # default 0.5
+         RCUT_NB 10.0
+      &END
+      !
+      ! SPC water model
+      IGNORE_MISSING_CRITICAL_PARAMS TRUE
+      !
+      ! https://docs.lammps.org/Howto_tip3p.html
+      !&BOND
+      !  ATOMS OT HT
+      !  KIND CHARMM
+      !  R0 0.93944837 # [bohr]
+      !  K 450.0 # [Angstrom^-2*kcal/mol]
+      !&END BOND
+      ! https://docs.lammps.org/Howto_tip3p.html
+      !&BEND
+      !  ATOMS HT OT HT
+      !  KIND CHARMM
+      !  THETA0 1.82421813 # [rad], 104.52 [degree]
+      !  K 0.087648 # [rad^-2*hartree], 55.0 [rad^-2*kcal/mol]
+      !&END BEND
+      !
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE spme
+        ALPHA .44
+        GMAX 36
+        O_SPLINE 6
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+      ABC 56.934   63.199   67.758
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME solvate.pdb
+      COORDINATE pdb
+      CONN_FILE_FORMAT psf
+      CONN_FILE_NAME solvate.psf
+    &END TOPOLOGY
+    !
+    &KIND CT2A
+      ELEMENT C
+    &END KIND
+    !
+    &KIND CAI
+      ELEMENT C
+    &END KIND
+    !
+    &PRINT
+      &TOPOLOGY_INFO
+         PSF_INFO
+      &END
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+
+&GLOBAL
+  PROJECT Cytochrome-C_md
+  RUN_TYPE MD
+&END GLOBAL
+
+&EXT_RESTART
+  RESTART_FILE_NAME Cytochrome-C_mini-1.restart
+  RESTART_DEFAULT F
+  RESTART_POS T
+&END EXT_RESTART
+
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS 10000
+    TIMESTEP 0.5 # Decrease this value to avoid "GEOMETRY wrong or EMAX_SPLINE too small!"
+    TEMPERATURE 298
+    &THERMOSTAT
+       REGION MASSIVE
+       TYPE CSVR
+       &CSVR
+         TIMECON 100.
+       &END
+    &END
+  &END MD
+  !
+  &PRINT
+    &TRAJECTORY
+      #FILENAME = trajectory.xyz
+      FILENAME = Cytochrome-C_mini-md-nvt-1.xyz
+      LOG_PRINT_KEY = TRUE
+      &EACH
+        MD = 100
+      &END EACH
+    &END TRAJECTORY
+  &END PRINT
+&END MOTION
