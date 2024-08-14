@@ -3,6 +3,10 @@
 1. sudo apt -y install lammps
 2. bash run.sh
 3. (drag&drop *.xyz to Ovito or import VMD)
+
+In this case, use only best_all.pot and do not use dcd.
+This is because the dump style 'dcd' is part of the EXTRA-DUMP package and is not enabled in this LAMMPS binary.
+(lmp -h: Large-scale Atomic/Molecular Massively Parallel Simulator - 29 Sep 2021 - Update 2)
 #---------------------------------------------------------------------
 Potential of mean force
 https://www.cp2k.org/exercises:2018_ethz_mmm:pmf
