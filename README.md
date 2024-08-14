@@ -28,6 +28,18 @@ make molden
 ```
 
 
+## VMD (Version 1.9.2 (2014-12-29) Platforms: LINUX_64 OpenGL, CUDA)
+- https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD
+```
+tar zxvf vmd-1.9.2.bin.LINUXAMD64.opengl.tar.gz
+cd vmd-1.9.2
+./configure LINUXAMD64
+cd src
+sudo make install
+vmd
+```
+
+
 ## VMD (Version 1.9.4 LATEST ALPHA (2022-04-27) Platforms: LINUX_64 (RHEL 7+) OpenGL, CUDA, OptiX RTX, OSPRay)
 - https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD
 ```

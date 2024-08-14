@@ -20,11 +20,15 @@
 12. tar -zxvf toppar_c36_jul24.tgz
 13. bash run_step1_min.sh
 14. bash run_step2_eq.sh
-(drag&drop *.xyz to Ovito or import VMD)
 #----- test version -----
 
 Note 1: [CRYST1   56.934   63.199   67.758  90.00  90.00  90.00 P 1           1] in solvate.pdb
 Note 2: [ABC 56.934   63.199   67.758] in min.inp and eq.inp
+
+#Note: vmd-1.9.2, plugins/noarch/tcl/readcharmmtop1.1
+11. curl https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/toppar_c31b1.tar.gz --output toppar_c31b1.tar.gz
+  (CHARMM Force Field Files: https://mackerell.umaryland.edu/charmm_ff.shtml)
+12. tar -zxvf toppar_c31b1.tar.gz
 
 #---------------------------------------------------------------------
 PDB Accession Code:[PDB ID]
