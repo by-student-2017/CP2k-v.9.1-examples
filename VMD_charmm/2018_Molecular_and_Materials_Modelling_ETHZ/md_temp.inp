@@ -43,7 +43,7 @@ compute yforce molecule group/group substrate kspace yes
 
 thermo_style custom time c_yforce[2] etotal pe c_temp_molecule temp ke evdwl press enthalpy 
 thermo_modify flush yes # in cp2k exercises
-thermo 50 # original value 500, cp2 exercise 50
+thermo 500 # original value 500, cp2 exercise 50
 
 dump xyz all xyz 100000 mol_sub.xyz
 dump_modify xyz element C C H C N K Cl 
