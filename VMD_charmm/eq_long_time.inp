@@ -78,7 +78,7 @@
 &MOTION
   &MD
     ENSEMBLE NVT
-    STEPS 100000
+    STEPS 500000
     TIMESTEP 0.01 # Decrease this value to avoid "GEOMETRY wrong or EMAX_SPLINE too small!"
     TEMPERATURE 298
     &THERMOSTAT
