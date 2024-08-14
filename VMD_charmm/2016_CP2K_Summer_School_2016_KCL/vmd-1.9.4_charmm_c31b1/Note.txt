@@ -25,8 +25,8 @@ Note: This will allow you to use readchammtop1.1.
 14. bash run_step2_eq.sh
 #----- test version -----
 
-Note 1: [CRYST1   56.934   63.199   67.758  90.00  90.00  90.00 P 1           1] in solvate.pdb
-Note 2: [ABC 56.934   63.199   67.758] in min.inp and eq.inp
+Note 1: [CRYST1   40.685   42.380   46.291  90.00  90.00  90.00 P 1           1] in solvate.pdb
+Note 2: [ABC 40.685   42.380   46.291] in min.inp and eq.inp
 
 #Note: vmd-1.9.4, plugins/noarch/tcl/readcharmmtop1.2
 11. curl https://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/toppar_c36_jul24.tgz --output toppar_c36_jul24.tgz
