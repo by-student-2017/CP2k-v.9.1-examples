@@ -1,7 +1,8 @@
 #---------------------------------------------------------------------
-# Usage
-1. bash run.sh
-2. (drag&drop *.xyz to Ovito or import VMD)
+# Usage (Lammps)
+1. sudo apt -y install lammps
+2. bash run.sh
+3. (drag&drop *.xyz to Ovito or import VMD)
 #---------------------------------------------------------------------
 Potential of mean force
 https://www.cp2k.org/exercises:2018_ethz_mmm:pmf
