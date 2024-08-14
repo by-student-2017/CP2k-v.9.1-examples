@@ -39,6 +39,6 @@ thermo 500
 
 dump xyz all xyz 100000 dumpfile.xyz 
 dump_modify xyz element C C H C N K Cl 
-dump coord all dcd 5000 trajectory.dcd 
+#dump coord all dcd 5000 trajectory.dcd # dump style 'dcd' is part of the EXTRA-DUMP package which is not enabled in this LAMMPS binary.
 restart 500000 TCB_PMF.restart 
 run 3000000 
