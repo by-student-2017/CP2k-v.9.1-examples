@@ -20,4 +20,4 @@ do
    mv log.lammps log_R${i}.lammps
 done
 
-echo "plot 'pot_mean_force.dat' using 2:10 with l; set xlabel 'yforce' ; set ylabel 'Enthalpy' ; pause mouse" |  gnuplot
+echo "plot 'pot_mean_force.dat' using 2:10 w p,'pot_mean_force.dat' using 2:10 sm acs lw 1; set xlabel 'yforce / (kcal mol^{-1} Angstrom^{-1})' ; set ylabel 'Enthalpy / (kcal mol^{-1})' ; pause mouse" |  gnuplot
