@@ -1,3 +1,9 @@
+
+variable TEMP    equal 300.0
+variable RNSTEPS equal 500000
+variable NSTEPS  equal 3000000
+variable Y       equal 12.3
+
 # PMF Input script template 
 # (1) Initialisation 
 units real 
@@ -27,18 +33,20 @@ neigh_modify delay 0
 timestep 1.0 
 
 # (4) NVT Dynamics 
-fix temp1 molecule nvt temp 300 300 100 
-fix temp2 substrate nvt temp 300 300 100 
-fix PMF molecule recenter NULL 12.3 NULL 
+fix temp1 molecule nvt temp ${TEMP} ${TEMP} 100 
+fix temp2 substrate nvt temp ${TEMP} ${TEMP} 100 
+velocity all create ${TEMP} 293288 # in cp2k exercises
+fix PMF molecule recenter NULL ${Y} NULL 
 
 compute temp_molecule molecule temp 
 compute yforce molecule group/group substrate kspace yes 
 
 thermo_style custom time c_yforce[2] etotal pe c_temp_molecule temp ke evdwl press enthalpy 
-thermo 500 
+thermo_modify flush yes # in cp2k exercises
+thermo 50 # original value 500, cp2 exercise 50
 
-dump xyz all xyz 100000 dumpfile.xyz 
+dump xyz all xyz 100000 mol_sub.xyz
 dump_modify xyz element C C H C N K Cl 
 #dump coord all dcd 5000 trajectory.dcd # dump style 'dcd' is part of the EXTRA-DUMP package which is not enabled in this LAMMPS binary.
-restart 500000 TCB_PMF.restart 
-run 3000000 
+restart ${RNSTEPS} TCB_PMF.restart 
+run ${NSTEPS} 
