@@ -1,7 +1,7 @@
 
 variable TEMP    equal 300.0
-variable RNSTEPS equal 500000
-variable NSTEPS  equal 3000000
+variable RNSTEPS equal 1000
+variable NSTEPS  equal 10000
 variable Y       equal 12.3
 
 # PMF Input script template 
@@ -43,10 +43,10 @@ compute yforce molecule group/group substrate kspace yes
 
 thermo_style custom time c_yforce[2] etotal pe c_temp_molecule temp ke evdwl press enthalpy 
 thermo_modify flush yes # in cp2k exercises
-thermo 500 # original value 500, cp2 exercise 50
+thermo 50 # original value 500, cp2 exercise 50
 
 dump xyz all xyz 100000 mol_sub.xyz
 dump_modify xyz element C C H C N K Cl 
 #dump coord all dcd 5000 trajectory.dcd # dump style 'dcd' is part of the EXTRA-DUMP package which is not enabled in this LAMMPS binary.
-restart ${RNSTEPS} TCB_PMF.restart 
-run ${NSTEPS} 
+restart ${RNSTEPS} TCB_PMF.restart # original value 500000
+run ${NSTEPS} # original value 3000000
