@@ -3,32 +3,12 @@
   &MM
     &FORCEFIELD
       #this assumes that you've downloaded and extracted the file as instructed
-      #parm_file_name toppar/par_all36m_prot.prm
-      parm_file_name toppar/par_all27_prot_lipid.prm
       parmtype CHM
+      parm_file_name toppar/par_all27_prot_lipid.prm
       &SPLINE
          EMAX_SPLINE 1.0e6 # default 0.5
          RCUT_NB 10.0
       &END
-      !
-      ! SPC water model
-      !IGNORE_MISSING_CRITICAL_PARAMS TRUE
-      !
-      ! https://docs.lammps.org/Howto_tip3p.html
-      !&BOND
-      !  ATOMS OT HT
-      !  KIND CHARMM
-      !  R0 0.93944837 # [bohr]
-      !  K 450.0 # [Angstrom^-2*kcal/mol]
-      !&END BOND
-      ! https://docs.lammps.org/Howto_tip3p.html
-      !&BEND
-      !  ATOMS HT OT HT
-      !  KIND CHARMM
-      !  THETA0 1.82421813 # [rad], 104.52 [degree]
-      !  K 0.087648 # [rad^-2*hartree], 55.0 [rad^-2*kcal/mol]
-      !&END BEND
-      !
     &END FORCEFIELD
     &POISSON
       &EWALD
