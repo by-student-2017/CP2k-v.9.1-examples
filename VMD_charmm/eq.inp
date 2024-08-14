@@ -89,4 +89,15 @@
        &END
     &END
   &END MD
+  !
+  &PRINT
+    &TRAJECTORY
+      #FILENAME = trajectory.xyz
+      FILENAME = Cytochrome-C_mini-md-nvt-1.xyz
+      LOG_PRINT_KEY = TRUE
+      &EACH
+        MD = 100
+      &END EACH
+    &END TRAJECTORY
+  &END PRINT
 &END MOTION
