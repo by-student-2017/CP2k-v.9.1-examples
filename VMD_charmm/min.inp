@@ -30,7 +30,7 @@
   &END MM
   &SUBSYS
     &CELL
-      ABC 40.685 42.380 46.291
+      ABC 56.934   63.199   67.758
     &END CELL
     &TOPOLOGY
       COORD_FILE_NAME solvate.pdb
@@ -41,14 +41,16 @@
     !
     &KIND CT2A
       ELEMENT C
-      #BASIS_SET DZVP
-      #POTENTIAL GTH-PBE
+    &END KIND
+    !
+    &KIND CAI
+      ELEMENT C
     &END KIND
     !
   &END SUBSYS
 &END FORCE_EVAL
 &GLOBAL
-  PROJECT ubiquitin_mini
+  PROJECT Cytochrome-C_mini
   RUN_TYPE GEO_OPT
 &END GLOBAL
 &MOTION
