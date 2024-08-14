@@ -3,13 +3,16 @@
 # Setting up a FIST calculation of a protein using VMD
 # https://www.cp2k.org/exercises:2015_cecam_tutorial:forcefields
 
+Note: It is recommended to install vmd-1.9.2 and then install vmd-1.9.4.
+Note: This will allow you to use readchammtop1.1.
+
 #----- test version -----
 1. vmd
 2. (VMD Main) Extensions -> Data -> PDB Database Query
 3. PDB Accession Code: [1ubq] -> [Load into new molecule in VMD] -> (close [x])
 4. (VMD Main) Extensions -> Modelling -> Automatic PSF Builder
 5. Topology files [Delete] (All files)
-6. Topology files [Add] (vmd-1.9.2, plugins/noarch/tcl/readcharmmtop1.1)
+6. Topology files [Add] (vmd-1.9.2/plugins/noarch/tcl/readcharmmtop1.1/top_all27_prot_lipid_na.inp)
 7. [I'm feeling lucky] -> OK -> (close [x])
 8. (VMD Main) Extensions -> Modelling -> Add Solvation Box
 9. Box Padding: [Min: x:5, y:5, z:5, Max: x:5, y:5, z:5] -> [Solvate] -> (close [x])
