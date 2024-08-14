@@ -1,0 +1,11 @@
+#---------------------------------------------------------------------
+# Usage
+1. bash run.sh
+2. (drag&drop *.xyz to Ovito or import VMD)
+#---------------------------------------------------------------------
+Potential of mean force
+https://www.cp2k.org/exercises:2018_ethz_mmm:pmf
+
+10.1021/acs.jpcc.5b12028 -> Supporting Information (jp5b12028_si_004.pdf)
+
+#---------------------------------------------------------------------
