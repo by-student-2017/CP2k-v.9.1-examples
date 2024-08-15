@@ -1,7 +1,7 @@
   &DFT
     CHARGE 0
     &QS
-      METHOD PM6
+      METHOD PM6 # AM1, PM3, PM6, PM6-FM, PDG, RM1, PNNL, XTB
       &SE
          &COULOMB
            CUTOFF [angstrom] 12.0

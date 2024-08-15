@@ -14,12 +14,12 @@
 2. bash run.sh
 3. cd ./../
 #---------------------------------------------------------------------
-# Usage (4th task: QM/MM Metadyanamics simulations)
+# Usage (4th task: QM/MM Metadyanamics simulations: the reaction Zwitterionic-Neutral reaction in solution)
 1. RUN02_QMMM_MTD1
 2. bash run.sh
 3. cd ./../
 #---------------------------------------------------------------------
-# Usage ()
+# Usage (4th task: QM/MM Metadyanamics simulations: the elimination reaction, producing cyanic acid and ammonia)
 1. RUN02_QMMM_MTD2
 2. bash run.sh
 3. cd ./../
@@ -33,4 +33,10 @@ wget http://cp2k.org/static/exercises/2015_cecam_tutorial/UREA.tar.xz
 
 tar xvf UREA.tar.xz
 
+#---------------------------------------------------------------------
+# Ambertools (https://ambermd.org/) (GPL and LGPL licenses)
+Prepare_Molecules: leapcomm
+Prepare_Solvated_Box
+Note: LEaP = PREP-LINK-EDIT-PARM (LINK、EDIT and PARM) of Amber module
+Note: LEaP: tLEaP or xLEaP
 #---------------------------------------------------------------------
