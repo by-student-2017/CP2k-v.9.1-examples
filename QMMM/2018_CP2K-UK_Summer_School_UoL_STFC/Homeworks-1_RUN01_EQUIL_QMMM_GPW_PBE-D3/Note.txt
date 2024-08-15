@@ -1,0 +1,3 @@
+
+benchmarks/QS_diag/nm_pbed3_bench.inp
+https://github.com/cp2k/cp2k/blob/5f2f4146c96c590ebc1cc014ad082e6c44ad8d25/benchmarks/QS_diag/nm_pbed3_bench.inp#L136

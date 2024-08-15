@@ -1,0 +1,2066 @@
+ *******************************************************************************
+ *                            RESTART INFORMATION                              *
+ *******************************************************************************
+ *                                                                             *
+ *    RESTART FILE NAME: ../RUN01_EQUIL_MM_AVG/UREA-ZW-1_110000.restart        *
+ *                                                                             *
+ * RESTARTED QUANTITIES:                                                       *
+ *                       COORDINATES                                           *
+ *                       VELOCITIES                                            *
+ *******************************************************************************
+
+ DBCSR| CPU Multiplication driver                                           BLAS
+ DBCSR| Multrec recursion limit                                              512
+ DBCSR| Multiplication stack size                                           1000
+ DBCSR| Maximum elements for images                                    UNLIMITED
+ DBCSR| Multiplicative factor virtual images                                   1
+ DBCSR| Use multiplication densification                                       T
+ DBCSR| Multiplication size stacks                                             3
+ DBCSR| Use memory pool for CPU allocation                                     F
+ DBCSR| Number of 3D layers                                               SINGLE
+ DBCSR| Use MPI memory allocation                                              F
+ DBCSR| Use RMA algorithm                                                      F
+ DBCSR| Use Communication thread                                               T
+ DBCSR| Communication thread load                                             87
+ DBCSR| MPI: My node id                                                        0
+ DBCSR| MPI: Number of nodes                                                   8
+ DBCSR| OMP: Current number of threads                                         1
+ DBCSR| OMP: Max number of threads                                             1
+ DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00
+
+
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-15 20:38:57.439
+ ***** ** ***  *** **   PROGRAM STARTED ON                                   xps
+ **    ****   ******    PROGRAM STARTED BY                                inukai
+ ***** **    ** ** **   PROGRAM PROCESS ID                                  6230
+  **** **  *******  **  PROGRAM STARTED IN /mnt/c/Users/manab/OneDrive/デスク
+                                           トップ/CP2k-v.9.1-examples/QMMM/20
+                                           18_CP2K-UK_Summer_School_UoL_STFC/Hom
+                                           eworks-1_RUN01_EQUIL_QMMM_GPW_PBE-D3
+
+ CP2K| version string:                                          CP2K version 9.1
+ CP2K| source code revision number:                                  git:d8d7100
+ CP2K| cp2kflags: omp libint fftw3 libxc elpa parallel mpi3 scalapack spglib    
+ CP2K| is freely available from                            https://www.cp2k.org/
+ CP2K| Program compiled at                          Sun Jan  9 17:14:22 UTC 2022
+ CP2K| Program compiled on                                       lcy02-amd64-025
+ CP2K| Program compiled for                                Linux-x86_64-gfortran
+ CP2K| Data directory path                                       /usr/share/cp2k
+ CP2K| Input file name                                   mol_solv_gpw_pbe-d3.inp
+
+ GLOBAL| Force Environment number                                              1
+ GLOBAL| Basis set file name                                        BASIS_MOLOPT
+ GLOBAL| Potential file name                                      GTH_POTENTIALS
+ GLOBAL| MM Potential file name                                     MM_POTENTIAL
+ GLOBAL| Coordinate file name                           ./..//Files/mol_solv.crd
+ GLOBAL| Method name                                                        CP2K
+ GLOBAL| Project name                                                    UREA-ZW
+ GLOBAL| Run type                                                             MD
+ GLOBAL| FFT library                                                       FFTW3
+ GLOBAL| Diagonalization library                                            ELPA
+ GLOBAL| Minimum number of eigenvectors for ELPA usage                        16
+ GLOBAL| Orthonormality check for eigenvectors                          DISABLED
+ GLOBAL| Matrix multiplication library                                 ScaLAPACK
+ GLOBAL| All-to-all communication in single precision                          F
+ GLOBAL| FFTs using library dependent lengths                                  F
+ GLOBAL| Grid backend                                                       AUTO
+ GLOBAL| Global print level                                                  LOW
+ GLOBAL| MPI I/O enabled                                                       T
+ GLOBAL| Total number of message passing processes                             8
+ GLOBAL| Number of threads for this process                                    1
+ GLOBAL| This output is from process                                           0
+ GLOBAL| Stack size for threads created by OpenMP (OMP_STACKSIZE)        default
+ GLOBAL| CPU model name                      12th Gen Intel(R) Core(TM) i7-12700
+
+ MEMORY| system memory details [Kb]
+ MEMORY|                        rank 0           min           max       average
+ MEMORY| MemTotal             16238968      16238968      16238968      16238968
+ MEMORY| MemFree              14973868      14973868      14973868      14973868
+ MEMORY| Buffers                  6392          6392          6392          6392
+ MEMORY| Cached                 173200        173200        173200        173200
+ MEMORY| Slab                    95652         95652         95652         95652
+ MEMORY| SReclaimable            29556         29556         29556         29556
+ MEMORY| MemLikelyFree        15183016      15183016      15183016      15183016
+
+
+
+                      ************* ******** ***********   
+                     ************* **********************  
+                     ****     **** ****      ***********   
+                     ******** ****  *******     ****       
+                     *******  ****   *******   ****        
+                     ****     ****       ****  ****        
+                     ****     **** **********  ****        
+                      ****     **** ********    ****       
+                     FRONTIERS IN SIMULATION TECHNOLOGY    
+                                                           
+                        C.J. Mundy, S. Balasubramanian,    
+                     Ken Bagchi, J. Hutter, Ari Seitsonen  
+                      IFW Kuo, T. Laino, J. VandeVondele   
+                                 Version 1.0               
+
+                                                           
+
+
+ EWALD| Summation is done by:                                               SPME
+ EWALD| Alpha parameter [       ANGSTROM^-1]                              0.4000
+ EWALD| Real Space Cutoff [          ANGSTROM]                            8.4348
+ EWALD| G-space max. Miller index                         80        80        80
+ EWALD| Spline interpolation order                                             4
+
+ *** WARNING in topology_amber.F:235 :: No VELOCITY information found in ***
+ *** CRD file. Ignoring BOX information. Please provide the BOX          ***
+ *** information directly from the main CP2K input!                      ***
+
+
+ *** WARNING in topology_amber.F:260 :: BOX information missing in CRD ***
+ *** file.                                                             ***
+
+
+ *** WARNING in atoms_input.F:123 :: Overwriting coordinates. Active    ***
+ *** coordinates read from &COORD section. Active coordinates READ from ***
+ *** &COORD section                                                     ***
+
+
+ FORCEFIELD| WARNING: A non Critical ForceField parameter is missing! CP2K GOES!
+ FORCEFIELD| Non critical parameters are:Urey-Bradley,Torsions,Impropers, Opbends and 1-4
+ FORCEFIELD| All missing parameters will not contribute to the potential energy!
+ FORCEFIELD| Activate the print key FF_INFO to have a list of missing parameters
+
+ CHARGE_INFO| Total Charge of the Classical System:                     0.000000
+
+ SPLINE_INFO| Generating 36 splines for NONBONDED14 interactions 
+              Due to 8 different atomic kinds
+  ...3  ...6  ...9  ...12  ...15  ...18  ...21  ...24  ...27  ...30  ...33
+  ...36
+ SPLINE_INFO| Number of unique splines computed:            12
+ SPLINE_INFO| Done
+
+ *** WARNING in force_fields_all.F:3092 :: Multiple NONBONDED declaration: ***
+ *** N4 and HW OVERWRITING QM/MM forcefield specifications!                ***
+
+
+ *** WARNING in force_fields_all.F:3092 :: Multiple NONBONDED declaration: ***
+ *** N2 and HW OVERWRITING QM/MM forcefield specifications!                ***
+
+
+ *** WARNING in force_fields_all.F:3092 :: Multiple NONBONDED declaration: ***
+ *** O and HW OVERWRITING QM/MM forcefield specifications!                 ***
+
+
+ SPLINE_INFO| Generating 36 splines for NONBONDED interactions 
+              Due to 8 different atomic kinds
+  ...3  ...6  ...9  ...12  ...15  ...18  ...21  ...24  ...27  ...30  ...33
+  ...36
+ SPLINE_INFO| Number of unique splines computed:            12
+ SPLINE_INFO| Done
+
+ -------------------------------------------------------------------------------
+
+     MM    POINT CHARGES GENERATING THE QM/MM ELECTROSTATIC POTENTIAL
+
+ -------------------------------------------------------------------------------
+      MM ATOM:    9         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   10         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   11         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   12         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   13         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   14         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   15         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   16         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   17         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   18         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   19         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   20         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   21         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   22         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   23         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   24         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   25         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   26         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   27         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   28         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   29         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   30         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   31         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   32         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   33         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   34         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   35         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   36         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   37         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   38         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   39         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   40         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   41         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   42         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   43         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   44         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   45         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   46         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   47         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   48         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   49         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   50         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   51         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   52         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   53         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   54         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   55         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   56         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   57         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   58         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   59         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   60         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   61         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   62         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   63         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   64         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   65         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   66         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   67         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   68         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   69         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   70         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   71         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   72         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   73         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   74         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   75         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   76         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   77         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   78         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   79         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   80         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   81         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   82         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   83         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   84         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   85         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   86         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   87         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   88         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   89         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   90         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   91         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   92         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   93         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   94         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   95         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   96         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   97         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   98         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:   99         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  100         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  101         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  102         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  103         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  104         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  105         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  106         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  107         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  108         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  109         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  110         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  111         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  112         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  113         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  114         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  115         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  116         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  117         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  118         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  119         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  120         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  121         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  122         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  123         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  124         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  125         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  126         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  127         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  128         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  129         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  130         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  131         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  132         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  133         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  134         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  135         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  136         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  137         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  138         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  139         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  140         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  141         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  142         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  143         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  144         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  145         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  146         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  147         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  148         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  149         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  150         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  151         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  152         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  153         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  154         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  155         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  156         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  157         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  158         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  159         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  160         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  161         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  162         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  163         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  164         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  165         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  166         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  167         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  168         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  169         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  170         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  171         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  172         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  173         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  174         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  175         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  176         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  177         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  178         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  179         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  180         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  181         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  182         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  183         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  184         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  185         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  186         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  187         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  188         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  189         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  190         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  191         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  192         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  193         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  194         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  195         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  196         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  197         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  198         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  199         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  200         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  201         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  202         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  203         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  204         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  205         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  206         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  207         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  208         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  209         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  210         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  211         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  212         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  213         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  214         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  215         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  216         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  217         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  218         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  219         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  220         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  221         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  222         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  223         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  224         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  225         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  226         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  227         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  228         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  229         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  230         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  231         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  232         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  233         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  234         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  235         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  236         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  237         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  238         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  239         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  240         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  241         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  242         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  243         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  244         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  245         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  246         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  247         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  248         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  249         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  250         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  251         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  252         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  253         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  254         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  255         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  256         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  257         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  258         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  259         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  260         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  261         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  262         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  263         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  264         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  265         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  266         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  267         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  268         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  269         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  270         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  271         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  272         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  273         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  274         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  275         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  276         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  277         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  278         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  279         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  280         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  281         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  282         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  283         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  284         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  285         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  286         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  287         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  288         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  289         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  290         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  291         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  292         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  293         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  294         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  295         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  296         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  297         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  298         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  299         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  300         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  301         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  302         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  303         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  304         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  305         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  306         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  307         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  308         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  309         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  310         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  311         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  312         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  313         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  314         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  315         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  316         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  317         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  318         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  319         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  320         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  321         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  322         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  323         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  324         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  325         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  326         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  327         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  328         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  329         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  330         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  331         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  332         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  333         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  334         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  335         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  336         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  337         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  338         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  339         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  340         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  341         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  342         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  343         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  344         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  345         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  346         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  347         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  348         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  349         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  350         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  351         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  352         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  353         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  354         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  355         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  356         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  357         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  358         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  359         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  360         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  361         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  362         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  363         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  364         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  365         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  366         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  367         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  368         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  369         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  370         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  371         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  372         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  373         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  374         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  375         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  376         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  377         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  378         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  379         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  380         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  381         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  382         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  383         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  384         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  385         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  386         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  387         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  388         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  389         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  390         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  391         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  392         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  393         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  394         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  395         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  396         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  397         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  398         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  399         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  400         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  401         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  402         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  403         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  404         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  405         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  406         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  407         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  408         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  409         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  410         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  411         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  412         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  413         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  414         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  415         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  416         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  417         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  418         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  419         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  420         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  421         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  422         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  423         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  424         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  425         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  426         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  427         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  428         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  429         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  430         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  431         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  432         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  433         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  434         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  435         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  436         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  437         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  438         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  439         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  440         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  441         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  442         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  443         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  444         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  445         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  446         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  447         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  448         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  449         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  450         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  451         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  452         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  453         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  454         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  455         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  456         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  457         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  458         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  459         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  460         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  461         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  462         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  463         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  464         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  465         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  466         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  467         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  468         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  469         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  470         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  471         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  472         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  473         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  474         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  475         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  476         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  477         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  478         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  479         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  480         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  481         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  482         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  483         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  484         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  485         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  486         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  487         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  488         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  489         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  490         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  491         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  492         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  493         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  494         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  495         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  496         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  497         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  498         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  499         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  500         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  501         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  502         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  503         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  504         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  505         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  506         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  507         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  508         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  509         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  510         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  511         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  512         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  513         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  514         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  515         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  516         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  517         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  518         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  519         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  520         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  521         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  522         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  523         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  524         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  525         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  526         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  527         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  528         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  529         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  530         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  531         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  532         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  533         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  534         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  535         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  536         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  537         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  538         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  539         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  540         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  541         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  542         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  543         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  544         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  545         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  546         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  547         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  548         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  549         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  550         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  551         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  552         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  553         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  554         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  555         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  556         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  557         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  558         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  559         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  560         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  561         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  562         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  563         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  564         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  565         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  566         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  567         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  568         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  569         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  570         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  571         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  572         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  573         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  574         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  575         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  576         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  577         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  578         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  579         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  580         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  581         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  582         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  583         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  584         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  585         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  586         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  587         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  588         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  589         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  590         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  591         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  592         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  593         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  594         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  595         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  596         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  597         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  598         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  599         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  600         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  601         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  602         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  603         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  604         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  605         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  606         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  607         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  608         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  609         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  610         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  611         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  612         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  613         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  614         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  615         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  616         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  617         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  618         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  619         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  620         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  621         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  622         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  623         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  624         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  625         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  626         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  627         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  628         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  629         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  630         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  631         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  632         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  633         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  634         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  635         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  636         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  637         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  638         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  639         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  640         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  641         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  642         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  643         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  644         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  645         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  646         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  647         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  648         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  649         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  650         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  651         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  652         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  653         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  654         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  655         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  656         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  657         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  658         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  659         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  660         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  661         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  662         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  663         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  664         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  665         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  666         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  667         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  668         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  669         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  670         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  671         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  672         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  673         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  674         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  675         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  676         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  677         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  678         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  679         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  680         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  681         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  682         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  683         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  684         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  685         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  686         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  687         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  688         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  689         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  690         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  691         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  692         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  693         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  694         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  695         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  696         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  697         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  698         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  699         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  700         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  701         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  702         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  703         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  704         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  705         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  706         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  707         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  708         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  709         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  710         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  711         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  712         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  713         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  714         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  715         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  716         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  717         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  718         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  719         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  720         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  721         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  722         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  723         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  724         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  725         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  726         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  727         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  728         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  729         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  730         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  731         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  732         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  733         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  734         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  735         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  736         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  737         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  738         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  739         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  740         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  741         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  742         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  743         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  744         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  745         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  746         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  747         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  748         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  749         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  750         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  751         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  752         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  753         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  754         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  755         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  756         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  757         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  758         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  759         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  760         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  761         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  762         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  763         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  764         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  765         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  766         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  767         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  768         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  769         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  770         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  771         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  772         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  773         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  774         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  775         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  776         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  777         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  778         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  779         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  780         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  781         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  782         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  783         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  784         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  785         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  786         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  787         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  788         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  789         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  790         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  791         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  792         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  793         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  794         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  795         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  796         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  797         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  798         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  799         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  800         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  801         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  802         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  803         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  804         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  805         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  806         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  807         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  808         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  809         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  810         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  811         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  812         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  813         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  814         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  815         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  816         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  817         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  818         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  819         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  820         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  821         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  822         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  823         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  824         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  825         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  826         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  827         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  828         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  829         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  830         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  831         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  832         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  833         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  834         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  835         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  836         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  837         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  838         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  839         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  840         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  841         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  842         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  843         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  844         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  845         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  846         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  847         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  848         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  849         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  850         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  851         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  852         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  853         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  854         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  855         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  856         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  857         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  858         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  859         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  860         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  861         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  862         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  863         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  864         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  865         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  866         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  867         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  868         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  869         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  870         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  871         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  872         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  873         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  874         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  875         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  876         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  877         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  878         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  879         RADIUS:      1.511781           CHARGE:    -0.830000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  880         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+      MM ATOM:  881         RADIUS:      1.511781           CHARGE:     0.415000
+                                                       CORR. RADIUS     1.511781
+
+ -------------------------------------------------------------------------------
+
+                                                  TOTAL CHARGE:         0.000000
+
+ -------------------------------------------------------------------------------
+
+
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ **     #####                         ##              ##                      **
+ **    ##   ##            ##          ##              ##                      **
+ **   ##     ##                       ##            ######                    **
+ **   ##     ##  ##   ##  ##   #####  ##  ##   ####   ##    #####    #####    **
+ **   ##     ##  ##   ##  ##  ##      ## ##   ##      ##   ##   ##  ##   ##   **
+ **   ##  ## ##  ##   ##  ##  ##      ####     ###    ##   ######   ######    **
+ **    ##  ###   ##   ##  ##  ##      ## ##      ##   ##   ##       ##        **
+ **     #######   #####   ##   #####  ##  ##  ####    ##    #####   ##        **
+ **           ##                                                    ##        **
+ **                                                                           **
+ **                                                ... make the atoms dance   **
+ **                                                                           **
+ **            Copyright (C) by CP2K developers group (2000-2021)             **
+ **                      J. Chem. Phys. 152, 194103 (2020)                    **
+ **                                                                           **
+ *******************************************************************************
+
+
+ TOTAL NUMBERS AND MAXIMUM NUMBERS
+
+  Total number of            - Atomic kinds:                                   4
+                             - Atoms:                                          8
+                             - Shell sets:                                     8
+                             - Shells:                                        32
+                             - Primitive Cartesian functions:                 40
+                             - Cartesian basis functions:                     76
+                             - Spherical basis functions:                     72
+
+  Maximum angular momentum of- Orbital basis functions:                        2
+                             - Local part of the GTH pseudopotential:          2
+                             - Non-local part of the GTH pseudopotential:      0
+
+
+ SCF PARAMETERS         Density guess:                                    ATOMIC
+                        --------------------------------------------------------
+                        max_scf:                                             300
+                        max_scf_history:                                       0
+                        max_diis:                                              4
+                        --------------------------------------------------------
+                        eps_scf:                                        1.00E-06
+                        eps_scf_history:                                0.00E+00
+                        eps_diis:                                       1.00E-01
+                        eps_eigval:                                     1.00E-05
+                        --------------------------------------------------------
+                        level_shift [a.u.]:                                 0.00
+                        --------------------------------------------------------
+                        Outer loop SCF in use 
+                        No variables optimised in outer loop
+                        eps_scf                                         1.00E-06
+                        max_scf                                               10
+                        No outer loop optimization
+                        step_size                                       5.00E-01
+
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ **             #######  ##     ## ##     ## ##     ##                        **
+ **            ##     ## ###   ### ###   ### ###   ###                        **
+ **            ##     ## #### #### #### #### #### ####                        **
+ **            ##     ## ## ### ## ## ### ## ## ### ##                        **
+ **            ##  ## ## ##     ## ##     ## ##     ##                        **
+ **            ##    ##  ##     ## ##     ## ##     ##  T.Laino and F.Mohamed **
+ **             ##### ## ##     ## ##     ## ##     ##  2005 - 2015           **
+ **                                                                           **
+ **                                                     Calculation Started.. **
+ *******************************************************************************
+ *******************************************************************************
+
+ MD_PAR| Molecular dynamics protocol (MD input parameters)
+ MD_PAR| Ensemble type                                                       NVT
+ MD_PAR| Number of time steps                                               5000
+ MD_PAR| Time step [fs]                                                 0.500000
+ MD_PAR| Temperature [K]                                              298.000000
+ MD_PAR| Temperature tolerance [K]                                      0.000000
+ MD_PAR| Print MD information every                                    1 step(s)
+ MD_PAR| File type   Print frequency [steps]                          File names
+ MD_PAR| Coordinates         10                                UREA-ZW-pos-1.xyz
+ MD_PAR| Velocities           1                                UREA-ZW-vel-1.xyz
+ MD_PAR| Energies           100                                   UREA-ZW-1.ener
+ MD_PAR| Dump              2000                                UREA-ZW-1.restart
+
+ ROT| Rotational analysis information
+ ROT| Principal axes and moments of inertia [a.u.]
+ ROT|                           1                   2                   3
+ ROT| Eigenvalues      4.21342505203E+09   4.54423245323E+09   4.77610306773E+09
+ ROT|      x             -0.032114573767      0.840415560434     -0.540990147722
+ ROT|      y              0.330014293265      0.519829137532      0.787951923669
+ ROT|      z              0.943429499429     -0.153229741087     -0.294043238409
+ ROT| Number of rotovibrational vectors                                        6
+
+ DOF| Calculation of degrees of freedom
+ DOF| Number of atoms                                                        881
+ DOF| Number of intramolecular constraints                                     0
+ DOF| Number of intermolecular constraints                                     0
+ DOF| Invariants (translations + rotations)                                    0
+ DOF| Degrees of freedom                                                    2643
+
+ DOF| Restraints information
+ DOF| Number of intramolecular restraints                                      0
+ DOF| Number of intermolecular restraints                                      0
+
+ THERMOSTAT| Thermostat information for PARTICLES
+ THERMOSTAT| Type of thermostat            Canonical Sampling/Velocity Rescaling
+ THERMOSTAT| CSVR time constant [fs]                                   50.000000
+ THERMOSTAT| Initial kinetic energy                           0.000000000000E+00
+ THERMOSTAT| End of thermostat information for PARTICLES
+
+ MD_VEL| Velocities initialization
+ MD_VEL| Initial temperature [K]                                      295.089459
+ MD_VEL| COM velocity             0.0000044930     0.0000132331     0.0000084584
+
+  Translating the system in order to center the QM fragment in the QM box.
+
+ Number of electrons:                                                         24
+ Number of occupied orbitals:                                                 12
+ Number of molecular orbitals:                                                12
+
+ Number of orbital functions:                                                 72
+ Number of independent orbital functions:                                     72
+
+ Extrapolation method: initial_guess
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  ----------------------------------- OT ---------------------------------------
+  Minimizer      : DIIS                : direct inversion
+                                         in the iterative subspace
+                                         using   7 DIIS vectors
+                                         safer DIIS on
+  Preconditioner : FULL_ALL            : diagonalization, state selective
+  Precond_solver : DEFAULT
+  stepsize       :    0.15000000                  energy_gap     :    0.08000000
+  eps_taylor     :   0.10000E-15                  max_taylor     :             4
+  ----------------------------------- OT ---------------------------------------
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+  Decoupling Energy:                                               0.0001364319
+  Recoupling Energy:                                              -0.0001364319
+     1 OT DIIS     0.15E+00    3.6     0.21487615       -42.8174491513 -4.28E+01
+  Decoupling Energy:                                               0.0001072421
+  Recoupling Energy:                                              -0.0001072421
+     2 OT DIIS     0.15E+00    3.8     0.24310936       -42.5306283536  2.87E-01
+  Decoupling Energy:                                               0.0008111655
+  Recoupling Energy:                                              -0.0008111655
+     3 OT DIIS     0.15E+00    3.9     0.12369397       -44.0352729145 -1.50E+00

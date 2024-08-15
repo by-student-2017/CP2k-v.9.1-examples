@@ -1,0 +1,181 @@
+@SET ROOT ./../
+&FORCE_EVAL
+  METHOD QMMM
+@INCLUDE ${ROOT}/Files/force_eval_mm_gpw.inc
+@INCLUDE ${ROOT}/Files/force_eval_qm_gpw_blyp.inc
+  &QMMM  ! This defines the QS cell in the QMMM calc
+    &CELL
+      ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
+      #PERIODIC NONE
+      PERIODIC XYZ
+    &END CELL
+    !
+    &PERIODIC  # apply periodic potential
+      #turn on/off coupling/recoupling of the QM multipole
+      &MULTIPOLE ON
+      &END MULTIPOLE
+    &END PERIODIC
+    !
+    ! ECOUPL COULOMB # for semi-emprical case (PM6, etc)
+    ECOUPL GAUSS
+    !
+    # NOCENTER
+    # NOCENTER0
+    CENTER EVERY_STEP
+    !
+    PARALLEL_SCHEME GRID
+    !
+    USE_GEEP_LIB 15
+    !
+    &QM_KIND O
+      MM_INDEX 8
+    &END QM_KIND
+    &QM_KIND N
+      MM_INDEX 1 6
+    &END QM_KIND
+    &QM_KIND C
+      MM_INDEX 5
+    &END QM_KIND
+    &QM_KIND H
+      MM_INDEX 2 3 4 7
+    &END QM_KIND
+    &PRINT
+      &QMMM_CHARGES
+      &END QMMM_CHARGES
+    &END PRINT
+    &FORCEFIELD
+      &NONBONDED
+        &LENNARD-JONES
+            ATOMS HW N2
+            EPSILON [kcalmol] 0.052
+            SIGMA [angstrom]  2.42
+            RCUT [angstrom] 9.0
+        &END
+        &LENNARD-JONES
+            ATOMS HW N4
+            EPSILON [kcalmol] 0.052
+            SIGMA [angstrom]  2.42
+            RCUT [angstrom] 9.0
+        &END
+        &LENNARD-JONES
+            ATOMS HW O
+            EPSILON [kcalmol] 0.058
+            SIGMA [angstrom]  2.2612
+            RCUT [angstrom] 9.0
+        &END
+      &END
+    &END
+  &END QMMM
+  &SUBSYS
+    &CELL
+      ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
+      ALPHA_BETA_GAMMA 90 90 90
+      PERIODIC XYZ
+    &END CELL
+    &TOPOLOGY  ! Section used to center the atomic coordinates in the given box. Useful for big molecules
+      CONN_FILE_NAME ${ROOT}/Files/mol_solv.top
+      CONNECTIVITY AMBER
+      COORD_FILE_NAME ${ROOT}/Files/mol_solv.crd
+      COORDINATE CRD
+    &END TOPOLOGY
+    !
+    !&KIND Rh
+    !  BASIS_SET SZVP-MOLOPT-SR-GTH-q9
+    !  POTENTIAL GTH-PBE-q9
+    !&END KIND
+    !
+    !&KIND B
+    !  BASIS_SET DZVP-MOLOPT-SR-GTH
+    !  POTENTIAL GTH-PBE-q3
+    !&END KIND
+    !
+    !&KIND S
+    !  ELEMENT S
+    !  BASIS_SET DZVP-MOLOPT-SR-GTH
+    !  POTENTIAL GTH-PBE-q6
+    !&END KIND
+    !
+    &KIND O
+      ELEMENT O
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    !
+    &KIND N
+      ELEMENT N
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q5
+    &END KIND
+    !
+    &KIND C
+      ELEMENT C
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+    !
+    &KIND H
+      ELEMENT H
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+    !
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT UREA-ZW
+  RUN_TYPE md
+&END GLOBAL
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS 5000
+    TIMESTEP 0.5
+    TEMPERATURE 298
+    &THERMOSTAT
+      TYPE CSVR
+      REGION MOLECULE
+      &CSVR
+        TIMECON [fs] 50.
+      &END
+    &END
+    &PRINT
+      &ENERGY
+        &EACH
+          MD 100
+        &END
+      &END
+    &END
+  &END MD
+  &PRINT
+    &RESTART OFF
+      &EACH
+        MD 2000
+      &END
+    &END
+    &RESTART_HISTORY 
+      &EACH
+        MD 1000
+      &END
+    &END
+    &TRAJECTORY
+      &EACH
+        MD 10
+      &END
+    &END
+    &VELOCITIES OFF
+    &END
+    &CELL 
+      &EACH
+        MD 2000
+      &END
+      COMMON_ITERATION_LEVELS 3
+    &END
+  &END
+&END MOTION
+&EXT_RESTART
+  RESTART_FILE_NAME ../RUN01_EQUIL_MM_AVG/UREA-ZW-1_110000.restart
+  RESTART_DEFAULT F
+  RESTART_POS 
+  RESTART_VEL
+&END
