@@ -16,6 +16,7 @@
 
 ## QM/MM study of UREA Zwitterion in water (Extended exercises: QM/MM) (UREA=QM=PM6, Water=MM=AMBER form ambertools)
 - 2018_CP2K-UK_Summer_School_UoL_STFC
+- (Homeworks-1_RUN01_EQUIL_QMMM_GPW_BLYP: QM=GPW(XC=BLYP), MM=AMBER, GEEP method)
 - 2019_Introduction_to_CP2K_GU
 
 ## Buckingham database
