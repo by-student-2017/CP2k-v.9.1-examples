@@ -13,19 +13,17 @@
       ! SPC water model
       IGNORE_MISSING_CRITICAL_PARAMS TRUE
       !
-      ! https://docs.lammps.org/Howto_tip3p.html
       &BOND
         ATOMS OT HT
-        KIND CHARMM
-        R0 0.93944837 # [bohr]
-        K 450.0 # [Angstrom^-2*kcal/mol]
+        K      [nm^-2kjmol] 502080.0 
+        R0     [nm] 0.09572
+        KIND   G87
       &END BOND
-      ! https://docs.lammps.org/Howto_tip3p.html
       &BEND
-        ATOMS HT OT HT
-        KIND CHARMM
-        THETA0 1.82421813 # [rad], 104.52 [degree]
-        K 0.087648 # [rad^-2*hartree], 55.0 [rad^-2*kcal/mol]
+        ATOMS      HT    OT    HT
+        THETA0     [deg] 104.500 
+        K          [rad^2kjmol] 627.600
+        KIND   G87
       &END BEND
       !
     &END FORCEFIELD
