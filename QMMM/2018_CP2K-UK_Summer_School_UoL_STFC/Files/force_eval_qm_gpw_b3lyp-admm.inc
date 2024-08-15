@@ -1,9 +1,13 @@
   &DFT
     CHARGE 0
     !
+    AUTO_BASIS RI_HFX SMALL
     BASIS_SET_FILE_NAME BASIS_MOLOPT
-    POTENTIAL_FILE_NAME POTENTIAL_UZH
     BASIS_SET_FILE_NAME BASIS_ADMM
+    LSD
+    POTENTIAL_FILE_NAME POTENTIAL_UZH
+    &AUXILIARY_DENSITY_MATRIX_METHOD
+    &END AUXILIARY_DENSITY_MATRIX_METHOD
     !
     &XC                        ! Parameters needed to compute the electronic exchange potentia
       &HF
@@ -40,8 +44,10 @@
     &MGRID
       COMMENSURATE
       #NGRIDS 4
-      CUTOFF 400 # GPW case
-      REL_CUTOFF 60
+      #CUTOFF 400 # GPW case
+      #REL_CUTOFF 60
+      CUTOFF 100
+      REL_CUTOFF 30
     &END MGRID
     !
     &SCF  ! Parameters controlling the convergence of the scf. This section should not be changed.

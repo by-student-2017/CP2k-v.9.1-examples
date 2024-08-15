@@ -1,0 +1,3 @@
+
+tests/QS/regtest-hfx-ri-2/CH3-b3lyp-ADMM.inp
+https://github.com/cp2k/cp2k/blob/5f2f4146c96c590ebc1cc014ad082e6c44ad8d25/tests/QS/regtest-hfx-ri-2/CH3-b3lyp-ADMM.inp#L4
