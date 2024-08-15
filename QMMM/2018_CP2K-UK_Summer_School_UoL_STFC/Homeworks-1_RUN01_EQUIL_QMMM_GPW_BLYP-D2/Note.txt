@@ -1,0 +1,3 @@
+
+tests/QS/regtest-dft-vdw-corr-1/dftd2_t4.inp
+https://github.com/cp2k/cp2k/blob/5f2f4146c96c590ebc1cc014ad082e6c44ad8d25/tests/QS/regtest-dft-vdw-corr-1/dftd2_t4.inp#L3
