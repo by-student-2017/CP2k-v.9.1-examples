@@ -3,7 +3,7 @@
   PROGRAM TMC         ! Tree Monte Carlo algorithm 
   RUN_TYPE TMC
   PRINT_LEVEL LOW     ! Low amount of information written in the output
-  #WALLTIME 1:00:00    ! The simulation will last one hour and then will stop 
+  WALLTIME 3600       ! The simulation will last one hour and then will stop 
 &END GLOBAL
 &MOTION
   &TMC
