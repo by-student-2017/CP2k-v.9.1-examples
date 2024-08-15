@@ -2,7 +2,7 @@
 &FORCE_EVAL
   METHOD QMMM
 @INCLUDE ${ROOT}/Files/force_eval_mm_gpw.inc
-@INCLUDE ${ROOT}/Files/force_eval_qm_gpw_blyp.inc
+@INCLUDE ${ROOT}/Files/force_eval_qm_gpw_pbe-d3.inc
   &QMMM  ! This defines the QS cell in the QMMM calc
     &CELL
       ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553

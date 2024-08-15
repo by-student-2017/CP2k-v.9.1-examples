@@ -6,15 +6,6 @@
     !
     &XC                        ! Parameters needed to compute the electronic exchange potentia
       &VDW_POTENTIAL
-        @IF ${VV10} == 1
-        POTENTIAL_TYPE NON_LOCAL
-        &NON_LOCAL
-          KERNEL_FILE_NAME rVV10_kernel_table.dat
-          TYPE RVV10
-          VERBOSE_OUTPUT
-        &END NON_LOCAL
-        @ENDIF
-        @IF ${D3} == 1
         POTENTIAL_TYPE PAIR_POTENTIAL
         &PAIR_POTENTIAL
           CALCULATE_C9_TERM .TRUE.
@@ -26,7 +17,6 @@
           R_CUTOFF [angstrom] 16.
           TYPE DFTD3
         &END PAIR_POTENTIAL
-        @ENDIF
       &END VDW_POTENTIAL
       &XC_FUNCTIONAL
         &PBE
