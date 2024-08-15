@@ -1,0 +1,147 @@
+@SET ROOT ./../
+&FORCE_EVAL
+  METHOD QMMM
+@INCLUDE ${ROOT}/Files/force_eval_mm.inc
+@INCLUDE ${ROOT}/Files/force_eval_qm.inc
+  &QMMM
+      &CELL
+        ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
+        PERIODIC NONE
+      &END CELL
+    ECOUPL COULOMB
+    # NOCENTER
+    # NOCENTER0
+    &QM_KIND O
+      MM_INDEX 8
+    &END QM_KIND
+    &QM_KIND N
+      MM_INDEX 1 6
+    &END QM_KIND
+    &QM_KIND C
+      MM_INDEX 5
+    &END QM_KIND
+    &QM_KIND H
+      MM_INDEX 2 3 4 7
+    &END QM_KIND
+    &PRINT
+      &QMMM_CHARGES
+      &END QMMM_CHARGES
+    &END PRINT
+    &FORCEFIELD
+      &NONBONDED
+        &LENNARD-JONES
+            ATOMS HW N2
+            EPSILON [kcalmol] 0.052
+            SIGMA [angstrom]  2.42
+            RCUT [angstrom] 9.0
+        &END
+        &LENNARD-JONES
+            ATOMS HW N4
+            EPSILON [kcalmol] 0.052
+            SIGMA [angstrom]  2.42
+            RCUT [angstrom] 9.0
+        &END
+        &LENNARD-JONES
+            ATOMS HW O
+            EPSILON [kcalmol] 0.058
+            SIGMA [angstrom]  2.2612
+            RCUT [angstrom] 9.0
+        &END
+      &END
+    &END
+  &END QMMM
+  &SUBSYS
+    &CELL
+      ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
+    &END CELL
+    &TOPOLOGY
+      CONN_FILE_NAME ${ROOT}/Files/mol_solv.top
+      CONNECTIVITY AMBER
+      COORD_FILE_NAME ${ROOT}/Files/mol_solv.crd
+      COORDINATE CRD
+    &END TOPOLOGY
+    &COLVAR
+      &DISTANCE
+        ATOMS 1 5
+      &END
+    &END
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT UREA-ZW
+  RUN_TYPE md
+&END GLOBAL
+&MOTION
+  &MD
+    ENSEMBLE NVT
+    STEPS 20000
+    TIMESTEP 0.5
+    TEMPERATURE 298
+    &THERMOSTAT
+      TYPE CSVR
+      REGION MOLECULE
+      &CSVR
+        TIMECON [fs] 10.
+      &END
+    &END
+    &PRINT
+      &ENERGY
+        &EACH
+          MD 100
+        &END
+      &END
+    &END
+  &END MD
+  &PRINT
+    &RESTART OFF
+      &EACH
+        MD 2000
+      &END
+    &END
+    &RESTART_HISTORY 
+      &EACH
+        MD 1000
+      &END
+    &END
+    &TRAJECTORY
+      &EACH
+        MD 10
+      &END
+    &END
+    &VELOCITIES OFF
+    &END
+    &CELL 
+      &EACH
+        MD 2000
+      &END
+      COMMON_ITERATION_LEVELS 3
+    &END
+  &END
+  &FREE_ENERGY
+    METHOD METADYN
+    &METADYN
+      DO_HILLS
+      NT_HILLS 60
+      WW [kcalmol] 1.0
+      &METAVAR
+        COLVAR 1
+        SCALE 0.1
+      &END METAVAR
+      &PRINT
+        &COLVAR
+          &EACH
+            MD 10
+          &END
+          COMMON_ITERATION_LEVELS 1
+        &END COLVAR
+      &END PRINT
+    &END METADYN
+  &END FREE_ENERGY
+&END MOTION
+&EXT_RESTART
+  RESTART_FILE_NAME ../RUN01_EQUIL_QMMM/UREA-ZW-1_5000.restart
+  RESTART_DEFAULT F
+  RESTART_POS 
+  RESTART_VEL
+&END

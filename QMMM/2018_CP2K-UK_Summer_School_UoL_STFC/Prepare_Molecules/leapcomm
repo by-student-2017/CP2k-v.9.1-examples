@@ -1,0 +1,6 @@
+source leaprc.gaff
+loadamberprep Gauss_Prep_File.prepi
+saveoff MOL MOL.lib
+saveamberparm MOL MOL.top MOL.crd
+quit
+

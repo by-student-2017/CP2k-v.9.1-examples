@@ -1,0 +1,36 @@
+#---------------------------------------------------------------------
+# Usage (1st task: MM isobaric/isothermal ensemble)
+1. cd RUN01_EQUIL_MM
+2. bash run.sh
+3. cd ./../
+#---------------------------------------------------------------------
+# Usage (2nd task: MM isothermal ensemble)
+1. cd RUN01_EQUIL_MM_AVG
+2. bash run.sh
+3. cd ./../
+#---------------------------------------------------------------------
+# Usage (3rd task: QM/MM isothermal ensemble)
+1. cd RUN01_EQUIL_QMMM
+2. bash run.sh
+3. cd ./../
+#---------------------------------------------------------------------
+# Usage (4th task: QM/MM Metadyanamics simulations)
+1. RUN02_QMMM_MTD1
+2. bash run.sh
+3. cd ./../
+#---------------------------------------------------------------------
+# Usage ()
+1. RUN02_QMMM_MTD2
+2. bash run.sh
+3. cd ./../
+#---------------------------------------------------------------------
+QM/MM study of UREA Zwitterion in water
+https://www.cp2k.org/exercises:2015_cecam_tutorial:urea
+#---------------------------------------------------------------------
+# Note
+
+wget http://cp2k.org/static/exercises/2015_cecam_tutorial/UREA.tar.xz
+
+tar xvf UREA.tar.xz
+
+#---------------------------------------------------------------------

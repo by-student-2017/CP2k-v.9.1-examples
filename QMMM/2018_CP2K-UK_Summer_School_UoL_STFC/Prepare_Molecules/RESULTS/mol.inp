@@ -1,0 +1,34 @@
+#P PM3 Opt=(Z-matrix,MaxStep=5)
+Test
+
+
+0 1
+ h
+ n   1 nh2     
+ h   2 hn3        1 hnh3      
+ h   2 hn4        1 hnh4         3 dih4   
+ c   2 cn5        1 cnh5         3 dih5   
+ o   5 oc6        2 ocn6         4 dih6   
+ n   5 nc7        2 ncn7         4 dih7   
+ h   7 hn8        5 hnc8         6 dih8   
+ 
+nh2         1.008000
+hn3         1.008000
+hnh3        109.471
+hn4         1.008000
+hnh4        109.471
+dih4        120.000
+cn5         1.440000
+cnh5        109.471
+dih5       -120.000
+oc6         1.220000
+ocn6        120.000
+dih6       -120.000
+nc7         1.439997
+ncn7        120.000
+dih7         60.000
+hn8         1.008000
+hnc8        109.471
+dih8          0.000
+ 
+ 

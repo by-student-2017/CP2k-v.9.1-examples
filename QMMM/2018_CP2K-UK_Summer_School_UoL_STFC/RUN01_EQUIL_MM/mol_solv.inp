@@ -1,0 +1,106 @@
+@SET ROOT ./../
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &FORCEFIELD
+      parm_file_name ${ROOT}/Files/mol_solv.top
+      parmtype AMBER
+      &spline
+       rcut_nb 9.0
+      &end
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE spme
+        ALPHA .4
+        GMAX 54
+        O_SPLINE 4
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+      ABC [angstrom] 38.8605230  39.1154930  39.2709120
+    &END CELL
+    &TOPOLOGY
+      CONN_FILE_NAME ${ROOT}/Files/mol_solv.top
+      CONNECTIVITY AMBER
+      COORD_FILE_NAME ${ROOT}/Files/mol_solv.crd
+      COORDINATE CRD
+    &END TOPOLOGY
+  &END SUBSYS
+ STRESS_TENSOR ANALYTICAL
+ &PRINT
+   &PROGRAM_RUN_INFO
+      &EACH
+       MD 100
+      &END
+   &END
+   &STRESS_TENSOR
+      &EACH
+       MD 100
+      &END
+   &END
+ &END
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT UREA-ZW
+  RUN_TYPE md
+&END GLOBAL
+&MOTION
+  &MD
+    ENSEMBLE NPT_I
+    STEPS 100000
+    TIMESTEP 0.5
+    TEMPERATURE 298
+    &BAROSTAT
+      PRESSURE 1.
+      TIMECON [fs] 100.
+    &END BAROSTAT
+    &THERMOSTAT
+      TYPE NOSE
+      REGION MOLECULE
+      &NOSE
+        TIMECON [fs] 100.
+      &END
+    &END
+    &PRINT
+      &PROGRAM_RUN_INFO
+        &EACH
+          MD 100
+        &END
+      &END
+      &ENERGY
+        &EACH
+          MD 100
+        &END
+      &END
+    &END
+  &END MD
+  &PRINT
+    &RESTART OFF
+      &EACH
+        MD 2000
+      &END
+    &END
+    &RESTART_HISTORY 
+      &EACH
+        MD 10000
+      &END
+    &END
+    &TRAJECTORY
+      &EACH
+        MD 2000
+      &END
+    &END
+    &VELOCITIES OFF
+    &END
+    &CELL 
+      &EACH
+        MD 2000
+      &END
+      COMMON_ITERATION_LEVELS 3
+    &END
+  &END
+&END MOTION
