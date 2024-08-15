@@ -2,7 +2,7 @@
 &FORCE_EVAL
   METHOD QMMM
 @INCLUDE ${ROOT}/Files/force_eval_mm_gapw.inc
-@INCLUDE ${ROOT}/Files/force_eval_qm_gapw_b3lyp.inc
+@INCLUDE ${ROOT}/Files/force_eval_qm_gapw_b3lyp_6-31Gxx.inc
   &QMMM  ! This defines the QS cell in the QMMM calc
     &CELL
       ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
@@ -80,42 +80,42 @@
     &END TOPOLOGY
     !
     !&KIND Fe
-    !  BASIS_SET Ahlrichs-pTZV
+    !  BASIS_SET 6-31Gxx # Ahlrichs-pTZV
     !  POTENTIAL ALL
     !&END KIND
     !
     !&KIND Na
-    !  BASIS_SET Ahlrichs-pTZV
+    !  BASIS_SET 6-31Gxx # Ahlrichs-pTZV
     !  POTENTIAL ALL
     !&END KIND
     !
     !&KIND S
     !  ELEMENT S
-    !  BASIS_SET Ahlrichs-pTZV
+    !  BASIS_SET 6-31Gxx # Ahlrichs-pTZV
     !  POTENTIAL ALL
     !&END KIND
     !
     &KIND O
       ELEMENT O
-      BASIS_SET Ahlrichs-pTZV
+      BASIS_SET 6-31Gxx # Ahlrichs-pTZV
       POTENTIAL ALL
     &END KIND
     !
     &KIND N
       ELEMENT N
-      BASIS_SET Ahlrichs-pTZV
+      BASIS_SET 6-31Gxx # Ahlrichs-pTZV
       POTENTIAL ALL
     &END KIND
     !
     &KIND C
       ELEMENT C
-      BASIS_SET Ahlrichs-pTZV
+      BASIS_SET 6-31Gxx # Ahlrichs-pTZV
       POTENTIAL ALL
     &END KIND
     !
     &KIND H
       ELEMENT H
-      BASIS_SET Ahlrichs-pTZV
+      BASIS_SET 6-31Gxx # Ahlrichs-pTZV
       POTENTIAL ALL
     &END KIND
     !
