@@ -1,14 +1,9 @@
   &DFT
     CHARGE 0
     !
-    ! GPW case
     BASIS_SET_FILE_NAME BASIS_MOLOPT
     POTENTIAL_FILE_NAME POTENTIAL_UZH
     BASIS_SET_FILE_NAME BASIS_ADMM
-    !
-    ! GPAW case: where to find all-electron basis sets and potentials
-    !BASIS_SET_FILE_NAME  EMSL_BASIS_SETS
-    !POTENTIAL_FILE_NAME  POTENTIAL
     !
     &XC                        ! Parameters needed to compute the electronic exchange potentia
       &HF
@@ -24,7 +19,7 @@
     !
     &QS
       EPS_DEFAULT 1.0E-12
-      METHOD GPW ! GAPW, GPW, LRIGPW, RIGPW, OFGPW
+      METHOD GPW ! GPW, LRIGPW, RIGPW, OFGPW
       !
       !METHOD PM6 # AM1, PM3, PM6, PM6-FM, PDG, RM1, PNNL, XTB
       !&SE
@@ -46,8 +41,7 @@
       COMMENSURATE
       #NGRIDS 4
       CUTOFF 400 # GPW case
-      !CUTOFF 600 # GAPW case
-      !REL_CUTOFF 60
+      REL_CUTOFF 60
     &END MGRID
     !
     &SCF  ! Parameters controlling the convergence of the scf. This section should not be changed.

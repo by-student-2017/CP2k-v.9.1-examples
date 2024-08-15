@@ -81,67 +81,37 @@
     !
     !&KIND S
     !  ELEMENT S
-      !
-      ! GPW case
     !  BASIS_SET DZVP-MOLOPT-GTH
     !  BASIS_SET AUX_FIT FIT3
     !  POTENTIAL GTH-HYB-q6
-      !
-      ! GAPW case
-      !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
-      !POTENTIAL ALL                   !double-zeta quality all-electron basis sets 
     !&END KIND
     !
     &KIND O
       ELEMENT O
-      !
-      ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
       BASIS_SET AUX_FIT FIT3
       POTENTIAL GTH-HYB-q6
-      !
-      ! GAPW case
-      !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
-      !POTENTIAL ALL                   !double-zeta quality all-electron basis sets 
     &END KIND
     !
     &KIND N
       ELEMENT N
-      !
-      ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
       BASIS_SET AUX_FIT FIT3
       POTENTIAL GTH-HYB-q5
-      !
-      ! GAPW case
-      !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
-      !POTENTIAL ALL                   !double-zeta quality all-electron basis sets 
     &END KIND
     !
     &KIND C
       ELEMENT C
-      !
-      ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
       BASIS_SET AUX_FIT FIT3
       POTENTIAL GTH-HYB-q4
-      !
-      ! GAPW case
-      !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
-      !POTENTIAL ALL                   !double-zeta quality all-electron basis sets 
     &END KIND
     !
     &KIND H
       ELEMENT H
-      !
-      ! GPW case
       BASIS_SET SZV-MOLOPT-GTH
       BASIS_SET AUX_FIT FIT3
       POTENTIAL GTH-HYB-q1
-      !
-      ! GAPW case
-      !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
-      !POTENTIAL ALL                   !double-zeta quality all-electron basis sets 
     &END KIND
     !
   &END SUBSYS
