@@ -2,9 +2,9 @@
 
 
 ## Properties of Ice from Monte Carlo Simulations
-- 2014_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: WALLTIME 1:00:00 -> WALLTIME 3600)
-- 2015_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: WALLTIME 1:00:00 -> WALLTIME 3600)
-- 2016_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: WALLTIME 1:00:00 -> WALLTIME 3600)
+- 2014_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: #WALLTIME 1:00:00 -> WALLTIME 3600)
+- 2015_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: #WALLTIME 1:00:00 -> WALLTIME 3600)
+- 2016_Molecular_and_Materials_Modelling_ETHZ (CPASSERT failed case: #WALLTIME 1:00:00 -> WALLTIME 3600)
 
 
 ## Monte Carlo simulations for the estimation of pair interactions
