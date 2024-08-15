@@ -15,7 +15,7 @@
           !          VERBOSE_OUTPUT .TRUE.
           REFERENCE_FUNCTIONAL PBE
           R_CUTOFF [angstrom] 16.
-          TYPE DFTD3
+          TYPE DFTD3 # or DFTD3(BJ)
         &END PAIR_POTENTIAL
       &END VDW_POTENTIAL
       &XC_FUNCTIONAL
@@ -26,6 +26,21 @@
         XC_DERIV NN50_SMOOTH
         XC_SMOOTH_RHO NN50
       &END XC_GRID
+      !
+      ! Another PBE-D3 setting
+      !&VDW_POTENTIAL
+      !  DISPERSION_FUNCTIONAL PAIR_POTENTIAL
+      !  &PAIR_POTENTIAL
+      !    PARAMETER_FILE_NAME dftd3.dat
+      !    REFERENCE_FUNCTIONAL PBE
+      !    TYPE DFTD3(BJ)
+      !    &PRINT_DFTD
+      !    &END PRINT_DFTD
+      !  &END PAIR_POTENTIAL
+      !&END VDW_POTENTIAL
+      !&XC_FUNCTIONAL PBE
+      !&END XC_FUNCTIONAL
+      !
     &END XC
     !
     &QS
