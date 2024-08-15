@@ -2,7 +2,7 @@
 &FORCE_EVAL
   METHOD QMMM
 @INCLUDE ${ROOT}/Files/force_eval_mm_gpw.inc
-@INCLUDE ${ROOT}/Files/force_eval_qm_gpw_blyp.inc
+@INCLUDE ${ROOT}/Files/force_eval_qm_gpw_b3lyp.inc
   &QMMM  ! This defines the QS cell in the QMMM calc
     &CELL
       ABC [angstrom] 20.4199430428 20.5538777943 20.6355827553
@@ -84,7 +84,7 @@
       !
       ! GPW case
     !  BASIS_SET DZVP-MOLOPT-GTH
-    !  POTENTIAL GTH-BLYP-q6
+    !  POTENTIAL GTH-HYB-q6
       !
       ! GAPW case
       !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
@@ -96,7 +96,7 @@
       !
       ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
-      POTENTIAL GTH-BLYP-q6
+      POTENTIAL GTH-HYB-q6
       !
       ! GAPW case
       !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
@@ -108,7 +108,7 @@
       !
       ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
-      POTENTIAL GTH-BLYP-q5
+      POTENTIAL GTH-HYB-q5
       !
       ! GAPW case
       !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
@@ -120,7 +120,7 @@
       !
       ! GPW case
       BASIS_SET DZVP-MOLOPT-GTH
-      POTENTIAL GTH-BLYP-q4
+      POTENTIAL GTH-HYB-q4
       !
       ! GAPW case
       !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
@@ -131,8 +131,8 @@
       ELEMENT H
       !
       ! GPW case
-      BASIS_SET DZVP-MOLOPT-GTH
-      POTENTIAL GTH-BLYP-q1
+      BASIS_SET SZV-MOLOPT-GTH
+      POTENTIAL GTH-HYB-q1
       !
       ! GAPW case
       !BASIS_SET Ahlrichs-pVDZ         !Kinds are described by all-electron potentials and
