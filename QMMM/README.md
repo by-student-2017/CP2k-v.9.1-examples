@@ -7,7 +7,7 @@
 
 ## Periodic QM/MM embedding of KCl (1-16 atoms of KCl:QM=GPW, 17-48 atoms of KCl: Buckingham potential)
 - 2016_CP2K_Summer_School_2016_KCL
-- 2019_Introduction_to_CP2K_Ghent University
+- 2019_Introduction_to_CP2K_GU
 
 
 ## Validation of a KCl QM/MM model (1-16 atoms of KCl:QM=GPW, 17-48 atoms of KCl: Buckingham potential)
