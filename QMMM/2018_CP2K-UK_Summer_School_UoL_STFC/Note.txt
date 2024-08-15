@@ -3,16 +3,28 @@
 1. cd RUN01_EQUIL_MM
 2. bash run.sh
 3. cd ./../
+
+Note: 8 core
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-15 14:16:51.827
+  **** **** ******  **  PROGRAM ENDED AT                 2024-08-15 14:29:41.867
 #---------------------------------------------------------------------
 # Usage (2nd task: MM isothermal ensemble)
 1. cd RUN01_EQUIL_MM_AVG
 2. bash run.sh
 3. cd ./../
+
+Note: 8 core
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-15 14:42:38.327
+  **** **** ******  **  PROGRAM ENDED AT                 2024-08-15 14:43:52.752
 #---------------------------------------------------------------------
 # Usage (3rd task: QM/MM isothermal ensemble)
 1. cd RUN01_EQUIL_QMMM
 2. bash run.sh
 3. cd ./../
+
+Note: 8 core
+  **** **** ******  **  PROGRAM STARTED AT               2024-08-15 14:44:32.384
+  **** **** ******  **  PROGRAM ENDED AT                 2024-08-15 14:52:48.852
 #---------------------------------------------------------------------
 # Usage (4th task: QM/MM Metadyanamics simulations: the reaction Zwitterionic-Neutral reaction in solution)
 1. RUN02_QMMM_MTD1
