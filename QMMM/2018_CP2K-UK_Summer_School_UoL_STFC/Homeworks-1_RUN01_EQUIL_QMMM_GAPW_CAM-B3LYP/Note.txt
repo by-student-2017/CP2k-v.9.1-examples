@@ -1,0 +1,3 @@
+
+tests/QS/regtest-hybrid-3
+https://github.com/cp2k/cp2k/tree/5f2f4146c96c590ebc1cc014ad082e6c44ad8d25/tests/QS/regtest-hybrid-3
