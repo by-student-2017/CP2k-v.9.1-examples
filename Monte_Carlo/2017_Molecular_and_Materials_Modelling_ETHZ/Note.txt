@@ -1,0 +1,10 @@
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+Monte Carlo simulations for the estimation of pair interactions
+https://www.cp2k.org/exercises:2017_ethz_mmm:mc_and_kmc
+
+curl https://www.cp2k.org/_media/exercises:2017_ethz_mmm:exercise_3.zip --output exercise_3.zip
+
+unzip exercise_3.zip
+
+#---------------------------------------------------------------------

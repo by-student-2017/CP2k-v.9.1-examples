@@ -1,0 +1,79 @@
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+    &NEIGHBOR_LISTS
+      GEO_CHECK OFF
+      VERLET_SKIN 4.0
+    &END NEIGHBOR_LISTS
+    &FORCEFIELD
+      &SPLINE
+        EMAX_SPLINE 10.0
+      &END
+      &CHARGE
+        ATOM O
+        CHARGE -0.8476
+      &END CHARGE
+      &CHARGE
+        ATOM H
+        CHARGE 0.4238
+      &END CHARGE
+      &BOND
+        ATOMS O  H
+        K      [nm^-2kjmol] 502080.0 
+        R0     [nm] 0.09572
+        KIND   G87
+      &END BOND
+      &BEND
+        ATOMS      H     O     H 
+        THETA0     [deg] 104.500 
+        K          [rad^2kjmol] 627.600
+        KIND   G87
+      &END BEND
+      &NONBONDED
+        &LENNARD-JONES 
+    	  ATOMS O O
+          EPSILON [kjmol] 0.650
+          SIGMA [angstrom] 3.166
+          RCUT 8.0
+        &END LENNARD-JONES
+      &LENNARD-JONES 
+  	  ATOMS O H
+          EPSILON 0.0
+          SIGMA 3.1655 
+          RCUT 8.0
+        &END LENNARD-JONES
+        &LENNARD-JONES 
+  	  ATOMS H H 
+          EPSILON 0.0
+          SIGMA 3.1655 
+          RCUT 8.0
+        &END LENNARD-JONES
+      &END NONBONDED
+    &END FORCEFIELD
+    &POISSON
+      &EWALD
+        EWALD_TYPE ewald
+        ALPHA .45
+        GMAX  19
+      &END EWALD
+    &END POISSON
+  &END MM
+  &SUBSYS
+    &CELL
+       ABC 13.5084309945 15.6001709945 14.7072509945
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./ice_ih_96.xyz
+      COORD_FILE_FORMAT xyz
+      CONNECTIVITY MOL_SET
+      &MOL_SET
+        &MOLECULE
+          NMOL 96
+          CONN_FILE_NAME topology_H2O.psf
+        &END
+      &END
+    &END TOPOLOGY
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+&END GLOBAL

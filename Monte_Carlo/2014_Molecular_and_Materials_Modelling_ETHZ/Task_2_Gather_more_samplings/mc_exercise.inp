@@ -1,0 +1,63 @@
+&GLOBAL
+  PROJECT H2O_MC
+  PROGRAM TMC         ! Tree Monte Carlo algorithm 
+  RUN_TYPE TMC
+  PRINT_LEVEL LOW     ! Low amount of information written in the output
+  #WALLTIME 1:00:00    ! The simulation will last one hour and then will stop 
+&END GLOBAL
+&MOTION
+  &TMC
+      RND_DETERMINISTIC 82 !<=== Change this number to obtain different samplings
+      PRINT_COORDS .FALSE. !this avoids the printing of all coordinates and file-size problems
+      GROUP_CC_SIZE 0
+      NUM_MC_ELEM 100000
+      ENERGY_FILE_NAME H2O_ice.inp ! refers to the auxiliary input for the force specification
+      TEMPERATURE 200
+      &MOVE_TYPE      MOL_TRANS       ! specifies "proton moves" for better sampling
+        SIZE          0.05
+        PROB          3
+      &END
+      &MOVE_TYPE      ATOM_TRANS
+        SIZE          0.01
+        PROB          3
+      &END
+      &MOVE_TYPE      MOL_ROT
+        SIZE          5
+        PROB          3
+      &END
+      &MOVE_TYPE      PROT_REORDER
+        PROB          5
+      &END
+      &MOVE_TYPE      VOL_MOVE
+        SIZE          0.1
+        PROB          1
+      &END
+      PRESSURE 0.01
+      ESIMATE_ACC_PROB .TRUE.        !accuracy parameters, do not change
+      RESTART_OUT 0
+      NUM_MV_ELEM_IN_CELL 5
+      PRINT_ONLY_ACC .FALSE.
+      &TMC_ANALYSIS
+        CLASSICAL_DIPOLE_MOMENTS
+	RESTART .FALSE.
+        &CHARGE
+           ATOM O
+           CHARGE -0.8476
+        &END CHARGE
+        &CHARGE
+           ATOM H
+           CHARGE  0.4238
+        &END CHARGE
+      &END TMC_ANALYSIS
+  &END TMC
+  !
+  !&PRINT
+  !  &TRAJECTORY
+  !    FILENAME = ./tmc_trajectory_T200.00.dip_cl
+  !    FORMAT = DCD
+  !    #&EACH
+  !    #  MD 1
+  !    #&END EACH
+  !  &END TRAJECTORY
+  !&END PRINT
+&END MOTION

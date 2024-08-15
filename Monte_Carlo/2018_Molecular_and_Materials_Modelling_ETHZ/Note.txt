@@ -1,0 +1,35 @@
+#---------------------------------------------------------------------
+# Usage
+1. cd MC
+2. bash run.sh
+
+#coverage 0.02
+#number of cycles 200
+#binding energy in eV 0.0
+#Temperature in K 200
+
+#---------------------------------------------------------------------
+# Usage
+1. cd KMC
+2. bash run.sh
+
+# TASK 1
+#update graph each steps 1000
+#coverage 0.3
+#number of steps 130000
+#temperature in K 300
+#diffusion barrier 0.1
+#binding barrier 0.1
+
+# TASK 2
+#update graph each steps 1000
+#coverage 0.3
+#number of steps 300000
+#temperature in K 300
+#diffusion barrier 0.3
+#binding barrier 0.4
+#---------------------------------------------------------------------
+Kinetic Monte Carlo simulations for the diffusion of molecules on a substrate
+https://www.cp2k.org/exercises:2018_ethz_mmm:kmc2018
+
+#---------------------------------------------------------------------
