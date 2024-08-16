@@ -79,6 +79,10 @@ vmd
 - https://www.youtube.com/@CP2K
 
 
+## Information
+- cp2k_how_to: https://github.com/ishikawa-group/cp2k_how_to/tree/main (Japanese)
+
+
 ## PC specs used for test
 - OS: Microsoft Windows 11 Home 64 bit
 - BIOS: 1.14.0

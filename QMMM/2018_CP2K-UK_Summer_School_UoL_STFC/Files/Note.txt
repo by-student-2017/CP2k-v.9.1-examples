@@ -1,0 +1,32 @@
+#---------------------------------------------------------------------
+data/xc_section 
+(https://github.com/cp2k/cp2k/tree/8d4226dad8dc96cee05f95d5704a19785a7b8e60/data/xc_section)
+
+Copy and paste the text from "&XC" to "&END XC" in the *.sec file listed on github into the cp2k input file.
+
+#---------------------------------------------------------------------
+The M06 family
+
+M06-L: Fast, suitable for transition metals, inorganic metal compounds, and organic metal compounds
+M06: Main group elements, organic metals, reaction kinetics, non-covalent bonds
+M06-2X: Main group elements, reaction kinetics
+M06-HF: Charge transfer TD-DFT, systems where self-interactions are an issue
+
+The M06 family shows very good response under dispersion forces, improving one of the biggest shortcomings of the DFT method.
+#---------------------------------------------------------------------
+Hybrid functional (M=meta)
+
+B3LYP, PBE0, M06 family
+#---------------------------------------------------------------------
+long-range corrected density functional
+  Long-distance corrections improve the description of electronic spectra, optical properties, orbital energies, etc.
+
+CAM-B3LYP, wB97X-V, wB97X-D3, wB97M-V, etc
+#---------------------------------------------------------------------
+double hybrid
+  HF exchange integrals and perturbation theory (PT2) Functionals including correlation energies
+
+wB97X-2LP, wB97X-2TQZ, etc
+#---------------------------------------------------------------------
+References: wikipedia
+#---------------------------------------------------------------------
