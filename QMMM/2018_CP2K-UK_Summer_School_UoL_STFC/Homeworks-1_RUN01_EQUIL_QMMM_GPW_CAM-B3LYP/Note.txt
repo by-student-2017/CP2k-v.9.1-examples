@@ -1,0 +1,3 @@
+
+data/xc_section/CAM-B3LYP.sec
+https://github.com/cp2k/cp2k/blob/8d4226dad8dc96cee05f95d5704a19785a7b8e60/data/xc_section/CAM-B3LYP.sec#L15
