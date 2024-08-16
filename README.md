@@ -89,6 +89,7 @@ vmd
 
 
 ## Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
+- Movie: https://www.youtube.com/watch?v=zilybdb8x-A
 - https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/
 - https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/cp2k/index.html
 - https://manual.cp2k.org/trunk/methods/qm_mm/builtin.html
