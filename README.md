@@ -88,6 +88,12 @@ vmd
 - cp2k_how_to: https://github.com/ishikawa-group/cp2k_how_to/tree/main (Japanese)
 
 
+## Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
+- https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/
+- https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/cp2k/index.html
+- https://manual.cp2k.org/trunk/methods/qm_mm/builtin.html
+
+
 ## PC specs used for test
 - OS: Microsoft Windows 11 Home 64 bit
 - BIOS: 1.14.0

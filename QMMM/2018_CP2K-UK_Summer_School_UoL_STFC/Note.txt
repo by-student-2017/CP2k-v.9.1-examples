@@ -57,3 +57,12 @@ Prepare_Solvated_Box
 Note: LEaP = PREP-LINK-EDIT-PARM of Amber module
 Note: LEaP: tLEaP or xLEaP
 #---------------------------------------------------------------------
+# Usage
+- https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
+- http://www.ncube.human.nagoya-u.ac.jp/jp/books/msbm/ambertools.html (Japanese)
+- https://helpdesk.t3.gsic.titech.ac.jp/manuals/amber/molecular/ (Japanese)
+- https://qiita.com/Ag_smith/items/430e9efb32a855d4c511 (Japanese)
+- https://qiita.com/Ag_smith/items/d2e86dda17f190a3dd0f (Japanese)
+- https://www.youtube.com/watch?v=JcfszGWrVt8
+- https://www.youtube.com/watch?v=SMZKdZsPxPw
+#---------------------------------------------------------------------
