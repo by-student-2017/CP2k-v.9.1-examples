@@ -5,43 +5,32 @@
     POTENTIAL_FILE_NAME GTH_POTENTIALS
     !
     &XC                        ! Parameters needed to compute the electronic exchange potentia
-      &VDW_POTENTIAL
-        POTENTIAL_TYPE PAIR_POTENTIAL
-        &PAIR_POTENTIAL
-          CALCULATE_C9_TERM .TRUE.
-          EPS_CN 1.0E-6
-          PARAMETER_FILE_NAME dftd3.dat
-          REFERENCE_C9_TERM .TRUE.
-          !          VERBOSE_OUTPUT .TRUE.
-          REFERENCE_FUNCTIONAL PBE
-          R_CUTOFF [angstrom] 16.
-          TYPE DFTD3 # DFTD3 or DFTD3(BJ)
-        &END PAIR_POTENTIAL
-      &END VDW_POTENTIAL
       &XC_FUNCTIONAL
-        &PBE
-        &END PBE
+        &HYB_GGA_XC_WB97X_D3
+        # "This setup incorporates D3 dispersion compensation." by Copilot
+        # wB97X-D3 range-separated functional
+        # https://manual.cp2k.org/trunk/CP2K_INPUT/ATOM/METHOD/XC/XC_FUNCTIONAL.html#cp2k-input-atom-method-xc-xc-functional-hyb-gga-xc-wb97x-d3
+          SCALE   1.00000000E+000
+          _ALPHA  1.00000000E+000
+          _BETA  -8.04272000E-001
+          _COS0   1.00000000E+000
+          _COS1   2.43326600E+000
+          _COS2  -1.54460080E+001
+          _COS3   1.76443900E+001
+          _COS4  -8.87949400E+000
+          _CSS0   1.00000000E+000
+          _CSS1  -4.86890200E+000
+          _CSS2   2.12957260E+001
+          _CSS3  -3.60208660E+001
+          _CSS4   1.91770180E+001
+          _CX0    8.04272000E-001
+          _CX1    6.98900000E-001
+          _CX2    5.08940000E-001
+          _CX3   -3.74490300E+000
+          _CX4    1.00607900E+001
+          _OMEGA  2.50000000E-001
+        &END HYB_GGA_XC_WB97X_D3
       &END XC_FUNCTIONAL
-      !
-      &XC_GRID
-        XC_DERIV NN50_SMOOTH
-        XC_SMOOTH_RHO NN50
-      &END XC_GRID
-      !
-      ! Another PBE-D3 setting
-      !&VDW_POTENTIAL
-      !  DISPERSION_FUNCTIONAL PAIR_POTENTIAL
-      !  &PAIR_POTENTIAL
-      !    PARAMETER_FILE_NAME dftd3.dat
-      !    REFERENCE_FUNCTIONAL PBE
-      !    TYPE DFTD3(BJ)
-      !    &PRINT_DFTD
-      !    &END PRINT_DFTD
-      !  &END PAIR_POTENTIAL
-      !&END VDW_POTENTIAL
-      !&XC_FUNCTIONAL PBE
-      !&END XC_FUNCTIONAL
-      !
     &END XC
     !
     &QS

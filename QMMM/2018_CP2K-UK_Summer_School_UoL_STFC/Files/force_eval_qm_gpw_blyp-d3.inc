@@ -12,7 +12,7 @@
           D3_SCALING 1.0e0 1.139e0 1.683e0
           PARAMETER_FILE_NAME dftd3.dat
           R_CUTOFF 20.e0
-          TYPE DFTD3
+          TYPE DFTD3 # DFTD3 or DFTD3(BJ)
           &PRINT_DFTD
           &END PRINT_DFTD
         &END PAIR_POTENTIAL

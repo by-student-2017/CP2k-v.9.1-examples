@@ -46,9 +46,14 @@ wget http://cp2k.org/static/exercises/2015_cecam_tutorial/UREA.tar.xz
 tar xvf UREA.tar.xz
 
 #---------------------------------------------------------------------
+Homeworks-1_RUN01_EQUIL_QMMM_GPW_wB97X-D3
+ Since there was no example code on Github, 
+ I am not confident about the reliability of "Homeworks-1_RUN01_EQUIL_QMMM_GPW_wB97X-D3".
+
+#---------------------------------------------------------------------
 # Ambertools (https://ambermd.org/) (GPL and LGPL licenses)
 Prepare_Molecules: leapcomm
 Prepare_Solvated_Box
-Note: LEaP = PREP-LINK-EDIT-PARM (LINK、EDIT and PARM) of Amber module
+Note: LEaP = PREP-LINK-EDIT-PARM of Amber module
 Note: LEaP: tLEaP or xLEaP
 #---------------------------------------------------------------------

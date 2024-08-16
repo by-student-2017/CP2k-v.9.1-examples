@@ -1,0 +1,3 @@
+
+XC_FUNCTIONAL
+https://manual.cp2k.org/trunk/CP2K_INPUT/ATOM/METHOD/XC/XC_FUNCTIONAL.html#cp2k-input-atom-method-xc-xc-functional-hyb-gga-xc-wb97x-d3
