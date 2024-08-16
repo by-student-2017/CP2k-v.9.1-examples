@@ -46,12 +46,12 @@
 &END FORCE_EVAL
 
 &GLOBAL
-  PROJECT Cytochrome-C_md
+  PROJECT ubiquitin_md
   RUN_TYPE MD
 &END GLOBAL
 
 &EXT_RESTART
-  RESTART_FILE_NAME Cytochrome-C_mini-1.restart
+  RESTART_FILE_NAME ubiquitin_mini-1.restart
   RESTART_DEFAULT F
   RESTART_POS T
 &END EXT_RESTART
@@ -74,7 +74,7 @@
   &PRINT
     &TRAJECTORY
       #FILENAME = trajectory.xyz
-      FILENAME = Cytochrome-C_mini-md-nvt-1.xyz
+      FILENAME = ubiquitin_md-nvt-1.xyz
       LOG_PRINT_KEY = TRUE
       &EACH
         MD = 100

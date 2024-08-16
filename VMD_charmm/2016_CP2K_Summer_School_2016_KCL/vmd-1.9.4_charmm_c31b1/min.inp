@@ -42,7 +42,7 @@
 &END FORCE_EVAL
 
 &GLOBAL
-  PROJECT Cytochrome-C_mini
+  PROJECT ubiquitin_mini
   RUN_TYPE GEO_OPT
 &END GLOBAL
 
