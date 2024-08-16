@@ -52,6 +52,7 @@ vmd
 ```
 - check vmd adress: which vmd
 - Another setting: ./configure LINUXAMD64 OPENGL FLTK TK LIBTACHYON NETCDF COLVARS TCL PYTHON PTHREADS NUMPY SILENT NOSTATICPLUGINS CXX11
+- Since cp2k v.9.1 can only read one charmm file, please use "plugins/noarch/tcl/readcharmmtop1.1" from vmd-1.9.2.
 
 
 ## Original files
