@@ -19,5 +19,12 @@
 - (Homeworks-1_RUN01_EQUIL_QMMM_GPW_BLYP: QM=GPW (XC=CAM-B3LYP, etc), MM=AMBER, GEEP method)
 - 2019_Introduction_to_CP2K_GU
 
+
+## Gromacs QM/MM
+- https://www.cp2k.org/tools:gromacs
+- Youtube: https://www.youtube.com/@BioExcelCoE
+- Force field comparison: Amber, GROMOS, CHARMM, OPLS (https://www.youtube.com/watch?v=AtDOJnVNC18)
+
+
 ## Buckingham database
 - https://www5.hp-ez.com/hp/calculations/page515
