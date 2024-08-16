@@ -25,6 +25,11 @@ Note: 8 core
 Note: 8 core
   **** **** ******  **  PROGRAM STARTED AT               2024-08-15 14:44:32.384
   **** **** ******  **  PROGRAM ENDED AT                 2024-08-15 14:52:48.852
+  
+Note: Homeworks
+  I searched CP2k's github and mainly collected exchange correlation terms for which *.inp files are prepared.
+  "-D2" is used when "-D3" takes too long. CUTOFF and REL_CUTOFF vary depending on the system and constituent elements, 
+  so please find the optimal value. 
 #---------------------------------------------------------------------
 # Usage (4th task: QM/MM Metadyanamics simulations: the reaction Zwitterionic-Neutral reaction in solution)
 1. RUN02_QMMM_MTD1
