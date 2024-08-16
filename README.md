@@ -79,6 +79,10 @@ vmd
 - https://www.youtube.com/@CP2K
 
 
+## data/xc_section in CP2k github
+- Copy and paste the text from "&XC" to "&END XC" in the *.sec file listed on github into the cp2k input file.
+
+
 ## Information
 - cp2k_how_to: https://github.com/ishikawa-group/cp2k_how_to/tree/main (Japanese)
 
