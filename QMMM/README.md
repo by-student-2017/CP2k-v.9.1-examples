@@ -14,7 +14,7 @@
 - 2017_Molecular_and_Materials_Modelling_ETHZ
 - 2018_Molecular_and_Materials_Modelling_ETHZ
 
-## QM/MM study of UREA Zwitterion in water (Extended exercises: QM/MM) (UREA=QM=PM6, Water=MM=AMBER form ambertools)
+## QM/MM study of UREA Zwitterion in water (Extended exercises: QM/MM) (UREA=QM=PM6, Water=MM=AMBER from ambertools)
 - 2018_CP2K-UK_Summer_School_UoL_STFC
 - (Homeworks-1_RUN01_EQUIL_QMMM_GPW_BLYP: QM=GPW (XC=CAM-B3LYP, etc), MM=AMBER, GEEP method)
 - 2019_Introduction_to_CP2K_GU
