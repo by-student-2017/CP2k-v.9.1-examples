@@ -57,3 +57,7 @@ AmberTools21: ReaxFF
 AmberTools20: FF19SB, cmake build
 AmberTools17: Lipid17, DFTB(including slater-koster files of mio-1-1 and 3ob-3-1)
 #-------------------------------------------------------------------------------
+# References
+- https://qiita.com/Ag_smith/items/d2e86dda17f190a3dd0f (Japanese)
+- https://qiita.com/Ag_smith/items/9526142858f8ea5248c1 (Japanese)
+#-------------------------------------------------------------------------------
