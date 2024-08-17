@@ -49,7 +49,7 @@ Note: Not "amber21_src", but "amber20_src".
 6. cd amber20_src
 7. mkdir bin
 8. AMBERHOME=`pwd`
-9. ./configure --prefix=$AMBER_PREFIX/bin --with-system-zlib --disable-multilib --disable-bootstrap --enable-languages=c,c++,fortran
+9. ./configure --prefix=$AMBERHOME/bin --with-system-zlib --disable-multilib --disable-bootstrap --enable-languages=c,c++,fortran
 10. make -j8
 11. make install
 #-------------------------------------------------------------------------------
