@@ -2,15 +2,17 @@
 Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
 https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 #-------------------------------------------------------------------------------
-# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
-2. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
-3. wget https://ambermd.org/downloads/AmberTools22jlmrcc.tar.bz2
-4. tar xvf AmberTools22jlmrcc.tar.bz2
-5. cd amber22_src/build
-6. ./run_cmake
-7. make install
-8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
+# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11))
+1. sudo apt update
+2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+4. wget https://ambermd.org/downloads/AmberTools22jlmrcc.tar.bz2
+5. tar xvf AmberTools22jlmrcc.tar.bz2
+6. cd amber22_src/build
+7. ./run_cmake
+8. make install
+9. AMBER_PREFIX=$(dirname $(dirname `pwd`))
+10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 #-------------------------------------------------------------------------------
 # AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 2. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
