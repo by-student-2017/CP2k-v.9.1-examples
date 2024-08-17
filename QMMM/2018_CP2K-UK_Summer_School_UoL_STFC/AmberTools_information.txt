@@ -33,7 +33,6 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 Note: Not "amber23_src", but "amber22_src".
-Note: In my case, MPI:OFF, OpenMP:OFF, CUDA:OFF. Why ? 
 #-------------------------------------------------------------------------------
 # AmberTools22 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 1. sudo apt update
