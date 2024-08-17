@@ -7,7 +7,7 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 2. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
 3. wget https://ambermd.org/downloads/AmberTools21jlmrcc.tar.bz2
 4. tar xvf AmberTools21jlmrcc.tar.bz2
-5. cd amber21_src/build
+5. cd amber20_src/build
 6. ./run_cmake
 7. make install
 8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
