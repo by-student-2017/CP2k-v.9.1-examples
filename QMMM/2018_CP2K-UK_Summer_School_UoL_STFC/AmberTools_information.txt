@@ -9,10 +9,10 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 4. wget https://ambermd.org/downloads/AmberTools22jlmrcc.tar.bz2
 5. tar xvf AmberTools22jlmrcc.tar.bz2
 6. cd amber22_src/build
-7. ./run_cmake -DCOMPILER=GNU -DMPI=TRUE -DMPI_Fortran_LINK_FLAGS=-Wl,-ld_classic -DCUDA=FALSE -DBUILD_GUI=FALSE -DINSTALL_TESTS=TRUE
+7. AMBER_PREFIX=$(dirname $(dirname `pwd`))
+8. ./run_cmake $AMBER_PREFIX/amber24_src -DCOMPILER=GNU -DMPI=TRUE -DMPI_Fortran_LINK_FLAGS=-Wl,-ld_classic -DCUDA=FALSE -DBUILD_GUI=FALSE -DINSTALL_TESTS=TRUE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber24
 8. make -j8 install
-9. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
+10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber24/amber.sh" >> ~/.bashrc
 #-------------------------------------------------------------------------------
 # AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
 1. sudo apt update
