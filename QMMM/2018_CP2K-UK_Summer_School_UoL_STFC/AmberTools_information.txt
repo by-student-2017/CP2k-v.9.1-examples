@@ -11,7 +11,8 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 6. ./run_cmake
 7. make install
 8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber21/amber.sh" >> ~/.bashrc
+9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber20/amber.sh" >> ~/.bashrc
+# Note: Not "amber21_src", but "amber20_src"
 #-------------------------------------------------------------------------------
 # AmberTools20 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 1. sudo apt update
