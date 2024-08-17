@@ -1,0 +1,27 @@
+#-------------------------------------------------------------------------------
+Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
+https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
+#-------------------------------------------------------------------------------
+# Ambertools (GPL) download
+1. (go to) https://ambermd.org/GetAmber.php#ambertools
+2. (input Name and Institution)
+3. (you can get ambertools)
+#-------------------------------------------------------------------------------
+# Ambertools (GPL) installation (https://ambermd.org/InstUbuntu.php) (Ubuntu)
+1. cd $HOME
+2. sudo apt update
+3. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
+4. tar xvf AmberTools24.tar.bz2
+5. cd amber24_src/build
+6. ./run_cmake
+7. make install
+8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
+9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber24/amber.sh" >> ~/.bashrc
+-------------------------------------------------------------------
+# Older version: github (https://github.com/GoHypernet/Galileo-AmberTools-Framework)
+AmberTools19.tar.bz2
+AmberTools20.tar.bz2
+
+# Links (https://github.com/by-student-2017/AmberTools)
+-------------------------------------------------------------------
+#
