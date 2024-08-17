@@ -47,10 +47,11 @@ Note: Not "amber21_src", but "amber20_src".
 4. wget https://ambermd.org/downloads/AmberTools20jlmrcc.tar.bz2
 5. tar xvf AmberTools20jlmrcc.tar.bz2
 6. cd amber20_src
-7. ./contrib/download_prerequisites
-8. ./configure --with-system-zlib --disable-multilib --disable-bootstrap --enable-languages=c,c++,fortran
-9. make -j8
-10. make install
+7. mkdir bin
+8. AMBERHOME=`pwd`
+9. ./configure --prefix=$AMBER_PREFIX/bin --with-system-zlib --disable-multilib --disable-bootstrap --enable-languages=c,c++,fortran
+10. make -j8
+11. make install
 #-------------------------------------------------------------------------------
 # Ambertools (GPL) download
 1. (go to) https://ambermd.org/GetAmber.php#ambertools
