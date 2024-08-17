@@ -40,19 +40,6 @@ Note: Not "amber21_src", but "amber20_src".
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber20/amber.sh" >> ~/.bashrc
 #-------------------------------------------------------------------------------
-# AmberTools20 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
-1. sudo apt update
-2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
-4. wget https://ambermd.org/downloads/AmberTools20jlmrcc.tar.bz2
-5. tar xvf AmberTools20jlmrcc.tar.bz2
-6. cd amber20_src
-7. mkdir bin
-8. AMBERHOME=`pwd`
-9. ./configure --prefix=$AMBERHOME/bin --with-system-zlib --disable-multilib --disable-bootstrap --enable-languages=c,c++,fortran
-10. make -j8
-11. make install
-#-------------------------------------------------------------------------------
 # Ambertools (GPL) download
 1. (go to) https://ambermd.org/GetAmber.php#ambertools
 2. (input Name and Institution)
