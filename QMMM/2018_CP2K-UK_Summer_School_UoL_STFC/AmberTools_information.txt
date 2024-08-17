@@ -2,8 +2,17 @@
 Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
 https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 #-------------------------------------------------------------------------------
-# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11))
-1. sudo apt update
+# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
+2. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
+3. wget https://ambermd.org/downloads/AmberTools22jlmrcc.tar.bz2
+4. tar xvf AmberTools22jlmrcc.tar.bz2
+5. cd amber22_src/build
+6. ./run_cmake
+7. make install
+8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
+9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
+#-------------------------------------------------------------------------------
+# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 2. sudo apt -y install wget gfortran gcc cmake libopenmpi-dev
 3. wget https://ambermd.org/downloads/AmberTools21jlmrcc.tar.bz2
 4. tar xvf AmberTools21jlmrcc.tar.bz2
@@ -24,20 +33,6 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 7. make install
 8. AMBER_PREFIX=$(dirname $(dirname `pwd`))
 9. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber20/amber.sh" >> ~/.bashrc
-
-CMake Error at cmake/PythonBuildConfig.cmake:129 (message):
-  Failed to determine relative PYTHONPATH: python command failed with error
-  Traceback (most recent call last):
-
-    File "<string>", line 1, in <module>
-
-  KeyError: 'unix_prefix'
-
-Call Stack (most recent call first):
-  CMakeLists.txt:122 (include)
-
-
--- Configuring incomplete, errors occurred!
 #-------------------------------------------------------------------------------
 # Ambertools (GPL) download
 1. (go to) https://ambermd.org/GetAmber.php#ambertools
