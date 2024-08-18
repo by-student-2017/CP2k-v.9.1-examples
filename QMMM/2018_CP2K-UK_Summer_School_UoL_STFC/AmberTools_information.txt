@@ -20,7 +20,7 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 Note: Not "amber23_src", but "amber22_src".
 #-------------------------------------------------------------------------------
-# AmberTools23 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
+# AmberTools23 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
 3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
@@ -46,7 +46,7 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 #-------------------------------------------------------------------------------
-# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
+# AmberTools21 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 # (no setting: GUI, python, MPI, OpenMP, GPU)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
@@ -59,6 +59,11 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber20/amber.sh" >> ~/.bashrc
 Note: Not "amber21_src", but "amber20_src".
+CMake Error at cmake/3rdPartyTools.cmake:84 (message):
+  3rd party program readline is not bundled and cannot be built inside Amber.
+Call Stack (most recent call first):
+  cmake/3rdPartyTools.cmake:189 (set_3rdparty)
+  CMakeLists.txt:190 (include)
 #-------------------------------------------------------------------------------
 # AmberTools20 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed)
 # (no setting: GUI, python, MPI, OpenMP, GPU)
