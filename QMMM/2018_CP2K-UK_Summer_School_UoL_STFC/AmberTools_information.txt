@@ -23,7 +23,7 @@ Note: Not "amber23_src", but "amber22_src".
 # AmberTools23 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
 4. wget https://ambermd.org/downloads/AmberTools23_rc6.tar.bz2
 5. tar xvf AmberTools23_rc6.tar.bz2
 6. cd amber22_src/build
@@ -37,7 +37,7 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 # AmberTools22 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
 4. wget https://ambermd.org/downloads/AmberTools22jlmrcc.tar.bz2
 5. tar xvf AmberTools22jlmrcc.tar.bz2
 6. cd amber22_src/build
@@ -50,7 +50,7 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 # (no setting: GUI, python, MPI, OpenMP, GPU)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
 4. wget https://ambermd.org/downloads/AmberTools21jlmrcc.tar.bz2
 5. tar xvf AmberTools21jlmrcc.tar.bz2
 6. cd amber20_src/build
@@ -64,7 +64,7 @@ Note: Not "amber21_src", but "amber20_src".
 # (no setting: GUI, python, MPI, OpenMP, GPU)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
 4. wget https://ambermd.org/downloads/AmberTools20jlmrcc.tar.bz2
 5. tar xvf AmberTools20jlmrcc.tar.bz2
 6. cd amber20_src/build
