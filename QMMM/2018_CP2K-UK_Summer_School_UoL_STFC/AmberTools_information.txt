@@ -10,12 +10,12 @@ https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html
 # AmberTools23 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11))
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
-3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
+3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
 4. wget https://ambermd.org/downloads/AmberTools23_rc6.tar.bz2
 5. tar xvf AmberTools23_rc6.tar.bz2
 6. cd amber22_src/build
 7. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-8. cmake $AMBER_PREFIX/amber22_src -DCOMPILER=GNU -DMPI=TRUE -DOPENMP=TRUE -DBUILD_GUI=FALSE -DCUDA=TRUE -DBUILD_QUICK=TRUE -DINSTALL_TESTS=TRUE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber22
+8. cmake $AMBER_PREFIX/amber22_src -DCOMPILER=GNU -DMPI=FALSE -DOPENMP=TRUE -DBUILD_GUI=FALSE -DCUDA=TRUE -DBUILD_QUICK=TRUE -DINSTALL_TESTS=TRUE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber22
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 Note: Not "amber23_src", but "amber22_src".
