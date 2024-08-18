@@ -74,7 +74,7 @@ Call Stack (most recent call first):
 5. tar xvf AmberTools20jlmrcc.tar.bz2
 6. cd amber20_src/build
 7. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-8. cmake $AMBER_PREFIX/amber20_src -DCOMPILER=GNU -DMPI=FALSE -DOPENMP=FALSE -DBUILD_GUI=FALSE -DBUILD_PYTHON=FALSE -DCUDA=FALSE -DBUILD_QUICK=FALSE -DINSTALL_TESTS=FALSE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 -Wno-dev
+8. cmake $AMBER_PREFIX/amber20_src -DCOMPILER=GNU -DMPI=FALSE -DOPENMP=FALSE -DBUILD_GUI=FALSE -DBUILD_PYTHON=FALSE -DOWNLOAD_MINICONDA=FALSE -DCUDA=FALSE -DBUILD_QUICK=FALSE -DINSTALL_TESTS=FALSE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber20 -Wno-dev
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber20/amber.sh" >> ~/.bashrc
 Note: Error: Rank mismatch between actual argument at (1) and actual argument at (2) (scalar and rank-1)
