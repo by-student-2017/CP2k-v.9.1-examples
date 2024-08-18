@@ -34,7 +34,7 @@ Note: Not "amber23_src", but "amber22_src".
 Note: Not "amber23_src", but "amber22_src".
 Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 #-------------------------------------------------------------------------------
-# AmberTools22 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
+# AmberTools22 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (success ?)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
 3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client python3-mpi4py
