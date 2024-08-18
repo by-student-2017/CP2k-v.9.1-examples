@@ -60,7 +60,7 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 Note: Not "amber21_src", but "amber20_src".
 #-------------------------------------------------------------------------------
 # AmberTools20 (GPL) (Ubuntu 22.04 LTS or WSL2 (windows11)) (failed ?)
-# (No: GUI, python)
+# (no setting: GUI, python, MPI, OpenMP, GPU)
 1. sudo apt update
 2. sudo apt -y install tcsh make gcc gfortran flex bison patch bc wget xorg-dev libz-dev libbz2-dev
 3. sudo apt -y install openmpi-bin libopenmpi-dev openssh-client
