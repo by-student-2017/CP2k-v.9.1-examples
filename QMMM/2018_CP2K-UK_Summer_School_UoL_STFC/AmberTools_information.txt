@@ -42,7 +42,7 @@ Note: MPI:OFF, OpenMP:OFF, CUDA:OFF
 5. tar xvf AmberTools22jlmrcc.tar.bz2
 6. cd amber22_src/build
 7. AMBER_PREFIX=$(dirname $(dirname `pwd`))
-8. cmake $AMBER_PREFIX/amber22_src -DCOMPILER=GNU -DMPI=TRUE -DOPENMP=TRUE -DBUILD_GUI=FALSE -DCUDA=FALSE -DBUILD_QUICK=FALSE -DINSTALL_TESTS=TRUE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber22
+8. cmake $AMBER_PREFIX/amber22_src -DCOMPILER=GNU -DMPI=FALSE -DOPENMP=FALSE -DBUILD_GUI=FALSE -DBUILD_PYTHON=FALSE -DOWNLOAD_MINICONDA=FALSE -DCUDA=FALSE -DBUILD_QUICK=FALSE -DINSTALL_TESTS=FALSE -DNCCL=FALSE -DCMAKE_INSTALL_PREFIX=$AMBER_PREFIX/amber22
 9. make -j8 install
 10. echo 'export PATH=$PATH'":${AMBER_PREFIX}/amber22/amber.sh" >> ~/.bashrc
 #-------------------------------------------------------------------------------
