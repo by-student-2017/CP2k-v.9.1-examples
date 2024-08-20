@@ -95,7 +95,7 @@ vmd
 - https://manual.cp2k.org/trunk/methods/qm_mm/builtin.html
 
 
-## Ambertools information
+## AmberTools information (Installation, etc)
 - https://github.com/by-student-2017/AmberTools
 
 
