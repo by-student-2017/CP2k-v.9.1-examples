@@ -63,10 +63,10 @@
 19. sander -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
 
 # Analysis of the MM equilibration simulation
-19. $AMBERHOME/bin/process_mdout.perl heat_classical.out equil_classical.out
+19. process_mdout.perl heat_classical.out equil_classical.out
 
 # Adding Lennard-Jones parameters using parmed
-20. $AMBERHOME/bin/parmed system.parm7
+20. parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -76,7 +76,7 @@
   quit
   
 Or
-  $AMBERHOME/bin/parmed system.parm7
+  parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -84,13 +84,13 @@ Or
   changeLJSingleType :TYR@HH 0.3019 0.047
   outparm system_LJ_mod.parm7
   quit
-21. $AMBERHOME/bin/parmed system.parm7 -i parmed.in
+21. parmed system.parm7 -i parmed.in
+22. cpptraj -p system_LJ_mod.parm7
   trajin system.equil.rst7
   autoimage
   trajout system.equil0.rst7 inpcrd
   go 
   quit
-22. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
 
 Running a QM/MM monitorisation run
 23. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out

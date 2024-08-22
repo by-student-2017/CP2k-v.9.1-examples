@@ -80,12 +80,12 @@ Or
   outparm system_LJ_mod.parm7
   quit
 22. $AMBERHOME/bin/parmed system.parm7 -i parmed.in
+23. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
   trajin system.equil.rst7
   autoimage
   trajout system.equil0.rst7 inpcrd
   go 
   quit
-23. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
 
 Running a QM/MM monitorisation run
 24. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out
