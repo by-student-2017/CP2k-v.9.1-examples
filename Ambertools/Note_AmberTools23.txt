@@ -6,6 +6,8 @@
 - https://github.com/by-student-2017/AmberTools
 (In my case with AT24, the command "antechamber" failed. It might be worth trying with AT22 or AT23.)
 #------------------------------------------------------------------------------------------
+# AmberTools23
+
 # installation files_ambertools4cp2k file
 1. git clone https://git.ecdf.ed.ac.uk/sllabres/files_ambertools4cp2k.git
 2. cd files_ambertools4cp2k
