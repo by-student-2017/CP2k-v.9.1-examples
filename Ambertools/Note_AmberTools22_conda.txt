@@ -13,12 +13,13 @@
 # ambertools22, propka, and openbabel (installation)
 #----------
 1. conda create --name AmberTools22 -y
-2. bash
-3. conda activate AmberTools22
-4. conda install -c conda-forge ambertools=22 -y
-5. conda install -c conda-forge propka -y
-6. conda install -c conda-forge openbabel -y
-7. conda update -c conda-forge ambertools -y
+2. conda init
+3. bash
+4. conda activate AmberTools22
+5. conda install -c conda-forge ambertools=22 -y
+6. conda install -c conda-forge propka -y
+7. conda install -c conda-forge openbabel -y
+8. conda update -c conda-forge ambertools -y
 #----------
 
 #------------------------------------------------------------------------------------------

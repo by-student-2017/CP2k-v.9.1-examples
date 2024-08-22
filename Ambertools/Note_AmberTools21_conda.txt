@@ -2,7 +2,7 @@
 # Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
 # https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/
 #------------------------------------------------------------------------------------------
-# AmberTools23, Installation (conda) (Ubuntu 22.04 LTS or WLS2)
+# AmberTools21, Installation (conda) (Ubuntu 22.04 LTS or WLS2)
 
 # miniconda (installation)
 #----------
@@ -10,13 +10,13 @@
 2. bash Miniconda3-latest-Linux-x86_64.sh
 #----------
 
-# ambertools23, propka, and openbabel (installation)
+# ambertools21, propka, and openbabel (installation)
 #----------
-1. conda create --name AmberTools23 -y
+1. conda create --name AmberTools21 -y
 2. conda init
 3. bash
-4. conda activate AmberTools23
-5. conda install -c conda-forge ambertools=23 -y
+4. conda activate AmberTools21
+5. conda install -c conda-forge ambertools=21 -y
 6. conda install -c conda-forge propka -y
 7. conda install -c conda-forge openbabel -y
 8. conda update -c conda-forge ambertools -y
@@ -24,7 +24,7 @@
 
 #------------------------------------------------------------------------------------------
 # Usage
-1. conda activate AmberTools23
+1. conda activate AmberTools21
 
 # installation files_ambertools4cp2k file
 2. curl https://git.ecdf.ed.ac.uk/sllabres/files_ambertools4cp2k/-/archive/master/files_ambertools4cp2k-master.tar.gz --output files_ambertools4cp2k-master.tar.gz
@@ -37,7 +37,7 @@
 7. grep "HOH" 5r84.pdb > waters.pdb
 
 # Assessing the protonation states of the protein and preparing the protein for AmberTools
-8. propka3 protein.pdb 
+8. propka3 protein.pdb
 9. cat protein.pka
 
 # Note: When preparing a protein, we have to compare each one of the predicted pKa values with 
