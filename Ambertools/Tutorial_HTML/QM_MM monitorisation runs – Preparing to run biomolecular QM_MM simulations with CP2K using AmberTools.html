@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/09-qmmm/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-07-02 13:22:59 +0000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="https://bioexcel.github.io/2020_06_09_online_ambertools4cp2k">
+    <link rel="stylesheet" type="text/css" href="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/lesson.css">
+    <link rel="stylesheet" type="text/css" href="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/syntax.css">
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-128.png" sizes="128x128">
+    <meta name="application-name" content=" - Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="../assets/favicons//mstile-144x144.png">
+    <meta name="msapplication-square70x70logo" content="../assets/favicons//mstile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="../assets/favicons//mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons//mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="../assets/favicons//mstile-310x310.png">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+  <title>
+  QM/MM monitorisation runs – Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
+  </title>  
+
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1079.0" data-gr-ext-installed="">
+
+    
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+
+      
+      <a class="navbar-brand" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/setup.html">Setup</a></li>
+
+        
+        <li class="dropdown">
+          <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/01-overview/index.html">Overview of AmberTools20</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/02-setup/index.html">Log in and environment set up in ARCHER</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/03-prepPDB/index.html">Preparing your PDB file</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/04-parameters/index.html">Parameterising your ligands</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/05-leap/index.html">System set up</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/06-minimisation/index.html">Energy minimisation</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/07-therm/index.html">Thermalisation and Density equilibration</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html">Adding missing LJ parameters and recentering coordinates</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/09-qmmm/index.html">QM/MM monitorisation runs</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/reference.html">Reference</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/amber/index.html">Amber Input Files</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/cp2k/index.html">CP2K Input Files</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/LICENSE.html">License</a></li>
+	
+	<li><a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/edit/gh-pages/_episodes/09-qmmm.md" data-checker-ignore="">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/">Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">QM/MM monitorisation runs</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 25 min
+      <br>
+      <strong>Exercises:</strong> 0 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>What is CP2K?</p>
+</li>
+	
+	<li><p>What is the first step of a QM/MM simulation?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Choose the QM region effectively</p>
+</li>
+	
+	<li><p>Overview of a simple CP2K input file.</p>
+</li>
+	
+	<li><p>Submit a simple CP2K monitorisation calculation.</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<h2 id="moving-from-mm-to-qmmm">Moving from MM to QM/MM…</h2>
+
+<p>We want to address a few points before we start running a QM/MM simulation.</p>
+
+<h4 id="what-is-cp2k">What is CP2K?</h4>
+
+<p><a href="https://www.cp2k.org/">CP2K</a> is a quantum chemistry and solid state physics software package that can perform atomistic simulations of solid state, liquid, molecular, periodic, material, crystal, and biological systems. CP2K provides a general framework for different modeling methods such as DFT using the mixed Gaussian and plane waves approaches GPW and GAPW. Supported theory levels include DFTB, LDA, GGA, MP2, RPA, semi-empirical methods (AM1, PM3, PM6, RM1, MNDO, …), and classical force fields (AMBER, CHARMM, …). CP2K can do simulations of molecular dynamics, metadynamics, Monte Carlo, Ehrenfest dynamics, vibrational analysis, core level spectroscopy, energy minimization, and transition state optimization using NEB or dimer method.</p>
+
+<p>You can find more information on its usage <a href="https://manual.cp2k.org/">here</a>.</p>
+
+<h4 id="which-theory-level-are-we-going-to-use">Which theory level are we going to use?</h4>
+
+<p>We will use of <a href="https://en.wikipedia.org/wiki/PM3_(chemistry)">PM3</a>, a semiempirical method, to define the QM region and the amended Amber forcefield to define the MM subsystem. We will run 500fs (1000steps * 0.5 fs) of simulation on an ARCHER node.</p>
+
+<h4 id="how-do-we-define-the-qm-region">How do we define the QM region?</h4>
+
+<p>In this example, we are going to define the ligand GWS as the QM region. This implies 34 QM atoms embedded within a MM envinronment. Despite this is a simple and convenient example, it is not uncommon. It also has the advantage that we do not need to split any covalent bonds between the QM subsystem and the MM subsystem. This topic will be covered in future sessions.</p>
+
+<hr>
+
+<h2 id="running-a-qmmm-monitorisation-run">Running a QM/MM monitorisation run</h2>
+
+<p>After we have equilibrated the system using molecular mechanics, we need to equilibrate the system running the chosen QM/MM approach. It is important to run a monitorisation run before any production run to make sure our system behaves as expected.</p>
+
+<p>This step might take some time, so we will also submit the calculation to the ARCHER short queue:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>qsub send_qmmm_equil.pbs
+</code></pre></div></div>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>!/bin/bash --login
+#PBS -N QM_equil
+
+#PBS -q short
+#PBS -l select=1
+#PBS -l walltime=00:20:00
+
+# Make sure you change this to your budget code
+#PBS -A y14-amber2020
+
+module load cp2k/7.1
+
+# Move to directory that script was submitted from
+export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
+cd $PBS_O_WORKDIR
+
+aprun -n 24 cp2k.popt -i cp2k_qmmm_equil.inp &gt; cp2k_qmmm_equil.out
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="overview-of-the-cp2k-input">Overview of the CP2K input</h2>
+
+<p>In the meantime, we will go over the CP2K input file, <code class="language-plaintext highlighter-rouge">cp2k_qmmm_equil.inp</code>. It is divided in different sections that we will explain separately:</p>
+
+<h4 id="global-section"><code class="language-plaintext highlighter-rouge">&amp;GLOBAL</code> section:</h4>
+
+<p>It contains general information regarding which kind of simulation to perform.</p>
+
+<h4 id="force_eval-section"><code class="language-plaintext highlighter-rouge">&amp;FORCE_EVAL</code> section:</h4>
+
+<p>It contains the parameters needed to calculate energy and forces and describe the system you want to analyze. It has several important subsections:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&amp;DFT</code>, which specifies the parameter needed by LCAO DFT programs</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;MM</code>, which includes the parameters to run a MM calculation (such as the forcefield). Here we have to manually edit the &amp;MM subsection PARM_FILE_NAME and add the modified topology name system_LJ_mod.parm7.</li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;SUBSYS</code>, which specifies the information of the system: coordinates, topology, molecules and cell. Here we have to manually edit the following sections:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">&amp;CELL</code> subsection with the simulation box size: ABC and ALPHA_BETA_GAMMA.</li>
+      <li><code class="language-plaintext highlighter-rouge">&amp;TOPOLOGY</code> subsection with the Amber topology and coordinate files.</li>
+      <li>We must add any atomtype that CP2K doesn’t recognise such as the counterions (Na+ and NS atom type) and specify their element.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">&amp;QMMM</code>, which contains all the information on the QM/MM calculation. This includes the definition of QM region which we must specify manually.</li>
+</ul>
+
+<h4 id="motion-section"><code class="language-plaintext highlighter-rouge">&amp;MOTION</code> section:</h4>
+<p>It contains all the parameters for the MD run (or motion of nuclei).</p>
+
+<hr>
+
+<h2 id="sections-to-modify-from-the-cp2k-input-file">Sections to modify from the CP2K input file</h2>
+
+<p>We have shared a working version of the CP2K input file ( <code class="language-plaintext highlighter-rouge">cp2k_qmmm_equil.inp</code>) with some values from a previous run, but it is important that you add the following information from your input files.</p>
+
+<h4 id="amber-topology-and-coordinate-files">Amber topology and coordinate files</h4>
+
+<p>We have to add the name of the amber topology and coordinate files in the sections:</p>
+
+<p><code class="language-plaintext highlighter-rouge">&amp;FORCE_EVAL &gt; &amp;SUBSYS &gt; &amp;TOPOLOGY</code></p>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &amp;SUBSYS                        ! a subsystem: coordinates, topology, molecules and cell 
+    . . .
+    &amp;TOPOLOGY                    ! Topology for classical runs
+      CONN_FILE_FORMAT AMBER     
+      CONN_FILE_NAME system_LJ_mod.parm7
+      COORD_FILE_FORMAT CRD
+      COORD_FILE_NAME system.equil0.rst7
+    &amp;END TOPOLOGY  
+    . . .
+  &amp;END SUBSYS
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">&amp;FORCE_EVAL &gt; &amp;MM &gt; &amp;FORCEFIELD</code></p>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &amp;MM    
+    . . .                        ! Parameters to run a MM calculation
+    &amp;FORCEFIELD                  ! Set up a force_field for the classical calculations
+      PARMTYPE AMBER             
+      PARM_FILE_NAME system_LJ_mod.parm7   
+    &amp;END FORCEFIELD
+    . . .
+  &amp;END MM
+</code></pre></div></div>
+
+<h4 id="box-size-on-cell">Box size on <code class="language-plaintext highlighter-rouge">&amp;CELL</code></h4>
+
+<p>It is very important that you use the current size of your simulation box in <code class="language-plaintext highlighter-rouge">&amp;FORCE_EVAL &gt; &amp;SUBSYS &gt; &amp;CELL</code>. To get it you should do the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-1</span> system.equil0.rst7
+</code></pre></div></div>
+
+<p>and add the <strong>X Y Z</strong> values in the <code class="language-plaintext highlighter-rouge">ABC</code> section and the <strong>alpha beta gamma</strong> to the <code class="language-plaintext highlighter-rouge">ALPHA_BETA_GAMMA</code> section.</p>
+
+<h4 id="atom-indices-of-the-qm-region">Atom indices of the QM region.</h4>
+
+<p>You have to add the indices of the atoms of the QM region in the section <code class="language-plaintext highlighter-rouge">&amp;FORCE_EVAL &gt; &amp;QMMM &gt; &amp;QM_KIND</code> separated by element (N, O , C, H, …). We have provided a completed version of this section by selectiong only the GWS ligand as the QM region. More complex QM regions can be set including part of the protein, but they are beyond the scope of this tutorial.</p>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &amp;QMMM                            ! Input for QM/MM calculations
+    ...
+    &amp;QM_KIND N                     ! N atoms in the QM region 
+      MM_INDEX 1 10 
+    &amp;END QM_KIND
+    &amp;QM_KIND O                     ! O atoms in the QM region
+      MM_INDEX 8 
+    &amp;END QM_KIND
+    &amp;QM_KIND C                     ! C atoms in the QM region
+      MM_INDEX 2 3 4 5 6 7 9 11 12 13 14 15 16
+    &amp;END QM_KIND
+    &amp;QM_KIND H                     ! H atoms in the QM region
+      MM_INDEX 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34
+    &amp;END QM_KIND
+    ...
+  &amp;END QMMM
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="cp2k-output">CP2K output</h2>
+
+<p>CP2K produces the following output:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MD_QMMM-1.restart</code>: file to restart the calculation if needed. It looks a lot like the CP2K input file.</li>
+  <li><code class="language-plaintext highlighter-rouge">MD_QMMM-pos-1.dcd</code>: Trajectory file. DCD format is read in VMD.</li>
+  <li><code class="language-plaintext highlighter-rouge">MD_QMMM-1.cell</code>: Time evolution of the box size.</li>
+  <li><code class="language-plaintext highlighter-rouge">MD_QMMM-1.ener</code>: Time evolution of important quantities (Kinetic energy, Potential energy, Temperature…)</li>
+  <li><code class="language-plaintext highlighter-rouge">MD_QMMM-RESTART.wfn</code>: Stored wavefunction to restart the simulation.</li>
+  <li><code class="language-plaintext highlighter-rouge">cp2k_qmmm_equil.out</code>: output of the CP2K simulation.</li>
+</ul>
+
+<p>If we open the <code class="language-plaintext highlighter-rouge">cp2k_qmmm_equil.out</code>, the output format for each step of the QM/MM monitorisation is shown here:</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Number of electrons:                                                         86
+ Number of occupied orbitals:                                                 43
+ Number of molecular orbitals:                                                43
+
+ Number of orbital functions:                                                 82
+ Number of independent orbital functions:                                     82
+
+ Extrapolation method: ASPC
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  ----------------------------------- OT ---------------------------------------
+  Minimizer      : DIIS                : direct inversion
+                                         in the iterative subspace
+                                         using   7 DIIS vectors
+                                         safer DIIS on
+  Preconditioner : FULL_SINGLE_INVERSE : inversion of
+                                         H + eS - 2*(Sc)(c^T*H*c+const)(Sc)^T
+  Precond_solver : DEFAULT
+  stepsize       :    0.08000000                  energy_gap     :    0.08000000
+  eps_taylor     :   0.10000E-15                  max_taylor     :             4
+  ----------------------------------- OT ---------------------------------------
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 OT DIIS     0.80E-01    0.0     0.00014885       -90.7600029357 -9.08E+01
+
+                                   . . .
+
+  *** SCF run converged in    10 steps ***
+
+
+  Core-core repulsion energy [eV]:                          13325.24439430390339
+  Core Hamiltonian energy [eV]:                             -3727.10071149166743
+  Two-electron integral energy [eV]:                       -24066.45132450176970
+  Electronic energy [eV]:                                  -15760.32637374255319
+  QM/MM Electrostatic energy:                                  -1.27239505853144
+
+  Total energy [eV]:                                        -2469.70560979353240
+
+  Atomic reference energy [eV]:                              2435.26626602509441
+  Heat of formation [kcal/mol]:                              -794.19019719481355
+
+  outer SCF iter =    1 RMS gradient =   0.69E-06 energy =        -90.7600151030
+  outer SCF loop converged in   1 iterations or   10 steps
+
+
+ ENERGY| Total FORCE_EVAL ( QMMM ) energy (a.u.):           -317.657151913923542
+
+
+
+*******************************************************************************
+ ENSEMBLE TYPE                =                                            NPT_I
+ STEP NUMBER                  =                                               10
+ TIME [fs]                    =                                         5.000000
+ CONSERVED QUANTITY [hartree] =                              -0.270581824510E+03
+
+                                              INSTANTANEOUS             AVERAGES
+ CPU TIME [s]                 =                        0.75                 0.99
+ ENERGY DRIFT PER ATOM [K]    =         -0.775538584027E+00  -0.832073060556E+00
+ POTENTIAL ENERGY[hartree]    =         -0.317657151914E+03  -0.317295888439E+03
+ TOTAL KINETIC ENERGY[hartree]=          0.521871783418E+02   0.499887046552E+02
+ QM KINETIC ENERGY[hartree]   =          0.448103776058E-01   0.441758973655E-01
+ TOTAL TEMPERATURE[K]         =                     259.667              248.728
+ QM TEMPERATURE[K]            =                     277.451              273.522
+ PRESSURE [bar]               =          0.861089290171E+04   0.292238809599E+04
+ BAROSTAT TEMP[K]             =          0.571694908987E+05   0.658325595919E+05
+ VOLUME[bohr^3]               =          0.299749368381E+07   0.299003810396E+07
+ CELL LNTHS[bohr]             =    0.1437398E+03   0.1443978E+03   0.1444178E+03
+ AVE. CELL LNTHS[bohr]        =    0.1436205E+03   0.1442779E+03   0.1442979E+03
+ *******************************************************************************
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="further-information">Further information:</h2>
+
+  <p>CP2K uses different unit from AmberTools and it can be confusing sometimes. Such as:</p>
+  <ul>
+    <li>Bohrs for Length.</li>
+  </ul>
+
+  <p>Here is a list of <a href="https://manual.cp2k.org/trunk/units.html">available unit in CP2K</a>.</p>
+
+</blockquote>
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Choosing the QM region is in not trivial.</p>
+</li>
+    
+    <li><p>You should also equilibrate the system using QM/MM ensemble before running your QM/MM production runs.</p>
+</li>
+    
+    <li><p>Instabilities between the QM and the MM regions are likely to show up in this monitorisation run.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <div class="row">
+    <div class="col-md-6 copyright" align="left">
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/edit/gh-pages/_episodes/09-qmmm.md" data-checker-ignore="">Edit on GitHub</a>
+	
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/blob/gh-pages/CONTRIBUTING.md" data-checker-ignore="">Contributing</a>
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/">Source</a>
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/blob/gh-pages/CITATION" data-checker-ignore="">Cite</a>
+	/
+	<a href="mailto:s.llabres@epcc.ed.ac.uk">Contact</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
+      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script type="text/javascript" async="" src="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/js"></script><script async="" src="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/analytics.js.ダウンロード"></script><script src="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/jquery.min.js.ダウンロード"></script>
+<script src="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap.min.js.ダウンロード"></script>
+<script src="./QM_MM monitorisation runs – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/lesson.js.ダウンロード"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

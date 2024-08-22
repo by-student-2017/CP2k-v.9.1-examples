@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/07-therm/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2020-07-02 13:22:59 +0000">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="https://bioexcel.github.io/2020_06_09_online_ambertools4cp2k">
+    <link rel="stylesheet" type="text/css" href="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/lesson.css">
+    <link rel="stylesheet" type="text/css" href="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/syntax.css">
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/assets/favicons//favicon-128.png" sizes="128x128">
+    <meta name="application-name" content=" - Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="../assets/favicons//mstile-144x144.png">
+    <meta name="msapplication-square70x70logo" content="../assets/favicons//mstile-70x70.png">
+    <meta name="msapplication-square150x150logo" content="../assets/favicons//mstile-150x150.png">
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons//mstile-310x150.png">
+    <meta name="msapplication-square310x310logo" content="../assets/favicons//mstile-310x310.png">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+  <title>
+  Thermalisation and Density equilibration – Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
+  </title>  
+
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1079.0" data-gr-ext-installed="">
+
+    
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+
+      
+      <a class="navbar-brand" href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/setup.html">Setup</a></li>
+
+        
+        <li class="dropdown">
+          <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/01-overview/index.html">Overview of AmberTools20</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/02-setup/index.html">Log in and environment set up in ARCHER</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/03-prepPDB/index.html">Preparing your PDB file</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/04-parameters/index.html">Parameterising your ligands</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/05-leap/index.html">System set up</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/06-minimisation/index.html">Energy minimisation</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/07-therm/index.html">Thermalisation and Density equilibration</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html">Adding missing LJ parameters and recentering coordinates</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/09-qmmm/index.html">QM/MM monitorisation runs</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/aio.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/reference.html">Reference</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/amber/index.html">Amber Input Files</a></li>
+            
+            <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/cp2k/index.html">CP2K Input Files</a></li>
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/LICENSE.html">License</a></li>
+	
+	<li><a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/edit/gh-pages/_episodes/07-therm.md" data-checker-ignore="">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/06-minimisation/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/">Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Thermalisation and Density equilibration</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 20 min
+      <br>
+      <strong>Exercises:</strong> 0 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>How do I equilibrate my system with <code class="language-plaintext highlighter-rouge">sander</code>?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Explain why thermalisation and density equilibration are important.</p>
+</li>
+	
+	<li><p>Use <code class="language-plaintext highlighter-rouge">sander</code> to perform thermalisation (NVT) and density equilibration (NPT).</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<p>After the minimisation step, we will heat the system up to the target temperature 298K (25°C, standard value for room temperature experiments) while keeping the volume constant. Afterwards, we will allow the volume to fluctuate and equilibrate the density of the system at a contant pressure of 1 atm (standard value) while still keeping the temperature at 298K.</p>
+
+<h2 id="thermalisation">Thermalisation</h2>
+
+<p>We will use the input file <code class="language-plaintext highlighter-rouge">sander_heat.in</code> to gradually increase the temperature of the system up to our target value over the first 30 ps. To help our system accomodate to this change, we will use a temperature ramp in which we control the temperaure increase per timestep.</p>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Heating ramp from 0K to 300K 
+ &amp;cntrl
+  imin=0,                   ! Run molecular dynamics.
+  ntx=1,                    ! Initial file contains coordinates, but no velocities.
+  irest=0,                  ! Do not restart the simulation, (only read coordinates from the coordinates file)
+  nstlim=15000,             ! Number of MD-steps to be performed.
+  dt=0.002,                 ! Time step (ps)
+  ntf=2, ntc=2,             ! Constrain lengths of bonds having hydrogen atoms (SHAKE)
+  tempi=0.0, temp0=298.0,   ! Initial and final temperature
+  ntpr=500, ntwx=500,       ! Output options
+  cut=8.0,                  ! non-bond cut off
+  ntb=1,                    ! Periodic conditiond at constant volume
+  ntp=0,                    ! No pressure scaling
+  ntt=3, gamma_ln=2.0,      ! Temperature scaling using Langevin dynamics with the collision frequency in gamma_ln (ps−1)
+  ig=-1,                    ! seed for the pseudo-random number generator will be based on the current date and time.
+  nmropt=1,                 ! NMR options to give the temperature ramp.
+ /
+&amp;wt type='TEMP0', istep1=0, istep2=12000, value1=0.0, value2=298.0 /
+&amp;wt type='TEMP0', istep1=12001, istep2=15000, value1=298.0, value2=298.0 /
+&amp;wt type='END' /
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">sander</code> produces several output files:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">heat_classical.out</code>: Log file with system values stored during the run.</li>
+  <li><code class="language-plaintext highlighter-rouge">system.heat.rst7</code>: coordinates and velocities to restart the simulation.</li>
+  <li><code class="language-plaintext highlighter-rouge">system.heat.nc</code>: trajectory in netcdf format of the simulation.</li>
+</ul>
+
+<p>If we open the <code class="language-plaintext highlighter-rouge">heat_classical.out</code> file, we will find that the last step of MD has similar values as these (they won’t be the same as we have generated velocities with a random number seed):</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code> NSTEP =    15000   TIME(PS) =      30.000  TEMP(K) =   298.10  PRESS =     0.0
+ Etot   =   -156706.7596  EKtot   =     39190.4089  EPtot      =   -195897.1685
+ BOND   =       919.5864  ANGLE   =      2384.5882  DIHED      =      3850.0906
+ 1-4 NB =      1089.6233  1-4 EEL =     12032.6825  VDWAALS    =     24316.3039
+ EELEC  =   -240490.0435  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ Ewald error estimate:   0.3447E-04     
+</code></pre></div></div>
+
+<h2 id="pressure-equilibration">Pressure equilibration</h2>
+
+<p>Once the thermalisation step has finished, <code class="language-plaintext highlighter-rouge">sander</code> will use the input file <code class="language-plaintext highlighter-rouge">sander_equil.in</code> to equilibrate the density of the system. It is advised to heat and equilibrate over longer periods of simulations than the ones used in this workshop. However for the sake of time, we will use the same simulation length (30ps):</p>
+
+<div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Density equilibration
+&amp;cntrl
+  imin= 0,                       ! Run molecular dynamics.
+  nstlim=15000,                  ! Number of MD-steps to be performed.
+  dt=0.002,                      ! Time step (ps)
+  irest=1,                       ! Restart the simulation and read coordinates and velocities from the restart file provided in -c
+  ntx=5,                         ! Initial file contains coordinates and velocities.
+  ntpr=500, ntwx=500, ntwr=500,  ! Output options
+  cut=8.0,                       ! non-bond cut off
+  temp0=298,                     ! Temperature
+  ntt=3, gamma_ln=3.0,           ! Temperature scaling using Langevin dynamics with the collision frequency in gamma_ln (ps−1)
+  ntb=2,                         ! Periodic conditiond at constant pressure
+  ntc=2, ntf=2,                  ! Constrain lengths of bonds having hydrogen atoms (SHAKE)
+  ntp=1, taup=2.0,               ! Pressure scaling
+  iwrap=1, ioutfm=1,             ! Output trajectory options
+/
+</code></pre></div></div>
+
+<p>Again, <code class="language-plaintext highlighter-rouge">sander</code> produces several output files:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">equil_classical.out</code>: Log file with thermodynamic data of the system stored during the run.</li>
+  <li><code class="language-plaintext highlighter-rouge">system.equil.rst7</code>: coordinates and velocities to restart the simulation.</li>
+  <li><code class="language-plaintext highlighter-rouge">system.equil.nc</code>: trajectory in netcdf format of the simulation.</li>
+</ul>
+
+<p>The last step of MD in the <code class="language-plaintext highlighter-rouge">equil_classical.out</code> should be similar to this:</p>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code> NSTEP =    15000   TIME(PS) =      60.000  TEMP(K) =   300.17  PRESS =   -89.5
+ Etot   =   -160777.6918  EKtot   =     39462.5280  EPtot      =   -200240.2199
+ BOND   =       868.6881  ANGLE   =      2429.6473  DIHED      =      3839.3079
+ 1-4 NB =      1101.9515  1-4 EEL =     12099.2533  VDWAALS    =     25814.3482
+ EELEC  =   -246393.4160  EHBOND  =         0.0000  RESTRAINT  =         0.0000
+ EKCMT  =     18077.2732  VIRIAL  =     19336.2993  VOLUME     =    651748.7327
+                                                    Density    =         1.0087
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="analysis-of-the-mm-equilibration-simulation">Analysis of the MM equilibration simulation</h2>
+
+<p>We will now have a closer look at the final steps highlighted before. In the log files, we have monitored the values of several quantities. Especially relevant are:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NSTEP</code>: The time step that the MD simulation is at</li>
+  <li><code class="language-plaintext highlighter-rouge">TIME</code>: The total time of the simulation (including restarts)</li>
+  <li><code class="language-plaintext highlighter-rouge">TEMP</code>: System temperature</li>
+  <li><code class="language-plaintext highlighter-rouge">PRESS</code>: System pressure</li>
+  <li><code class="language-plaintext highlighter-rouge">Etot</code>: Total energy of the system</li>
+  <li><code class="language-plaintext highlighter-rouge">EKtot</code>: Total kinetic energy of the system</li>
+  <li><code class="language-plaintext highlighter-rouge">EPtot</code>: Total potential energy of the system</li>
+</ul>
+
+<p>AmberTools provides <code class="language-plaintext highlighter-rouge">process_mdout.perl</code>, a perl script to gather and print this information in a easy-to-use format. You can easily call it from the command-line like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$AMBERHOME</span>/bin/process_mdout.perl heat_classical.out equil_classical.out
+</code></pre></div></div>
+
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Processing sander output file (heat_classical.out)...
+Processing sander output file (equil_classical.out)...
+Starting output...
+Outputing summary.TEMP
+Outputing summary.TSOLUTE
+Outputing summary.TSOLVENT
+Outputing summary.PRES
+Outputing summary.EKCMT
+Outputing summary.ETOT
+Outputing summary.EKTOT
+Outputing summary.EPTOT
+Outputing summary.DENSITY
+Outputing summary.VOLUME
+</code></pre></div></div>
+
+<p>Here we will show you the expected output of an equilibration run. First, we will show the temperature and the energies (kinetic, potential and total) of the system.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Temperature</th>
+      <th>Energy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>K</td>
+      <td>kcal/mol</td>
+    </tr>
+    <tr>
+      <td><img src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/temperature.png" alt="Temperature over time"></td>
+      <td><img src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/energy.png" alt="Energy over time"></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The pressure and the density are only set when we perform the NPT run, therefore they only show reasonable values on the last 30 ps.</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pressure</th>
+      <th>Density</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>bar</td>
+      <td>g*cm-3</td>
+    </tr>
+    <tr>
+      <td><img src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/pressure.png" alt="Pressure over time"></td>
+      <td><img src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/density.png" alt="Density over time"></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You can see that the system starts to reach a plateau on each one of these values. We want to reiterate that the MM equilibration in this tutorial is way too short (only 60ps) and we suggest you to run a longer equilibration steps in your simulations.</p>
+
+<p>It is not within the scope of this tutorial to fully analyse these equilibration runs, therefore we leave that to you. However, we provide a jupyter notebook with the code to produce these graphs for your systems.</p>
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Thermalisation takes our system up to the target temperature.</p>
+</li>
+    
+    <li><p>Using a temperature ramp is a good way to slowly increase the system temperature and avoid your system from blowing up due to some bad contacts in your coordinates. You can set up a temperature ramp using the NMR restraint options of <code class="language-plaintext highlighter-rouge">sander</code>.</p>
+</li>
+    
+    <li><p>Density equilibration fixes the water density and corrects the size simulation box. It prevents air bubbles in our system that might cause simulation artefacts.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/06-minimisation/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/08-parmed/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <div class="row">
+    <div class="col-md-6 copyright" align="left">
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/edit/gh-pages/_episodes/07-therm.md" data-checker-ignore="">Edit on GitHub</a>
+	
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/blob/gh-pages/CONTRIBUTING.md" data-checker-ignore="">Contributing</a>
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/">Source</a>
+	/
+	<a href="https://github.com/bioexcel/2020_06_09_online_ambertools4cp2k/blob/gh-pages/CITATION" data-checker-ignore="">Cite</a>
+	/
+	<a href="mailto:s.llabres@epcc.ed.ac.uk">Contact</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12" align="center">
+      Using <a href="https://github.com/carpentries/styles/">The Carpentries style</a>
+      version <a href="https://github.com/carpentries/styles/releases/tag/v9.5.3">9.5.3</a>.
+    </div>
+  </div>
+</footer>
+
+      
+    </div>
+    
+<script type="text/javascript" async="" src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/js"></script><script async="" src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/analytics.js.ダウンロード"></script><script src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/jquery.min.js.ダウンロード"></script>
+<script src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/bootstrap.min.js.ダウンロード"></script>
+<script src="./Thermalisation and Density equilibration – Preparing to run biomolecular QM_MM simulations with CP2K using AmberTools_files/lesson.js.ダウンロード"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-37305346-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
