@@ -4,15 +4,22 @@
 #------------------------------------------------------------------------------------------
 # AmberTools23, Installation (conda) (Ubuntu 22.04 LTS or WLS2)
 
+# miniconda (installation)
+#----------
 1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 2. bash Miniconda3-latest-Linux-x86_64.sh
-3. conda create --name AmberTools23
-4. bash
-5. conda activate AmberTools23
-6. conda install -c conda-forge ambertools=23
-7. conda install -c conda-forge propka
-8. conda install -c conda-forge openbabel
-9. conda update -c conda-forge ambertools
+#----------
+
+# ambertools23, propka, and openbabel (installation)
+#----------
+1. conda create --name AmberTools23 -y
+2. bash
+3. conda activate AmberTools23
+4. conda install -c conda-forge ambertools=23 -y
+5. conda install -c conda-forge propka -y
+6. conda install -c conda-forge openbabel -y
+7. conda update -c conda-forge ambertools -y
+#----------
 
 #------------------------------------------------------------------------------------------
 # Usage
@@ -50,23 +57,24 @@
 # Looking for missing force field parameters with parmchk2
 13. parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
 
-# Build your system with tLEap (failed)
+# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda)
 14. $AMBERHOME/bin/tleap -f leapin
 (FATAL:  Atom .R<NME 195>.A<CH3 7> does not have a type.)
 
 # Energy minimisation
 # need system.parm7 and system.rst7 from 05-SystemSetUp
 15. cp ./outputs/05-SystemSetUp/system.parm7 ./
-16. export OMP_NUM_THREAD=4
-17. sander -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
-18. sander -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
-19. sander -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
+16. cp ./outputs/05-SystemSetUp/system.rst7 ./
+17. export OMP_NUM_THREAD=4
+18. sander -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
+19. sander -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
+20. sander -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
 
 # Analysis of the MM equilibration simulation
-19. process_mdout.perl heat_classical.out equil_classical.out
+21. process_mdout.perl heat_classical.out equil_classical.out
 
 # Adding Lennard-Jones parameters using parmed
-20. parmed system.parm7
+22. parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -84,8 +92,8 @@ Or
   changeLJSingleType :TYR@HH 0.3019 0.047
   outparm system_LJ_mod.parm7
   quit
-21. parmed system.parm7 -i parmed.in
-22. cpptraj -p system_LJ_mod.parm7
+23. parmed system.parm7 -i parmed.in
+24. cpptraj -p system_LJ_mod.parm7
   trajin system.equil.rst7
   autoimage
   trajout system.equil0.rst7 inpcrd
@@ -93,7 +101,7 @@ Or
   quit
 
 Running a QM/MM monitorisation run
-23. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out
+25. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out
 #------------------------------------------------------------------------------------------
 - tleap is used to generate topologies and coordinates for biological molecules.
 - cpptraj is used to postprocess and analyse AMBER trajectories.

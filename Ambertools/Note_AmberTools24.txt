@@ -52,24 +52,24 @@ Or
 # Looking for missing force field parameters with parmchk2
 13. $AMBERHOME/bin/parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
 
-# Build your system with tLEap (failed for AT24, AT23, AT23_conda)
+# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda)
 14. $AMBERHOME/bin/tleap -f leapin
 (FATAL:  Atom .R<NME 195>.A<CH3 7> does not have a type.)
 
 # Energy minimisation
 # need system.parm7 and system.rst7 from 05-SystemSetUp
 15. cp ./outputs/05-SystemSetUp/system.parm7 ./
-16. export OMP_NUM_THREAD=4
-17. mpirun -np 8 $AMBERHOME/bin/sander.MPI -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
-18. mpirun -np 8 $AMBERHOME/bin/sander.MPI -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
-19. mpirun -np 8 $AMBERHOME/bin/sander.MPI -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
+16. cp ./outputs/05-SystemSetUp/system.rst7 ./
+17. export OMP_NUM_THREAD=4
+18. mpirun -np 8 sander.MPI -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
+19. mpirun -np 8 sander.MPI -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
+20. mpirun -np 8 sander.MPI -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
 
 # Analysis of the MM equilibration simulation
-20. $AMBERHOME/bin/process_mdout.perl heat_classical.out equil_classical.out
+21. $AMBERHOME/bin/process_mdout.perl heat_classical.out equil_classical.out
 
 # Adding Lennard-Jones parameters using parmed
-21. $AMBERHOME/bin/parmed system.parm7
-(importlib.metadata.PackageNotFoundError: No package metadata was found for ParmEd)
+22. $AMBERHOME/bin/parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -77,10 +77,9 @@ Or
   changeLJSingleType :TYR@HH 0.3019 0.047
   outparm system_LJ_mod.parm7
   quit
-#-----
+  
 Or
   $AMBERHOME/bin/parmed system.parm7
-(importlib.metadata.PackageNotFoundError: No package metadata was found for ParmEd)
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -88,10 +87,8 @@ Or
   changeLJSingleType :TYR@HH 0.3019 0.047
   outparm system_LJ_mod.parm7
   quit
-#-----
-22. $AMBERHOME/bin/parmed system.parm7 -i parmed.in
-(importlib.metadata.PackageNotFoundError: No package metadata was found for ParmEd)
-23. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
+23. $AMBERHOME/bin/parmed system.parm7 -i parmed.in
+24. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
   trajin system.equil.rst7
   autoimage
   trajout system.equil0.rst7 inpcrd
@@ -99,7 +96,7 @@ Or
   quit
 
 Running a QM/MM monitorisation run
-24. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out
+25. mpirun -np 8 cp2k -i cp2k_qmmm_equil.inp | tee cp2k_qmmm_equil.out
 #------------------------------------------------------------------------------------------
 - tleap is used to generate topologies and coordinates for biological molecules.
 - cpptraj is used to postprocess and analyse AMBER trajectories.
