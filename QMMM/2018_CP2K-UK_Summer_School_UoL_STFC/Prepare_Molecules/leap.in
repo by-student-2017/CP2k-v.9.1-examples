@@ -1,4 +1,4 @@
-source leaprc.gaff
+source leaprc.gaff2
 loadamberprep PRB.prep
 loadamberparams PRB.frcmod
 mol = loadpdb NEWPDB.PDB

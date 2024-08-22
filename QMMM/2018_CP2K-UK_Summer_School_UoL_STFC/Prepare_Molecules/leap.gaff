@@ -1,0 +1,5 @@
+source leaprc.gaff
+loadamberparams output.frcmod
+mol = loadmol2 output.mol2
+saveoff mol mol.lib
+quit
