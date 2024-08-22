@@ -1,0 +1,21 @@
+#!/bin/bash --login
+#PBS -N QM_equil
+
+# Select 128 nodes (maximum of 3072 cores)
+#PBS -q short
+#PBS -l select=1
+#PBS -l walltime=00:20:00
+
+# Make sure you change this to your budget code
+#PBS -A y14-amber2020
+
+module load cp2k/7.1
+
+# Move to directory that script was submitted from
+export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
+cd $PBS_O_WORKDIR
+
+date
+aprun -n 24 cp2k.popt -i cp2k_qmmm_equil.inp > cp2k_qmmm_equil.out
+date
+

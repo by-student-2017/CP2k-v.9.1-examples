@@ -1,0 +1,30 @@
+#!/bin/bash --login
+#PBS -N MM_equil
+
+# Select 1 nodes (maximum of 24 cores)
+#PBS -q short
+#PBS -l select=2
+#PBS -l walltime=00:20:00
+
+# Make sure you change this to your budget code
+#PBS -A y14-amber2020
+
+module swap PrgEnv-cray PrgEnv-gnu
+module load amber-tools/20
+
+# Move to directory that script was submitted from
+export PBS_O_WORKDIR=$(readlink -f $PBS_O_WORKDIR)
+cd $PBS_O_WORKDIR
+
+date
+echo "Minimisation"
+aprun -n 8 sander.MPI -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
+date
+echo "Thermalisation"
+aprun -n 48 sander.MPI -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
+date
+echo "Pressure equilibration"
+aprun -n 48 sander.MPI -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
+date
+
+

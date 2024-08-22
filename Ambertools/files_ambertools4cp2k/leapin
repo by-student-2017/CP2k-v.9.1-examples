@@ -1,0 +1,31 @@
+# Load force field parameters
+source leaprc.protein.ff14SB
+source leaprc.gaff2
+source leaprc.water.tip3p
+
+# Load extraparameters for the ligand
+loadamberparams GWS.frcmod
+
+# Load protein, ligand and water molecules
+protein = loadPDB protein4amber.pdb
+GWS = loadmol2 GWS.mol2
+waters = loadPDB waters.pdb
+
+# Build system
+system = combine {GWS protein waters}
+savepdb system system.dry.pdb
+
+check system
+
+# Neutralise
+addions2 system Cl- 0
+addions2 system Na+ 0
+
+# Solvate 
+solvateBox system TIP3PBOX 10 iso
+
+# Save AMBER input files
+savePDB system system.pdb
+saveAmberParm system system.parm7 system.rst7
+
+quit
