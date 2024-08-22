@@ -116,3 +116,4 @@ Running a QM/MM monitorisation run
 3. vim ~/.bashrc
   Add a # to the beginning of the description of miniconda3 to make it a comment line (this way you can change it back later).
 #------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
