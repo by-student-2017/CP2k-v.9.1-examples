@@ -2,25 +2,43 @@
 # Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
 # https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/
 #------------------------------------------------------------------------------------------
-# AmberTools, Installation
-- https://github.com/by-student-2017/AmberTools
-(In my case with AT24, the command "antechamber" failed. It might be worth trying with AT22 or AT23.)
+# AmberTools20, Installation (conda) (Ubuntu 22.04 LTS or WLS2)
+
+# miniconda (installation)
+#----------
+1. wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+2. bash Miniconda3-latest-Linux-x86_64.sh
+#----------
+
+# ambertools20, propka, and openbabel (installation)
+#----------
+1. conda create --name AmberTools20 -y
+2. conda init
+3. bash
+4. conda activate AmberTools20
+5. conda install -c conda-forge ambertools=20 -y
+6. conda install -c conda-forge propka -y
+7. conda install -c conda-forge openbabel -y
+8. conda update -c conda-forge ambertools -y
+#----------
+
 #------------------------------------------------------------------------------------------
+# Usage
+1. conda activate AmberTools21
+
 # installation files_ambertools4cp2k file
-1. git clone https://git.ecdf.ed.ac.uk/sllabres/files_ambertools4cp2k.git
-2. cd files_ambertools4cp2k
+2. curl https://git.ecdf.ed.ac.uk/sllabres/files_ambertools4cp2k/-/archive/master/files_ambertools4cp2k-master.tar.gz --output files_ambertools4cp2k-master.tar.gz
+3. tar xvf files_ambertools4cp2k-master.tar.gz
+4. cd files_ambertools4cp2k-master
 
 # Splitting the PDB in protein, ligand and water molecules
-3. grep -v -e "GWS" -e "DMS" -e "CONECT" -e "HOH" 5r84.pdb >  protein.pdb
-4. grep "GWS" 5r84.pdb > GWS.pdb
-5. grep "HOH" 5r84.pdb > waters.pdb
+5. grep -v -e "GWS" -e "DMS" -e "CONECT" -e "HOH" 5r84.pdb >  protein.pdb
+6. grep "GWS" 5r84.pdb > GWS.pdb
+7. grep "HOH" 5r84.pdb > waters.pdb
 
 # Assessing the protonation states of the protein and preparing the protein for AmberTools
-7. $AMBERHOME/bin/propka3 protein.pdb
-Or
- pip install propka
- propka3 protein.pdb 
-8. cat protein.pka
+8. propka3 protein.pdb
+9. cat protein.pka
 
 # Note: When preparing a protein, we have to compare each one of the predicted pKa values with 
 # the chosen pH: if the pKa is below the chosen pH the residue should be deprotonated (
@@ -29,24 +47,19 @@ Or
 
 # Last but not least, we need to clean the PDB file before passing it to AmberTools (removing residues with double ocupation, checking for disulfide bonds, …). 
 # So we are going to use the first AmberTools tool: pdb4amber which prepares your PDB file.
-9. /$AMBERHOME/bin/pdb4amber -i protein.pdb -o protein4amber.pdb
-Or
-  pip install pdb4amber
-  pip install parmed
-  pdb4amber -i protein.pdb -o protein4amber.pdb
+10. pdb4amber -i protein.pdb -o protein4amber.pdb
 
 # Assessing the protonation states of the ligand
-10. sudo apt -y install openbabel
 11. obabel -ipdb GWS.pdb -opdb -O GWS.H.pdb -h
 
 # Generating point charges and assigning atomtypes with antechamber
-12. $AMBERHOME/bin/antechamber -i GWS.H.pdb -fi pdb -o GWS.mol2 -fo mol2 -c bcc -nc 0 -rn GWS -at gaff2
+12. antechamber -i GWS.H.pdb -fi pdb -o GWS.mol2 -fo mol2 -c bcc -nc 0 -rn GWS -at gaff2
 
 # Looking for missing force field parameters with parmchk2
-13. $AMBERHOME/bin/parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
+13. parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
 
 # Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda, AT21_conda, AT20_conda)
-14. $AMBERHOME/bin/tleap -f leapin
+14. tleap -f leapin
 (FATAL:  Atom .R<NME 195>.A<CH3 7> does not have a type.)
 
 # Energy minimisation
@@ -54,15 +67,15 @@ Or
 15. cp ./outputs/05-SystemSetUp/system.parm7 ./
 16. cp ./outputs/05-SystemSetUp/system.rst7 ./
 17. export OMP_NUM_THREAD=4
-18. mpirun -np 8 sander.MPI -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
-19. mpirun -np 8 sander.MPI -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
-20. mpirun -np 8 sander.MPI -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
+18. sander -O -i sander_min.in -o min_classical.out -p system.parm7 -c system.rst7 -r system.min.rst7
+19. sander -O -i sander_heat.in -o heat_classical.out -p system.parm7 -c system.min.rst7 -r system.heat.rst7 -x system.heat.nc
+20. sander -O -i sander_equil.in -o equil_classical.out -p system.parm7 -c system.heat.rst7 -r system.equil.rst7 -x system.equil.nc
 
 # Analysis of the MM equilibration simulation
-21. $AMBERHOME/bin/process_mdout.perl heat_classical.out equil_classical.out
+21. process_mdout.perl heat_classical.out equil_classical.out
 
 # Adding Lennard-Jones parameters using parmed
-22. $AMBERHOME/bin/parmed system.parm7
+22. parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -72,7 +85,7 @@ Or
   quit
   
 Or
-  $AMBERHOME/bin/parmed system.parm7
+  parmed system.parm7
   printDetails @4686
   changeLJSingleType :WAT@H1 0.3019 0.047
   changeLJSingleType :WAT@H2 0.3019 0.047
@@ -80,8 +93,8 @@ Or
   changeLJSingleType :TYR@HH 0.3019 0.047
   outparm system_LJ_mod.parm7
   quit
-23. $AMBERHOME/bin/parmed system.parm7 -i parmed.in
-24. $AMBERHOME/bin/cpptraj -p system_LJ_mod.parm7
+23. parmed system.parm7 -i parmed.in
+24. cpptraj -p system_LJ_mod.parm7
   trajin system.equil.rst7
   autoimage
   trajout system.equil0.rst7 inpcrd
@@ -96,4 +109,10 @@ Running a QM/MM monitorisation run
 - antechamber is used to create parameters for non-standard aminoacids and drug-like molecules.
 - sander runs molecular dynamics simulations
 - parmed allows modifying AMBER topologies
+#------------------------------------------------------------------------------------------
+# Error case of conda (miniconda): If the old conda was bad (Do it at your own risk)
+1. rm -rf ~/miniconda3
+2. rm -rf ~/opt/miniconda3
+3. vim ~/.bashrc
+  Add a # to the beginning of the description of miniconda3 to make it a comment line (this way you can change it back later).
 #------------------------------------------------------------------------------------------

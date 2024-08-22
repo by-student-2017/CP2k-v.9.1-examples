@@ -16,10 +16,11 @@
 2. conda init
 3. bash
 4. conda activate AmberTools21
-5. conda install -c conda-forge ambertools=21 -y
-6. conda install -c conda-forge propka -y
-7. conda install -c conda-forge openbabel -y
-8. conda update -c conda-forge ambertools -y
+5. conda install -c conda-forge python==3.6 -y
+6. conda install -c conda-forge ambertools=21 -y
+7. conda install -c conda-forge propka -y
+8. conda install -c conda-forge openbabel -y
+9. conda update -c conda-forge ambertools -y
 #----------
 
 #------------------------------------------------------------------------------------------
@@ -58,9 +59,13 @@
 # Looking for missing force field parameters with parmchk2
 13. parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
 
-# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda)
-14. $AMBERHOME/bin/tleap -f leapin
-(FATAL:  Atom .R<NME 195>.A<CH3 7> does not have a type.)
+# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda, AT21_conda, AT20_conda)
+14. tleap -f leapin
+#------------------
+!FATAL:    Message: 1-4: cannot add bond 8 9
+This may be caused by duplicate bond specifications;
+for example, explicit bond commands in addition to PDB conect records.
+#------------------
 
 # Energy minimisation
 # need system.parm7 and system.rst7 from 05-SystemSetUp

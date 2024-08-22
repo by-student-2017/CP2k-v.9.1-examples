@@ -58,7 +58,7 @@
 # Looking for missing force field parameters with parmchk2
 13. parmchk2 -i GWS.mol2 -f mol2 -o GWS.frcmod -s gaff2
 
-# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda)
+# Build your system with tLEap (failed for AT24, AT23, AT23_conda, AT22_conda, AT21_conda, AT20_conda)
 14. $AMBERHOME/bin/tleap -f leapin
 (FATAL:  Atom .R<NME 195>.A<CH3 7> does not have a type.)
 
