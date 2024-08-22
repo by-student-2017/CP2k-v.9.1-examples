@@ -1,0 +1,7 @@
+#---------------------------------------------------------------------
+If you want to use sander.MPI, you need to compile it.
+see https://github.com/by-student-2017/AmberTools
+#---------------------------------------------------------------------
+If you want to use pmemd, a faster version of sander, you need amber.
+ Check the license terms (it is available to more institutions than Orca code).
+#---------------------------------------------------------------------
