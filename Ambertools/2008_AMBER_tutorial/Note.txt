@@ -1,0 +1,8 @@
+#---------------------------------------------------------------------
+# 2008 AMBER tutorial
+# https://ringo.ams.stonybrook.edu/index.php/2008_AMBER_tutorial
+
+1. conda activate AmberTools23
+2. wget https://files.rcsb.org/download/1NPO.pdb
+3. bash run.sh
+#---------------------------------------------------------------------
