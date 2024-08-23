@@ -71,6 +71,12 @@ display projection Orthographic
 #display depthcue off
 #color Display Background white
 #------
+# After sander
+1. vmd
+2. File -> New Molecule..
+3. Filename: 1FKO_sus.prmtop -> [AMBER7 Parm] Load
+4. Filename: 1FKO_sus_eq.mdcrd -> [AMBER Coordinates] Load
+Eneter a filename, or 4-character PDB accession code
 #---------------------------------------------------------------------
 # Ref: https://amber.tkanai-lab.org/TutorialB4/index.htm (Japanese)
 #---------------------------------------------------------------------

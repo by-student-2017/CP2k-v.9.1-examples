@@ -11,16 +11,16 @@ which antechamber
 #-----------------------------------------------------------------------------------------
 cp ./Ref/sustiva.pdb ./
 
-echo "#----- add all the hydrogen atoms to the pdb file -----#"
+echo "#----- Add all the hydrogen atoms to the pdb file (reduce) -----#"
 reduce sustiva.pdb > sustiva_h.pdb
 
-echo '#----- change the name of the residue from "EFZ" to "SUS" -----#'
+echo '#----- Change the name of the residue from "EFZ" to "SUS" (sed) -----#'
 sed -e "s/EFZ/SUS/g" sustiva_h.pdb > sustiva_new.pdb
 
-echo "#----- create the "mol2" file -----#"
+echo "#----- Create the "mol2" file (antechamber) -----#"
 antechamber -i sustiva_new.pdb -fi pdb -o sustiva.mol2 -fo mol2 -c bcc -s 2
 
-echo "#----- test if all the parameters we require are available -----#"
+echo "#----- Test if all the parameters we require are available (parmchk2) -----#"
 parmchk2 -i sustiva.mol2 -f mol2 -o sustiva.frcmod
 
 ls $HOME/miniconda3/envs/AmberTools23/dat/leap/cmd/
@@ -38,13 +38,13 @@ saveamberparm SUS sustiva.prmtop sustiva.inpcrd
 quit 
 EOF1
 
-echo "#----- Creating topology and coordinate files -----#"
+echo "#----- Creating topology and coordinate files (tleap) -----#"
 tleap -f tleap.in
 
 #-----------------------------------------------------------------------------------------
 cp ./Ref/1FKO_trunc.pdb ./
 
-echo '#----- change the name of the residue from "EFZ" to "SUS" -----#'
+echo '#----- Change the name of the residue from "EFZ" to "SUS" (sed) -----#'
 sed "s/EFZ/SUS/g" 1FKO_trunc.pdb > 1FKO_trunc_sus.pdb
 
 cat << EOF2 > tleap2.in
@@ -59,7 +59,7 @@ savepdb complex 1FKO_sus.pdb
 quit 
 EOF2
 
-echo "#----- Creating topology and coordinate files for Sustiva-RT complex -----#"
+echo "#----- Creating topology and coordinate files for Sustiva-RT complex (tleap) -----#"
 tleap -f tleap2.in
 
 vmd -e vmd.tcl 1FKO_sus.pdb
@@ -72,10 +72,10 @@ Initial minimisation of sustiva-RT complex
  &end
 EOF3
 
-echo "#----- Minimize the Sustiva-RT complex -----#"
+echo "#----- Minimize the Sustiva-RT complex (sander) -----#"
 sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd -r 1FKO_sus_min.crd
 
-echo "#----- generate a pdb of the final minimized structures -----#"
+echo "#----- Generate a pdb of the final minimized structures -----#"
 cpptraj -p 1FKO_sus.prmtop -y 1FKO_sus_min.crd -x 1FKO_sus_min.pdb
 ambpdb -p 1FKO_sus.prmtop -v < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
 
@@ -91,7 +91,7 @@ Initial MD equilibration
  &end
 EOF4
 
-echo "#----- Equilibrate the Sustiva-RT complex -----#"
+echo "#----- Equilibrate the Sustiva-RT complex (sander) -----#"
 sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd
 
 #-----------------------------------------------------------------------------------------
