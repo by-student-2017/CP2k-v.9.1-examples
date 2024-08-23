@@ -40,3 +40,11 @@ sander or pmemd: prmtop + inpcrd + mdin -> mdcrd + mdout + restart file
 # Avogadro (free): https://avogadro.cc/
 # ChemSketch (free): https://www.acdlabs.com/resources/free-chemistry-software-apps/chemsketch-freeware/
 #---------------------------------------------------------------------------------------------------
+# iQmol ver.2.1.4, Installation: http://iqmol.org/index.html
+0. sudo apt update
+1. sudo apt -y install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+2. wget http://iqmol.org/download.php?get=iqmol_2.14.deb -O iqmol_2.14.deb
+3. sudo dpkg -i iqmol_2.14.deb
+4. which iqmol
+5. iqmol
+#---------------------------------------------------------------------------------------------------
