@@ -19,7 +19,7 @@
 5. Create Rep
 6. Selected Atoms: water
   Coloring Method: Name
-  Dwawing Method: CPk
+  Dwawing Method: CPK
 #------
 7. Create Rep
 8. Selected Atoms: protein
@@ -33,4 +33,40 @@ Ref1: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2972669/
 Ref2: https://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/
 Ref3: https://lammpstutorials.github.io/sphinx/build/html/tutorials/vmd/vmd-tutorial.html
 Ref4: https://qiita.com/TANATY/items/2fc4bd2044bb6c81e8cc
+#---------------------------------------------------------------------
+# VMD
+1. vmd 1FKO_sus.pdb
+2. Extensions -> Tk Console
+3. File -> Log Tcl commands to Console
+4. (write it on vmd.rc)
+
+vmd.rc
+#-----
+menu main on
+menu graphics on
+
+mol modselect 0 0 protein
+mol modcolor 0 0 Structure
+mol modstyle 0 0 Cartoon 2.1 24.0 5.0
+
+mol addrep 0
+mol modselect 1 0 resname SUS
+mol modcolor 1 0 Type
+mol modstyle 1 0 VDW 1.0 12.0
+
+mol addrep 0
+mol modselect 2 0 water
+mol modcolor 2 0 Name
+mol modstyle 2 0 CPK 1.0 0.3 12.0 12.0
+
+mod addrep 0
+mol modselect 3 0 protein
+mol modcolor 2 0 ColorID 22
+mol modstyle 3 0 QuickSurf 1.6 0.5 1.0 1.0
+
+#axes location Off
+display projection Orthographic
+#display depthcue off
+#color Display Background white
+#------
 #---------------------------------------------------------------------

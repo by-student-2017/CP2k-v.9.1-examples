@@ -58,7 +58,7 @@ EOF2
 echo "Creating topology and coordinate files for Sustiva-RT complex"
 tleap -f tleap2.in
 
-vmd 1FKO_sus.pdb
+vmd -e vmd.tcl 1FKO_sus.pdb
 
 echo "Minimize the Sustiva-RT complex"
 sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd  -r 1FKO_sus_min.crd
