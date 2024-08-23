@@ -1,8 +1,9 @@
 #---------------------------------------------------------------------------------------------------
+- CTBP_SUMMER_SCHOOL_2009
+  https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html
+- https://ringo.ams.stonybrook.edu/index.php/AMBER_Tutorials
 - https://ambermd.org/antechamber/antechamber.html
-- https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html
 - https://tsiangsun.github.io/programming/Amber-setup-prmtop-inpdrd/
-- https://ringo.ams.stonybrook.edu/index.php/2014_AMBER_tutorial_with_HIV_Protease
 - https://ctlee.github.io/BioChemCoRe-2018/system-prep/
 - https://emleddin.github.io/comp-chem-website/AMBERguide-tleap.html
 - https://pablito-playground.readthedocs.io/en/latest/tutorials/qmmm_amber_cpmd/mol2_file.html
