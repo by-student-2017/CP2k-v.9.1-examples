@@ -2,6 +2,8 @@
 
 export OMP_NUM_THREADS=4
 
+#sudo apt -y install dos2unix
+
 echo "conda activate AmberTools23"
 conda activate AmberTools23
 which antechamber
@@ -74,7 +76,8 @@ echo "#----- Minimize the Sustiva-RT complex -----#"
 sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd -r 1FKO_sus_min.crd
 
 echo "#----- generate a pdb of the final minimized structures -----#"
-ambpdb -p 1FKO_sus.prmtop < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
+cpptraj -p 1FKO_sus.prmtop -y 1FKO_sus_min.crd -x 1FKO_sus_min.pdb
+ambpdb -p 1FKO_sus.prmtop -v < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
 
 cat << EOF4 > eq.in
 Initial MD equilibration
