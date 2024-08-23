@@ -91,7 +91,7 @@ Initial MD equilibration
  &end
 EOF4
 
-echo "#----- Equilibrate the Sustiva-RT complex"
+echo "#----- Equilibrate the Sustiva-RT complex -----#"
 sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd
 
 #-----------------------------------------------------------------------------------------
