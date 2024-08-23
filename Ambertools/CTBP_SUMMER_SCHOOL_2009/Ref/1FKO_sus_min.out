@@ -1,0 +1,189 @@
+
+          -------------------------------------------------------
+          Amber 10 SANDER                              2008
+          -------------------------------------------------------
+
+| Run on 07/24/2009 at 17:23:53
+  [-O]verwriting output
+
+File Assignments:
+|  MDIN: min.in                                                                
+| MDOUT: 1FKO_sus_min.out                                                      
+|INPCRD: 1FKO_sus.inpcrd                                                       
+|  PARM: 1FKO_sus.prmtop                                                       
+|RESTRT: 1FKO_sus_min.crd                                                      
+|  REFC: refc                                                                  
+| MDVEL: mdvel                                                                 
+|  MDEN: mden                                                                  
+| MDCRD: mdcrd                                                                 
+|MDINFO: mdinfo                                                                
+|  MTMD: mtmd                                                                  
+|INPDIP: inpdip                                                                
+|RSTDIP: rstdip                                                                
+
+|INPTRA: inptraj                                                               
+|
+
+ Here is the input file:
+
+Initial minimisation of sustiva-RT complex                                     
+ &cntrl                                                                        
+  imin=1, maxcyc=200, ncyc=50,                                                 
+  cut=16, ntb=0, igb=1,                                                        
+ &end                                                                          
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+| Flags:                                                                        
+| New format PARM file being parsed.
+| Version =    1.000 Date = 07/24/09 Time = 17:23:12
+ NATOM  =    4039 NTYPES =      17 NBONH =    2023 MBONA  =    2077
+ NTHETH =    4659 MTHETA =    2823 NPHIH =    8776 MPHIA  =    7033
+ NHPARM =       0 NPARM  =       0 NNB   =   22580 NRES   =     244
+ NBONA  =    2077 NTHETA =    2823 NPHIA =    7033 NUMBND =      58
+ NUMANG =     117 NPTRA  =      49 NATYP =      41 NPHB   =       0
+ IFBOX  =       0 NMXRS  =      30 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+ Implicit solvent radii are modified Bondi radii (mbondi)                                                   
+
+|     Memory Use     Allocated
+|     Real              259116
+|     Hollerith          24480
+|     Integer           231765
+|     Max Pairs              1
+|     nblistReal             0
+|     nblist Int             0
+|       Total             3025 kbytes
+| Duplicated    0 dihedrals
+| Duplicated    0 dihedrals
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+                                                                                
+
+General flags:
+     imin    =       1, nmropt  =       0
+
+Nature and format of input:
+     ntx     =       1, irest   =       0, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       1, ntpr    =      50, ntrx    =       1, ntwr    =     500
+     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0
+     ioutfm  =       0, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       0, igb     =       1, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     =  16.00000, intdiel =   1.00000
+     saltcon =   0.00000, offset  =   0.09000, gbalpha=    1.00000
+     gbbeta  =   0.00000, gbgamma =   0.00000, surften =   0.00500
+     rdt     =   0.00000, rgbmax  =  25.00000  extdiel =  78.50000
+     alpb  =        0
+     scnb    =   2.00000, scee    =   1.20000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Energy minimization:
+     maxcyc  =     200, ncyc    =      50, ntmin   =       1
+     dx0     =   0.01000, drms    =   0.00010
+|  INFO: Old style inpcrd file read
+
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+                                                                                
+ begin time read from input coords =     0.000 ps
+
+ Number of triangulated 3-point waters found:        0
+
+--------------------------------------------------------------------------------
+   4.  RESULTS
+--------------------------------------------------------------------------------
+
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+      1      -4.6071E+03     2.4940E+01     1.0080E+03     HG23     2419
+
+ BOND    =      186.0797  ANGLE   =      591.1283  DIHED      =     2378.4416
+ VDWAALS =      248.7257  EEL     =   -17444.5553  EGB        =    -3911.4048
+ 1-4 VDW =     1244.6442  1-4 EEL =    12099.8717  RESTRAINT  =        0.0000
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+     50      -7.0406E+03     3.9305E+00     2.3515E+02     C9       4025
+
+ BOND    =      117.5451  ANGLE   =      543.1085  DIHED      =     2401.9167
+ VDWAALS =    -1634.5942  EEL     =   -17800.9954  EGB        =    -3499.8109
+ 1-4 VDW =      996.7838  1-4 EEL =    11835.4104  RESTRAINT  =        0.0000
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+    100      -7.7433E+03     1.7890E+00     5.7938E+01     C8       4024
+
+ BOND    =      148.2340  ANGLE   =      558.1583  DIHED      =     2401.1369
+ VDWAALS =    -2031.2555  EEL     =   -17777.3269  EGB        =    -3508.1199
+ 1-4 VDW =      825.0430  1-4 EEL =    11640.8364  RESTRAINT  =        0.0000
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+    150      -7.7913E+03     5.7714E-01     1.7306E+01     C8       4024
+
+ BOND    =      131.1363  ANGLE   =      542.3849  DIHED      =     2392.7409
+ VDWAALS =    -2034.9551  EEL     =   -17645.1689  EGB        =    -3655.4074
+ 1-4 VDW =      825.5943  1-4 EEL =    11652.3763  RESTRAINT  =        0.0000
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+    200      -7.8746E+03     2.8200E+00     1.2713E+02     OG1      1400
+
+ BOND    =      169.2357  ANGLE   =      557.2732  DIHED      =     2388.0243
+ VDWAALS =    -2067.8315  EEL     =   -17541.9211  EGB        =    -3801.6106
+ 1-4 VDW =      800.8924  1-4 EEL =    11621.3587  RESTRAINT  =        0.0000
+
+
+  Maximum number of minimization cycles reached.
+
+
+                    FINAL RESULTS
+
+
+
+   NSTEP       ENERGY          RMS            GMAX         NAME    NUMBER
+    200      -7.8746E+03     2.8200E+00     1.2713E+02     OG1      1400
+
+ BOND    =      169.2357  ANGLE   =      557.2732  DIHED      =     2388.0243
+ VDWAALS =    -2067.8315  EEL     =   -17541.9211  EGB        =    -3801.6106
+ 1-4 VDW =      800.8924  1-4 EEL =    11621.3587  RESTRAINT  =        0.0000
+
+--------------------------------------------------------------------------------
+   5.  TIMINGS
+--------------------------------------------------------------------------------
+
+|    Read coords time           0.01 ( 0.01% of Total)
+|                Calc gb radii             49.67 (27.37% of Gen B)
+|                Calc gb diag              96.06 (52.94% of Gen B)
+|                Calc gb off-diag          35.73 (19.69% of Gen B)
+|             Gen Born time            181.47 (100.0% of Nonbo)
+|          Nonbond force            181.47 (99.18% of Force)
+|          Bond/Angle/Dihedral        1.50 ( 0.82% of Force)
+|       Force time               182.97 (100.0% of Runmd)
+|    Runmd Time               182.97 (99.87% of Total)
+|    Other                      0.22 ( 0.12% of Total)
+| Total time               183.20 (100.0% of ALL  )
+
+| Highest rstack allocated:          0
+| Highest istack allocated:          0
+|           Job began  at 17:23:53.491  on 07/24/2009
+|           Setup done at 17:23:53.623  on 07/24/2009
+|           Run   done at 17:26:56.694  on 07/24/2009
+|     wallclock() was called    3608 times

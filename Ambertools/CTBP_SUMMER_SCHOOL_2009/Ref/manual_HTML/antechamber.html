@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0099)https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>antechamber</title></head>
+<body data-new-gr-c-s-check-loaded="14.1080.0" data-gr-ext-installed=""><p align="center"><u><b>CTBP SUMMER SCHOOL 2009<br>
+ANTECHAMBER TUTORIAL</b></u></p>
+<p align="center"><b>Using Antechamber to Create Leap Input Files for Simulating 
+Sustiva (efavirenz)-RT complex<br>
+using the General Amber Force Field</b></p>
+<p align="center"><b>By Ross Walker and Sishi Tang</b></p><p align="center"><b><img style="width: 428px; height: 419px;" alt="Sustiva" src="./antechamber_files/sustiva.png"><br></b></p><p align="left">
+In this tutorial we will make use of the Antechamber tools, which ship
+with AmberTools,&nbsp;to&nbsp;create prmtop and inpcrd files for the
+simulations of a protein-ligand complex, and perform a short GB
+simulation on it. &nbsp;</p>
+<p align="left">
+Antechamber is designed to be used with the "general AMBER force field (GAFF)"<sup>1</sup>. 
+This force field has been specifically designed to cover most pharmaceutical 
+molecules and is compatible with the traditional AMBER force fields in such a 
+way that the two can be mixed during a simulation. Like the traditional AMBER 
+force fields, GAFF uses a simple harmonic function form for bonds and angles but 
+unlike the traditional protein and DNA orientated AMBER force fields the atom 
+types used in GAFF are much more general such that they cover most of the 
+organic chemical space. The current implementation of the GAFF force field 
+consists of 33 basic atom types and 22 special atom types. The charge methods 
+used can be HF/6-31G* RESP<sup>2</sup> or AM1-BCC<sup>3</sup>.</p>
+<p align="left">
+By design, GAFF, is a complete force field (so that missing parameters rarely 
+occur), it covers almost all the organic chemical space that is made up of C, N, 
+O, S, P, H, F, Cl, Br and I. Moreover, since GAFF is totally compatible with the 
+AMBER macromolecular force fields it should prove to be an useful molecular 
+mechanical tool for rational drug design. Especially in binding free energy 
+calculations and molecular docking studies.</p>
+<p align="left">
+The Antechamber tool set is designed to allow the rapid generation of topology 
+files for use with the AMBER simulation programs. This is useful in situations 
+where you want to automatically screen a large number of compounds. Allowing 
+antechamber to calculate charges and atom types automatically for us using GAFF 
+allows it to be included in shell scripts that process a large number of 
+compounds. However, as with any automated system it is not perfect and if you 
+plan on focusing on a single system you should consider manually assigning atom 
+types and carefully validating things. With Antechamber, one 
+may solve the following problems:</p>
+<ol><li>
+	<p align="left">Automatically identify bond and atom types</p></li><li>
+	<p align="left">Judge atomic equivalence</p></li><li>
+	<p align="left">Generate residue topology files</p></li><li>
+	<p align="left">Find missing force field parameters and supply reasonable 
+	suggestions</p></li></ol>
+<p align="left">
+Remember though that Antechamber is not a replacement for due 
+diligence. You should always closely examine the atom types that Antechamber 
+assigns and verify to yourself that the choices are reasonable. You should never 
+use scientific software in a "Black Box" approach!</p>In this tutorial we shall use the Antechamber tools with Leap to create topology 
+and coordinate files for the prescription drug Sustiva (Efavirenz). Sustiva (<a target="_blank" href="http://www.sustiva.com/">http://www.sustiva.com</a>)
+is a human immunodeficiency virus type 1 (HIV-1) specific,
+non-nucleoside, reverse transcriptase inhibitor marketed by Bristol
+Myers Squibb for controlling the progression of HIV infection in
+humans. The chemical name for Sustiva is
+&nbsp;(S)-6-chloro-(cyclopropylethynyl)-1,4-dihydro-4-(trifluoromethyl)-2H-3,1-benzoxazin-2-one.
+Its empirical formula is C<sub>14</sub>H<sub>9</sub>ClF<sub>3</sub>NO<sub>2</sub> 
+and it's 2D structure is:
+
+
+<p align="center">
+<img style="border: 0px solid ; width: 251px; height: 164px;" alt="sustiva 2d" src="./antechamber_files/sustiva_2d.gif"></p>Here is a basic 3 dimensional geometry for Sustiva from which we will start to 
+build our topology and coordinate files from <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.pdb">sustiva.pdb</a>. Our Sustiva pdb&nbsp;file is extracted from the RT-sustiva complex pdb file
+(pdb code : 1FKO.pdb). The coordinates of sustiva is associated with a
+residue called "EFZ" (Efavirenz).&nbsp;<br>By all means open it up in VMD and take a look at it. <p align="left">
+We shall use Antechamber to assign atom types to this molecule and also 
+calculate a set of point charges for us. Antechamber is the most important 
+program within the set of Antechamber tools. It can perform many file 
+conversions and can also assign atomic charges and atom types. As required by 
+the input antechamber executes the following programs (all provided with AmberTools): <i>divcon</i>, <i>atomtype</i>, <i>am1bcc</i>, <i>bondtype</i>, <i>espgen</i>,
+<i>respgen</i> and <i>prepgen</i>. It will also generate a series of 
+intermediate files (all in capital letters).</p><b><i>Create parameter and coordinate files for Sustiva&nbsp;</i></b><p align="left">First,
+let's run AMBER reduce to add all the hydrogen atoms to the pdb file.
+The hydrogenated sustiva coordinate can be found in <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva_h.pdb">sustiva_h.pdb</a>.</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">$AMBERHOME/exe/reduce sustiva.pdb &gt; sustiva_h.pdb &nbsp;</p><p align="left">To
+be consistent with the name of pdb, we will change the name of the
+residue from "EFZ" to "SUS", &nbsp;and create a new pdb file: <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva_new.pdb">sustiva_new.pdb</a>. </p><p align="left">Now let's try using antechamber on our sustiva pdb file.&nbsp;To create the
+"mol2" file, required to define a new unit in leap, we simply run the
+following command:</p><p><font style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" face="Courier New">$AMBERHOME/exe/antechamber -i sustiva_new.pdb -fi pdb -o 
+sustiva.mol2 -fo mol2 -c bcc -s 2</font></p>
+<p align="left">
+Here the -i 
+sustiva.pdb specifies the name of the 3D 
+structure file and the -fi pdb 
+tells antechamber that this is a pdb format file (we could easily have used any 
+number of other supported formats including Gaussian Z-Matrix [gzmat], Gaussian 
+Output [gout], MDL [mdl], amber Restart [rst], Sybyl Mol2 [mol2]). The 
+-o sustiva.mol2 
+specifies the name of our output file and the -fo 
+mol2 states that we want the output file to 
+be of Tripos Mol2 format (this is an internal format supported by Leap). The
+-c bcc 
+option tells antechamber to use the AM1-BCC charge model in order to calculate the 
+atomic point charges while the -s 2 
+option defines the verbosity of the status information provided by antechamber. 
+In this case we have selected verbose output (2).</p>
+<p align="left">
+So, go ahead and run the above command. The screen 
+output should be as follows:</p><table style="width: 790px; height: 216px; margin-right: auto; margin-left: auto; text-align: left;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><pre>Running: /usr/local/amber10/bin/bondtype -j full -i ANTECHAMBER_BOND_TYPE.AC0 -o ANTECHAMBER_BOND_TYPE.AC -f ac<br><br>Running: /usr/local/amber10/bin/atomtype -i ANTECHAMBER_AC.AC0 -o ANTECHAMBER_AC.AC -p gaff<br><br>Total number of electrons: 160; net charge: 0<br><br>Running: /usr/local/amber10/bin/mopac.sh<br><br>Running: /usr/local/amber10/bin/am1bcc -i ANTECHAMBER_AM1BCC_PRE.AC -o ANTECHAMBER_AM1BCC.AC -f ac<br>-p /usr/local/amber10/dat/antechamber/BCCPARM.DAT -s 2 -j 1<br><br>Running: /usr/local/amber10/bin/atomtype -f ac -p bcc -o ANTECHAMBER_AM1BCC.AC -i ANTECHAMBER_AM1BCC_PRE.AC</pre></td></tr></tbody></table><div style="font-family: Bitstream Vera Sans Mono;" align="center"><br></div>
+<p align="left">
+<font face="Times New Roman">You should also get a whole series of files written 
+to your directory.</font><br></p><table style="width: 631px; height: 81px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><pre>ANTECHAMBER_AC.AC      ANTECHAMBER_AM1BCC_PRE.AC  ATOMTYPE.INF  mopac.out  sustiva.mol2<br>ANTECHAMBER_AC.AC0     ANTECHAMBER_BOND_TYPE.AC   divcon.pdb    mopac.pdb  sustiva.pdb<br>ANTECHAMBER_AM1BCC.AC  ANTECHAMBER_BOND_TYPE.AC   mopac.in     </pre></td></tr></tbody></table><div style="font-family: Bitstream Vera Sans Mono;" align="center"><br></div>
+<p align="left">
+The files in CAPITALS are all intermediate files used by antechamber and are not 
+required here. You can safely delete them. These files are not deleted by 
+default since they may be of interest if things didn't work correctly. The 
+mopac.xxx files are input and output from the mopac quantum mechanics code 
+used by Antechamber to calculate the atomic point charges. We are not interested 
+in the data here except to check that the mopac calculation completed 
+successfully:</p>
+<div align="center">
+	<table style="border-collapse: collapse;" id="table3" border="1" width="650">
+		<tbody><tr>
+			<td>
+			<p align="center"><a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/mopac.out">
+			<font face="Courier New">mopac.out<br></font></a><font face="Courier New"><a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/mopac.out"></a></font></p></td>
+		</tr>
+		<tr>
+			<td><div style="text-align: left;"><small><span style="font-family: Bitstream Vera Sans Mono;">*******************************************************************************</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;** FRANK J. SEILER RES. LAB., U.S. AIR FORCE ACADEMY, COLO. SPGS., CO. 80840 **</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*******************************************************************************</span></small><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AM1 CALCULATION RESULTS</span></small><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*******************************************************************************</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOPAC:&nbsp; VERSION&nbsp;
+6.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CALC'D.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; GEO-OK&nbsp;&nbsp; - OVERRIDE INTERATOMIC DISTANCE CHECK</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; MMOK&nbsp;&nbsp;&nbsp;&nbsp; - APPLY MM CORRECTION TO CONH BARRIER</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; ANALYT&nbsp;&nbsp; - USE ANALYTIC DERIVATIVES </span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CHARGE ON SYSTEM =&nbsp; 0</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp;&nbsp; T=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - A TIME OF&nbsp; 3600.0 SECONDS REQUESTED</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; DUMP=N&nbsp;&nbsp; - RESTART FILE WRITTEN EVERY&nbsp; 3600.0 SECONDS</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; AM1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - THE AM1 HAMILTONIAN TO BE USED</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;*&nbsp; PRECISE&nbsp; - CRITERIA TO BE INCREASED BY 100 TIMES</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;***********************************************************************100BY100</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;AM1 ANALYT MMOK GEO-OK PRECISE CHARGE=0</span></small><br style="font-family: Bitstream Vera Sans Mono;"><small><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;created by wmopcrt() for mopac&nbsp;</span></small><br></div></td>
+		</tr>
+	</tbody></table>
+</div>
+<p align="left">
+The file that we are really interested in, and the reason we ran Antechamber in 
+the first place, is the <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.mol2">sustiva.mol2</a> file. 
+This contains the definition of our sustiva residue including all of the charges 
+and atom types that we will load into Leap to when creating our prmtop and 
+inpcrd files. Let's take a quick look at the file:</p>
+<div align="center">
+	<table style="border-collapse: collapse;" id="table4" border="1" width="650">
+		<tbody><tr>
+			<td>
+			<p align="center"><font face="Courier New">
+			<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.mol2">sustiva.mol2</a></font></p></td>
+		</tr>
+		<tr>
+			<td><div style="text-align: left;"><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">@&lt;TRIPOS&gt;MOLECULE</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">SUS</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp; 30&nbsp;&nbsp;&nbsp; 32&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp; 0</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">SMALL</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">bcc</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;"></span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;"></span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">@&lt;TRIPOS&gt;ATOM</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 CL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.6850&nbsp;
+-32.7250&nbsp;&nbsp; 25.2220 cl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.073100</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2 F1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.7550&nbsp;
+-36.6320&nbsp;&nbsp; 25.6970 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.231400</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 F2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.0780&nbsp;
+-37.0430&nbsp;&nbsp; 24.6720 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.221400</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4 F3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.7840&nbsp;
+-37.1770&nbsp;&nbsp; 23.6260 f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.216800</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5 O1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5240&nbsp;
+-34.9340&nbsp;&nbsp; 20.9100 o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.573600</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+6 O2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.9890&nbsp;
+-34.8800&nbsp;&nbsp; 23.0580 os&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.371900</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+7 N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.6810&nbsp;
+-34.9710&nbsp;&nbsp; 21.4340 n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.459500</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+8 C1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.6620&nbsp;
+-34.4140&nbsp;&nbsp; 22.3130 ca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.084700</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+9 C2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.9150&nbsp;
+-33.9470&nbsp;&nbsp; 21.8430 ca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.167000</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;
+10 C3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.8380&nbsp;
+-33.4230&nbsp;&nbsp; 22.7710 ca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.069500</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;
+11 C4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.5330&nbsp;
+-33.3730&nbsp;&nbsp; 24.1190 ca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.025500</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;
+12 C5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.3100&nbsp;
+-33.8290&nbsp;&nbsp; 24.5930 ca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 999
+SUS&nbsp;&nbsp;&nbsp;&nbsp; -0.040200</span></font><br><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;"></span></font></div><font size="-2"><span style="font-family: Bitstream Vera Sans Mono;"><br></span></font></td>
+		</tr>
+	</tbody></table>
+</div>
+<p align="left">
+As you can see this file contains the 3 dimensional 
+structure of our sustiva molecule as well as the charge on each atom, final 
+column, the atom number (column 1), its name (column 2) and it's atom type 
+(column 6). It also specifies the bonding at the end of the file. This file does not, 
+however, contain any parameters. The GAFF parameters are all defined in $AMBERHOME/dat/leap/parm/gaff.dat. 
+The other thing you should notice here is that all of the GAFF atom types are in 
+lower case. This is the mechanism by which the GAFF force field is kept 
+independent of the macromolecular AMBER force fields. All of the traditional 
+AMBER force fields use uppercase atom types. In this way the GAFF and 
+traditional force fields can be mixed in the same calculation.</p>
+<p align="left">
+While the most likely combinations of bond, angle and dihedral parameters are 
+defined in the parameter file it is possible that our molecule might contain combinations 
+of atom types for bonds, angles or dihedrals that have not been parameterised. 
+If this is the case then we will have to specify any missing parameters before 
+we can create our prmtop and inpcrd files in Leap.</p>
+<p align="left">
+We can use the utility <font face="Courier New">parmchk</font> to test if all 
+the parameters we require are available.</p>
+<p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">
+$AMBERHOME/exe/parmchk -i sustiva.mol2 -f mol2 -o sustiva.frcmod</p>
+<p align="left">
+Run this command now and it will produce a file 
+called <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.frcmod">sustiva.frcmod</a>. This is a parameter 
+file that can be loaded into Leap in order to add missing parameters. Here it 
+will contain all of the missing parameters. If it can antechamber will fill in 
+these missing parameters by analogy to a similar parameter. You should check 
+these parameters carefully before running a simulation. If antechamber can't 
+empirically calculate a value or has no analogy it will either add a default 
+value that it thinks is reasonable or alternatively insert a place holder (with 
+zeros everywhere) and the comment "ATTN: needs revision". In this case you will 
+have to manually parameterise this yourself. It is hope that as GAFF is 
+developed so the number of missing parameters will decrease. Let's look at our 
+frcmod file:</p>
+<div align="center">
+	<table style="border-collapse: collapse; width: 613px; height: 268px;" id="table5" border="1">
+		<tbody><tr>
+			<td>
+			<p align="center"><font face="Courier New">
+			<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.frcmod">sustiva.frcmod</a></font></p></td>
+		</tr>
+		<tr>
+			<td><div style="text-align: left;">
+			<pre><font size="1">remark goes here<br>MASS<br><br>BOND<br><br>ANGLE<br>ca-c3-c1   64.784     110.735   Calculated with empirical approach<br>c1-c1-cx   56.400     177.990   same as c1-c1-c3<br>c1-cx-hc   48.300     109.750   same as c1-c3-hc<br>c1-cx-cx   64.200     111.590   same as c1-c3-c3<br><br>DIHE<br><br>IMPROPER<br>ca-ca-ca-ha         1.1          180.0         2.0          General improper torsional angle (2 general atom types)<br>n -o -c -os        10.5          180.0         2.0          General improper torsional angle (2 general atom types)<br>c -ca-n -hn         1.1          180.0         2.0          General improper torsional angle (2 general atom types)<br>ca-ca-ca-n          1.1          180.0         2.0          Using default value<br><br>NONBON</font></pre></div>
+			</td>
+		</tr>
+	</tbody></table>
+</div>
+<p align="left">
+We can see that there were a total of 4 missing 
+angle parameters and 4 missing improper dihedrals.&nbsp;For the purposes of this tutorial we shall assume that the 
+parameters Antechamber has suggested for us are acceptable. Ideally you should 
+really test these parameters (by comparing to <i>ab initio</i> calculations for 
+example) to ensure they are reasonable. If you see any parameters listed with 
+the comment "ATTN: NEEDS REVISION" then it means that Antechamber could not 
+determine suitable parameters and so you must manually provide these before you 
+can proceed with the simulation. By default Antechamber will have set the values 
+to zero.</p>
+<p align="left">
+We now have everything we need to load sustiva as a 
+unit in Leap. We just need to load tLeap and ensure the GAFF force field is 
+available. (First, download an updated version of <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/tleap">tleap</a>,
+and place it in <i>/opt/bin/amber11/bin</i>.)</p>
+<p style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" align="left">
+$AMBERHOME/exe/tleap -f $AMBERHOME/dat/leap/cmd/leaprc.ff99SB</p>
+<p align="left">
+Once tleap is up and running we also need to ensure 
+that it knows about the GAFF force field. There is a script in $AMBERHOME/dat/leap/cmd/ 
+that will do this for us. We can load it into tLeap with:</p>
+<p style="font-weight: bold;" align="left">
+<font face="Courier New">source leaprc.gaff</font></p>
+<p align="left">
+Our tLeap console should now look something like this:</p><table style="text-align: left; margin-left: auto; margin-right: auto; width: 823px; height: 516px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font style="font-family: Bitstream Vera Sans Mono;" size="-1">Welcome to LEaP!<br>(no leaprc in search path)<br>Sourcing: /usr/local/amber10/dat/leap/cmd/leaprc.ff99SB<br>Log file: ./leap.log<br>Loading parameters: /usr/local/amber10/dat/leap/parm/parm99.dat<br>Reading title:<br>PARM99 for DNA,RNA,AA, organic molecules, TIP3P wat. Polariz.&amp; LP incl.02/04/99<br>Loading parameters: /usr/local/amber10/dat/leap/parm/frcmod.ff99SB<br>Reading force field modification type file (frcmod)<br>Reading title:<br>Modification/update of parm99.dat (Hornak &amp; Simmerling)<br>Loading library: /usr/local/amber10/dat/leap/lib/all_nucleic94.lib<br>Loading library: /usr/local/amber10/dat/leap/lib/all_amino94.lib<br>Loading library: /usr/local/amber10/dat/leap/lib/all_aminoct94.lib<br>Loading library: /usr/local/amber10/dat/leap/lib/all_aminont94.lib<br>Loading library: /usr/local/amber10/dat/leap/lib/ions94.lib<br>Loading library: /usr/local/amber10/dat/leap/lib/solvents.lib<br>&gt; source leaprc.gaff <br>----- Source: /usr/local/amber10/dat/leap/cmd/leaprc.gaff<br>----- Source of /usr/local/amber10/dat/leap/cmd/leaprc.gaff done<br>Log file: ./leap.log<br>Loading parameters: /usr/local/amber10/dat/leap/parm/gaff.dat<br>Reading title:<br>AMBER General Force Field for organic mol., add. info. at the end (June, 2003)<br>&gt; </font><br></td></tr></tbody></table><p align="left">Now we can load our sustiva unit (sustiva.mol2):&nbsp;</p><p style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" align="left"><span style="font-weight: bold;">SUS = loadmol2 sustiva.mol2</span>&nbsp;</p><p align="left">If you now type list in tLeap you should see the new SUS unit (highlighted in bold):&nbsp;</p><table style="width: 673px; height: 449px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font size="-1"><span style="font-family: Bitstream Vera Sans Mono;">&gt; SUS = loadmol2 sustiva.mol2 </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Loading Mol2 file: ./sustiva.mol2</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Reading MOLECULE named SUS</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&gt; list </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">ACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ALA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ARG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ASH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ASN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ASP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CALA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CARG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">CASN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CASP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CCYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CCYX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CGLN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CGLU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CGLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CHCL3BOX&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">CHID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CHIE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CHIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CIO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CLEU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CLYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">CMET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CPHE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CPRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CSER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CTHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CTRP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CTYR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CVAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">CYM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+CYX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Cl-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Cs+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DA3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DA5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">DAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DC3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DC4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DC5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DCN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DG3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">DG5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DGN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DT3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DT5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DTN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GLH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GLN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">GLU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+GLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HIE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+HOH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+IB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">ILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+K+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LEU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LYN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+LYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Li+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MEOHBOX&nbsp;&nbsp;
+MET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">MG2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NALA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NARG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NASN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NASP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NCYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NCYX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NGLN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">NGLU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NGLY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NHE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NHID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NHIE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NHIP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NHIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">NLEU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NLYS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NMABOX&nbsp;&nbsp;&nbsp;
+NME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NMET&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NPHE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NPRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NSER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">NTHR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NTRP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NTYR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+NVAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Na+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PHE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PL3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; POL3BOX&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">PRO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+QSPCFWBOX RA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RA3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RA5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RAN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RC3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">RC5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RCN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RG3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RG5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RGN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RU3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">RU5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+RUN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Rb+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SPC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPCBOX&nbsp;&nbsp;&nbsp;
+SPCFWBOX&nbsp; SPF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">SPG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">SUS</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+T4E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+THR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TIP3PBOX&nbsp; TIP3PFBOX
+TIP4PBOX&nbsp; TIP4PEWBOX</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">TP3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TP4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TP5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TPF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TRP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TYR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+VAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+WAT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><br style="font-family: Bitstream Vera Sans Mono;"></font><span style="font-family: Bitstream Vera Sans Mono;"><font size="-1">frcmod99SBgaff&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parm99&nbsp;</font>&nbsp;&nbsp; </span></td></tr></tbody></table><p align="left">At this point we haven't loaded the frcmod file 
+that parmchk gave us. Thus if we check our SUS unit we should find that there 
+are 4 missing angle type parameters.</p><p style="text-align: left;"><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">check SUS</span></p><table style="text-align: left; margin-left: auto; margin-right: auto; width: 1081px; height: 240px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font size="-1"><span style="font-family: Bitstream Vera Sans Mono;">&gt; check SUS</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking 'SUS'....</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking parameters for unit 'SUS'.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking for bond parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking for angle parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Could not find angle parameter: ca - c3 - c1</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Could not find angle parameter: c1 - c1 - cx</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Could not find angle parameter: c1 - cx - hc</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Could not find angle parameter: c1 - cx - cx</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Could not find angle parameter: c1 - cx - cx</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">There are missing parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Unit is OK.</span></font></td></tr></tbody></table><p align="left">
+Our missing angle type parameters were ca-c3-c1, c1-c1-cx, c1-cx-hc and 
+c1-cx-cx. These correspond to the propyl ring and the c-c triple bond. This is 
+what we would expect since this type of system is fairly rare in organic 
+molecules. We can now load our frcmod file in order to 
+tell tLeap the parameters for these missing angle types.</p>
+<p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">
+loadamberparams sustiva.frcmod</p>
+<p align="left">
+If we now check out SUS unit we should find that 
+there are no missing parameters:</p><table style="text-align: left; margin-left: auto; margin-right: auto; width: 653px; height: 259px;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font size="-1"><span style="font-family: Bitstream Vera Sans Mono;">&gt; loadamberparams sustiva.frcmod</span><span style="font-family: Bitstream Vera Sans Mono;"><br>loading parameters: ./sustiva.frcmod</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Reading force field modification type file (frcmod)</span><br><span style="font-family: Bitstream Vera Sans Mono;">Reading title:</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">remark goes here</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&gt;
+check
+SUS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking 'SUS'....</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking parameters for unit 'SUS'.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking for bond parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking for angle parameters.</span><br><span style="font-family: Bitstream Vera Sans Mono;">Unit is OK.</span></font><br></td></tr></tbody></table>
+<p align="left">
+We can now&nbsp;create the library file for sustiva (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sus.lib">sus.lib</a>), as well as the prmtop and inpcrd files (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.prmtop">sustiva.prmtop</a>, <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.inpcrd">sustiva.in</a><a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sustiva.inpcrd">pcrd</a>). &nbsp;</p>
+<p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">
+saveoff SUS sus.lib&nbsp;</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">saveamberparm SUS sustiva.prmtop sustiva.inpcrd</p>
+<p align="left">The output from tleap shows a few warnings, which can
+be safely ignored (in this case!) due to the triangular bond geometry
+of sustiva:&nbsp;</p><table style="width: 697px; height: 620px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font size="-1"><span style="font-family: Bitstream Vera Sans Mono;">&gt; saveoff SUS sus.lib </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building topology.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building atom parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&gt; </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&gt; saveamberparm SUS sustiva.prmtop sustiva.inpcrd </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Checking Unit.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building topology.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building atom parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building bond parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building angle parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building proper torsion parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">1-4: angle 7 12 duplicates bond ('triangular' bond) or angle ('square' bond)</span><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">1-4: angle 7 9 duplicates bond ('triangular' bond) or angle ('square' bond)</span><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">1-4: angle 9 12 duplicates bond ('triangular' bond) or angle ('square' bond)</span><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building improper torsion parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;total 8 improper torsions applied</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Building H-Bond parameters.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Not Marking per-residue atom chain types.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">Marking per-residue atom chain types.</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp; (Residues lacking connect0/connect1 - </span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp; these don't have chain types marked:</span><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res&nbsp;&nbsp;&nbsp;&nbsp; total affected</span><br style="font-family: Bitstream Vera Sans Mono;"><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SUS&nbsp;&nbsp;&nbsp;&nbsp; 1</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp; )</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&nbsp;(no restraints)</span><br style="font-family: Bitstream Vera Sans Mono;"><span style="font-family: Bitstream Vera Sans Mono;">&gt; </span></font><br></td></tr></tbody></table><p align="left">Instead
+of typing everything in the tleap console, the list of tLeap commands
+mentioned above can also be used to create a tLeap&nbsp;input file (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/tleap.in">tleap.in</a>) and generate all the required files:</p><p align="left"><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">$AMBERHOME/exe/tleap -f tleap.in</span> <br><br></p><p align="left"><b><i>Creating topology and coordinate files&nbsp;for Sustiva-RT complex&nbsp;</i></b>&nbsp;</p><p align="left">
+Since we can mix the traditional AMBER force fields with GAFF, we can
+at this point load a fragment of the reverse transcriptase (RT) from
+HIV virus and treat this using the ff99SB force field while treating
+the Sustiva molecule using the GAFF force field. We will need to use
+the Sustiva library file (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/sus.lib">sus.lib</a>) that was&nbsp;created in the previous step.&nbsp; &nbsp;</p><p align="left">The RT-Sustiva complex can be found in the RCSB protein data bank (pdb code 1FKO). The corresponding pdb file is <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO.pdb">1FKO.pdb</a>.</p><p align="left">HIV
+reverse transcriptase is a heterodimer composed of the p51 and p66
+subunits. It is a large protein with a molecular mass of 117
+kDa.&nbsp;For the purpose of this tutorial, we will use a truncated
+system in close proximity of Sustiva, including the finger and palm
+domains of the p66 subunit. The truncated pdb file is: <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_trunc.pdb">1FKO_trunc.pdb</a>.</p>In
+order to have the 1FKO pdb file recognized by tLeap once the Sustiva
+library file is loaded, we need to change the residue name in the 1FKO
+pdb file from EFZ to SUS. Since the Sustiva libary file includes the
+same atom names as the Sustiva molecule in the&nbsp;1FKO&nbsp;pdb
+file,&nbsp;no further modification is necessary. In other cases it is
+always a good idea to check the pdb file against the library file to
+make sure they have matching atom names as well as residue
+name.&nbsp;The modified pdb file is now: <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus.pdb">1FKO_trunc_sus.pdb</a><p align="left">Now we are able to load the pdb file into tLeap.&nbsp;</p><p align="left">First, we start tLeap just like what we did&nbsp;in the previous section:&nbsp;</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">$AMBERHOME/exe/tleap -f $AMBERHOME/dat/leap/cmd/leaprc.ff99SB</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left"> &gt;source leaprc.gaff&nbsp;</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">&gt;loadamberparams sustiva.frcmod</p><p align="left">Now we load the Sustiva library file (sus.lib), followed by the complex pdb file 1FKO_trunc_sus.pdb.</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">&gt;loadoff sus.lib&nbsp;</p><p style="font-family: Bitstream Vera Sans Mono; font-weight: bold;" align="left">&gt;complex = loadpdb <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_trunc_sus.pdb">1FKO_trunc_sus.pdb</a>&nbsp;</p>Finally, we are ready to create our topology and coordinate files of the truncated RT-sustiva complex. <br><br><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">&gt;saveamberparm complex 1FKO_sus.prmtop 1FKO_sus.inpcrd </span><br><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">&gt;savepdb complex </span><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">1FKO_sus.pdb</span><br><span style="font-family: Bitstream Vera Sans Mono; font-weight: bold;">&gt;quit</span><br><br>You can take a look at the truncated RT-Sustiva complex structure (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus.pdb">1FKO_sus.pdb</a>) in VMD.<br><div style="text-align: center;">&nbsp;<img style="width: 748px; height: 763px;" alt="RT-Sustiva Complex" src="./antechamber_files/RT.png"></div><br><p align="left">Again we can create a
+tLeap&nbsp;input file (<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/tleap2.in">tleap2.in</a>) and generate all the files for the Sustiva-RT complex:</p><p style="font-family: Bitstream Vera Sans Mono;"><span style="font-weight: bold;">$AMBERHOME/exe/tleap -f tleap2.in</span> </p><b><i>Minimize and Equilibrate the&nbsp;Sustiva-RT complex&nbsp;</i></b><p align="left">Once we have the topology and coordinate files of&nbsp;RT-Sustiva complex, we are ready to run short GB simulations on Sustiva-RT.&nbsp;Note, the procedure given here is very 
+short&nbsp;in order to make the simulations compatible with the timescale of this 
+tutorial. In a real "production" simulation you would typically run a much 
+longer simulation (ns)&nbsp;in order to obtain good statistical convergence.</p>First, we will minimize our complex to remove any possible bad contacts. Here's our input file <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/min.in">min.in</a>. We will do a total of 200 steps of 
+minimization (MAXCYC) with the first 50 being steepest descent (NCYC), the 
+remainder will be conjugate gradient (MAXCYC-NCYC). We will use a reasonably 
+large cut off of 16 Angstroms since this is not going to be a periodic 
+simulation and we want to deal with our electrostatics accurately (NTB=0,CUT=16). 
+For our implicit solvent model we will use the GB model of Hawkins, Cramer and 
+Truhlar, see the AMBER manual for a full description (IGB=1):<br><div style="text-align: center;"><br></div><table style="font-family: Bitstream Vera Sans Mono; width: 456px; height: 126px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><div style="text-align: left;"><font size="-1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/min.in"><span style="font-weight: bold;">min.in</span></a></font><br></div><font size="-1">Initial minimisation of sustiva-RT complex<br>
+&nbsp;&amp;cntrl<br>
+&nbsp; imin=1, maxcyc=200, ncyc=50,<br>
+&nbsp; cut=16, ntb=0, igb=1,<br>
+&nbsp;&amp;end</font></td></tr></tbody></table><br>Let's run our minimization: <br><font style="font-weight: bold;" face="Courier New"><br></font><p><font style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" face="Courier New">$AMBERHOME/exe/sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop&nbsp;</font><span style="font-weight: bold; font-family: Bitstream Vera Sans Mono;"></span><font face="Courier New"><span style="font-weight: bold;"><span style="font-family: Bitstream Vera Sans Mono;">-c 1FKO_sus.inpcrd &nbsp;-r 1FKO_sus_min.crd &nbsp;&amp;</span> </span></font></p><br>Now we wait for it to run. (Takes about 3 minutes on my local machine). If you can't wait the output files are here: <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus_min.out">1FKO_sus_min.out,</a> <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus_min.crd">1FKO_sus_min.crd</a>.<p align="left">You can use ambpdb to generate a pdb of the final minimized 
+structures if you want:</p>
+<p style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" align="left">$AMBERHOME/exe/ambpdb -p 1FKO_sus.prmtop &lt;1FKO_sus_min.crd 
+&gt; <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus_min.pdb">1FKO_sus_min.pdb</a></p><p align="left">It is always a good idea to visualize your results since the 
+human eye is very good at spotting anormolies.</p>
+<p align="left">The next step if to heat the RT-Sustiva complex. For 
+speed we will do this very rapidly over 1ps. Ideally you should do this for much 
+longer.</p>
+<p align="left">Here's our input file, we will run MD (imin=0) and this is not a 
+restart (irest=0). In this example we will not use shake since it is possible 
+that the hydrogen motion may effect the binding energy (probably not, but it 
+serves as an example here). As we are not using shake we will need a time step 
+smaller than normal. Here I will use a time step of 1 fs and run for 1000 steps 
+[2 ps] (dt = 0.001, nstlim=1000, ntc=1). We will also write to our output file 
+every 20 steps and to our trajectory [mdcrd] file every 20 steps (ntpr=20,ntwx=20). 
+For temperature control we will use a Langevin dynamics approach with a 
+collision frequency of 1 ps^-1. We will start our system at 0K and we want a 
+target temperature of 300K (ntt=3, gamma_ln=1.0, tempi=0.0, temp0=300.0). And here's the input file: eq.in&nbsp;</p><table style="font-family: Bitstream Vera Sans Mono; width: 424px; height: 202px; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2"><tbody><tr><td><font size="-1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/eq.in">eq.in</a><br>Initial MD equilibration<br>
+&nbsp;&amp;cntrl<br>
+&nbsp; imin=0, irest=0,<br>
+&nbsp; nstlim=1000,dt=0.001, ntc=1,<br>
+&nbsp; ntpr=20, ntwx=20,<br>
+&nbsp; cut=16, ntb=0, igb=1,<br>
+&nbsp; ntt=3, gamma_ln=1.0,<br>
+&nbsp; tempi=0.0, temp0=300.0,<br>
+&nbsp;&amp;end</font></td></tr></tbody></table><br>Now we run:<br><p><font style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" face="Courier New">$AMBERHOME/exe/sander -O -i eq.in -o 1FKO_sus_eq.out </font><font style="font-weight: bold; font-family: Bitstream Vera Sans Mono;" face="Courier New">-p 1FKO_sus.prmtop</font><span style="font-weight: bold; font-family: Bitstream Vera Sans Mono;"></span><font face="Courier New"><span style="font-weight: bold;"><span style="font-family: Bitstream Vera Sans Mono;"> -c 1FKO_sus_min.crd &nbsp;-r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd &amp; </span></span></font></p><font face="Courier New"><span style="font-weight: bold;"></span></font>The heating trajectory and restart coordinates are&nbsp; saved in <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus_eq.mdcrd">1FKO_sus_eq.mdcrd</a> and <a href="https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/files/1FKO_sus_eq.rst">1FKO_sus_eq.rst</a>,
+respectively.&nbsp;Now that the sustiva-RT complex is minimized and
+heated, you can take a look at the snapshot at 300K. This structure can
+be used as the starting point for further equilibration.<br><br>References: <br><p align="left">
+<sup>1</sup>Wang, J., Wolf, R.M., Caldwell, J.W., Kollman, P.A., Case, D.A. 
+"Development and Testing of a General Amber Force Field", J. Comp. Chem., 2004,
+<b>25</b>, 1157 - 1173.</p><p align="left"><sup>2</sup>Bayly, C.I.,
+Cieplak, P., Cornell, W.D., Kollman, P.A. "A Well-Behaved Electrostatic
+Potential Based Method Using Charge Restraints for Deriving Atomic
+Charges : The RESP Model", J. Phys. Chem, 1993, 10269-10280.</p>
+<p align="left">
+<sup>3</sup>Jakalian, A., Bush, B.L., Jack, B.D., Bayly, C.I., "Fast, Efficient 
+Generation of High-Quality Atomic Charges. AM1-BCC Model: I. Method.", J. Comp. 
+Chem., 2000, <b>21</b>, 132-146.</p><br>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

@@ -1,0 +1,8 @@
+source leaprc.ff99SB
+source leaprc.gaff
+SUS = loadmol2 sustiva.mol2 
+check SUS 
+loadamberparams sustiva.frcmod
+saveoff SUS sus.lib 
+saveamberparm SUS sustiva.prmtop sustiva.inpcrd
+quit 

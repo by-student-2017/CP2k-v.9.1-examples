@@ -1,0 +1,9 @@
+source leaprc.ff99SB
+source leaprc.gaff 
+loadamberparams sustiva.frcmod 
+loadoff sus.lib 
+complex = loadpdb 1FKO_trunc_sus.pdb 
+saveamberparm complex 1FKO_sus.prmtop 1FKO_sus.inpcrd
+savepdb complex 1FKO_sus.pdb 
+
+quit 

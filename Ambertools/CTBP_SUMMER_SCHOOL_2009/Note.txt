@@ -1,0 +1,8 @@
+#---------------------------------------------------------------------
+# Usage (https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html)
+1. bash
+2. conda activate AmberTools23
+3. cp ./Ref/1FKO.pdb ./
+4. cp ./Ref/1FKO_trunc.pdb ./
+5. bsah run.sh
+#---------------------------------------------------------------------
