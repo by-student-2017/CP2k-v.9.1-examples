@@ -1,16 +1,17 @@
 #!/bin/bash
 
 echo "conda activate AmberTools23"
+conda activate AmberTools23
 which antechamber
 
 #-----------------------------------------------------------------------------------------
-cp ./Ref/1FKO.pdb ./
+cp ./Ref/sustiva.pdb ./
 
 echo "add all the hydrogen atoms to the pdb file"
 reduce sustiva.pdb > sustiva_h.pdb
 
 echo 'change the name of the residue from "EFZ" to "SUS"'
-sed "s/EFZ/SUS/g" sustiva_h.pdb > sustiva_new.pdb
+sed -e "s/EFZ/SUS/g" sustiva_h.pdb > sustiva_new.pdb
 
 echo "create the "mol2" file"
 antechamber -i sustiva_new.pdb -fi pdb -o sustiva.mol2 -fo mol2 -c bcc -s 2
@@ -19,6 +20,7 @@ echo "test if all the parameters we require are available"
 parmchk2 -i sustiva.mol2 -f mol2 -o sustiva.frcmod
 
 ls $HOME/miniconda3/envs/AmberTools23/dat/leap/cmd/
+echo "\n oldff"
 ls $HOME/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff
 
 cat << EOF1 > tleap.in
@@ -58,11 +60,13 @@ tleap -f tleap2.in
 
 vmd 1FKO_sus.pdb
 
-echo "Minimize and Equilibrate the Sustiva-RT complex"
-sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd  -r 1FKO_sus_min.crd  &
+echo "Minimize the Sustiva-RT complex"
+sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd  -r 1FKO_sus_min.crd
 
-ambpdb -p 1FKO_sus.prmtop <1FKO_sus_min.crd > 1FKO_sus_min.pdb
+echo "generate a pdb of the final minimized structures"
+ambpdb -p 1FKO_sus.prmtop < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
 
-sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd  -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd &
+echo "Equilibrate the Sustiva-RT complex"
+sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd  -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd
 
 #-----------------------------------------------------------------------------------------
