@@ -77,7 +77,9 @@ sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd -r
 
 echo "#----- Generate a pdb of the final minimized structures -----#"
 cpptraj -p 1FKO_sus.prmtop -y 1FKO_sus_min.crd -x 1FKO_sus_min.pdb
-ambpdb -p 1FKO_sus.prmtop -v < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
+#vmd 1FKO_sus_min.pdb
+ambpdb -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd > 1FKO_sus_min_ambpdb.pdb
+#vmd 1FKO_sus_min_ambpdb.pdb
 
 cat << EOF4 > eq.in
 Initial MD equilibration
@@ -93,5 +95,14 @@ EOF4
 
 echo "#----- Equilibrate the Sustiva-RT complex (sander) -----#"
 sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd
+
+echo "#----- Generate a pdb of the Equilibrate MD trajectory -----#"
+# convert trajectry file
+cpptraj -p 1FKO_sus.prmtop -y 1FKO_sus_eq.mdcrd -x 1FKO_sus_eq.pdb
+vmd -e vmd.tcl 1FKO_sus_eq.pdb
+
+echo "#----- Generate a pdb of the final Equilibrate structures -----#"
+ambpdb -p 1FKO_sus.prmtop -c 1FKO_sus_eq.rst > 1FKO_sus_eq_ambpdb.pdb
+#vmd 1FKO_sus_min_ambpdb.pdb
 
 #-----------------------------------------------------------------------------------------
