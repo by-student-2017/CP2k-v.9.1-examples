@@ -24,3 +24,19 @@
 - https://github.com/zhanghaomiao/amber-notes (???)
 - https://www.cnblogs.com/wq242424/p/9157072.html (???)
 #---------------------------------------------------------------------------------------------------
+# tleap
+# https://tsiangsun.github.io/programming/Amber-setup-prmtop-inpdrd/
+
+A. Standard residue: PDB + lib -> prmtop + inpcrd
+
+B. Non-standard ligands or molecules: PDB/mol2 + frcmod -> prmtop + inpcrd
+1. antechamber: PDB -> mol2/prep
+2. parmchk2: mol2/prep -> frcmod
+3. tleap: (PDB + mol2/prep + frcomd/dat + new frcmod) -> prmtop + inpcrd
+
+sander or pmemd: prmtop + inpcrd + mdin -> mdcrd + mdout + restart file
+#---------------------------------------------------------------------------------------------------
+# iQmol (free): http://iqmol.org/index.html
+# Avogadro (free): https://avogadro.cc/
+# ChemSketch (free): https://www.acdlabs.com/resources/free-chemistry-software-apps/chemsketch-freeware/
+#---------------------------------------------------------------------------------------------------
