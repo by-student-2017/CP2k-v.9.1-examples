@@ -1,5 +1,7 @@
 #---------------------------------------------------------------------
-# Usage (https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html)
+# Edit and Test: 23/Aug/2024
+# Usage
+(https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html)
 1. conda activate AmberTools23
 2. cp ./Ref/sustiva.pdb ./
 3. cp ./Ref/1FKO_trunc.pdb ./
@@ -69,4 +71,6 @@ display projection Orthographic
 #display depthcue off
 #color Display Background white
 #------
+#---------------------------------------------------------------------
+# Ref: https://amber.tkanai-lab.org/TutorialB4/index.htm (Japanese)
 #---------------------------------------------------------------------
