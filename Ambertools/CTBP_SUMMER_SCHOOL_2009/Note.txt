@@ -5,3 +5,32 @@
 3. cp ./Ref/1FKO_trunc.pdb ./
 4. bsah run.sh
 #---------------------------------------------------------------------
+1. VMD -> Graphics -> Representations...
+#------
+2. Selected Atoms: protein
+  Coloring Method: Secondary Structure
+  Dwawing Method: Ribbons or Cartoon
+#------
+3. Create Rep
+4. Selected Atoms: resname SUS
+  Coloring Method: Type
+  Dwawing Method: VDW
+#------
+5. Create Rep
+6. Selected Atoms: water
+  Coloring Method: Name
+  Dwawing Method: CPk
+#------
+7. Create Rep
+8. Selected Atoms: protein
+  Coloring Method: ColorID 22
+  Dwawing Method: QuickSurf
+  Material: Transparent
+  Radius Scale: 1.6
+#------
+see Value "SUS" of Keyword "resname" in "Selections"
+Ref1: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2972669/
+Ref2: https://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/
+Ref3: https://lammpstutorials.github.io/sphinx/build/html/tutorials/vmd/vmd-tutorial.html
+Ref4: https://qiita.com/TANATY/items/2fc4bd2044bb6c81e8cc
+#---------------------------------------------------------------------
