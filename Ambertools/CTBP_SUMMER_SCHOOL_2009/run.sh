@@ -60,11 +60,31 @@ tleap -f tleap2.in
 
 vmd -e vmd.tcl 1FKO_sus.pdb
 
+cat << EOF3 > min.in
+Initial minimisation of sustiva-RT complex
+ &cntrl
+  imin=1, maxcyc=200, ncyc=50,
+  cut=16, ntb=0, igb=1,
+ &end
+EOF3
+
 echo "Minimize the Sustiva-RT complex"
 sander -O -i min.in -o 1FKO_sus_min.out -p 1FKO_sus.prmtop -c 1FKO_sus.inpcrd  -r 1FKO_sus_min.crd
 
 echo "generate a pdb of the final minimized structures"
 ambpdb -p 1FKO_sus.prmtop < 1FKO_sus_min.crd > 1FKO_sus_min.pdb
+
+cat << EOF4 > eq.in
+Initial MD equilibration
+ &cntrl
+  imin=0, irest=0,
+  nstlim=1000,dt=0.001, ntc=1,
+  ntpr=20, ntwx=20,
+  cut=16, ntb=0, igb=1,
+  ntt=3, gamma_ln=1.0,
+  tempi=0.0, temp0=300.0,
+ &end
+EOF4
 
 echo "Equilibrate the Sustiva-RT complex"
 sander -O -i eq.in -o 1FKO_sus_eq.out -p 1FKO_sus.prmtop -c 1FKO_sus_min.crd  -r 1FKO_sus_eq.rst -x 1FKO_sus_eq.mdcrd

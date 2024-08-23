@@ -1,0 +1,5 @@
+Initial minimisation of sustiva-RT complex
+ &cntrl
+  imin=1, maxcyc=200, ncyc=50,
+  cut=16, ntb=0, igb=1,
+ &end
