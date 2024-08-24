@@ -1,8 +1,21 @@
 #---------------------------------------------------------------------
-# 2008 AMBER tutorial
-# https://ringo.ams.stonybrook.edu/index.php/2008_AMBER_tutorial
-
 1. conda activate AmberTools23
 2. wget https://files.rcsb.org/download/1NPO.pdb
 3. bash run.sh
+#---------------------------------------------------------------------
+# conda activate AmberTools23
+# export OMP_NUM_THREADS=1
+# sander ...
+|           Job began  at 23:15:17.618  on 08/23/2024
+|           Setup done at 23:15:17.715  on 08/23/2024
+|           Run   done at 00:01:19.682  on 08/24/2024
+|     wallclock() was called 5775345 times
+#---------------------------------------------------------------------
+# conda activate AmberTools23_openmpi
+# export OMP_NUM_THREADS=1
+# mpirun -np 8 sander ...
+|           Job began  at 17:06:51.703  on 08/24/2024
+|           Setup done at 17:06:51.883  on 08/24/2024
+|           Run   done at 18:21:25.064  on 08/24/2024
+|     wallclock() was called 5775345 times
 #---------------------------------------------------------------------

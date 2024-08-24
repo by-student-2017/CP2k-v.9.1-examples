@@ -58,6 +58,9 @@ vmd
 ## USCF Chimera (Non-Commercial)
 - http://www.cgl.ucsf.edu/chimera/
 - Info: https://ringo.ams.stonybrook.edu/index.php/Chimera
+1. Quick Links -> Download
+2. Linux 64-bit -> chimera-1.18-linux_x86_64.bin -> Accept
+3. 
 
 
 ## Original files
