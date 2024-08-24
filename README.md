@@ -71,6 +71,7 @@ which chimera
 ```
 chimera
 ```
+- Note: Chimera is often used in "AMBER Tutorials (https://ringo.ams.stonybrook.edu/index.php/AMBER_Tutorials)". Sometimes preprocessing with Openbabel or reduce (AmberTools) doesn't work well. Therefore, it is good to be able to use Chimera.
 
 
 ## Original files
