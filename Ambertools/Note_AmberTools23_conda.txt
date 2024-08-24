@@ -22,6 +22,32 @@
 8. conda update -c conda-forge ambertools -y
 #----------
 
+# ambertools23, gpu(cuda), openmpi, propka, and openbabel (installation)
+#----------
+1. conda create --name AmberTools23_openmpi -y
+2. conda init
+3. bash
+4. conda activate AmberTools23_openmpi
+5. conda install -c conda-forge ambertools=23.6=cuda_11.8_openmpi_py312h755114c_5 -y
+6. conda install -c conda-forge propka -y
+7. conda install -c conda-forge openbabel -y
+8. conda update -c conda-forge ambertools -y
+Note: https://anaconda.org/conda-forge/ambertools/files
+#----------
+
+# ambertools23, gpu(cuda), propka, and openbabel (installation)
+#----------
+1. conda create --name AmberTools23_cuda -y
+2. conda init
+3. bash
+4. conda activate AmberTools23_cuda
+5. conda install -c conda-forge ambertools=23.6=cuda_None_openmpi_py312hd864ca5_5 -y
+6. conda install -c conda-forge propka -y
+7. conda install -c conda-forge openbabel -y
+8. conda update -c conda-forge ambertools -y
+Note: https://anaconda.org/conda-forge/ambertools/files
+#----------
+
 #------------------------------------------------------------------------------------------
 # Usage
 1. conda activate AmberTools23

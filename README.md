@@ -55,6 +55,10 @@ vmd
 - Since cp2k v.9.1 can only read one charmm file, please use "plugins/noarch/tcl/readcharmmtop1.1" from vmd-1.9.2.
 
 
+## USCF Chimera (Non-Commercial)
+- http://www.cgl.ucsf.edu/chimera/
+
+
 ## Original files
 - Basic: https://www.cp2k.org/howto
 - QMMM, and NEB: https://www.cp2k.org/exercises

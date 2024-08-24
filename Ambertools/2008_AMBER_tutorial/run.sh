@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=4
 
 #sudo apt -y install dos2unix
 
@@ -21,6 +21,7 @@ echo "Structure preparation with tleap"
 #----------------------------------------------------
 grep SG oxyt.pdb
 
+# The disulfide bonds S-S (SG-SG), Note: Not mol2, but PDB.
 cat << EOF0 > leap_pre.in
 oxy = loadPdb oxyt.pdb
 bond oxy.1.SG oxy.6.SG
@@ -31,9 +32,10 @@ EOF0
 
 tleap -s -f leap_pre.in
 
+echo "#----- Add all the hydrogen atoms to the pdb file (reduce) -----#"
 #-------
 reduce oxyt_new.pdb > oxyt.H.pdb
-# Note: obabel is failed
+# Note: obabel method is failed
 #obabel -ipdb oxyt_new.pdb -opdb -O oxyt.H.pdb -h
 #-------
 
@@ -58,6 +60,7 @@ saveAmberParm oxy oxy_vac.top oxy_vac.crd
 
 # Solvate
 solvateOct oxy TIP3PBOX 9.0
+#solvateBox system TIP3PBOX 10 iso
 
 # Neutralise
 #addions2 system Cl- 0
