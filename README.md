@@ -57,6 +57,7 @@ vmd
 
 ## USCF Chimera (Non-Commercial)
 - http://www.cgl.ucsf.edu/chimera/
+- Info: https://ringo.ams.stonybrook.edu/index.php/Chimera
 
 
 ## Original files
