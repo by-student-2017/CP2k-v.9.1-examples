@@ -60,7 +60,17 @@ vmd
 - Info: https://ringo.ams.stonybrook.edu/index.php/Chimera
 1. Quick Links -> Download
 2. Linux 64-bit -> chimera-1.18-linux_x86_64.bin -> Accept
-3. 
+```
+chmod +x chimera-1.18-linux_x86_64.bin
+./chimera-1.18-linux_x86_64.bin
+echo 'export PATH=$PATH:$HOME/.local/UCSF-Chimera64-1.18/bin' >> ~/.bashrc
+bash
+which chimera
+```
+- Open chimera command
+```
+chimera
+```
 
 
 ## Original files
