@@ -100,3 +100,5 @@ EOF10
 echo "#----- 11md.in -----#"
 cp 10md.in 11md.in
 
+echo "#----- please, check input (*.in) file -----#"
+ls -ltra
