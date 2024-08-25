@@ -1,0 +1,6 @@
+#-----------------------------------------------------------------------------------------
+# conda activate AmberTools23
+1. (prepare pdb, prepi and frcmod files using antechamber and parmchk2, etc)
+2. bash make_tleap_input_file.sh
+3. bash run_tleap.sh
+#-----------------------------------------------------------------------------------------
