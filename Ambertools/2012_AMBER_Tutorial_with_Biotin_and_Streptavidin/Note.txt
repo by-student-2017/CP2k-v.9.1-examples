@@ -1,21 +1,255 @@
 #---------------------------------------------------------------------
-1. conda activate AmberTools23
-2. wget https://files.rcsb.org/download/1NPO.pdb
-3. bash run.sh
+# 2012 AMBER Tutorial with Biotin and Streptavidin
+# https://ringo.ams.stonybrook.edu/index.php/2012_AMBER_Tutorial_with_Biotin_and_Streptavidin
 #---------------------------------------------------------------------
-# conda activate AmberTools23
-# export OMP_NUM_THREADS=1
-# sander ...
-|           Job began  at 23:15:17.618  on 08/23/2024
-|           Setup done at 23:15:17.715  on 08/23/2024
-|           Run   done at 00:01:19.682  on 08/24/2024
-|     wallclock() was called 5775345 times
+# Test; conda activate AmberTools23
 #---------------------------------------------------------------------
-# conda activate AmberTools23_openmpi
-# export OMP_NUM_THREADS=1
-# mpirun -np 8 sander ...
-|           Job began  at 17:06:51.703  on 08/24/2024
-|           Setup done at 17:06:51.883  on 08/24/2024
-|           Run   done at 18:21:25.064  on 08/24/2024
-|     wallclock() was called 5775345 times
+# II. Structural Preparation
+1. mkdir 001.CHIMERA.MOL.PREP
+  mkdir 002.ANTE.TLEAP
+  mkdir 003.SANDER
+  mkdir 004.PTRAJ
+  mkdir 005.MMGBSA
+2. cd 001.CHIMERA.MOL.PREP
+3. wget https://files.rcsb.org/download/1DF8.pdb
+#---------------------------------------------------------------------
+# Preparation in Chimera
+
+# 1DF8.rec.lig.pdb:
+1. chimera
+2. File -> Open... -> 1DF8.pdb -> Open
+3. Select -> Chain -> B
+4. Actions -> Atoms/Bonds -> delete
+5. Select -> Reside -> HOH
+6. Actions -> Atoms/Bonds -> delete
+7. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
+8. File -> Quit
+
+# 1DF8.rec.noH.pdb
+1. chimera
+2. File -> Open... -> 1DF8.pdb -> Open
+3. Select -> Reside -> BTN
+4. Actions -> Atoms/Bonds -> delete
+5. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
+6. File -> Quit
+
+# 1DF8.lig.chimera.mol2
+1. chimera
+2. File -> Open... -> 1DF8.pdb -> Open
+3. Select -> Reside -> BTN
+4. Select -> Invert (all models)
+5. Actions -> Atoms/Bonds -> delete
+6. Select -> Chain -> B
+7. Actions -> Atoms/Bonds -> delete
+8. Tools -> Structure Editing -> Dock Prep -> (All) OK -> [1DF8.lig.chimera.mol2] Save
+  (AMBER ff99SB, AM1-BCC)
+9. File -> Save PDB... -> File name: 1DF8.lig.chimera.pdb -> Save
+10. File -> Quit
+#---------------------------------------------------------------------
+# antechamber
+1. sed -e "s/H102/H17 /g" 1DF8.lig.chimera.mol2 > 1DF8.lig.mol2
+2. sed -i "s/H103/H18 /g" 1DF8.lig.mol2
+#---------------------------------------------------------------------
+# LEaP
+0. cd ./../
+1. cd 002.ANTE.TLEAP
+  (conda activate AmberTools23)
+#2. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.mol2 -fi mol2 -o 1DF8.lig.ante.pdb -fo pdb
+# Note: This molecule may have more than one unit. antechamber can only handle one unit. If the input is a single unit then the connectivity is wrong and the geometry may be bad. 
+2. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.chimera.pdb -fi pdb -o 1DF8.lig.ante.pdb -fo pdb
+3. antechamber -i 1DF8.lig.ante.pdb -fi pdb -o 1DF8.lig.ante.prep -fo prepi
+4. parmchk2 -i 1DF8.lig.ante.prep -f prepi -o 1DF8.lig.ante.frcmod
+5. vim tleap.lig.in
+#-----
+set default PBradii mbondi2                                      #set default PBradii
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB #load a force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+loadamberparams 1DF8.lig.ante.frcmod
+loadamberprep 1DF8.lig.ante.prep                                 #load an AMBER PREP file
+lig = loadpdb 1DF8.lig.ante.pdb                                  #load the ligand pdb file
+saveamberparm lig 1DF8.lig.gas.leap.prm7 1DF8.lig.gas.leap.rst7  #save the ligand gas phase AMBER topology and coordinate files
+solvateBox lig TIP3PBOX 10.0                                     #solvate the receptor using TIP3P, solvent box radii 10 angstroms
+saveamberparm lig 1DF8.lig.wat.leap.prm7 1DF8.lig.wat.leap.rst7  #save the ligand water phase AMBER topology and coordinate files
+charge lig                                                       #charge the ligand
+quit
+#-----
+6. vim tleap.rec.in
+#-----
+set default PBradii mbondi2
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+REC = loadpdb ../001.CHIMERA.MOL.PREP/1DF8.rec.noH.pdb
+saveamberparm REC 1DF8.rec.gas.leap.prm7 1DF8.rec.gas.leap.rst7
+solvateBox REC TIP3PBOX 10.0                                     
+saveamberparm REC 1DF8.rec.wat.leap.prm7 1DF8.rec.wat.leap.rst7
+charge REC
+quit
+#-----
+7. vim tleap.com.in
+#-----
+set default PBradii mbondi2
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+REC = loadpdb ../001.CHIMERA.MOL.PREP/1DF8.rec.noH.pdb
+loadamberparams 1DF8.lig.ante.frcmod
+loadamberprep 1DF8.lig.ante.prep
+LIG = loadpdb 1DF8.lig.ante.pdb
+COM = combine {REC LIG}
+saveamberparm COM 1DF8.com.gas.leap.prm7 1DF8.com.gas.leap.rst7
+solvateBox COM TIP3PBOX 10.0
+saveamberparm COM 1DF8.com.wat.leap.prm7 1DF8.com.wat.leap.rst7
+charge COM
+quit
+#-----
+8. tleap -s -f tleap.lig.in | tee tleap.lig.out
+9. tleap -s -f tleap.rec.in | tee tleap.rec.out
+10. tleap -s -f tleap.com.in | tee tleap.com.out
+#---------------------------------------------------------------------
+# Visualization in VMD
+
+# 2012_AMBER_Tutorial_1DF8_lig_gas
+1. vmd
+2. File -> New Molecule
+#----
+Load file for: New Molecule
+File name: 1DF8.lig.gas.leap.prm7
+Determine file type: AMBER7 Parm
+#----
+Load file for: 1DF8.lig.gas.leap.prm7
+File name: 1DF8.lig.gas.leap.rst7
+Determine file type: AMBER7 Restart
+#----
+
+# 2012_AMBER_Tutorial_1DF8_lig_water
+1. vmd
+2. File -> New Molecule
+#----
+Load file for: New Molecule
+File name: 1DF8.lig.water.leap.prm7
+Determine file type: AMBER7 Parm
+#----
+Load file for: 1DF8.lig.water.leap.rst7
+File name: 1DF8.lig.gas.leap.rst7
+Determine file type: AMBER7 Restart
+#----
+3. Graphics -> Representations
+4. Selected Atoms: [all and noh] -> Apply
+#---------------------------------------------------------------------
+# III. Simulation using sander
+
+# Minimization
+0. cd ./../
+1. cd 003.SANDER
+2. vim 01mi.in
+#-----
+01mi.in: equilibration
+&cntrl
+  imin = 1, maxcyc = 1000, ntmin = 2,
+  ntx = 1, ntc = 1, ntf = 1,
+  ntb = 1, ntp = 0,
+  ntwx = 1000, ntwe = 0, ntpr = 1000,
+  scee = 1.2, cut = 8.0,
+  ntr = 1,
+  restraintmask = ':1-119 & !@H=',
+  restraint_wt=5.0,
+/
+#-----
+3. sander -O -i 01mi.in -o 01mi.out -p ../002.TLEAP/1DF8.com.wat.leap.prm7 -c ../002.TLEAP/1DF8.com.wat.leap.rst7 -ref ../002.TLEAP/1DF8.com.wat.leap.rst7 -x 01mi.trj -inf 01mi.info -r 01mi.rst7
+
+# Equilibration
+4. vim 02md.in
+#----
+10md.in: production (500000 = 1ns)
+&cntrl
+  imin = 0, ntx = 5, irest = 1, nstlim = 500000,
+  temp0 = 298.15, tempi = 298.15, ig = 71287,
+  ntc = 2, ntf = 1, ntt = 1, dt = 0.002,
+  ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
+  ntwx = 500, ntwe = 0, ntwr = 500, ntpr = 500,
+  scee = 1.2, cut = 8.0, iwrap = 1,
+  ntr = 1, nscm = 100,
+  restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1,
+/
+#----
+5. sander -O -i 02md.in -o 02md.out -p ../002.TLEAP/1DF8.com.wat.leap.prm7 -c 01mi.rst7 -ref 01mi.rst7 -x 02md.trj -inf 02md.info -r 02md.rst7
+
+# Production
+6. vim 10md.in
+#----
+10md.in: production (500000 = 1ns)
+&cntrl
+  imin = 0, ntx = 5, irest = 1, nstlim = 500000,
+  temp0 = 298.15, tempi = 298.15, ig = 71287,
+  ntc = 2, ntf = 1, ntt = 1, dt = 0.002,
+  ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
+  ntwx = 500, ntwe = 0, ntwr = 500, ntpr = 500,
+  scee = 1.2, cut = 8.0, iwrap = 1,
+  ntr = 1, nscm = 100,
+  restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1,
+/
+#----
+7.  sander.MPI -O -i 10md.in -o 10md.out -p ../002.TLEAP/1df8.com.wat.leap.prm7 -c 09md.rst7 -ref 05mi.rst7 -x 10md.trj -inf 10md.info -r 10md.rst7
+
+Note: conditions of sander input file
+For the minimization and equilibration runs
+01mi.in: maxcyc = 1000, restraintmask = ':1-119 & !@H=', restraint_wt = 5.0,
+02md.in: ntx = 1, irest = 0, nstlim = 50000, restraintmask = ':1-119 & !@H=',
+        restraint_wt = 5.0, dt = 0.001,
+03mi.in: maxcyc = 1000, restraintmask = ':1-119 & !@H=', restraint_wt = 2.0,
+04mi.in: maxcyc = 1000, restraintmask = ':1-119 & !@H=', restraint_wt = 0.1,
+05mi.in: maxcyc = 1000, restraintmask = ':1-119 & !@H=', restraint_wt = 0.05,
+
+Note: conditions of sander input file
+For the equilibration and production runs
+06md.in: ntx = 1, irest = 0, nstlim = 50000, restraintmask = ':1-119 & !@H=',
+        restraint_wt = 1.0, dt = 0.001,
+        ntwx = 1000, ntwr = 1000, ntpr = 1000,
+07md.in: nstlim = 50000, restraintmask = ':1-119 & !@H=', restraint_wt = 0.5, dt = 0.001,
+        ntwx = 1000, ntwr = 1000, ntpr = 1000,
+08md.in: nstlim = 50000, restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1, dt = 0.001,
+        ntwx = 1000, ntwr = 1000, ntpr = 1000,
+09md.in: nstlim = 50000, restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1, dt = 0.001,
+        ntwx = 1000, ntwr = 1000, ntpr = 1000,
+
+Note: conditions of sander input file
+For production:
+ 10md.in: nstlim = 500000, restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1, dt = 0.002,
+ 11md.in: nstlim = 500000, restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1, dt = 0.002,
+#---------------------------------------------------------------------
+# IV. Simulation Analysis
+
+# Ptraj
+
+# RMSD Plots
+
+# Measuring h-bond distances
+
+# MMGBSA Energy Calculation
+
+#---------------------------------------------------------------------
+# V. Frequently Encountered Problems
+
+#---------------------------------------------------------------------
+## USCF Chimera (Free for non-commercial use)
+- http://www.cgl.ucsf.edu/chimera/
+- Info: https://ringo.ams.stonybrook.edu/index.php/Chimera
+1. Quick Links -> Download
+2. Linux 64-bit -> chimera-1.18-linux_x86_64.bin -> Accept
+```
+chmod +x chimera-1.18-linux_x86_64.bin
+./chimera-1.18-linux_x86_64.bin
+echo 'export PATH=$PATH:$HOME/.local/UCSF-Chimera64-1.18/bin' >> ~/.bashrc
+bash
+which chimera
+```
+- Open chimera command
+```
+chimera
+```
+- Note: Chimera is often used in "AMBER Tutorials (https://ringo.ams.stonybrook.edu/index.php/AMBER_Tutorials)". Sometimes preprocessing with Openbabel or reduce (AmberTools) doesn't work well. Therefore, it is good to be able to use Chimera.
+
+Ref: https://pdbj.org/cms-data/workshop/20210118_19/UCSFChimera_Install_Win_20210112.pdf (Japanese)
 #---------------------------------------------------------------------
