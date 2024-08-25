@@ -6,13 +6,9 @@
 #---------------------------------------------------------------------
 # II. Structural Preparation
 1. mkdir 001.CHIMERA.MOL.PREP
-  mkdir 002.ANTE.TLEAP
-  mkdir 003.SANDER
-  mkdir 004.PTRAJ
-  mkdir 005.MMGBSA
 2. cd 001.CHIMERA.MOL.PREP
 3. wget https://files.rcsb.org/download/1DF8.pdb
-#---------------------------------------------------------------------
+#-----------------------
 # Preparation in Chimera
 
 # 1DF8.rec.lig.pdb:
@@ -45,16 +41,20 @@
   (AMBER ff99SB, AM1-BCC)
 9. File -> Save PDB... -> File name: 1DF8.lig.chimera.pdb -> Save
 10. File -> Quit
-#---------------------------------------------------------------------
+#-----------------------
 # antechamber
 1. sed -e "s/H102/H17 /g" 1DF8.lig.chimera.mol2 > 1DF8.lig.mol2
 2. sed -i "s/H103/H18 /g" 1DF8.lig.mol2
+#-----------------------
+#---------------------------------------------------------------------
 #---------------------------------------------------------------------
 # LEaP
-0. cd ./../
-1. cd 002.ANTE.TLEAP
+1. cd ./../
+2. mkdir 002.ANTE.TLEAP
+3. cd 002.ANTE.TLEAP
   (conda activate AmberTools23)
-#2. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.mol2 -fi mol2 -o 1DF8.lig.ante.pdb -fo pdb
+
+#1. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.mol2 -fi mol2 -o 1DF8.lig.ante.pdb -fo pdb
 # Note: This molecule may have more than one unit. antechamber can only handle one unit. If the input is a single unit then the connectivity is wrong and the geometry may be bad. 
 2. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.chimera.pdb -fi pdb -o 1DF8.lig.ante.pdb -fo pdb
 3. antechamber -i 1DF8.lig.ante.pdb -fi pdb -o 1DF8.lig.ante.prep -fo prepi
@@ -140,45 +140,96 @@ Determine file type: AMBER7 Restart
 #---------------------------------------------------------------------
 # III. Simulation using sander
 
-# Minimization
 0. cd ./../
-1. cd 003.SANDER
-2. vim 01mi.in
-#-----
-01mi.in: equilibration
+1. mkdir 003.SANDER
+2. cd 003.SANDER
+
+# Minimization
+1. cat << EOF1 > 01mi.in
+01mi.in: minimization
 &cntrl
   imin = 1, maxcyc = 1000, ntmin = 2,
   ntx = 1, ntc = 1, ntf = 1,
   ntb = 1, ntp = 0,
   ntwx = 1000, ntwe = 0, ntpr = 1000,
-  scee = 1.2, cut = 8.0,
+  cut = 8.0,
   ntr = 1,
   restraintmask = ':1-119 & !@H=',
   restraint_wt=5.0,
 /
-#-----
-3. sander -O -i 01mi.in -o 01mi.out -p ../002.TLEAP/1DF8.com.wat.leap.prm7 -c ../002.TLEAP/1DF8.com.wat.leap.rst7 -ref ../002.TLEAP/1DF8.com.wat.leap.rst7 -x 01mi.trj -inf 01mi.info -r 01mi.rst7
+EOF1
+2. sander -O -i 01mi.in -o 01mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c ../002.ANTE.TLEAP/1DF8.com.wat.leap.rst7 -ref ../002.ANTE.TLEAP/1DF8.com.wat.leap.rst7  -x 01mi.trj -inf 01mi.info -r 01mi.rst7
+Note: Error: "scee = 1.2"
+Note: SCEE: Defaults to 1.2
+
 
 # Equilibration
-4. vim 02md.in
-#----
-10md.in: production (500000 = 1ns)
+3. cat << EOF2 > 02md.in
+02md.in: equilibration (500000 = 0.1ns)
 &cntrl
-  imin = 0, ntx = 5, irest = 1, nstlim = 500000,
+  imin = 0, ntx = 1, irest = 0, nstlim = 50000,
   temp0 = 298.15, tempi = 298.15, ig = 71287,
-  ntc = 2, ntf = 1, ntt = 1, dt = 0.002,
+  ntc = 2, ntf = 1, ntt = 1, dt = 0.001,
   ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
   ntwx = 500, ntwe = 0, ntwr = 500, ntpr = 500,
-  scee = 1.2, cut = 8.0, iwrap = 1,
+  cut = 8.0, iwrap = 1,
   ntr = 1, nscm = 100,
-  restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1,
+  restraintmask = ':1-119 & !@H=',
+  restraint_wt = 5.0,
 /
-#----
-5. sander -O -i 02md.in -o 02md.out -p ../002.TLEAP/1DF8.com.wat.leap.prm7 -c 01mi.rst7 -ref 01mi.rst7 -x 02md.trj -inf 02md.info -r 02md.rst7
+EOF2
+4. sander -O -i 02md.in -o 02md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 01mi.rst7 -ref 01mi.rst7 -x 02md.trj -inf 02md.info -r 02md.rst7
+Note: Error: "scee = 1.2"
+Note: SCEE: Defaults to 1.2
+
+# Minimization
+5. sed -e "s/restraint_wt=5.0/restraint_wt=2.00/g" 01mi.in > 03mi.in
+  (sander -O -i 03mi.in -o 03mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 02md.rst7 -ref 02md.rst7 -x 03mi.trj -inf 03mi.info -r 03mi.rst7)
+6. sed -e "s/restraint_wt=5.0/restraint_wt=0.10/g" 01mi.in > 04mi.in
+  (sander -O -i 04mi.in -o 04mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 03md.rst7 -ref 03md.rst7 -x 04mi.trj -inf 04mi.info -r 04mi.rst7)
+7. sed -e "s/restraint_wt=5.0/restraint_wt=0.05/g" 01mi.in > 05mi.in
+  (sander -O -i 05mi.in -o 05mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 04md.rst7 -ref 04md.rst7 -x 05mi.trj -inf 05mi.info -r 05mi.rst7)
+
+# Equilibration
+8. cat << EOF6 > 06md.in
+06md.in: equilibration (500000 = 0.1ns)
+&cntrl
+  imin = 0, ntx = 1, irest = 0, nstlim = 50000,
+  temp0 = 298.15, tempi = 298.15, ig = 71287,
+  ntc = 2, ntf = 1, ntt = 1, dt = 0.001,
+  ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
+  ntwx = 1000, ntwe = 0, ntwr = 1000, ntpr = 1000,
+  cut = 8.0, iwrap = 1,
+  ntr = 1, nscm = 100,
+  restraintmask = ':1-119 & !@H=',
+  restraint_wt = 1.0,
+/
+EOF6
+  (sander -O -i 06md.in -o 06md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 05mi.rst7 -ref 05mi.rst7 -x 06md.trj -inf 06md.info -r 06md.rst7)
+9. sed -e "s/restraint_wt=1.0/restraint_wt=0.50/g" 06md.in > 07md.in
+  (sander -O -i 07md.in -o 07md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 06mi.rst7 -ref 05mi.rst7 -x 07md.trj -inf 07md.info -r 07md.rst7)
+
+# Equilibration
+10. cat << EOF8 > 08md.in
+08md.in: equilibration (500000 = 0.1ns)
+&cntrl
+  imin = 0, ntx = 1, irest = 0, nstlim = 50000,
+  temp0 = 298.15, tempi = 298.15, ig = 71287,
+  ntc = 2, ntf = 1, ntt = 1, dt = 0.001,
+  ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
+  ntwx = 1000, ntwe = 0, ntwr = 1000, ntpr = 1000,
+  cut = 8.0, iwrap = 1,
+  ntr = 1, nscm = 100,
+  restraintmask = ':1-118@CA,C,N',
+  restraint_wt = 0.1,
+/
+EOF8
+  (sander -O -i 08md.in -o 08md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 07mi.rst7 -ref 05mi.rst7 -x 08md.trj -inf 08md.info -r 08md.rst7)
+11. cp 08md.in 09md.in
+  (sander -O -i 09md.in -o 09md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 08mi.rst7 -ref 05mi.rst7 -x 09md.trj -inf 09md.info -r 09md.rst7)
 
 # Production
-6. vim 10md.in
-#----
+12. cat << EOF10 > 10md.in
 10md.in: production (500000 = 1ns)
 &cntrl
   imin = 0, ntx = 5, irest = 1, nstlim = 500000,
@@ -186,13 +237,32 @@ Determine file type: AMBER7 Restart
   ntc = 2, ntf = 1, ntt = 1, dt = 0.002,
   ntb = 2, ntp = 1, tautp = 1.0, taup = 1.0,
   ntwx = 500, ntwe = 0, ntwr = 500, ntpr = 500,
-  scee = 1.2, cut = 8.0, iwrap = 1,
+  cut = 8.0, iwrap = 1,
   ntr = 1, nscm = 100,
   restraintmask = ':1-118@CA,C,N', restraint_wt = 0.1,
 /
-#----
-7.  sander.MPI -O -i 10md.in -o 10md.out -p ../002.TLEAP/1df8.com.wat.leap.prm7 -c 09md.rst7 -ref 05mi.rst7 -x 10md.trj -inf 10md.info -r 10md.rst7
+EOF10
+  (sander -O -i 10md.in -o 10md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 09mi.rst7 -ref 05mi.rst7 -x 10md.trj -inf 10md.info -r 10md.rst7)
+13. cp 10md.in 11md.in
+  (sander -O -i 11md.in -o 11md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 10mi.rst7 -ref 05mi.rst7 -x 11md.trj -inf 11md.info -r 11md.rst7)
 
+#---------------------------------------------------------------------
+XX. cat << EOFXX > run.sh
+#!/bin/bash
+  export OMP_NUM_THREADS=1
+  sander -O -i 01mi.in -o 01mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c ../002.ANTE.TLEAP/1DF8.com.wat.leap.rst7 -ref ../002.ANTE.TLEAP/1DF8.com.wat.leap.rst7  -x 01mi.trj -inf 01mi.info -r 01mi.rst7
+  sander -O -i 02md.in -o 02md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 01mi.rst7 -ref 01mi.rst7 -x 02md.trj -inf 02md.info -r 02md.rst7
+  sander -O -i 03mi.in -o 03mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 02md.rst7 -ref 02md.rst7 -x 03mi.trj -inf 03mi.info -r 03mi.rst7
+  sander -O -i 04mi.in -o 04mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 03md.rst7 -ref 03md.rst7 -x 04mi.trj -inf 04mi.info -r 04mi.rst7
+  sander -O -i 05mi.in -o 05mi.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 04md.rst7 -ref 04md.rst7 -x 05mi.trj -inf 05mi.info -r 05mi.rst7
+  sander -O -i 06md.in -o 06md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 05mi.rst7 -ref 05mi.rst7 -x 06md.trj -inf 06md.info -r 06md.rst7
+  sander -O -i 07md.in -o 07md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 06mi.rst7 -ref 05mi.rst7 -x 07md.trj -inf 07md.info -r 07md.rst7
+  sander -O -i 08md.in -o 08md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 07mi.rst7 -ref 05mi.rst7 -x 08md.trj -inf 08md.info -r 08md.rst7
+  sander -O -i 09md.in -o 09md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 08mi.rst7 -ref 05mi.rst7 -x 09md.trj -inf 09md.info -r 09md.rst7
+  sander -O -i 10md.in -o 10md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 09mi.rst7 -ref 05mi.rst7 -x 10md.trj -inf 10md.info -r 10md.rst7
+  sander -O -i 11md.in -o 11md.out -p ../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7 -c 10mi.rst7 -ref 05mi.rst7 -x 11md.trj -inf 11md.info -r 11md.rst7
+EOFXX
+#---------------------------------------------------------------------
 Note: conditions of sander input file
 For the minimization and equilibration runs
 01mi.in: maxcyc = 1000, restraintmask = ':1-119 & !@H=', restraint_wt = 5.0,
@@ -221,16 +291,22 @@ For production:
 #---------------------------------------------------------------------
 # IV. Simulation Analysis
 
+1. cd ./../
+2. mkdir 004.PTRAJ
+3. cd 004.PTRAJ
+
 # Ptraj
 
 # RMSD Plots
 
 # Measuring h-bond distances
 
+#---------------------------------------------------------------------
 # MMGBSA Energy Calculation
 
-#---------------------------------------------------------------------
-# V. Frequently Encountered Problems
+1. cd ./../
+2. mkdir 005.MMGBSA
+3. cd 005.MMGBSA
 
 #---------------------------------------------------------------------
 ## USCF Chimera (Free for non-commercial use)
