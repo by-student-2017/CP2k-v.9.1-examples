@@ -59,8 +59,8 @@
 2. antechamber -i ./../001.CHIMERA.MOL.PREP/1DF8.lig.chimera.pdb -fi pdb -o 1DF8.lig.ante.pdb -fo pdb
 3. antechamber -i 1DF8.lig.ante.pdb -fi pdb -o 1DF8.lig.ante.prep -fo prepi
 4. parmchk2 -i 1DF8.lig.ante.prep -f prepi -o 1DF8.lig.ante.frcmod
-5. vim tleap.lig.in
-#-----
+#-----------------------
+5. cat << EOF01 > tleap.lig.in
 set default PBradii mbondi2                                      #set default PBradii
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB #load a force field
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
@@ -73,9 +73,9 @@ solvateBox lig TIP3PBOX 10.0                                     #solvate the re
 saveamberparm lig 1DF8.lig.wat.leap.prm7 1DF8.lig.wat.leap.rst7  #save the ligand water phase AMBER topology and coordinate files
 charge lig                                                       #charge the ligand
 quit
-#-----
-6. vim tleap.rec.in
-#-----
+EOF01
+#-----------------------
+6. cat << EOF02 > tleap.rec.in
 set default PBradii mbondi2
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
@@ -86,9 +86,9 @@ solvateBox REC TIP3PBOX 10.0
 saveamberparm REC 1DF8.rec.wat.leap.prm7 1DF8.rec.wat.leap.rst7
 charge REC
 quit
-#-----
-7. vim tleap.com.in
-#-----
+EOF02
+#-----------------------
+7. cat << EOF03 > tleap.com.in
 set default PBradii mbondi2
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/oldff/leaprc.ff99SB
 source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
@@ -103,7 +103,8 @@ solvateBox COM TIP3PBOX 10.0
 saveamberparm COM 1DF8.com.wat.leap.prm7 1DF8.com.wat.leap.rst7
 charge COM
 quit
-#-----
+EOF03
+#-----------------------
 8. tleap -s -f tleap.lig.in | tee tleap.lig.out
 9. tleap -s -f tleap.rec.in | tee tleap.rec.out
 10. tleap -s -f tleap.com.in | tee tleap.com.out
