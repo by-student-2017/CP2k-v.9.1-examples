@@ -1,0 +1,12 @@
+#---------------------------------------------------------------------
+1. chimera
+2. Tools -> General Controls -> Command Line
+3. Command: open 4s0v -> (push "Enter" key)
+4. Select -> Structure -> protein
+5. Select -> Invert (all models)
+6. Actions -> Atoms/Bonds -> delete
+7. File -> Save PDB... -> File name: 4s0v_protein_only_for_AMBER.pdb -> Save
+8. Tools -> Structure Editing -> Model/Refine Loops
+  (https://www.cgl.ucsf.edu/chimerax/docs/user/tools/modelloops.html)
+Note: I don't meet the requirements to get a free license, so I won't go any further.
+#---------------------------------------------------------------------
