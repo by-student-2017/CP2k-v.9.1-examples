@@ -5,49 +5,37 @@ export OMP_NUM_THREADS=1
 prm_file="../002.ANTE.TLEAP/1DF8.com.wat.leap.prm7"
 rst_file="../002.ANTE.TLEAP/1DF8.com.wat.leap.rst7"
 
-echo "#----- 01mi.in -----#"
-date
-sander -O -i 01mi.in -o 01mi.out -p ${prm_file} -c ${rst_file} -ref ${rst_file} -x 01mi.trj -inf 01mi.info -r 01mi.rst7
+No="01"; echo "#----- ${No}mi.in -----#"; date
+sander -O -i ${No}mi.in -o ${No}mi.out -p ${prm_file} -c ${rst_file} -ref ${rst_file} -x ${No}mi.trj -inf ${No}mi.info -r ${No}mi.rst7
 
-echo "#----- 02md.in -----#"
-date
-sander -O -i 02md.in -o 02md.out -p ${prm_file} -c 01mi.rst7   -ref 01mi.rst7   -x 02md.trj -inf 02md.info -r 02md.rst7
+preNo=${No}; No="02"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}mi.rst7 -ref ${preNo}mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 03mi.in -----#"
-date
-sander -O -i 03mi.in -o 03mi.out -p ${prm_file} -c 02md.rst7   -ref 02md.rst7   -x 03mi.trj -inf 03mi.info -r 03mi.rst7
+preNo=${No}; No="03"; echo "#----- run ${No}mi.in, read ${preNo} file -----#"; date
+sander -O -i ${No}mi.in -o ${No}mi.out -p ${prm_file} -c ${preNo}md.rst7 -ref ${preNo}md.rst7 -x ${No}mi.trj -inf ${No}mi.info -r ${No}mi.rst7
 
-echo "#----- 04mi.in -----#"
-date
-sander -O -i 04mi.in -o 04mi.out -p ${prm_file} -c 03md.rst7   -ref 03md.rst7   -x 04mi.trj -inf 04mi.info -r 04mi.rst7
+preNo=${No}; No="04"; echo "#----- run ${No}mi.in, read ${preNo} file -----#"; date
+sander -O -i ${No}mi.in -o ${No}mi.out -p ${prm_file} -c ${preNo}mi.rst7 -ref ${preNo}mi.rst7 -x ${No}mi.trj -inf ${No}mi.info -r ${No}mi.rst7
 
-echo "#----- 05mi.in -----#"
-date
-sander -O -i 05mi.in -o 05mi.out -p ${prm_file} -c 04md.rst7   -ref 04md.rst7   -x 05mi.trj -inf 05mi.info -r 05mi.rst7
+preNo=${No}; No="05"; echo "#----- run ${No}mi.in, read ${preNo} file -----#"; date
+sander -O -i ${No}mi.in -o ${No}mi.out -p ${prm_file} -c ${preNo}mi.rst7 -ref ${preNo}mi.rst7 -x ${No}mi.trj -inf ${No}mi.info -r ${No}mi.rst7
 
-echo "#----- 06md.in -----#"
-date
-sander -O -i 06md.in -o 06md.out -p ${prm_file} -c 05mi.rst7   -ref 05mi.rst7   -x 06md.trj -inf 06md.info -r 06md.rst7
+preNo=${No}; No="06"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}mi.rst7 -ref ${preNo}mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 07md.in -----#"
-date
-sander -O -i 07md.in -o 07md.out -p ${prm_file} -c 06mi.rst7   -ref 05mi.rst7   -x 07md.trj -inf 07md.info -r 07md.rst7
+preNo=${No}; No="07"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}md.rst7 -ref 05mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 08md.in -----#"
-date
-sander -O -i 08md.in -o 08md.out -p ${prm_file} -c 07mi.rst7   -ref 05mi.rst7   -x 08md.trj -inf 08md.info -r 08md.rst7
+preNo=${No}; No="08"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}md.rst7 -ref 05mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 09md.in -----#"
-date
-sander -O -i 09md.in -o 09md.out -p ${prm_file} -c 08mi.rst7   -ref 05mi.rst7   -x 09md.trj -inf 09md.info -r 09md.rst7
+preNo=${No}; No="09"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}md.rst7 -ref 05mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 10md.in -----#"
-date
-sander -O -i 10md.in -o 10md.out -p ${prm_file} -c 09mi.rst7   -ref 05mi.rst7   -x 10md.trj -inf 10md.info -r 10md.rst7
+preNo=${No}; No="10"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}md.rst7 -ref 05mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-echo "#----- 11md.in -----#"
-date
-sander -O -i 11md.in -o 11md.out -p ${prm_file} -c 10mi.rst7   -ref 05mi.rst7   -x 11md.trj -inf 11md.info -r 11md.rst7
+preNo=${No}; No="11"; echo "#----- run ${No}md.in, read ${preNo} file -----#"; date
+sander -O -i ${No}md.in -o ${No}md.out -p ${prm_file} -c ${preNo}md.rst7 -ref 05mi.rst7 -x ${No}md.trj -inf ${No}md.info -r ${No}md.rst7
 
-date
-echo "#----- The Ende ----#"
+echo "#----- The Ende ----#"; date
