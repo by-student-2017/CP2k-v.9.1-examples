@@ -450,7 +450,7 @@ EOF11
 5. cat << EOF12 > mdproduction.sh
 #!/bin/bash
 
-echo "started Equilibration on 'date' "
+echo "started Equilibration on \`date\` "
 
 do_parallel="sander"
 
