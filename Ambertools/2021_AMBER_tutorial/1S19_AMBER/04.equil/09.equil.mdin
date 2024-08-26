@@ -1,0 +1,28 @@
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntx=5,            ! Positions and velocities read formatted
+  irest=1,          ! Restart calculation
+  ntc=1,            ! No SHAKE on for bonds with hydrogen
+  dt=0.001,         ! Timestep (ps)
+  ntb=2,            ! Constant Pressure
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask=":1-433@CA,C,N", ! atoms to be restrained
+  restraint_wt=0.1, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/

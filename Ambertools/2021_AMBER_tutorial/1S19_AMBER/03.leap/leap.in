@@ -1,0 +1,57 @@
+#!/bin/bash
+
+###needed so we can use igb=8 model
+###load protein force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.protein.ff14SB
+
+###load GAFF force field (for our ligand)
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+
+###load TIP3P (water) force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+
+###load ions frcmod for the tip3p model
+loadamberparams ~/miniconda3/envs/AmberTools23/dat/leap/parm/frcmod.ionsjc_tip3p
+
+###needed so we can use igb=8 model
+set default PBradii mbondi3
+
+###load protein pdb file
+rec=loadpdb ./../01.structure/1s19_fresh.pdb
+
+###load ligand frcmod/mol2
+loadamberparams ./../02.parameters/1s19_ligand.am1bcc.frcmod
+lig=loadmol2 ./../02.parameters/1s19_ligand_antechamber.mol2
+
+###create gase-phase complex
+gascomplex= combine {rec lig}
+
+###write gas-phase pdb
+savepdb gascomplex 1s19.gas.complex.pdb
+
+###write gase-phase toplogy and coord files for MMGBSA calc
+saveamberparm gascomplex 1s19.complex.parm7 1s19.gas.complex.rst7
+saveamberparm rec 1s19.gas.receptor.parm7 1s19.gas.receptor.rst7
+saveamberparm lig 1s19.gas.ligand.parm7 1s19.gas.ligand.rst7
+
+###create solvated complex (albeit redundant)
+solvcomplex= combine {rec lig}
+
+###solvate the system
+solvateoct solvcomplex TIP3PBOX 12.0
+
+###Neutralize system
+addions solvcomplex Cl- 0
+addions solvcomplex Na+ 0
+
+#write solvated pdb file
+savepdb solvcomplex 1s19.wet.complex.pdb
+
+###check the system
+charge solvcomplex
+check solvcomplex
+
+###write solvated toplogy and coordinate file
+saveamberparm solvcomplex 1s19.wet.complex.parm7 1s19.wet.complex.rst7
+quit
+

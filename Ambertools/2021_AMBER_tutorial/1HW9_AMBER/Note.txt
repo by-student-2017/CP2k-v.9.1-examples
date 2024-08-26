@@ -31,7 +31,7 @@
 4. Select -> Invert (Selected Molecules)
 5. Actions -> Atoms/Bonds -> delete
 6. Tools -> Structure Editing -> Add H
-7. Tools -> Structure Editing -> Add Charge -> (have Amber ff14SB and AM1-BCC selected, Net Charge:-1) -> OK
+7. Tools -> Structure Editing -> Add Charge -> (have Amber ff14SB and AM1-BCC selected) -> OK -> (Net Charge:-1) -> OK
 8. File -> Save Mol2... -> File name: 1HW9_lig_wH.mol2 -> Save
 9. File -> Save PDB... -> File name: 1HW9_lig_wH.pdb -> Save
 10. File -> Quit

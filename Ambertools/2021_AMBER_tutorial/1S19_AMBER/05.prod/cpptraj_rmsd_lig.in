@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#trajin the trajectory
+trajin 1S19_stripfit_restrained_gas.trj
+
+#read in reference
+reference ../03.leap/1s19.gas.complex.rst7
+
+#compute RMSD (do not fit internal geometris first, included rigid body motions, convert frames to ns (framenum*.005)
+rmsd rms1 ":254&!(@H=)" nofit mass out 1S19_lig_restrained_rmsd_nofit.dat time .005
+
+#histogram the nofit rmsd
+histogram rms1,*,*,.1,* norm out 1S19_lig_restrained_rmsd_nofit_histogram.dat
+

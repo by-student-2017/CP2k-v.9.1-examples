@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#read in trajectory
+trajin ../05.prod/10_prod.trj
+
+#wrap everything in one periodic cell - could cause problems, may comment out #autoimage if problems later
+autoimage
+
+#compute intra + water-mediated H-bonds
+hbond hb1 :1-263 out 1S19_calcipotriol_hbond.out avgout 1S19_calcipotriol_hbond_avg.dat solventdonor :WAT solventacceptor :WAT@-O
+nointramol brid\
+geout 1S19_calcipotriol_bridge-water.dat dist 3.0 angle 140
+
