@@ -95,7 +95,7 @@ gascomplex= combine {rec lig}
 savepdb gascomplex 3wze.gas.complex.pdb
 
 ###write gas-phase toplogy and coord files for MMGBSA calc
-saveamberparm gascomplex 3wze.complex.parm7 3wze.gas.complex.rst7
+saveamberparm gascomplex 3wze.gas.complex.parm7 3wze.gas.complex.rst7
 saveamberparm rec 3wze.gas.receptor.parm7 3wze.gas.receptor.rst7
 saveamberparm lig 3wze.gas.ligand.parm7 3wze.gas.ligand.rst7
 

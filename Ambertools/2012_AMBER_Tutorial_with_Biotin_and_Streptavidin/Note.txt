@@ -29,7 +29,7 @@
 2. File -> Open... -> 1DF8.pdb -> Open
 3. Select -> Reside -> BTN
 4. Actions -> Atoms/Bonds -> delete
-5. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
+5. File -> Save PDB... -> File name: 1DF8.rec.noH.pdb -> Save
 6. File -> Quit
 
 # 1DF8.lig.chimera.mol2: Ligand
