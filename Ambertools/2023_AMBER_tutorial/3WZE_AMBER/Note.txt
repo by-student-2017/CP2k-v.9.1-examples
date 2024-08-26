@@ -4,6 +4,8 @@
 1. mkdir 001_structure
 2. cd 001_structure
 
+# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
+
 # Receptor
 1. chimera
 2. Tools -> General Controls -> Command Line
@@ -117,9 +119,15 @@ EOF
   Prmtop: 3wze.wet.complex.parm7
   Add... -> 3wze.wet.complex.rst7
   OK
+  #----------
   Select -> Residue -> WAT
   Actions -> Atoms/Bonds -> show
   Actions -> Atoms/Bonds -> hide
+  #---------- or ----------
+  Select -> Chain -> water
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+  #----------
 
 8. vmd
   File -> New Molecule..
@@ -472,7 +480,7 @@ do_parallel="sander"
 parm7="../003_leap/3wze.wet.complex.parm7"
 coords="../004_equil/09.equil"
 
-MDINPUTS=( 10.prod )
+MDINPUTS=(10.prod)
 
 for input in \${MDINPUTS[@]}; do
   

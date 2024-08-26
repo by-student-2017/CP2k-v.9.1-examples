@@ -124,9 +124,15 @@ EOF1
   Prmtop: 2P16.wet.complex.prmtop
   Add... -> 2P16.wet.complex.rst7
   OK
+  #----------
   Select -> Residue -> WAT
   Actions -> Atoms/Bonds -> show
   Actions -> Atoms/Bonds -> hide
+  #---------- or ----------
+  Select -> Chain -> water
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+  #----------
 
 4. vmd
   File -> New Molecule..
