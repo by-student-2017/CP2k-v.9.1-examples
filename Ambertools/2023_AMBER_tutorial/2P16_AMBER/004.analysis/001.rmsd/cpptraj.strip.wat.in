@@ -1,0 +1,18 @@
+#!/bin/bash
+
+parm ../../001.tleap_build/2P16.wet.complex.prmtop
+
+#read in trajectory
+trajin ../../003.production/10.prod.trj
+
+#read in reference
+reference ../../001.tleap_build/2P16.wet.complex.rst7
+
+#compute rmsd and align CA to the crystal structure
+rmsd rms1 reference :1-235@CA
+
+#strip Solvent
+strip :WAT:Na+:Cl-
+
+#create gas-phase trajectory
+trajout 2P16.stripfit.restrained.gas.trj nobox

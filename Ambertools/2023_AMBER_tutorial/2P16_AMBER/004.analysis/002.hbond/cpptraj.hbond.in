@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#read in trajectory
+trajin ../../003.production/10.prod.trj
+
+#wrap everything into one periodic cell
+#autoimage
+#compute intra and water mediated hydrogen bonds
+hbond hb1 :1-235 out 2P16.hbond.out avgout 2P16.hbond.avg.dat solventdonor :WAT solventacceptor :WAT@O nointramol bridgeout 2P16.bridge-water.dat dist 3.0 angle 140

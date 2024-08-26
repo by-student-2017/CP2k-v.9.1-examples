@@ -1,0 +1,62 @@
+#!/bin/bash
+
+###Load Protein force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.protein.ff14SB
+###Load GAFF force field (for our ligand)
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+###Load TIP3P (water) force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+####Load Ions frcmod for the tip3p model
+loadamberparams ~/miniconda3/envs/AmberTools23/dat/leap/parm/frcmod.ionsjc_tip3p
+###Needed so we can use igb=8 model
+set default PBradii mbondi3
+
+
+###Load Protein pdb file
+rec=loadpdb ../zzz.master/2P16_rec.pdb
+
+#bond rec.7.SG rec.12.SG
+#bond rec.27.SG rec.43.SG
+#bond rec.156.SG rec.170.SG
+#bond rec.181.SG rec.209.SG
+#bond rec.96.SG rec.109.SG
+#bond rec.111.SG rec.124.SG
+#bond rec.42.SG rec.58.SG
+#bond rec.22.SG rec.27.SG
+
+###Load Ligand frcmod/mol2
+loadamberparams ../000.parameters/2P16_ligand.am1bcc.frcmod
+lig=loadmol2 ../000.parameters/2P16_ligand.am1bcc.mol2
+
+###Create gas-phase complex
+gascomplex= combine {rec lig}
+
+###Write gas-phase pdb
+savepdb gascomplex 2P16.gas.complex.pdb
+
+###Write gas-phase toplogy and coord files for MMGBSA calc
+saveamberparm gascomplex 2P16.gas.complex.prmtop 2P16.gas.complex.rst7
+saveamberparm rec 2P16.gas.receptor.prmtop 2P16.gas.receptor.rst7
+saveamberparm lig 2P16.gas.ligand.prmtop 2P16.gas.ligand.rst7
+
+###Create solvated complex (albeit redundant)
+solvcomplex= combine {rec lig}
+
+###Solvate the system
+solvateoct solvcomplex TIP3PBOX 12.0
+
+###Neutralize system (it will add either Na or Cl depending on net charge)
+addions solvcomplex Cl- 0
+addions solvcomplex Na+ 0
+
+###Write solvated pdb file
+savepdb solvcomplex 2P16.wet.complex.pdb
+
+###Check the system
+charge solvcomplex
+check solvcomplex
+
+###Write Solvated topology and coord file
+saveamberparm solvcomplex 2P16.wet.complex.prmtop 2P16.wet.complex.rst7
+
+quit

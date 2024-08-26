@@ -398,8 +398,8 @@ MDINPUTS=(01.min 02.equil 03.min 04.min 05.min 06.equil 07.equil 08.equil 09.equ
 for input in \${MDINPUTS[@]}; do
   
   echo "Start \${input} on \`date\` "
-  \$do_parallel -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
-  coords=\$input
+  \${do_parallel} -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
+  coords=\${input}
   
 done
 echo "Finished MD equilibration on \`date\` "
@@ -454,7 +454,7 @@ MD simulations
  ntr=1,            ! Turn on restraints
  restraintmask=":1-298@CA,C,N", ! atoms to be restrained
  restraint_wt=0.1, ! force constant for restraint
- ntxo=1,	    ! Write coordinate file in ASCII format
+ ntxo=1,           ! Write coordinate file in ASCII format
  ioutfm=0,         ! Write trajectory file in ASCII format
  iwrap=1,          ! iwrap is turned on
 /
@@ -476,8 +476,8 @@ MDINPUTS=( 10.prod )
 
 for input in \${MDINPUTS[@]}; do
   
-  \$do_parallel -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
-  coords=$input
+  \${do_parallel} -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
+  coords=\${input}
   
 done
 echo "Finished Equilibration on \`date\` "
