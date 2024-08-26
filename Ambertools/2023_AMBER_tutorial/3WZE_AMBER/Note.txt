@@ -405,6 +405,19 @@ EOF10
 #--------------------------
 13. bash mdequilibration.sh
 
+Note: time
+#----------
+Start 01.min on Sun Aug 25 17:23:59 JST 2024
+Start 02.equil on Sun Aug 25 17:37:06 JST 2024
+Start 03.min on Sun Aug 25 19:13:47 JST 2024
+Start 04.min on Sun Aug 25 19:16:27 JST 2024
+Start 05.min on Sun Aug 25 19:19:08 JST 2024
+Start 06.equil on Sun Aug 25 19:21:53 JST 2024
+Start 07.equil on Sun Aug 25 20:55:51 JST 2024
+Start 08.equil on Sun Aug 25 22:33:01 JST 2024
+Start 09.equil on Mon Aug 26 00:09:56 JST 2024
+Finished MD equilibration on Mon Aug 26 01:47:34 JST 2024
+#----------
 #---------------------------------------------------------------------
 # Production
 (conda activate AmberTools23)
