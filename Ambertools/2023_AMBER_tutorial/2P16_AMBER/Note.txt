@@ -1,6 +1,9 @@
 #---------------------------------------------------------------------
 # 2P16 Structures
-(conda activate AmberTools23)
+# https://ringo.ams.stonybrook.edu/index.php/2023_AMBER_tutorial_3_with_PDBID_2P16
+#---------------------------------------------------------------------
+# Test: conda activate AmberTools23
+# UCSF Chimera ver.1.18
 #---------------------------------------------------------------------
 # Simulation Parameters
 

@@ -2,7 +2,8 @@
 # 2012 AMBER Tutorial with Biotin and Streptavidin
 # https://ringo.ams.stonybrook.edu/index.php/2012_AMBER_Tutorial_with_Biotin_and_Streptavidin
 #---------------------------------------------------------------------
-# Test; conda activate AmberTools23
+# Test: conda activate AmberTools23
+# UCSF Chimera ver.1.18
 #---------------------------------------------------------------------
 # II. Structural Preparation
 1. mkdir 001.CHIMERA.MOL.PREP
@@ -11,7 +12,9 @@
 #-----------------------
 # Preparation in Chimera
 
-# 1DF8.rec.lig.pdb:
+# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
+
+# 1DF8.rec.lig.pdb: (Protein) Receptor
 1. chimera
 2. File -> Open... -> 1DF8.pdb -> Open
 3. Select -> Chain -> B
@@ -29,7 +32,7 @@
 5. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
 6. File -> Quit
 
-# 1DF8.lig.chimera.mol2
+# 1DF8.lig.chimera.mol2: Ligand
 1. chimera
 2. File -> Open... -> 1DF8.pdb -> Open
 3. Select -> Reside -> BTN

@@ -1,6 +1,9 @@
 #---------------------------------------------------------------------
 # 3WZE Structures
-(conda activate AmberTools23)
+# https://ringo.ams.stonybrook.edu/index.php/2023_AMBER_tutorial_2_with_PDBID_3WZE
+#---------------------------------------------------------------------
+# Test: conda activate AmberTools23
+# UCSF Chimera ver.1.18
 #---------------------------------------------------------------------
 # Simulation Parameters
 

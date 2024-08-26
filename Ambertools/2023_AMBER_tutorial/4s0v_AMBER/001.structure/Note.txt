@@ -1,4 +1,10 @@
 #---------------------------------------------------------------------
+# 4S0V Structures
+# https://ringo.ams.stonybrook.edu/index.php/2023_AMBER_tutorial_1_with_PDBID_4S0V
+#---------------------------------------------------------------------
+# Test: conda activate AmberTools23
+# UCSF Chimera ver.1.18
+#---------------------------------------------------------------------
 1. chimera
 2. Tools -> General Controls -> Command Line
 3. Command: open 4s0v -> (push "Enter" key)

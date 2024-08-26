@@ -1,6 +1,9 @@
 #---------------------------------------------------------------------
 # 1S19 Structures
-(conda activate AmberTools23)
+# https://ringo.ams.stonybrook.edu/index.php/2021_AMBER_tutorial_3_with_PDBID_1S19
+#---------------------------------------------------------------------
+# Test: conda activate AmberTools23
+# UCSF Chimera ver.1.18
 #---------------------------------------------------------------------
 # Simulation Parameters
 
@@ -10,7 +13,7 @@
 
 # Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
 
-# Protein
+# (Protein) Receptor
 1. chimera
 2. File -> Open... -> File name: 1S19.pdb -> Open
 3. Select -> Residue -> all nonstandard
