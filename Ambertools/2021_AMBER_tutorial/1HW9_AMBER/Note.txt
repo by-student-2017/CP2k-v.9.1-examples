@@ -1,0 +1,609 @@
+#---------------------------------------------------------------------
+# 1HW9 Structures
+(conda activate AmberTools23)
+#---------------------------------------------------------------------
+# Simulation Parameters
+
+1. mkdir 001_structure 002_parameters 003_leap 004_equil 005_production
+2. cd 001_structure
+
+# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
+
+# Receptor
+1. chimera
+2. File -> Open... -> 1HW9.pdb -> Open
+3. Select -> Chain -> A
+4. Select -> Invert (Selected Molecules)
+5. Actions -> Atoms/Bonds -> delete
+6. File -> Save Session As -> Receptor-A
+7. Select -> Residue -> ADP -> Actions -> Atoms/Bonds -> Delete
+8. Select -> Residue -> HOH -> Actions -> Atoms/Bonds -> Delete
+9. Select -> Residue -> SIM -> Actions -> Atoms/Bonds -> Delete
+10. File -> Save PDB... -> File name: 1HW9_fresh.pdb -> Save
+11. File -> Quit
+  or
+  File -> Close Session (In this case, you start Ligand "2." below.)
+
+# Ligand
+1. chimera
+2. File -> Restore Session... -> File name: Receptor-A.py
+3. Select -> Residue -> SIM
+4. Select -> Invert (Selected Molecules)
+5. Actions -> Atoms/Bonds -> delete
+6. Tools -> Structure Editing -> Add H
+7. Tools -> Structure Editing -> Add Charge -> (have Amber ff14SB and AM1-BCC selected, Net Charge:-1) -> OK
+8. File -> Save Mol2... -> File name: 1HW9_lig_wH.mol2 -> Save
+9. File -> Save PDB... -> File name: 1HW9_lig_wH.pdb -> Save
+10. File -> Quit
+
+#---------------------------------------------------------------------
+# Simulation Parameters
+
+1. cd ./../002_parameters
+
+# generating force field parameters for our ligand so that AMBER can use them in later calculations. (about 30 min)
+#1. antechamber -i ../001_structure/1HW9_lig_wH.mol2 -fi mol2 -o 1HW9_ligand_antechamber.mol2 -fo mol2 -at gaff2 -c bcc -rn LIG -nc -1
+1. antechamber -i ../001_structure/1HW9_lig_wH.pdb -fi pdb -o 1HW9_ligand_antechamber.mol2 -fo mol2 -at gaff2 -c bcc -rn LIG -nc -1
+2. parmchk2 -i 1HW9_ligand_antechamber.mol2 -f mol2 -o 1HW9_ligand.am1bcc.frcmod
+#---------------------------------------------------------------------
+# TLeap System
+
+1. cd ./../003_leap
+
+# tleap will do this for us by generating parameter (parm7) and restart (rst7) files
+#----------
+1. cat << EOF1 > leap.in
+#!/bin/bash
+
+###load protein force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.protein.ff14SB
+
+###load GAFF force field (for our ligand)
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+
+###load TIP3P (water) force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+
+###load ions frcmod for the tip3p model
+loadamberparams ~/miniconda3/envs/AmberTools23/dat/leap/parm/frcmod.ionsjc_tip3p
+
+###needed so we can use igb=8 model
+set default PBradii mbondi3
+
+###load protein pdb file
+rec=loadpdb ../001_structure/1HW9_fresh.pdb
+
+###load ligand frcmod/mol2
+loadamberparams ../002_parameters/1HW9_ligand.am1bcc.frcmod
+lig=loadmol2 ../002_parameters/1HW9_ligand_antechamber.mol2
+
+###create gase-phase complex
+gascomplex= combine {rec lig}
+
+###write gas-phase pdb
+savepdb gascomplex 1HW9.gas.complex.pdb
+
+###write gase-phase toplogy and coord files for MMGBSA calc
+saveamberparm gascomplex 1HW9.complex.parm7 1HW9.gas.complex.rst7
+saveamberparm rec 1HW9.gas.receptor.parm7 1HW9.gas.receptor.rst7
+saveamberparm lig 1HW9.gas.ligand.parm7 1HW9.gas.ligand.rst7
+
+###create solvated complex (albeit redundant)
+solvcomplex= combine {rec lig}
+
+###solvate the system
+solvateoct solvcomplex TIP3PBOX 12.0
+
+###Neutralize system
+addions solvcomplex Cl- 0
+addions solvcomplex Na+ 0
+
+#write solvated pdb file
+savepdb solvcomplex 1HW9.wet.complex.pdb
+
+###check the system
+charge solvcomplex
+check solvcomplex
+
+###write solvated toplogy and coordinate file
+saveamberparm solvcomplex 1HW9.wet.complex.parm7 1HW9.wet.complex.rst7
+
+quit
+EOF1
+#----------
+2. tleap -f leap.in
+
+# check structures (your protein ligand complex should not be outside the water molecule box that you just created.)
+3. chimera
+  Tools -> MD/Ensemble Analysis -> MD Movie
+  Prmtop: 2P16.wet.complex.prmtop
+  Add... -> 2P16.wet.complex.rst7
+  OK
+  #----------
+  Select -> Residue -> WAT
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+  #---------- or ----------
+  Select -> Chain -> water
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+  #----------
+
+4. vmd
+  File -> New Molecule..
+  Browse... -> Filename: 2P16.wet.complex.prmtop -> OK -> [AMBER7 Parm] -> Load
+  Browse... -> Filename: 2P16.wet.complex.rst7 -> OK -> [AMBER7 Restart] -> Load
+
+#---------------------------------------------------------------------
+# Equilibration
+
+1. cd ./../004_equil
+
+#----------
+1. cat << EOF01 > 01.min.mdin
+Minimize all the hydrogens
+&cntrl
+  imin=1,           ! Minimize the initial structure
+  ntmin=2,         ! Use steepest descent Ryota Added
+  maxcyc=5000,    ! Maximum number of cycles for minimization
+  ntb=1,            ! Constant volume
+  ntp=0,            ! No pressure scaling
+  ntf=1,            ! Complete force evaluation
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=5.0, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+/
+EOF01
+#----------
+
+#----------
+2. cat << EOF02 > 02.equil.mdin
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntb=2,            ! Constant Pressure
+  ntc=1,            ! No SHAKE on bonds between hydrogens
+  dt=0.001,         ! Timestep (ps)
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask=":!@H=", ! atoms to be restrained
+  restraint_wt=5.0, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF02
+#----------
+
+#----------
+3. cat << EOF03 > 03.min.mdin
+Minimize all the hydrogens
+&cntrl
+  imin=1,           ! Minimize the initial structure
+  maxcyc=1000,    ! Maximum number of cycles for minimization
+  ntb=1,            ! Constant volume
+  ntp=0,            ! No pressure scaling
+  ntf=1,            ! Complete force evaluation
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=2.0, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+/
+EOF03
+#----------
+
+#----------
+4. cat << EOF04 > 04.min.mdin
+Minimize all the hydrogens
+&cntrl
+  imin=1,           ! Minimize the initial structure
+  maxcyc=1000,    ! Maximum number of cycles for minimization
+  ntb=1,            ! Constant volume 
+  ntp=0,            ! No pressure scaling
+  ntf=1,            ! Complete force evaluation
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=0.1, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+/
+EOF04
+#----------
+
+#----------
+5. cat << EOF05 > 05.min.mdin
+Minimize all the hydrogens
+&cntrl
+  imin=1,           ! Minimize the initial structure
+  maxcyc=1000,    ! Maximum number of cycles for minimization
+  ntb=1,            ! Constant volume
+  ntp=0,            ! No pressure scaling
+  ntf=1,            ! Complete force evaluation
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=0.05, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format 
+/
+EOF05
+#----------
+6. cat << EOF06 > 06.equil.mdin
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntb=2,            ! Constant Pressure
+  ntc=1,            ! No SHAKE on bonds between hydrogens
+  dt=0.001,         ! Timestep (ps)
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=1.0, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF06
+#----------
+
+#----------
+7. cat << EOF07 > 07.equil.mdin
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntx=5,            ! Positions and velocities read formatted
+  irest=1,          ! Restart calculation
+  ntc=1,            ! No SHAKE on for bonds with hydrogen
+  dt=0.001,         ! Timestep (ps)
+  ntb=2,            ! Constant Pressure
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask="!@H=", ! atoms to be restrained
+  restraint_wt=0.5, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF07
+#----------
+
+#----------
+8. cat << EOF08 > 08.equil.mdin
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntx=5,            ! Positions and velocities read formatted
+  irest=1,          ! Restart calculation
+  ntc=1,            ! No SHAKE on for bonds with hydrogen
+  dt=0.001,         ! Timestep (ps)
+  ntb=2,            ! Constant Pressure
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat 
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask=":1-433@CA,C,N", ! atoms to be restrained
+  restraint_wt=0.1, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF08
+#----------
+
+#----------
+9. cat << EOF09 > 09.equil.mdin
+MD simulation
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=50000      ! Number of MD steps
+  ntx=5,            ! Positions and velocities read formatted
+  irest=1,          ! Restart calculation
+  ntc=1,            ! No SHAKE on for bonds with hydrogen
+  dt=0.001,         ! Timestep (ps)
+  ntb=2,            ! Constant Pressure
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=1,            ! Complete force evaluation
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 1000,       ! Write to trajectory file every ntwx steps
+  ntpr= 1000,       ! Print to mdout every ntpr steps
+  ntwr= 1000,       ! Write a restart file every ntwr steps
+  cut=  8.0,        ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask=":1-433@CA,C,N", ! atoms to be restrained
+  restraint_wt=0.1, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF09
+#----------
+
+#----------
+10. cat << EOF10 > mdequilibration.sh
+#!/bin/bash
+
+echo "Started Equilibration on \`date\` "
+
+do_parallel="sander"
+
+parm7="../003_leap/1HW9.wet.complex.parm7"
+coords="../003_leap/1HW9.wet.complex"
+
+
+MDINPUTS=(01.min 02.equil 03.min 04.min 05.min 06.equil 07.equil 08.equil 09.equil)
+
+for input in ${MDINPUTS[@]}; do
+
+  \${do_parallel} -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
+  coords=\${input}
+
+done
+
+echo "Finished Equilibration on \`date\` "
+EOF10
+#----------
+11. bash mdequilibration.sh
+#---------------------------------------------------------------------
+# Production
+
+1. cd ./../005_production
+
+#----------
+1. cat << EOF10 > 10.prod.mdin
+MD simulations
+&cntrl
+  imin=0,           ! Perform MD
+  nstlim=5000000,   ! Number of MD steps
+  ntx=5,            ! Positions and velocities read formatted
+  irest=1,          ! Restart calculation 
+  ntc=2,            ! SHAKE on for bonds with hydrogen
+  dt=0.002,         ! Timestep (ps)
+  ntb=2,            ! Constant Pressure
+  ntp=1,            ! Isotropic pressure scaling
+  barostat=1        ! Berendsen
+  taup=0.5          ! Pressure relaxtion time (ps)
+  ntf=2,            ! No force evaluation for bonds with hydrogen
+  ntt=3,            ! Langevin thermostat
+  gamma_ln=2.0      ! Collision Frequency for thermostat
+  ig=-1,            ! Random seed for thermostat
+  temp0=298.15      ! Simulation temperature (K)
+  ntwx= 2500,       ! Write to trajectory file every ntwx steps
+  ntpr= 2500,       ! Print to mdout every ntpr steps
+  ntwr= 5000000,    ! Write a restart file every ntwr steps
+  cut=8.0,          ! Nonbonded cutoff in Angstroms
+  ntr=1,            ! Turn on restraints
+  restraintmask=":1-432@CA,C,N", ! atoms to be restrained
+  restraint_wt=0.1, ! force constant for restraint
+  ntxo=1,           ! Write coordinate file in ASCII format
+  ioutfm=0,         ! Write trajectory file in ASCII format
+  iwrap=1,          ! iwrap is turned on
+/
+EOF10
+#----------
+
+#----------
+2. cat << EOF11 > mdproduction.sh
+#!/bin/bash
+
+echo "started Equilibration on \`date\` "
+
+do_parallel="sander"
+
+parm7="../003_leap/1HW9.wet.complex.parm7"
+coords="../004_equil/09.equil"
+
+MDINPUTS=(10.prod)
+
+for input in \${MDINPUTS[@]}; do
+  
+  \${do_parallel} -O -i \${input}.mdin -o \${input}.mdout -p \${parm7} -c \${coords}.rst7 -ref \${coords}.rst7 -x \${input}.trj -inf \${input}.info -r \${input}.rst7
+  coords=\${input}
+  
+done
+echo "Finished Equilibration on \`date\` "
+EOF11
+#----------
+
+3. bash mdproduction.sh
+
+#---------- ----------
+# MD Analysis
+#---------- ----------
+
+# RMSD
+#----------
+1. cat << EOF001 > cpptraj_strip_wat.in
+#!/bin/bash
+
+parm ../003_leap/1HW9.wet.complex.parm7
+
+#read in trajectory
+trajin ../004_production/10.prod.trj
+
+#read in reference
+reference ../003_leap/1HW9.wet.complex.rst7
+
+#compute RMSD + align CA to crystal structure
+rmsd rms1 reference :1-263@CA
+
+#strip solvent
+strip :WAT:Na+:Cl-
+
+#create gas-phase trajectory
+trajout 1HW9_stripfit_restrained_gas.trj nobox
+
+EOF001
+#----------
+2. cpptraj -i cpptraj_strip_wat.in
+
+#----------
+3. cat << EOF002 > cpptraj_rmsd_lig.in
+#!/bin/bash
+
+#trajin the trajectory
+trajin 1HW9_stripfit_restrained_gas.trj
+
+#read in reference
+reference ../003_leap/1HW9.gas.complex.rst7
+
+#compute RMSD (do not fit internal geometris first, included rigid body motions, convert frames to ns (framenum*.005)
+rmsd rms1 ":254&!(@H=)" nofit mass out 1HW9_lig_restrained_rmsd_nofit.dat time .005
+
+#histogram the nofit rmsd
+histogram rms1,*,*,.1,* norm out 1HW9_lig_restrained_rmsd_nofit_histogram.dat
+EOF002
+#----------
+4. cpptraj -p ../003_leap/1HW9.complex.parm7 -i cpptraj_rmsd_lig.in
+
+#----------
+5. cat << EOF003 > cpptraj_rmsd_rec.in
+#!/bin/bash
+
+#trajin the trajectory
+trajin 1HW9_stripfit_restrained_gas.trj
+
+#read in reference
+reference ../003_leap/1HW9.gas.complex.rst7
+
+#compute RMSD (do not fit internal geometries first, included rigid body motions, convert frames to ns (framenum*.005)
+rmsd rms1 ":1-253&!(@H=)" nofit mass out 1HW9_rec_restrained_rmsd_nofit.dat time .005
+
+#histogram the nofit rmsd
+histogram rms1,*,*,.1,* norm out 1HW9_rec_restrained_rmsd_nofit_histogram.dat
+EOF003
+#----------
+6. cpptraj -p ../003_leap/1HW9.gas.complex.parm7 -i cpptraj_rmsd_rec.in
+
+
+# Hydrogen Bonding
+#---------- ----------
+1. cat << EOF004 > cpptraj_hbond.in
+#!/bin/bash
+
+#read in trajectory
+trajin ../004_production/10_prod.trj
+
+#wrap everything in one periodic cell - could cause problems, may comment out #autoimage if problems later
+autoimage
+
+#compute intra + water-mediated H-bonds
+hbond hb1 :1-263 out 1HW9_calcipotriol_hbond.out avgout 1HW9_calcipotriol_hbond_avg.dat solventdonor :WAT solventacceptor :WAT@-O
+nointramol brid\
+geout 1HW9_calcipotriol_bridge-water.dat dist 3.0 angle 140
+EOF004
+#---------- ----------
+2. cpptraj -p ../003_leap/1HW9_wetcomplex.parm7 -i cpptraj_hbond.in
+
+
+# MMGBSA
+#---------- ----------
+1. cat << EOF006 > mmgbsa.in
+mmgbsa 1HW9 analysis
+&general
+  interval=1, netcdf=1,
+  keep_files=0,
+/
+&gb
+  igb=8
+  saltcon=0.0, surften=0.0072,
+  surfoff=0.0, molsurf=0,
+/
+&nmode
+  drms=0.001, maxcyc=10000,
+  nminterval=250, nmendframe=2000,
+  nmode_igb=1,
+/
+EOF006
+#---------- ----------
+2. cat << EOF007 > mmgbsa.sh
+#!/bin/bash
+
+#Define topology files 
+solv_parm="../003_leap/1HW9.wet.complex.parm7"
+complex_parm="../003_leap/1HW9.complex.parm7"
+receptor_parm="../003_leap/1HW9.gas.receptor.parm7"
+lig_parm="../003_leap/1HW9.gas.ligand.parm7"
+trajectory="10_prod.trj"
+
+MMPBSA.py -O -i mmgbsa.in \\
+     -o 1S19_mmgbsa_results.dat \\ 
+     -eo 1S19_mmgbsa_perframe.dat \\
+     -sp ${solv_parm} \\
+     -cp ${complex_parm} \\
+     -rp ${receptor_parm} \\
+     -lp ${lig_parm} \\
+      -y ${trajectory}
+EOF007
+#---------- ----------
+3. bash mmgbsa.sh
+
+#---------------------------------------------------------------------

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+parm ../003_leap/1HW9.wet.complex.parm7
+
+#read in trajectory
+trajin ../004_production/10.prod.trj
+
+#read in reference
+reference ../003_leap/1HW9.wet.complex.rst7
+
+#compute RMSD + align CA to crystal structure
+rmsd rms1 reference :1-263@CA
+
+#strip solvent
+strip :WAT:Na+:Cl-
+
+#create gas-phase trajectory
+trajout 1HW9_stripfit_restrained_gas.trj nobox
+
