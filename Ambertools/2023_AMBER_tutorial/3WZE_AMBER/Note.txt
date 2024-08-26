@@ -1,8 +1,12 @@
 #---------------------------------------------------------------------
 # 3WZE Structures
+(conda activate AmberTools23)
+#---------------------------------------------------------------------
+# Simulation Parameters
 
 1. mkdir 001_structure
 2. cd 001_structure
+# Note: Another method: mkdir 001_structure 002_parameters 003_leap 004_equil 005_production
 
 # Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
 
