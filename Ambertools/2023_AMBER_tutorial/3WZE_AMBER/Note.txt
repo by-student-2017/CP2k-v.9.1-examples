@@ -112,17 +112,19 @@ EOF
 6. ls -ltra
 (you can get "3wze.wet.complex.rst7" and "3wze.wet.complex.parm7".)
 
-7. vmd
-  File -> New Molecule..
-  Browse... -> Filename: 3wze.wet.complex.parm7 -> OK -> [AMBER7 Parm] -> Load
-  Browse... -> Filename: 3wze.wet.complex.rst7 -> OK -> [AMBER7 Restart] -> Load
-
-8. chimera
+7. chimera
   Tools -> MD/Ensemble Analysis -> MD Movie
   Prmtop: 3wze.wet.complex.parm7
   Add... -> 3wze.wet.complex.rst7
   OK
-Note: Since it works fine with VMD, there is a good chance that I am making a mistake with how I am operating Chimera.
+  Select -> Residue -> WAT
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+
+8. vmd
+  File -> New Molecule..
+  Browse... -> Filename: 3wze.wet.complex.parm7 -> OK -> [AMBER7 Parm] -> Load
+  Browse... -> Filename: 3wze.wet.complex.rst7 -> OK -> [AMBER7 Restart] -> Load
 #---------------------------------------------------------------------
 # Equilibration
 (conda activate AmberTools23)

@@ -1,0 +1,140 @@
+#---------------------------------------------------------------------
+# 2P16 Structures
+(conda activate AmberTools23)
+#---------------------------------------------------------------------
+# Simulation Parameters
+
+1. mkdir zzz.master
+2. mkdir 000.parameters
+3. cd 000.parameters
+4. wget https://files.rcsb.org/download/2P16.pdb
+
+# Receptor File Generation
+1. chimera
+2. File -> Open... -> 2P16.pdb -> Open
+3. Select -> Structure -> main
+ or
+  Select -> Residues -> All Standard Residues
+4. Select -> Invert (all models)
+5. Actions -> Atoms/Bonds -> delete
+6. File -> Save PDB... -> File name: 2P16_rec.pdb -> Save
+7. File -> Quit
+8. sed -i "s/CYS/CYX/g" 2P16_rec.pdb
+9. cp 2P16.pdb ./../zzz.master
+10. cp 2P16_rec.pdb ./../zzz.master
+
+# Ligand File Generation
+1. chimera
+2. File -> Open... -> 2P16.pdb -> Open
+3. Select -> Structure -> main
+ or
+  Select -> Residues -> All Standard Residues
+4. Actions -> Atoms/Bonds -> delete
+5. Select -> Residue -> HOH -> Actions -> Atoms/Bonds -> delete
+6. Select -> Residue -> CA -> Actions -> Atoms/Bonds -> delete
+7. Tools -> Structure Editing -> Dock prep -> (All) OK
+  (AMBER ff14SB and AM1-BCC) (Net Charge +0)
+8. File -> Save Mol2... -> File name: 2P16_lig_withH.mol2 -> Save
+9. File -> Save PDB... -> File name: 2P16_lig_withH.pdb -> Save
+10. File -> Quit
+11. cp 2P16_lig_withH.mol2 ./../zzz.master
+12. cp 2P16_lig_withH.pdb ./../zzz.master
+
+# Force Field Parameterization
+(Note: If your ligand happens to be a peptide with standard residues, you can skip this step.) (about 20 min)
+1. antechamber -i ../zzz.master/2P16_lig_withH.pdb -fi pdb -o 2P16_ligand.am1bcc.mol2 -fo mol2 -c bcc -nc 0 -rn LIG -at gaff2
+2. parmchk2 -i 2P16_ligand.am1bcc.mol2 -f mol2 -o 2P16_ligand.am1bcc.frcmod
+#---------------------------------------------------------------------
+# TLeap
+
+1. cd ./../
+2. mkdir 001.tleap_build
+3. cd 001.tleap_build
+
+#----------
+1. cat << EOF > tleap.build.in
+#!/bin/bash
+
+###Load Protein force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.protein.ff14SB
+###Load GAFF force field (for our ligand)
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.gaff
+###Load TIP3P (water) force field
+source ~/miniconda3/envs/AmberTools23/dat/leap/cmd/leaprc.water.tip3p
+####Load Ions frcmod for the tip3p model
+loadamberparams ~/miniconda3/envs/AmberTools23/dat/leap/parm/frcmod.ionsjc_tip3p
+###Needed so we can use igb=8 model
+set default PBradii mbondi3
+
+
+###Load Protein pdb file
+rec=loadpdb ../zzz.master/2P16_rec.pdb
+
+#bond rec.7.SG rec.12.SG
+#bond rec.27.SG rec.43.SG
+#bond rec.156.SG rec.170.SG
+#bond rec.181.SG rec.209.SG
+#bond rec.96.SG rec.109.SG
+#bond rec.111.SG rec.124.SG
+#bond rec.42.SG rec.58.SG
+#bond rec.22.SG rec.27.SG
+
+###Load Ligand frcmod/mol2
+loadamberparams ../000.parameters/2P16_ligand.am1bcc.frcmod
+lig=loadmol2 ../000.parameters/2P16_ligand.am1bcc.mol2
+
+###Create gas-phase complex
+gascomplex= combine {rec lig}
+
+###Write gas-phase pdb
+savepdb gascomplex 2P16.gas.complex.pdb
+
+###Write gas-phase toplogy and coord files for MMGBSA calc
+saveamberparm gascomplex 2P16.gas.complex.prmtop 2P16.gas.complex.rst7
+saveamberparm rec 2P16.gas.receptor.prmtop 2P16.gas.receptor.rst7
+saveamberparm lig 2P16.gas.ligand.prmtop 2P16.gas.ligand.rst7
+
+###Create solvated complex (albeit redundant)
+solvcomplex= combine {rec lig}
+
+###Solvate the system
+solvateoct solvcomplex TIP3PBOX 12.0
+
+###Neutralize system (it will add either Na or Cl depending on net charge)
+addions solvcomplex Cl- 0
+addions solvcomplex Na+ 0
+
+###Write solvated pdb file
+savepdb solvcomplex 2P16.wet.complex.pdb
+
+###Check the system
+charge solvcomplex
+check solvcomplex
+
+###Write Solvated topology and coord file
+saveamberparm solvcomplex 2P16.wet.complex.prmtop 2P16.wet.complex.rst7
+
+quit
+EOF
+#----------
+2. tleap -f tleap.build.in
+
+3. chimera
+  Tools -> MD/Ensemble Analysis -> MD Movie
+  Prmtop: 2P16.wet.complex.prmtop
+  Add... -> 2P16.wet.complex.rst7
+  OK
+  Select -> Residue -> WAT
+  Actions -> Atoms/Bonds -> show
+  Actions -> Atoms/Bonds -> hide
+
+4. vmd
+  File -> New Molecule..
+  Browse... -> Filename: 2P16.wet.complex.prmtop -> OK -> [AMBER7 Parm] -> Load
+  Browse... -> Filename: 2P16.wet.complex.rst7 -> OK -> [AMBER7 Restart] -> Load
+
+#---------------------------------------------------------------------
+# Equilibration
+
+1. 
+#---------------------------------------------------------------------
