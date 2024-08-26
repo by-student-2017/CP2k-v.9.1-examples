@@ -31,6 +31,11 @@
 11. File -> Save Mol2... -> File name: 3wze_lig_wH.mol2 -> Save
 12. File -> Save PDB... -> File name: 3wze_lig_wH.pdb -> Save
 13. File -> Quit
+
+# Note 1: Another method of above 2 and 3: Fetch... -> Database: PDB, ID: 3WZE -> Tetch
+# Note 2: Another method of above 2 and 3:
+  wget https://files.rcsb.org/download/3WZD.pdb
+  File -> Open... -> 3WZD.pdb -> Open
 #---------------------------------------------------------------------
 # Amber Simulation Parameters
 (conda activate AmberTools23)

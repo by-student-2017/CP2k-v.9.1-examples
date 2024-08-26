@@ -9,6 +9,8 @@
 3. cd 000.parameters
 4. wget https://files.rcsb.org/download/2P16.pdb
 
+# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
+
 # Receptor File Generation
 1. chimera
 2. File -> Open... -> 2P16.pdb -> Open
@@ -39,6 +41,9 @@
 10. File -> Quit
 11. cp 2P16_lig_withH.mol2 ./../zzz.master
 12. cp 2P16_lig_withH.pdb ./../zzz.master
+
+# Note 1: Another method of above 2: Fetch... -> Database: PDB, ID: 3WZE -> Tetch
+# Note 2: Another method of above 2: Tools -> General Controls -> Command Line -> Command: open 2P16 -> (push "Enter" key)
 
 # Force Field Parameterization
 (Note: If your ligand happens to be a peptide with standard residues, you can skip this step.) (about 20 min)
