@@ -1,0 +1,16 @@
+mmgbsa 2nnq analysis                                                                                                                    
+&general                                                                                                                                   
+  interval=1, netcdf=1,                                                                                                                    
+  keep_files=0,                                                                                                                            
+                                                                                                                                           
+/                                                                                                                                          
+&gb                                                                                                                                        
+  igb=8,                                                                                                                                   
+  saltcon=0.0, surften=0.0072,                                                                                                             
+  surfoff=0.0, molsurf=0,                                                                                                                  
+/                                                                                                                                          
+&nmode                                                                                                                                     
+  drms=0.001, maxcyc=10000,                                                                                                                
+  nminterval=250, nmendframe=2000,                                                                                                         
+  nmode_igb=1,                                                                                                                              
+/
