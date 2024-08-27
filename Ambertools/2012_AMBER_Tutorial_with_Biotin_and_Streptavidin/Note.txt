@@ -19,28 +19,22 @@
 5. Select -> Reside -> HOH
 6. Actions -> Atoms/Bonds -> delete
 7. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
-8. File -> Quit
-
-# 1DF8.rec.noH.pdb
-1. chimera
-2. File -> Open... -> 1DF8.pdb -> Open
-3. Select -> Reside -> BTN
-4. Actions -> Atoms/Bonds -> delete
-5. File -> Save PDB... -> File name: 1DF8.rec.lig.pdb -> Save
-6. File -> Quit
+#
+8. Select -> Reside -> BTN
+9. Actions -> Atoms/Bonds -> delete
+10. File -> Save PDB... -> File name: 1DF8.rec.noH.pdb -> Save
+11. File -> Quit
 
 # 1DF8.lig.chimera.mol2
 1. chimera
-2. File -> Open... -> 1DF8.pdb -> Open
+2. File -> Open... -> 1DF8.rec.lig.pdb -> Open
 3. Select -> Reside -> BTN
-4. Select -> Invert (all models)
+4. Select -> Invert(selected models)
 5. Actions -> Atoms/Bonds -> delete
-6. Select -> Chain -> B
-7. Actions -> Atoms/Bonds -> delete
-8. Tools -> Structure Editing -> Dock Prep -> (All) OK -> [1DF8.lig.chimera.mol2] Save
-  (AMBER ff99SB, AM1-BCC)
-9. File -> Save PDB... -> File name: 1DF8.lig.chimera.pdb -> Save
-10. File -> Quit
+6. Tools -> Structure Editing -> Dock Prep -> (All) OK -> [1DF8.lig.chimera.mol2] Save
+  (AMBER ff99SB, AM1-BCC) (Net Charge: -1)
+7. File -> Save PDB... -> File name: 1DF8.lig.chimera.pdb -> Save
+8. File -> Quit
 #-----------------------
 # antechamber
 1. sed -e "s/H102/H17 /g" 1DF8.lig.chimera.mol2 > 1DF8.lig.mol2
@@ -105,9 +99,19 @@ charge COM
 quit
 EOF03
 #-----------------------
-8. tleap -s -f tleap.lig.in | tee tleap.lig.out
-9. tleap -s -f tleap.rec.in | tee tleap.rec.out
-10. tleap -s -f tleap.com.in | tee tleap.com.out
+8. tleap -s -f tleap.lig.in
+9. tleap -s -f tleap.rec.in
+10. tleap -s -f tleap.com.in
+
+# check output data
+1. chimera
+2. Tools -> MD/Ensemble Analysis -> MD Movie
+3. Prmtop: 1DF8.com.wat.leap.prm7
+4. Add... -> 1DF8.com.wat.leap.rst7
+5. OK
+6. Select -> Chain -> water
+7. Actions -> Atoms/Bonds -> show
+8. Actions -> Atoms/Bonds -> hide
 #---------------------------------------------------------------------
 # Visualization in VMD
 

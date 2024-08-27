@@ -10,8 +10,8 @@ trajectory="10_prod.trj"
 MMPBSA.py -O -i mmgbsa.in \
      -o 1S19_mmgbsa_results.dat \ 
      -eo 1S19_mmgbsa_perframe.dat \
-     -sp  \
-     -cp  \
-     -rp  \
-     -lp  \
-      -y 
+     -sp ${solv_parm} \
+     -cp ${complex_parm} \
+     -rp ${receptor_parm} \
+     -lp ${lig_parm} \
+      -y ${trajectory}
