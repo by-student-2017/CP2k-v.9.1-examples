@@ -1,0 +1,123 @@
+HETATM    1  C1  T4B A 132       2.360  10.621  15.513  1.00  0.00           C
+HETATM    2  C2  T4B A 132       6.097  10.074  16.386  1.00  0.00           C
+HETATM    3  C3  T4B A 132       6.437   8.690  16.258  1.00  0.00           C
+HETATM    4  C7  T4B A 132       4.916  11.707  14.838  1.00  0.00           C
+HETATM    5  C8  T4B A 132       3.731  12.249  14.272  1.00  0.00           C
+HETATM    6  C9  T4B A 132       6.920   5.787  16.835  1.00  0.00           C
+HETATM    7  C10 T4B A 132       6.720   5.207  15.438  1.00  0.00           C
+HETATM    8  C11 T4B A 132       7.593   8.156  16.927  1.00  0.00           C
+HETATM    9  C12 T4B A 132       8.408   9.019  17.719  1.00  0.00           C
+HETATM   10  C13 T4B A 132       8.078  10.400  17.842  1.00  0.00           C
+HETATM   11  C14 T4B A 132       6.926  10.928  17.178  1.00  0.00           C
+HETATM   12  C15 T4B A 132       3.359   6.949  14.440  1.00  0.00           C
+HETATM   13  C16 T4B A 132       2.528   5.581  18.221  1.00  0.00           C
+HETATM   14  C19 T4B A 132       3.049   6.975  17.958  1.00  0.00           C
+HETATM   15  C20 T4B A 132       2.893   7.704  16.807  1.00  0.00           C
+HETATM   16  C21 T4B A 132       2.277   7.178  15.502  1.00  0.00           C
+HETATM   17  C22 T4B A 132       2.907   3.244  18.929  1.00  0.00           C
+HETATM   18  C24 T4B A 132       4.106   6.674  22.575  1.00  0.00           C
+HETATM   19  C27 T4B A 132       4.341   7.555  20.276  1.00  0.00           C
+HETATM   20  C30 T4B A 132       1.127   5.290  18.064  1.00  0.00           C
+HETATM   21  C   T4B A 132       2.456  11.710  14.608  1.00  0.00           C
+HETATM   22  C4  T4B A 132       5.686   7.941  20.570  1.00  0.00           C
+HETATM   23  C5  T4B A 132       3.545  10.061  16.090  1.00  0.00           C
+HETATM   24  C6  T4B A 132       4.840  10.612  15.753  1.00  0.00           C
+HETATM   25  O   T4B A 132       7.275   5.719  14.468  1.00  0.00           O
+HETATM   26  O1  T4B A 132       5.936   4.163  15.263  1.00  0.00           O
+HETATM   27  O2  T4B A 132       7.938   6.818  16.802  1.00  0.00           O
+HETATM   28  C17 T4B A 132       3.413   4.543  18.655  1.00  0.00           C
+HETATM   29  N   T4B A 132       3.458   8.958  16.999  1.00  0.00           N
+HETATM   30  N1  T4B A 132       3.996   9.000  18.323  1.00  0.00           N
+HETATM   31  C18 T4B A 132       3.794   7.862  18.922  1.00  0.00           C
+HETATM   32  C23 T4B A 132       3.550   6.918  21.288  1.00  0.00           C
+HETATM   33  C25 T4B A 132       5.447   7.062  22.858  1.00  0.00           C
+HETATM   34  C26 T4B A 132       6.238   7.695  21.861  1.00  0.00           C
+HETATM   35  C28 T4B A 132       1.521   2.969  18.768  1.00  0.00           C
+HETATM   36  C29 T4B A 132       0.632   3.990  18.335  1.00  0.00           C
+HETATM   37  H1  T4B A 132       1.392  10.214  15.767  1.00  0.00           H
+HETATM   38  H3  T4B A 132       5.821   8.041  15.654  1.00  0.00           H
+HETATM   39  H7  T4B A 132       5.877  12.124  14.576  1.00  0.00           H
+HETATM   40  H8  T4B A 132       3.797  13.077  13.581  1.00  0.00           H
+HETATM   41  H92 T4B A 132       5.982   6.217  17.185  1.00  0.00           H
+HETATM   42  H93 T4B A 132       7.230   4.994  17.515  1.00  0.00           H
+HETATM   43  H12 T4B A 132       9.276   8.625  18.226  1.00  0.00           H
+HETATM   44  H13 T4B A 132       8.700  11.051  18.439  1.00  0.00           H
+HETATM   45  H14 T4B A 132       6.682  11.976  17.275  1.00  0.00           H
+HETATM   46 H212 T4B A 132       1.768   6.235  15.702  1.00  0.00           H
+HETATM   47 H213 T4B A 132       1.555   7.903  15.128  1.00  0.00           H
+HETATM   48  H22 T4B A 132       3.576   2.464  19.260  1.00  0.00           H
+HETATM   49  H24 T4B A 132       3.511   6.194  23.338  1.00  0.00           H
+HETATM   50  H30 T4B A 132       0.450   6.066  17.738  1.00  0.00           H
+HETATM   51  H   T4B A 132       1.561  12.131  14.174  1.00  0.00           H
+HETATM   52  H4  T4B A 132       6.286   8.421  19.811  1.00  0.00           H
+HETATM   53  H17 T4B A 132       4.467   4.748  18.774  1.00  0.00           H
+HETATM   54  H23 T4B A 132       2.533   6.624  21.074  1.00  0.00           H
+HETATM   55  H25 T4B A 132       5.865   6.874  23.836  1.00  0.00           H
+HETATM   56  H26 T4B A 132       7.254   7.989  22.081  1.00  0.00           H
+HETATM   57  H28 T4B A 132       1.142   1.979  18.976  1.00  0.00           H
+HETATM   58  H29 T4B A 132      -0.419   3.775  18.213  1.00  0.00           H
+HETATM   59 H151 T4B A 132       2.898   6.577  13.525  1.00  0.00           H
+HETATM   60 H152 T4B A 132       3.869   7.890  14.233  1.00  0.00           H
+HETATM   61 H153 T4B A 132       4.080   6.218  14.807  1.00  0.00           H
+CONECT   21   51    1    5
+CONECT    1   21   37   23
+CONECT    7    6   25   26
+CONECT    8    3    9   27
+CONECT    9    8   10   43
+CONECT   10    9   11   44
+CONECT   11    2   10   45
+CONECT   12   59   60   61   16
+CONECT   13   14   28   20
+CONECT   28   53   13   17
+CONECT   31   14   30   19
+CONECT   14   31   13   15
+CONECT    2    3   11   24
+CONECT   15   14   29   16
+CONECT   16   12   15   46   47
+CONECT   17   28   35   48
+CONECT   32   54   18   19
+CONECT   18   32   33   49
+CONECT   33   34   55   18
+CONECT   34   33   56   22
+CONECT   19   31   32   22
+CONECT   35   57   36   17
+CONECT   36   35   58   20
+CONECT    3    2    8   38
+CONECT   20   50   13   36
+CONECT   22   34   52   19
+CONECT   23   29    1   24
+CONECT   24    2    4   23
+CONECT    4    5   39   24
+CONECT    5   21    4   40
+CONECT    6    7   41   42   27
+CONECT   51   21
+CONECT   37    1
+CONECT   43    9
+CONECT   44   10
+CONECT   45   11
+CONECT   59   12
+CONECT   60   12
+CONECT   61   12
+CONECT   53   28
+CONECT   46   16
+CONECT   47   16
+CONECT   48   17
+CONECT   54   32
+CONECT   49   18
+CONECT   55   33
+CONECT   56   34
+CONECT   57   35
+CONECT   58   36
+CONECT   38    3
+CONECT   50   20
+CONECT   52   22
+CONECT   39    4
+CONECT   40    5
+CONECT   41    6
+CONECT   42    6
+CONECT   29   30   15   23
+CONECT   30   29   31
+CONECT   25    7
+CONECT   26    7
+CONECT   27    6    8
+END
