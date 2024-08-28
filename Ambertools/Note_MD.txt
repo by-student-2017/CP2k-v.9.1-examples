@@ -6,3 +6,26 @@ https://github.com/by-student-2017/AmberTools
 If you want to use pmemd, a faster version of sander, you need amber.
  Check the license terms (it is available to more institutions than Orca code).
 #---------------------------------------------------------------------
+# Chimera
+
+Note: In order to build Hydrogens and add charge on these structures, 
+ go to Tools and Structure Editing and use Dockprep. 
+ Along with building Hydrogens and adding partial charges, 
+ dockprep will try to fill in missing info from the pdb and also 
+ save the structures in a mol2 format at the end . 
+
+Note: Below A and B are equivalent.
+
+A. 
+#-----
+Tools -> Structure Editing -> Dock Prep
+#-----
+
+B. 
+#-----
+Tools -> Structure Editing -> Add H
+Tools -> Structure Editing-> Add Charge
+File -> Save Mol2... -> *.mol2
+#-----
+
+#---------------------------------------------------------------------
