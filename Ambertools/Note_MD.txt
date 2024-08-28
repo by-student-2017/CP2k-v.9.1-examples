@@ -36,6 +36,8 @@ The partition function for the canonical distribution, Z(T,V,N) = V^N/N!*(1/lamb
 Helmholtz free energy, F = -kB*T*ln(Z)
 Entropy, S(T,V,N) = -dF/dT = N*kB*{5/2 + ln(V/N*lambda^-3)}
 
+The ratio of V/N to the cube of the thermal de Broglie wavelength corresponds to the number of realizable microscopic states.
+
 ln(1) = O -> V/N = lambda^3 -> lambda = (V/N)^(1/3)
 
 The average interparticle distance approaches, l = v^(1/3) = (V/N)^(1/3)
@@ -43,6 +45,8 @@ The average interparticle distance approaches, l = v^(1/3) = (V/N)^(1/3)
 At low temperatures, where the average interparticle distance approaches l, 
 the applicability of classical statistical mechanics is limited, 
 suggesting that the application of quantum statistical mechanics is necessary.
+
+Reference: wikipedia
 
 石原純夫、泉田渉『量子統計力学―マクロな現象を量子力学から理解するために―』共立出版〈フロー式 物理演習シリーズ〉、2014年 (Japanese)
 #---------------------------------------------------------------------
