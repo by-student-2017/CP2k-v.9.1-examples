@@ -29,3 +29,14 @@ File -> Save Mol2... -> *.mol2
 #-----
 
 #---------------------------------------------------------------------
+# Classical statistical mechanics and its application limits
+
+
+Thermal de Broglie wavelength, l = v^(1/3) = (V/N)^(1/3)
+
+At low temperatures, where the average interparticle distance approaches l, 
+the applicability of classical statistical mechanics is limited, 
+suggesting that the application of quantum statistical mechanics is necessary.
+
+石原純夫、泉田渉『量子統計力学―マクロな現象を量子力学から理解するために―』共立出版〈フロー式 物理演習シリーズ〉、2014年 (Japanese)
+#---------------------------------------------------------------------
