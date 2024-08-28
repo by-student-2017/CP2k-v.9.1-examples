@@ -11,8 +11,6 @@
 2. cd 001_structure
 # Note: Another method: mkdir 001_structure 002_parameters 003_leap 004_equil 005_production
 
-# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
-
 # Receptor
 1. chimera
 2. Tools -> General Controls -> Command Line

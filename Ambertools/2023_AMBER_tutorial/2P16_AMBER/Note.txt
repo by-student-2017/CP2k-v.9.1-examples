@@ -13,8 +13,6 @@
 4. wget https://files.rcsb.org/download/2P16.pdb
 # Note: Another method: mkdir 000.parameters 001.tleap_build 002.equilibration 003.production 004.analysis zzz.master
 
-# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
-
 # Receptor File Generation
 1. chimera
 2. File -> Open... -> 2P16.pdb -> Open

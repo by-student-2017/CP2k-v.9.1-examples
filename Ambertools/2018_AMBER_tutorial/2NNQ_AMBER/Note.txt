@@ -20,8 +20,6 @@
 1. mkdir 000.parameters 001.tleap_build 002.equilibration 003.production 004.analysis zzz.master
 2. cd zzz.master
 
-# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
-
 # Preparation for structure file (receptor(protein) and ligand(T4B) only)
 1. chimera
 2. Fetch... -> Database: PDB, ID: 2nnq -> Fetch

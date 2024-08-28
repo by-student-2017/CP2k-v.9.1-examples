@@ -10,8 +10,6 @@
 1. mkdir 001_structure 002_parameters 003_leap 004_equil 005_production
 2. cd 001_structure
 
-# Note: Please note that the receptor file should be without charges and hydrogens, while the ligand will need the charges and hydrogens.
-
 # (Protein) Receptor
 1. chimera
 2. File -> Open... -> 1HW9.pdb -> Open
