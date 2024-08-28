@@ -32,7 +32,7 @@ File -> Save Mol2... -> *.mol2
 # Classical statistical mechanics and its application limits
 
 
-Thermal de Broglie wavelength, l = v^(1/3) = (V/N)^(1/3)
+The average interparticle distance approaches, l = v^(1/3) = (V/N)^(1/3)
 
 At low temperatures, where the average interparticle distance approaches l, 
 the applicability of classical statistical mechanics is limited, 
