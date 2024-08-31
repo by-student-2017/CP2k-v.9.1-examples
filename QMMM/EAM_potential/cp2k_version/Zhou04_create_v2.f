@@ -285,26 +285,28 @@ c      outfile = 'atn-'//str1//'-'//str2//'_Zhou04.eam.alloy'
       write(1,12) rhor(j,i1),drho1, rhor(j,i2),drho2
 21    continue
       
-c for j=1
-      j=3
-      dj3z2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
-     * - z2r(j,i1,i1)/((j-1)*dr))/dr
-      dj3z2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
-     * - z2r(j,i1,i2)/((j-1)*dr))/dr
-c for j=2
-      j=2
-      dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
-     * - z2r(j,i1,i1)/((j-1)*dr))/dr
-      dz2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
-     * - z2r(j,i1,i2)/((j-1)*dr))/dr
-c j=1
-      write(1,12) z2r(j,i1,i1)/((j-1)*dr)-(2.0*dz2r1-dj3z2r1)*dr, 
-     * 2.0*dz2r1-dj3z2r1,
-     * z2r(j,i1,i2)/((j-1)*dr)-(2.0*dz2r2-dj3z2r2)*dr, 
-     * 2.0*dz2r2-dj3z2r2
-c j=2
-      write(1,12) z2r(j,i1,i1)/((j-1)*dr), dz2r1,
-     * z2r(j,i1,i2)/((j-1)*dr), dz2r2
+cc for j=1
+c      j=3
+c      dj3z2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
+c     * - z2r(j,i1,i1)/((j-1)*dr))/dr
+c      dj3z2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
+c     * - z2r(j,i1,i2)/((j-1)*dr))/dr
+cc for j=2
+c      j=2
+c      dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
+c     * - z2r(j,i1,i1)/((j-1)*dr))/dr
+c      dz2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
+c     * - z2r(j,i1,i2)/((j-1)*dr))/dr
+cc j=1
+c      write(1,12) z2r(j,i1,i1)/((j-1)*dr)-(2.0*dz2r1-dj3z2r1)*dr, 
+c     * 2.0*dz2r1-dj3z2r1,
+c     * z2r(j,i1,i2)/((j-1)*dr)-(2.0*dz2r2-dj3z2r2)*dr, 
+c     * 2.0*dz2r2-dj3z2r2
+      write(1,12) 0.0,0.0, 0.0,0.0
+cc j=2
+c      write(1,12) z2r(j,i1,i1)/((j-1)*dr), dz2r1,
+c     * z2r(j,i1,i2)/((j-1)*dr), dz2r2
+      write(1,12) 0.0,0.0, 0.0,0.0
 c j>=3
       do 22 j=3,(nr-1)
       dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
@@ -315,9 +317,11 @@ c j>=3
      * z2r(j,i1,i2)/((j-1)*dr), dz2r2
 22    continue
       
-      dFr1 = (Fr(j+1,i1) - Fr(1,i1))/drho
-      dFr2 = (Fr(j+1,i2) - Fr(1,i2))/drho
-      write(1,12) Fr(1,i1),dFr1, Fr(1,i2),dFr2
+c      dFr1 = (Fr(j+1,i1) - Fr(1,i1))/drho
+c      dFr2 = (Fr(j+1,i2) - Fr(1,i2))/drho
+c      write(1,12) Fr(1,i1),dFr1, Fr(1,i2),dFr2
+      write(1,12) 0.0,0.0, 0.0,0.0
+      
       do 23 j=2,(nrho-1)
       dFr1 = (Fr(j+1,i1) - Fr(j-1,i1))/(2.0*drho)
       dFr2 = (Fr(j+1,i2) - Fr(j-1,i2))/(2.0*drho)
