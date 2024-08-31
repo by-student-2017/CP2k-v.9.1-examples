@@ -254,7 +254,7 @@ c9     format(i5,e24.16,i5,2e24.16)
 
       outelemxx = outfile(1:index(outfile,' ')-1)
       do 13 i1=1,ntypes
-      do 13 i2=1,i1
+      do 13 i2=1,ntypes
       
 c      write(str1, '(I0)') ielement(i1)
 c      write(str2, '(I0)') ielement(i2)
