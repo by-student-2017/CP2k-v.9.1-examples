@@ -20,8 +20,8 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
      *   Fm0(16),Fm1(16),Fm2(16),Fm3(16),Fm4(16),
      *   fnn(16),Fn(16),rhoin(16),rhoout(16),rhol(16),
      *   rhoh(16),rhos(16)
-      common /pass2/ amass(16),Fr(5000,16),rhor(5000,16),
-     *   z2r(5000,16,16),blat(16),drho,dr,rc,outfile,outelem
+      common /pass2/ amass(16),Fr(50001,16),rhor(50001,16),
+     *   z2r(50001,16,16),blat(16),drho,dr,rc,outfile,outelem
       common /pass3/ ielement(16),ntypes,nrho,nr
       ntypes=0
 10    continue
@@ -85,8 +85,8 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 1210  write(6,*)'error: atom type ',atomtype,' not found'
       stop
 1200  continue
-      nr=3000+1
-      nrho=3000+1
+      nr=20000+1
+      nrho=20000+1
       alatmax=blat(1)
       rhoemax=rhoe(1)
       do 2 i=2,ntypes
@@ -232,8 +232,8 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
      *   Fm0(16),Fm1(16),Fm2(16),Fm3(16),Fm4(16),
      *   fnn(16),Fn(16),rhoin(16),rhoout(16),rhol(16),
      *   rhoh(16),rhos(16)
-      common /pass2/ amass(16),Fr(5000,16),rhor(5000,16),
-     *   z2r(5000,16,16),blat(16),drho,dr,rc,outfile,outelem
+      common /pass2/ amass(16),Fr(50001,16),rhor(50001,16),
+     *   z2r(50001,16,16),blat(16),drho,dr,rc,outfile,outelem
       common /pass3/ ielement(16),ntypes,nrho,nr
       character*80 struc
       character(2) :: str1
@@ -266,15 +266,14 @@ c      outfile = 'atn-'//str1//'-'//str2//'_Zhou04.eam.alloy'
       outfile = str1//'-'//str2//'_Zhou04.eam.alloy'
       open(unit=1,file=outfile)
       
-      write(1,*) ' DATE: 2018-03-30 ',
+      write(1,*) 'DATE: 2018-03-30 ',
      * 'CITATION: X. W. Zhou et al., Phys. Rev. B, 69, 144113(2004).'
       
-      write(1,11) ielement(i1),amass(i1),blat(i1),
-     * ielement(i2),amass(i2),blat(i2)
-11    format(i5,2g15.5,i5,2g15.5)
+      write(1,11) ielement(i1),amass(i1),blat(i1)
+11    format(i4,2g15.5)
       
       write(1,9) dr,drho,rc,(nrho-1)
-9     format(3e24.16,i5)
+9     format(e24.16,"  ",e24.16,"  ",e24.16,"   ",i5)
       
       drho1 = (rhor(j+1,i1) - rhor(1,i1))/dr
       drho2 = (rhor(j+1,i2) - rhor(1,i2))/dr
@@ -285,28 +284,28 @@ c      outfile = 'atn-'//str1//'-'//str2//'_Zhou04.eam.alloy'
       write(1,12) rhor(j,i1),drho1, rhor(j,i2),drho2
 21    continue
       
-cc for j=1
-c      j=3
-c      dj3z2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
-c     * - z2r(j,i1,i1)/((j-1)*dr))/dr
-c      dj3z2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
-c     * - z2r(j,i1,i2)/((j-1)*dr))/dr
-cc for j=2
-c      j=2
-c      dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
-c     * - z2r(j,i1,i1)/((j-1)*dr))/dr
-c      dz2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
-c     * - z2r(j,i1,i2)/((j-1)*dr))/dr
-cc j=1
-c      write(1,12) z2r(j,i1,i1)/((j-1)*dr)-(2.0*dz2r1-dj3z2r1)*dr, 
-c     * 2.0*dz2r1-dj3z2r1,
-c     * z2r(j,i1,i2)/((j-1)*dr)-(2.0*dz2r2-dj3z2r2)*dr, 
-c     * 2.0*dz2r2-dj3z2r2
-      write(1,12) 0.0,0.0, 0.0,0.0
-cc j=2
-c      write(1,12) z2r(j,i1,i1)/((j-1)*dr), dz2r1,
-c     * z2r(j,i1,i2)/((j-1)*dr), dz2r2
-      write(1,12) 0.0,0.0, 0.0,0.0
+c for j=1
+      j=3
+      dj3z2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
+     * - z2r(j,i1,i1)/((j-1)*dr))/dr
+      dj3z2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
+     * - z2r(j,i1,i2)/((j-1)*dr))/dr
+c for j=2
+      j=2
+      dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
+     * - z2r(j,i1,i1)/((j-1)*dr))/dr
+      dz2r2 = ( z2r(j+1,i1,i2)/((j+1-1)*dr)
+     * - z2r(j,i1,i2)/((j-1)*dr))/dr
+c j=1
+      write(1,12) z2r(j,i1,i1)/((j-1)*dr)-(2.0*dz2r1-dj3z2r1)*dr, 
+     * 2.0*dz2r1-dj3z2r1,
+     * z2r(j,i1,i2)/((j-1)*dr)-(2.0*dz2r2-dj3z2r2)*dr, 
+     * 2.0*dz2r2-dj3z2r2
+c      write(1,12) 0.0,0.0, 0.0,0.0
+c j=2
+      write(1,12) z2r(j,i1,i1)/((j-1)*dr), dz2r1,
+     * z2r(j,i1,i2)/((j-1)*dr), dz2r2
+c      write(1,12) 0.0,0.0, 0.0,0.0
 c j>=3
       do 22 j=3,(nr-1)
       dz2r1 = ( z2r(j+1,i1,i1)/((j+1-1)*dr)
@@ -317,10 +316,10 @@ c j>=3
      * z2r(j,i1,i2)/((j-1)*dr), dz2r2
 22    continue
       
-c      dFr1 = (Fr(j+1,i1) - Fr(1,i1))/drho
-c      dFr2 = (Fr(j+1,i2) - Fr(1,i2))/drho
-c      write(1,12) Fr(1,i1),dFr1, Fr(1,i2),dFr2
-      write(1,12) 0.0,0.0, 0.0,0.0
+      dFr1 = (Fr(j+1,i1) - Fr(1,i1))/drho
+      dFr2 = (Fr(j+1,i2) - Fr(1,i2))/drho
+      write(1,12) Fr(1,i1),dFr1, Fr(1,i2),dFr2
+c      write(1,12) 0.0,0.0, 0.0,0.0
       
       do 23 j=2,(nrho-1)
       dFr1 = (Fr(j+1,i1) - Fr(j-1,i1))/(2.0*drho)
@@ -328,7 +327,7 @@ c      write(1,12) Fr(1,i1),dFr1, Fr(1,i2),dFr2
       write(1,12) Fr(j,i1),dFr1, Fr(j,i2),dFr2
 23    continue
       
-12    format(4e24.16)
+12    format(e24.16,"  ",e24.16,"  ",e24.16,"  ",e24.16)
       
       close(1)
 13    continue
