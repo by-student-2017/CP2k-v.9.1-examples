@@ -201,6 +201,7 @@
        &EAM                  # embedded atom for Cu-Cu interaction
          atoms Cu Cu
          PARM_FILE_NAME ${LIBDIR}/CU.pot
+         #PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
        &END EAM
      &END NONBONDED
    &END FORCEFIELD
