@@ -35,3 +35,10 @@ or on Windows
     
 This will generate a potential file named *_Zhou04.eam.alloy, where * is a
 list of the included elements.
+
+Note
+------------
+Please make the element name two characters. For example, C should be CA. 
+It is a good idea to refer to the atom names in the PDB. 
+It would be better to create parameters in EAM.
+input and EAM_code by classifying them in the same way.

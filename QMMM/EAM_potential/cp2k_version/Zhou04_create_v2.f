@@ -238,6 +238,7 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
       character*80 struc
       character(2) :: str1
       character(2) :: str2
+      character*80 outelemxx
       struc='fcc'
 c      write(1,*) ' DATE: 2018-03-30 ',
 c     *   'CONTRIBUTOR: Xiaowang Zhou xzhou@sandia.gov and ',
@@ -251,14 +252,18 @@ c8     format(i5,' ',a24)
 c      write(1,9)nrho,drho,nr,dr,rc
 c9     format(i5,e24.16,i5,2e24.16)
 
+      outelemxx = outfile(1:index(outfile,' ')-1)
       do 13 i1=1,ntypes
       do 13 i2=1,i1
       
-      write(str1, '(I0)') ielement(i1)
-      write(str2, '(I0)') ielement(i2)
+c      write(str1, '(I0)') ielement(i1)
+c      write(str2, '(I0)') ielement(i2)
+      str1 = outelemxx((i1-1)*2+1:(i1-1)*2+2)
+      str2 = outelemxx((i2-1)*2+1:(i2-1)*2+2)
       
 c      outfile = outfile(1:index(outfile,' ')-1)//'_Zhou04.eam.alloy'
-      outfile = 'atn-'//str1//'-'//str2//'_Zhou04.eam.alloy'
+c      outfile = 'atn-'//str1//'-'//str2//'_Zhou04.eam.alloy'
+      outfile = str1//'-'//str2//'_Zhou04.eam.alloy'
       open(unit=1,file=outfile)
       
       write(1,*) ' DATE: 2018-03-30 ',
