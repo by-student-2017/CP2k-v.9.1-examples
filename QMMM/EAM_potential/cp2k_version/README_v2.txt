@@ -36,6 +36,10 @@ or on Windows
 This will generate a potential file named *_Zhou04.eam.alloy, where * is a
 list of the included elements.
 
+EAM_code
+------------
+Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr
+
 Note
 ------------
 Please make the element name two characters. For example, C should be CA. 
