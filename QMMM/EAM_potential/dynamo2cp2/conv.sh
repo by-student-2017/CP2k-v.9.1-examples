@@ -5,7 +5,13 @@
 # 2. ./conv.sh
 
 echo "-----------------------------------------------------------------"
-filename=`find *eam.alloy`
+if [ -z "$1" ]; then
+  echo "not read ./conv.sh *.eam.alloy command"
+  echo "auto read EAM potential file"
+  filename=`find *eam.alloy`
+else
+  filename=$1
+fi
 echo "Read EAM file: "${filename}
 
 # Read the 4th line
@@ -55,15 +61,16 @@ for element in "${array_elem[@]}"; do
       printf "%24.16e %24.16e \n",0.0,0.0
       o1=0.0; n0=0.0; n1=0.0; i=1 
     }{
-      # i>=2: n1(Ls+i+1) - n0(Ls+i) - o1(Ls+i-1)
-      o1=n0; n0=n1; i=i+1; n1=$1
+      if(Ls<NR && NR<=Ls+Nr){
+        o1=n0; n0=n1; i=i+1; n1=$1
+      }
       if(Ls+2<NR && NR<=Ls+Nr){
         dFrho=(n1 - o1)/(2.0*drho)
         printf "%24.16e %24.16e \n",n0,dFrho
       }
     }END{
       dFrho=(n1 - o1)/(2.0*drho)
-      for (i = Nrho+1; i <= Nr; i++){
+      for (i = Nrho; i <= Nr; i++){
         Frho = n1 + dFrho*drho
         printf "%24.16e %24.16e \n",Frho,dFrho
       }
@@ -72,16 +79,17 @@ for element in "${array_elem[@]}"; do
     Ls=$((${Ls} + ${Nrho}))
     awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
       printf "%24.16e %24.16e \n",0.0,0.0
-      o1=0.0; n0=0.0; n1=0.0; i=1 
+      o1=0.0; n0=0.0; n1=0.0
     }{
-      # i>=2: n1(Ls+i+1) - n0(Ls+i) - o1(Ls+i-1)
-      o1=n0; n0=n1; i=i+1; n1=$1
+      if(Ls<NR && NR<=Ls+Nr){
+        o1=n0; n0=n1; n1=$1
+      }
       if(Ls+2<NR && NR<=Ls+Nr){
         drho=(n1 - o1)/(2.0*dr)
         printf "%24.16e %24.16e \n",n0,drho
       }
     }END{
-      drho = (n1 - n0)/dr
+      drho=(n1 - n0)/dr
       printf "%24.16e %24.16e \n",n1,drho
     }' ${filename} > rho_Nr_${element}.txt
     #
@@ -110,20 +118,23 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
       printf "%24.16e %24.16e \n",0.0,0.0
       o1=0.0; n0=0.0; n1=0.0; i=1
     }{
-      # i>=2: n1(Ls+i+1) - n0(Ls+i) - o1(Ls+i-1)
-      o1=n0; n0=n1; i=i+1; n1=$1/((i-1)*dr)
+      if(Ls+1<NR && NR<=Ls+Nr){
+        o1=n0; n0=n1; i=i+1; n1=$1/((i-1)*dr)
+      }
       if(Ls+2<NR && NR<=Ls+Nr){
         dphi = (n1 - o1)/(2.0*dr)
         printf "%24.16e %24.16e \n",n0,dphi
       }
     }END{
-      dphi = (n1 - n0)/dr
+      dphi=(n1-n0)/dr
       printf "%24.16e %24.16e \n",n1,dphi
     }' ${filename} > phi_Nr_${array_elem[${i}]}_${array_elem[${j}]}.txt
   done
 done
 
-mkdir results
+if [ ! -d "results" ]; then
+  mkdir results
+fi
 echo "-----------------------------------------------------------------"
 for ((i=1; i<=${array_elem[0]}; i++)); do
   for ((j=1; j<=i; j++)); do
@@ -138,3 +149,9 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
   done
 done
 echo "-----------------------------------------------------------------"
+
+if [ ! -d "tmp" ]; then
+  mkdir tmp
+fi
+mv *.txt ./tmp/
+
