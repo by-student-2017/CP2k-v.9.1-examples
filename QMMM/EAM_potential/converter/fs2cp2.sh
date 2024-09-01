@@ -94,9 +94,10 @@ for element in "${array_elem[@]}"; do
         printf "%24.16e %24.16e \n",n0,dFrho
       }
     }END{
-      dFrho=(n1 - o1)/(2.0*drho)
+      Frho = n1
+      #dFrho=(n1 - o1)/(2.0*drho)
       for (i = Nrho; i <= Nr; i++){
-        Frho = n1 + dFrho*drho
+        Frho = Frho + dFrho*drho
         printf "%24.16e %24.16e \n",Frho,dFrho
       }
     }' Frho_Nrho_${element}.txt > Frho_Nr_${element}.txt
