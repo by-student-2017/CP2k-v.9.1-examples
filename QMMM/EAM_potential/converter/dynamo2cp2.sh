@@ -71,8 +71,11 @@ for element in "${array_elem[@]}"; do
         o1=n0; n0=n1; i=i+1; n1=$1
       }
       if(2<NR && NR<=Nr){
+        if(3==NR){
+          dFrho=(n1 - n0)/drho
+          printf "%24.16e %24.16e \n",n0-dFrho*drho,dFrho
+        }
         dFrho=(n1 - o1)/(2.0*drho)
-        if(3==NR){printf "%24.16e %24.16e \n",n0-dFrho*drho,dFrho}
         printf "%24.16e %24.16e \n",n0,dFrho
       }
     }END{
@@ -95,8 +98,11 @@ for element in "${array_elem[@]}"; do
         o1=n0; n0=n1; n1=$1
       }
       if(Ls+2<NR && NR<=Ls+Nr){
+        if(Ls+2==NR){
+          drho=(n1 - n0)/dr
+          printf "%24.16e %24.16e \n",n0-drho*dr,drho
+        }
         drho=(n1 - o1)/(2.0*dr)
-        if(Ls+2==NR){printf "%24.16e %24.16e \n",n0-drho*dr,drho}
         printf "%24.16e %24.16e \n",n0,drho
       }
     }END{
@@ -139,8 +145,11 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
         o1=n0; n0=n1; i=i+1; n1=$1/((i-1)*dr)
       }
       if(Ls+2<NR && NR<=Ls+Nr){
+        if(Ls+2==NR){
+          dphi = (n1 - n0)/dr
+          printf "%24.16e %24.16e \n",n0-dphi*dr,dphi
+        }
         dphi = (n1 - o1)/(2.0*dr)
-        if(Ls+2==NR){printf "%24.16e %24.16e \n",n0-dphi*dr,dphi}
         printf "%24.16e %24.16e \n",n0,dphi
       }
     }END{
