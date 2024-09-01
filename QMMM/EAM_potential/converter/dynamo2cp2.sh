@@ -70,7 +70,7 @@ for element in "${array_elem[@]}"; do
       if(NR<=Nr){
         o1=n0; n0=n1; i=i+1; n1=$1
       }
-      if(2<NR && NR<=Nr){
+      if(2<NR && NR<=Nrho){
         if(3==NR){
           dFrho=(n1 - n0)/drho
           printf "%24.16e %24.16e \n",n0-dFrho*drho,dFrho
