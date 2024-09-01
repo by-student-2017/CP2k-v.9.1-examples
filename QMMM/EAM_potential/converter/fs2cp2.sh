@@ -76,15 +76,20 @@ for element in "${array_elem[@]}"; do
     awk -v Ls=${Ls} -v Nrho=${Nrho} '{
       if(Ls<NR && NR<=Ls+Nrho){printf "%24.16e \n",$1}
     }' ${filename} > Frho_Nrho_${element}.txt
+    #
     echo "Linear Interpolation version"
     awk -v Nrho=${Nrho} -v Nr=${Nr} -v drho=${drho} 'BEGIN{
-      printf "%24.16e %24.16e \n",0.0,0.0
-      o1=0.0; n0=0.0; n1=0.0; i=1 
+      #printf "%24.16e %24.16e \n",0.0,0.0
+      o1=0.0; n0=0.0; n1=0.0; i=1
     }{
-      if(Ls<NR && NR<=Ls+Nr){
+      if(NR<=Nr){
         o1=n0; n0=n1; i=i+1; n1=$1
       }
-      if(Ls+2<NR && NR<=Ls+Nr){
+      if(2==NR){
+        dFrho=(n1 - n0)/drho
+        printf "%24.16e %24.16e \n",n0,dFrho
+      }
+      if(2<NR && NR<=Nr){
         dFrho=(n1 - o1)/(2.0*drho)
         printf "%24.16e %24.16e \n",n0,dFrho
       }
@@ -108,11 +113,15 @@ for element in "${array_elem[@]}"; do
       #
       Ls=$((${Ls} + ${Nrho}))
       awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
-        printf "%24.16e %24.16e \n",0.0,0.0
+        #printf "%24.16e %24.16e \n",0.0,0.0
         o1=0.0; n0=0.0; n1=0.0
       }{
         if(Ls<NR && NR<=Ls+Nr){
           o1=n0; n0=n1; n1=$1
+        }
+        if(Ls+2==NR){
+          drho=(n1 - n0)/dr
+          printf "%24.16e %24.16e \n",n0,drho
         }
         if(Ls+2<NR && NR<=Ls+Nr){
           drho=(n1 - o1)/(2.0*dr)
@@ -152,11 +161,15 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
     echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]}) , pair potential phi(r) (Nr values)"
     Ls=$((${Ls} + ${Nr}))
     awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
-      printf "%24.16e %24.16e \n",0.0,0.0
+      #printf "%24.16e %24.16e \n",0.0,0.0
       o1=0.0; n0=0.0; n1=0.0; i=1
     }{
-      if(Ls+1<NR && NR<=Ls+Nr){
+      if(Ls<NR && NR<=Ls+Nr){
         o1=n0; n0=n1; i=i+1; n1=$1/((i-1)*dr)
+      }
+      if(Ls+2==NR){
+        dphi = (n1 - n0)/dr
+        printf "%24.16e %24.16e \n",n0,dphi
       }
       if(Ls+2<NR && NR<=Ls+Nr){
         dphi = (n1 - o1)/(2.0*dr)
