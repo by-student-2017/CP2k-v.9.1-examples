@@ -1,18 +1,36 @@
 #!/bin/bash
 
 # Usage
-# 1. chmod +x dynamo2cp2.sh
-# 2. ./dynamo2cp2.sh
+# 1. chmod +x fs2cp2.sh
+# 2. ./fs2cp2.sh
 
 echo "-----------------------------------------------------------------"
+
 if [ -z "$1" ]; then
-  echo "not read ./dynamo2cp2.sh *.eam.alloy command"
+  echo "not read ./fs2cp2.sh *.eam.fs command"
   echo "auto read EAM potential file"
-  filename=`find *eam.alloy`
+  filename=`find *eam.fs`
 else
   filename=$1
 fi
 echo "Read EAM file: "${filename}
+
+echo "-----------------------------------------------------------------"
+
+echo "Convert the F, rho, and phi data into a single column and process it (processing file name: output_file)."
+awk '{
+  if (6<=NR && NF > 4) {
+    for(i=1; i<=NF; i++) {
+      print $i
+    }
+  } else {
+    print $0
+  }
+}' ${filename} > output_file
+filename="output_file"
+echo "Read new EAM file: "${filename}
+
+echo "-----------------------------------------------------------------"
 
 # Read the 4th line
 line4=$(sed -n '4p' "${filename}")
@@ -76,22 +94,35 @@ for element in "${array_elem[@]}"; do
       }
     }' Frho_Nrho_${element}.txt > Frho_Nr_${element}.txt
     #
-    Ls=$((${Ls} + ${Nrho}))
-    awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
-      printf "%24.16e %24.16e \n",0.0,0.0
-      o1=0.0; n0=0.0; n1=0.0
-    }{
-      if(Ls<NR && NR<=Ls+Nr){
-        o1=n0; n0=n1; n1=$1
-      }
-      if(Ls+2<NR && NR<=Ls+Nr){
-        drho=(n1 - o1)/(2.0*dr)
-        printf "%24.16e %24.16e \n",n0,drho
-      }
-    }END{
-      drho=(n1 - n0)/dr
-      printf "%24.16e %24.16e \n",n1,drho
-    }' ${filename} > rho_Nr_${element}.txt
+    #
+    j=1
+    for element_beta in "${array_elem[@]}"; do
+      if [ "${element_beta}" == "${array_elem[0]}" ]; then
+        continue
+      fi
+      #
+      echo "${i}:""${element} - ${j}:""${element_beta}"
+      #
+      Ls=$((${Ls} + ${Nrho}))
+      awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
+        printf "%24.16e %24.16e \n",0.0,0.0
+        o1=0.0; n0=0.0; n1=0.0
+      }{
+        if(Ls<NR && NR<=Ls+Nr){
+          o1=n0; n0=n1; n1=$1
+        }
+        if(Ls+2<NR && NR<=Ls+Nr){
+          drho=(n1 - o1)/(2.0*dr)
+          printf "%24.16e %24.16e \n",n0,drho
+        }
+      }END{
+        drho=(n1 - n0)/dr
+        printf "%24.16e %24.16e \n",n1,drho
+      }' ${filename} > rho_Nr_${element}_${element_beta}.txt
+      #
+      j=$((${j} + 1))
+    done
+    #
     #
     if [ "${element}" == "${array_elem[-1]}" ]; then
         break
@@ -149,7 +180,7 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
     echo "${natm[${i}]}  ${mass[${i}]}  ${latt[${i}]}" >> ${output}
     echo "${dr}  ${drho}  ${cutoff}  ${Nr}" >> ${output}
     paste -d ' ' Frho_Nr_${array_elem[${i}]}.txt Frho_Nr_${array_elem[${j}]}.txt >> ${output}
-    paste -d ' '  rho_Nr_${array_elem[${i}]}.txt  rho_Nr_${array_elem[${j}]}.txt >> ${output}
+    paste -d ' '  rho_Nr_${array_elem[${i}]}_${array_elem[${i}]}.txt rho_Nr_${array_elem[${i}]}_${array_elem[${j}]}.txt >> ${output}
     paste -d ' '  phi_Nr_${array_elem[${i}]}_${array_elem[${i}]}.txt phi_Nr_${array_elem[${i}]}_${array_elem[${j}]}.txt >> ${output}
   done
 done
