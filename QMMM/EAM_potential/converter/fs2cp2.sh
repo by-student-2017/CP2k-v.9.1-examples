@@ -27,7 +27,7 @@ awk '{
     print $0
   }
 }' ${filename} > output_file
-filename="output_file"
+filename="output.txt"
 echo "Read new EAM file: "${filename}
 
 echo "-----------------------------------------------------------------"
