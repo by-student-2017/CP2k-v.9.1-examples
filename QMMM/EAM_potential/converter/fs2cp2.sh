@@ -120,7 +120,7 @@ for element in "${array_elem[@]}"; do
           o1=n0; n0=n1; n1=$1
         }
         if(Ls+2<NR && NR<=Ls+Nr){
-          if(Ls+2==NR){
+          if(Ls+3==NR){
             drho=(n1 - n0)/dr
             printf "%24.16e %24.16e \n",n0-drho*dr,drho
           }
@@ -171,7 +171,7 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
         o1=n0; n0=n1; i=i+1; n1=$1/((i-1)*dr)
       }
       if(Ls+2<NR && NR<=Ls+Nr){
-        if(Ls+2==NR){
+        if(Ls+3==NR){
           dphi = (n1 - n0)/dr
           printf "%24.16e %24.16e \n",n0-dphi*dr,dphi
         }
