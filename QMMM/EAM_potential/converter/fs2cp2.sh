@@ -182,7 +182,7 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
   for ((j=1; j<=${array_elem[0]}; j++)); do
   #for ((j=1; j<=i; j++)); do
     echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]}) , make EAM potential for CP2k in results directory"
-    output="./results/${array_elem[${i}]}-${array_elem[${j}]}.eam.alloy"
+    output="./results/${array_elem[${i}]}-${array_elem[${j}]}.eam.fs"
     echo "title" > ${output}
     echo "${natm[${i}]}  ${mass[${i}]}  ${latt[${i}]}" >> ${output}
     echo "${dr}  ${drho}  ${cutoff}  ${Nr}" >> ${output}
