@@ -175,7 +175,7 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
     echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]}) , make EAM potential for CP2k in results directory"
     output="./results/${array_elem[${i}]}-${array_elem[${j}]}.eam.alloy"
     echo "title" > ${output}
-    echo "${natm[${i}]}  ${mass[${i}]}  ${latt[${i}]}" >> ${output}
+    echo "  ${natm[${i}]}    ${mass[${i}]}       ${latt[${i}]}" >> ${output}
     echo "${dr}  ${drho}  ${cutoff}  ${Nr}" | awk '{printf "%24.16e  %24.16e  %24.16e  %6d\n",$1,$2,$3,$4}' >> ${output}
     paste -d ' ' Frho_Nr_${array_elem[${i}]}.txt Frho_Nr_${array_elem[${j}]}.txt >> ${output}
     paste -d ' '  rho_Nr_${array_elem[${i}]}.txt  rho_Nr_${array_elem[${j}]}.txt >> ${output}
