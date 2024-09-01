@@ -5,6 +5,7 @@
 # 2. ./dynamo2cp2.sh
 
 echo "-----------------------------------------------------------------"
+
 if [ -z "$1" ]; then
   echo "not read ./dynamo2cp2.sh *.eam.alloy command"
   echo "auto read EAM potential file"
@@ -13,6 +14,8 @@ else
   filename=$1
 fi
 echo "Read EAM file: "${filename}
+
+echo "-----------------------------------------------------------------"
 
 # Read the 4th line
 line4=$(sed -n '4p' "${filename}")
@@ -31,6 +34,7 @@ cutoff=${array_mesh[4]}
 
 echo "-----------------------------------------------------------------"
 echo "Number of elements: "${array_elem[0]}
+echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
 
 Ls=6
@@ -51,7 +55,8 @@ for element in "${array_elem[@]}"; do
       continue
     fi
     #
-    echo "${i}:""${element}"
+    echo "-------------------------------------------"
+    echo "${i}: ${element} , F(r): embedding function F(rho) (Nrho values)"
     #
     awk -v Ls=${Ls} -v Nrho=${Nrho} '{
       if(Ls<NR && NR<=Ls+Nrho){printf "%24.16e \n",$1}
@@ -76,6 +81,9 @@ for element in "${array_elem[@]}"; do
       }
     }' Frho_Nrho_${element}.txt > Frho_Nr_${element}.txt
     #
+    echo "-------------------------------------------"
+    echo "${i}: ${element} , density function rho(r) (Nr values)"
+    #
     Ls=$((${Ls} + ${Nrho}))
     awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
       printf "%24.16e %24.16e \n",0.0,0.0
@@ -98,6 +106,7 @@ for element in "${array_elem[@]}"; do
     fi
     #
     echo "-----------------------------------------------------------------"
+    echo "-----------------------------------------------------------------"
     Ls=$((${Ls} + ${Nr} + 1))
     awk -v Ls=${Ls} '{if(NR==Ls){print $0}}' ${filename}
     new_natm=`awk -v Ls=${Ls} '{if(NR==Ls){printf "%d",$1}}' ${filename}`
@@ -109,10 +118,12 @@ for element in "${array_elem[@]}"; do
     #
     i=$((${i} + 1))
 done
+
+echo "-----------------------------------------------------------------"
 echo "-----------------------------------------------------------------"
 for ((i=1; i<=${array_elem[0]}; i++)); do
   for ((j=1; j<=i; j++)); do
-    echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]})"
+    echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]}) , pair potential phi(r) (Nr values)"
     Ls=$((${Ls} + ${Nr}))
     awk -v Ls=${Ls} -v Nr=${Nr} -v dr=${dr} 'BEGIN{
       printf "%24.16e %24.16e \n",0.0,0.0
@@ -136,6 +147,7 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
   done
 done
 
+echo "-----------------------------------------------------------------"
 if [ ! -d "results" ]; then
   mkdir results
 fi
@@ -143,7 +155,7 @@ echo "-----------------------------------------------------------------"
 for ((i=1; i<=${array_elem[0]}; i++)); do
   for ((j=1; j<=${array_elem[0]}; j++)); do
   #for ((j=1; j<=i; j++)); do
-    echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]})"
+    echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]}) , make EAM potential for CP2k in results directory"
     output="./results/${array_elem[${i}]}-${array_elem[${j}]}.eam.alloy"
     echo "title" > ${output}
     echo "${natm[${i}]}  ${mass[${i}]}  ${latt[${i}]}" >> ${output}
