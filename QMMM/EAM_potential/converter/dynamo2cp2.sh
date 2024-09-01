@@ -129,6 +129,9 @@ for ((i=1; i<=${array_elem[0]}; i++)); do
       dphi=(n1-n0)/dr
       printf "%24.16e %24.16e \n",n1,dphi
     }' ${filename} > phi_Nr_${array_elem[${i}]}_${array_elem[${j}]}.txt
+    if [ "${i}" -ne "${j}" ]; then
+      cp phi_Nr_${array_elem[${i}]}_${array_elem[${j}]}.txt phi_Nr_${array_elem[${j}]}_${array_elem[${i}]}.txt
+    fi
   done
 done
 
@@ -137,7 +140,8 @@ if [ ! -d "results" ]; then
 fi
 echo "-----------------------------------------------------------------"
 for ((i=1; i<=${array_elem[0]}; i++)); do
-  for ((j=1; j<=i; j++)); do
+  for ((j=1; j<=${array_elem[0]}; j++)); do
+  #for ((j=1; j<=i; j++)); do
     echo "(${i}, ${j}) = (${array_elem[${i}]},${array_elem[${j}]})"
     output="./results/${array_elem[${i}]}-${array_elem[${j}]}.eam.alloy"
     echo "title" > ${output}
