@@ -17,6 +17,21 @@ echo "Read EAM file: "${filename}
 
 echo "-----------------------------------------------------------------"
 
+echo "Convert the F, rho, and phi data into a single column and process it (processing file name: output_file)."
+awk '{
+  if (6<=NR && NF > 4) {
+    for(i=1; i<=NF; i++) {
+      print $i
+    }
+  } else {
+    print $0
+  }
+}' ${filename} > output.txt
+filename="output.txt"
+echo "Read new EAM file: "${filename}
+
+echo "-----------------------------------------------------------------"
+
 # Read the 4th line
 line4=$(sed -n '4p' "${filename}")
 # Read the 5th line
