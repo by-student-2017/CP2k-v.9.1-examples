@@ -4,6 +4,10 @@
 # 1. chmod +x fs2cp2.sh
 # 2. ./fs2cp2.sh
 
+# Note
+#sed -i 's/\r//' fs2cp2.sh
+#set -x # debug
+
 echo "-----------------------------------------------------------------"
 
 if [ -z "$1" ]; then
@@ -215,3 +219,10 @@ if [ ! -d "tmp" ]; then
 fi
 mv *.txt ./tmp/
 
+echo "Nrho: ${Nrho}, Nr: ${Nr}"
+if [ "${Nrho}" -ne "${Nr}" ]; then
+  echo "-----------------------------------------------------------------"
+  echo "In the current version, only 'Nrho<=Nr' is supported."
+  echo "I tried converting various codes, but it didn't work with CP2k, so I gave up on continuing this development."
+  echo "-----------------------------------------------------------------"
+fi
