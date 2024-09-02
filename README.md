@@ -83,6 +83,7 @@ chimera
 
 ## EAM potential (required for QM/MM or NEB etc)
 - Probably most of the potential at NIST (for Lammps) is not available in CP2k without converting the files.
+- I couldn't get any other method than "QMMM/EAM_potential/cp2k_version" to work (I created a script to convert the EAM potential shown by NIST to CP2k version, but all of them failed).
 
 
 ## Basis
