@@ -102,6 +102,10 @@ chimera
 - https://www.youtube.com/@CP2K
 
 
+## cp2k-examples
+- https://github.com/cp2k/cp2k-examples
+
+
 ## data/xc_section in CP2k github
 - Copy and paste the text from "&XC" to "&END XC" in the *.sec file listed on github into the cp2k input file.
 
