@@ -63,9 +63,10 @@ cos_theta=$(echo "($distance_OH1^2 + $distance_OH2^2 - $distance_HH^2)/ (2.0 * $
 sin_theta=$(echo "sqrt(1.0 - $cos_theta^2)" | bc -l)
 tan_theta=$(echo "$sin_theta / $cos_theta" | bc -l)
 
-# negative <= tan <= positive -> -PI()/2 <= atan <= PI()/2
+# negative <= tan <= positive -> -PI()/2 <= atan <= PI()/2, -180 deg for negative cos() value.
 theta_rad=$(echo "scale=10; a($tan_theta)" | bc -l)
 
+# +180 deg
 theta_deg=$(echo "180.0 + $theta_rad * 180.0 / (4.0*a(1.0))" | bc -l)
 
 echo "H-O-H angle: $theta_deg"
