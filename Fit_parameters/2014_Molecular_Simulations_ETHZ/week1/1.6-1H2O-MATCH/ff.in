@@ -1,0 +1,86 @@
+
+&GLOBAL
+  PROJECT   REFTRAJ
+  RUN_TYPE  MD
+  IOLEVEL   SILENT
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD Fist
+
+  &MM
+    &FORCEFIELD
+      &CHARGE
+        ATOM                    H
+        CHARGE                  ${Q_H}
+      &END CHARGE
+      &CHARGE
+        ATOM                    O
+        CHARGE                  ${Q_O}
+      &END CHARGE
+
+      &BOND
+        ATOMS                   H O
+        KIND                    Harmonic
+        K [kcalmol/angstrom^2]  ${K_HO}
+        R0 [angstrom]           ${R0_HO}
+      &END BOND
+
+      &BOND
+        ATOMS                   H H
+        KIND                    Harmonic
+        K [angstrom^-2eV]       0
+        R0 [angstrom]           10
+      &END BOND
+
+      &BEND
+        ATOMS                   H O H
+        KIND                    Harmonic
+        K [kcalmol/rad^2]       ${K_HOH}
+        THETA0 [deg]            ${THETA0_HOH}
+      &END BEND
+
+      &NONBONDED
+        &LENNARD-JONES
+          ATOMS             H H
+          EPSILON [eV]      ${EPS_HH}
+          SIGMA [angstrom]  ${SIGMA_HH}
+          RCUT [angstrom]   12.0
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS             H O
+          EPSILON [eV]      ${EPS_HO}
+          SIGMA [angstrom]  ${SIGMA_HO}
+          RCUT [angstrom]   12.0
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS             O O
+          EPSILON [eV]      ${EPS_OO}
+          SIGMA [angstrom]  ${SIGMA_OO}
+          RCUT [angstrom]   12.0
+        &END LENNARD-JONES
+      &END NONBONDED
+
+    &END FORCEFIELD
+
+    &POISSON
+      &EWALD
+        EWALD_TYPE none
+      &END EWALD
+    &END POISSON
+  &END MM
+
+  &SUBSYS
+
+    &CELL
+      ABC [angstrom] 15 15 15
+    &END CELL
+
+    &COORD
+O  0   0   0  H2O
+H  0.7 0.7 0  H2O
+H -0.7 0.7 0  H2O
+    &END COORD
+
+  &END SUBSYS
+&END FORCE_EVAL

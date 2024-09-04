@@ -1,0 +1,48 @@
+@SET SYSTEM run-1H2O-GOPT
+@SET LIBDIR /usr/share/cp2k
+
+&GLOBAL
+  PROJECT ${SYSTEM}          # Name of calculation: run-1H2O-GOPT 
+  RUN_TYPE GEO_OPT           # Perform a geometry optimization
+  PRINT_LEVEL LOW            # Do not output too much information
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD QuickStep
+  &DFT                       # Use density functional theory
+    BASIS_SET_FILE_NAME ${LIBDIR}/GTH_BASIS_SETS
+    POTENTIAL_FILE_NAME ${LIBDIR}/GTH_POTENTIALS
+    &MGRID
+      CUTOFF 250             # plane-wave cutoff for the charge density [Rydbergs]
+    &END MGRID  
+    &SCF                     
+      EPS_SCF 1.0E-6         # convergence threshold for total energy
+    &END SCF
+    &XC                      # parameters for exchange-correlation functional
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+      &XC_GRID               # some tricks to speed up the calculation of the xc potential
+        XC_DERIV       SPLINE2_smooth
+        XC_SMOOTH_RHO  NN10
+      &END XC_GRID
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL                    # box containing the molecule: 15x15x15 Angstroms
+      ABC [angstrom] 15 15 15
+    &END CELL
+    &COORD                   # coordinates of the atoms in the box [Angstroms]
+      O  0 0 0
+      H  0.7 0.7 0
+      H -0.7 0.7 0
+    &END COORD
+    &KIND H                  # basis sets and pseudo-potentials for atomic species
+      BASIS_SET TZVP-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+    &KIND O
+      BASIS_SET TZVP-GTH
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL

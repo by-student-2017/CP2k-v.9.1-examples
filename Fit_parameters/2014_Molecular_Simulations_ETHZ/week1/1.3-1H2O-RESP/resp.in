@@ -1,0 +1,82 @@
+
+@SET SYSTEM run-1H2O-RESP
+@SET LIBDIR ../cp2klib
+
+&GLOBAL
+  PROJECT ${SYSTEM}
+  RUN_TYPE ENERGY_FORCE
+  PRINT_LEVEL LOW
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD QuickStep
+  &DFT                       # Use density functional theory
+    BASIS_SET_FILE_NAME ${LIBDIR}/GTH_BASIS_SETS
+    POTENTIAL_FILE_NAME ${LIBDIR}/GTH_POTENTIALS
+    &MGRID
+      CUTOFF 250
+    &END MGRID
+    &SCF
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-6
+      MAX_SCF 20
+      &OT ON
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        MINIMIZER DIIS
+      &END OT
+    &END SCF
+
+    &XC
+      &XC_FUNCTIONAL BLYP
+      &END XC_FUNCTIONAL
+      &XC_GRID               # some tricks to speed up the calculation of the xc potential
+        XC_DERIV       SPLINE2_smooth
+        XC_SMOOTH_RHO  NN10
+      &END XC_GRID
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL                    # box containing the molecule: 15x15x15 Angstroms
+      ABC [angstrom] 15 15 15
+    &END CELL
+    &COORD
+      O 0.0000000088 0.0557750052 0.0000001715
+      H 0.7708525133 0.6566165520 0.0000000038
+      H -0.7708525028 0.6566165441 0.0000000043
+    &END COORD
+    &KIND H                  # basis sets and pseudo-potentials for atomic species
+      BASIS_SET TZVP-GTH
+      POTENTIAL GTH-BLYP-q1
+    &END KIND
+    &KIND O
+      BASIS_SET TZVP-GTH
+      POTENTIAL GTH-BLYP-q6
+    &END KIND
+  &END SUBSYS
+
+  &PROPERTIES
+    &RESP
+      &SPHERE_SAMPLING
+        # new version
+        #AUTO_VDW_RADII_TABLE CAMBRIDGE
+        #AUTO_RMIN_SCALE 1.0
+        #AUTO_RMAX_SCALE 10.0
+        #
+        # old version
+        RMIN_KIND 1.20 H  # 1.20 = vdW radius of H
+        RMAX_KIND 5.0  H
+        RMIN_KIND 1.52 O  # 1.52 = vdW radius of O
+        RMAX_KIND 8.0  O
+      &END
+      &CONSTRAINT
+        EQUAL_CHARGES
+        ATOM_LIST 2..3 # constrain for H(2) = H(3) of charge. range from H(2) to H(3)
+      &END CONSTRAINT
+      &PRINT
+        &V_RESP_CUBE
+        &END
+      &END PRINT
+    &END RESP
+  &END PROPERTIES
+
+&END FORCE_EVAL
