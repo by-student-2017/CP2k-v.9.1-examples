@@ -50,28 +50,24 @@ echo "O-H1 Distance: $distance_OH1"
 echo ${distance_OH1} >> O-H.data
 
 ## Calculate the distance from O-H2
-#distance_OH2=$(calculate_distance ${O[0]} ${O[1]} ${O[2]} ${H2[0]} ${H2[1]} ${H2[2]})
-#echo "O-H2 Distance: $distance_OH2"
+distance_OH2=$(calculate_distance ${O[0]} ${O[1]} ${O[2]} ${H2[0]} ${H2[1]} ${H2[2]})
+echo "O-H2 Distance: $distance_OH2"
 #echo ${distance_OH2} >> O-H.data
 
-# Calculate vectors OH1 and OH2
-vector_OH1=($(echo "${H1[0]} - ${O[0]}" | bc -l) $(echo "${H1[1]} - ${O[1]}" | bc -l) $(echo "${H1[2]} - ${O[2]}" | bc -l))
-vector_OH2=($(echo "${H2[0]} - ${O[0]}" | bc -l) $(echo "${H2[1]} - ${O[1]}" | bc -l) $(echo "${H2[2]} - ${O[2]}" | bc -l))
-
-# Calculate the dot product and magnitude
-dot_product_OH1_OH2=$(dot_product ${vector_OH1[0]} ${vector_OH1[1]} ${vector_OH1[2]} ${vector_OH2[0]} ${vector_OH2[1]} ${vector_OH2[2]})
-magnitude_OH1=$(magnitude ${vector_OH1[0]} ${vector_OH1[1]} ${vector_OH1[2]})
-magnitude_OH2=$(magnitude ${vector_OH2[0]} ${vector_OH2[1]} ${vector_OH2[2]})
+distance_HH=$(calculate_distance ${H1[0]} ${H1[1]} ${H1[2]} ${H2[0]} ${H2[1]} ${H2[2]})
+echo "H1-H2 Distance: $distance_HH"
+#echo ${distance_HH} >> H-H.data
 
 # Calculate the angle (radian)
-cos_theta=$(echo "$dot_product_OH1_OH2 / ($magnitude_OH1 * $magnitude_OH2)" | bc -l)
-theta_rad=$(echo "a($cos_theta)" | bc -l)
+cos_theta=$(echo "($distance_OH1^2 + $distance_OH2^2 - $distance_HH^2)/ (2.0 * $distance_OH1 * $distance_OH2)" | bc -l)
+sin_theta=$(echo "sqrt(1.0 - $cos_theta^2)" | bc -l)
+tan_theta=$(echo "$sin_theta / $cos_theta" | bc -l)
 
-# Calculate the angle (theta)
-theta_deg=$(echo "$theta_rad * 180 / 4*a(1)" | bc -l)
-if (( $(echo "$theta_deg < 0" | bc -l) )); then
-    theta_deg=$(echo "90 - $theta_deg" | bc -l)
-fi
+# negative <= tan <= positive -> -PI()/2 <= atan <= PI()/2
+theta_rad=$(echo "scale=10; a($tan_theta)" | bc -l)
+
+theta_deg=$(echo "180.0 + $theta_rad * 180.0 / (4.0*a(1.0))" | bc -l)
+
 echo "H-O-H angle: $theta_deg"
 echo ${theta_deg} >> H-O-H.data
 echo "-----------------------------------------------"
