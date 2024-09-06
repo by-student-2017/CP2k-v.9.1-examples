@@ -15,7 +15,7 @@
   sed -i "s/\.\.\/cp2k-files/\/usr\/share\/cp2k/g" gopt.in
  (Note: @SET LIBDIR /usr/share/cp2k)
 5. export OMP_NUM_THREADS=1
-6. mpirun -np 8 cp2k gopt.in | tee gopt.out
+6. mpirun -np 8 cp2k -i gopt.in | tee gopt.out
 7. vmd run-1H2O-GOPT-pos-1.xyz
 
 # TASK 3
@@ -25,41 +25,45 @@
 11. vim resp.in
   (DUMMY-X -> 0.0000000088, etc)
 12. export OMP_NUM_THREADS=1
-13. mpirun -np 8 cp2k resp.in | tee resp.out
+13. mpirun -np 8 cp2k -i resp.in | tee resp.out
+14. grep -n RESP resp.out
 
 # TASK 4
-14. cd ./../1.4-1H2O-VIBR
-15. cp ./../1.3-1H2O-RESP/run-1H2O-RESP-RESTART.wfn ./run-1H2O-VIBR-RESTART.wfn
-16. tail -3 ./../1.2-1H2O-GOPT/run-1H2O-GOPT-pos-1.xyz
-17. vim vibr.in
+15. cd ./../1.4-1H2O-VIBR
+16. cp ./../1.3-1H2O-RESP/run-1H2O-RESP-RESTART.wfn ./run-1H2O-VIBR-RESTART.wfn
+17. tail -3 ./../1.2-1H2O-GOPT/run-1H2O-GOPT-pos-1.xyz
+18. vim vibr.in
   (DUMMY-X -> 0.0000000088, etc)
-18. export OMP_NUM_THREADS=1
-19. mpirun -np 8 cp2k vibr.in | tee vibr.out
+19. export OMP_NUM_THREADS=1
+20. mpirun -np 8 cp2k -i vibr.in | tee vibr.out
 
 # TASK 5
-20. cd ./../1.5-1H2O-AIMD
-21. tail -3 ./../1.2-1H2O-GOPT/run-1H2O-GOPT-pos-1.xyz
-22. vim md.in
+21. cd ./../1.5-1H2O-AIMD
+22. tail -3 ./../1.2-1H2O-GOPT/run-1H2O-GOPT-pos-1.xyz
+23. vim md.in
   (DUMMY-X -> 0.0000000088, etc)
-23. export OMP_NUM_THREADS=1
-24. mpirun -np 8 cp2k md.in | tee md.out
-25. bash get_data.sh
+24. export OMP_NUM_THREADS=1
+25. mpirun -np 8 cp2k -i md.in | tee md.out
+26. bash get_data.sh
   (gnuplot < plot_distance.gnu)
   (gnuplot < plot_angle.gnu)
 
 # TASK 6
-26. cd ./../1.6-1H2O-MATCH
-27. cp ./../1.5-1H2O-AIMD/run-1H2O-AIMD.xyz ./DUMMY-AIMD-XYZ-TRAJECTORY
-28. cp ./../1.5-1H2O-AIMD/run-1H2O-AIMD.force ./DUMMY-AIMD-XYZ-FORCE
-29. vim ff_match.in
-  (VALUE DUMMY -> VALUE 0.74, etc)
-30. export OMP_NUM_THREADS=1
-31. mpirun -np 8 cp2k ff_match.in | tee ff_match.out
+27. cd ./../1.6-1H2O-MATCH
+28. cp ./../1.5-1H2O-AIMD/run-1H2O-AIMD.xyz ./DUMMY-AIMD-XYZ-TRAJECTORY
+29. cp ./../1.5-1H2O-AIMD/run-1H2O-AIMD.force ./DUMMY-AIMD-XYZ-FORCE
+30. vim ff_match.in
+  (LABEL R0_HO, VALUE DUMMY -> VALUE 0.978534)
+  (LABEL THETA0_HOH, VALUE DUMMY -> VALUE 104.538848)
+  (LABEL Q_H, VALUE DUMMY -> VALUE  0.374603)
+  (LABEL Q_O, VALUE DUMMY -> VALUE -0.749207)
+31. export OMP_NUM_THREADS=1
+32. mpirun -np 8 cp2k -i ff_match.in | tee ff_match.out
 
 # TASK 7
-32. cd ./../1.7-1H2O-CLMD
-33. vim gopt.in
+33. cd ./../1.7-1H2O-CLMD
+34. vim gopt.in
   (V@set       K_HO    DUMMY  -> @set K_HO 0.74, etc)
-34. export OMP_NUM_THREADS=1
-35. mpirun -np 8 cp2k gopt.in | tee gopt.out
+35. export OMP_NUM_THREADS=1
+36. mpirun -np 8 cp2k -i gopt.in | tee gopt.out
 #---------------------------------------------------------------------
