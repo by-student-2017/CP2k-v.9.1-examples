@@ -1,0 +1,102 @@
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    BASIS_SET_FILE_NAME ./BASIS_MOLOPT
+    POTENTIAL_FILE_NAME ./GTH_POTENTIALS
+    &PRINT
+      &MOMENTS
+       PERIODIC FALSE
+      &END
+    &END
+    &QS
+      EPS_DEFAULT 1.0E-12
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+    &END QS
+    &POISSON
+      PERIODIC NONE
+      POISSON_SOLVER MT
+    &END POISSON
+    &MGRID
+      CUTOFF 350
+      NGRIDS 5
+    &END
+    &SCF
+      MAX_SCF 100
+      SCF_GUESS RESTART
+      EPS_SCF 1.0E-6
+      &DIAGONALIZATION
+        ALGORITHM STANDARD
+        
+      &END
+      &OUTER_SCF
+        MAX_SCF 15
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART
+          &EACH
+            QS_SCF 0
+            GEO_OPT 1
+          &END
+          ADD_LAST NUMERIC
+          FILENAME RESTART
+        &END
+        &RESTART_HISTORY OFF
+        &END
+      &END
+    &END SCF
+    &XC
+      &XC_FUNCTIONAL PBE
+      &END XC_FUNCTIONAL
+    &END XC
+  &END DFT
+  &SUBSYS
+    &CELL
+      ABC [angstrom] 9 9 5
+    &END
+    &TOPOLOGY
+     COORD_FILE_NAME ./optc6h6.xyz 
+     COORDINATE xyz
+    &END
+    &KIND C
+      BASIS_SET SZV-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+    &KIND H
+      BASIS_SET SZV-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+&GLOBAL
+  PRINT_LEVEL LOW
+  PROJECT C6H6
+  RUN_TYPE VIBRATIONAL_ANALYSIS
+  WALLTIME 86000
+  EXTENDED_FFT_LENGTHS
+&END GLOBAL
+&MOTION
+   &GEO_OPT
+! to calculate vibrational spectrum tight convergence is required because frequencies are very sensitive to force constant
+    MAX_FORCE 0.00005
+    MAX_ITER 1600
+    OPTIMIZER BFGS
+    &BFGS
+    &END
+  &END
+&END
+! setup parameters to perform a Normal Modes analysis 
+&VIBRATIONAL_ANALYSIS
+! Calculation of the IR-Intensities.
+ INTENSITIES 
+! Specify the number of processors to be used per replica environment (for parallel runs)
+ NPROC_REP 16
+! Specify the increment to be used to construct the HESSIAN with finite difference method 
+ DX 0.001
+   &PRINT 
+     &PROGRAM_RUN_INFO ON
+     &END
+   &END
+&END
+ 
