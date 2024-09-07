@@ -1,0 +1,13 @@
+#---------------------------------------------------------------------
+# Infrared spectroscopy with molecular dynamics
+# https://www.cp2k.org/exercises:2016_ethz_mmm:infra_red
+#---------------------------------------------------------------------
+# Usage
+1. cd exercise-10.1
+2. bash run.sh
+#---------------------------------------------------------------------
+1. curl https://www.cp2k.org/_media/exercises:2016_ethz_mmm:exercise-10.1.tar.gz --output exercise-10.1.tar.gz
+2. tar zxvf exercise-10.1.tar.gz
+3. cd exercise-10.1
+4. tar xvf dftb_params.tgz
+#---------------------------------------------------------------------
