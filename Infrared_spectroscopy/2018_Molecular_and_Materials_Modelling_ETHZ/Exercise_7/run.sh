@@ -8,6 +8,7 @@ export OMP_NUM_THREADS=1
 #----------------------------------------------------------------------
 
 echo "1. Task: Computing vibrational spectra for methanol and benzene"
+
 mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i optmet.inp | tee optmet.out
 mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i vibmet.inp | tee vibmet.out
 
