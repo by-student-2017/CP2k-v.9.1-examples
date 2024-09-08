@@ -123,6 +123,17 @@ C [angstrom] 0.000000   0.   15.
        A_LIST    2.180134636042e+2  -4.240925758342e-1   9.994926845099e+0  -1.150771549531e+1   3.095839456559e+2
      &END GLE
    &END THERMOSTAT
+   #ENSEMBLE NVT
+   #STEPS 5000
+   #TIMESTEP 0.5
+   #TEMPERATURE 298
+   #&THERMOSTAT
+   #  TYPE CSVR
+   #  REGION MOLECULE
+   #  &CSVR
+   #    TIMECON [fs] 50.
+   #  &END
+   #&END
    &PRINT
      &ENERGY
         &EACH
@@ -143,6 +154,17 @@ C [angstrom] 0.000000   0.   15.
      &END VELOCITIES
      &FORCES OFF
      &END FORCES
+     &CELL 
+       &EACH
+         MD 20
+       &END
+       COMMON_ITERATION_LEVELS 3
+     &END
+     &RESTART OFF
+       &EACH
+         MD 20
+       &END
+     &END
      &RESTART_HISTORY
        &EACH
          MD 500
@@ -160,5 +182,8 @@ C [angstrom] 0.000000   0.   15.
 
 #&EXT_RESTART
 ! name of the restart file to be read
-# RESTART_FILE_NAME MET-1.restart
+# RESTART_FILE_NAME S_M-1.restart
+# RESTART_DEFAULT F
+# RESTART_POS 
+# RESTART_VEL
 #&END
