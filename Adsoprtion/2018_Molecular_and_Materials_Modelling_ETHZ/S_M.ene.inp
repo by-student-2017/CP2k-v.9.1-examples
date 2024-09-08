@@ -143,13 +143,13 @@
 
 ! how to propagate the system, selection via RUN_TYPE in the &GLOBAL section
 &MOTION
- &GEO_OPT
-   OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
-   MAX_ITER  100
-   MAX_DR    [bohr] 0.003 ! adjust target as needed
-   &BFGS
-   &END BFGS
- &END GEO_OPT
+ #&GEO_OPT
+ #  OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
+ #  MAX_ITER  100
+ #  MAX_DR    [bohr] 0.003 ! adjust target as needed
+ #  &BFGS
+ #  &END BFGS
+ #&END GEO_OPT
  
  &MD
    ENSEMBLE NVT         ! sampling the canonical ensemble, accurate properties might need NVE
@@ -172,6 +172,7 @@
        A_LIST    2.180134636042e+2  -4.240925758342e-1   9.994926845099e+0  -1.150771549531e+1   3.095839456559e+2
      &END GLE
    &END THERMOSTAT
+   
    #ENSEMBLE NVT
    #STEPS 5000
    #TIMESTEP 0.5
