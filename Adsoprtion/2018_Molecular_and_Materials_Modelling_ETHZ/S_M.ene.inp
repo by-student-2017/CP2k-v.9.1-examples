@@ -134,6 +134,26 @@ C [angstrom] 0.000000   0.   15.
            MD 20 ! Level starting at which this proprety is printed
         &END
      &END PROGRAM_RUN_INFO
+     &TRAJECTORY
+       &EACH
+         MD 1
+       &END EACH
+     &END TRAJECTORY
+     &VELOCITIES OFF
+     &END VELOCITIES
+     &FORCES OFF
+     &END FORCES
+     &RESTART_HISTORY
+       &EACH
+         MD 500
+       &END EACH
+     &END RESTART_HISTORY
+     &RESTART
+       BACKUP_COPIES 3
+       &EACH
+         MD 1
+       &END EACH
+     &END RESTART
    &END PRINT
  &END
 &END
