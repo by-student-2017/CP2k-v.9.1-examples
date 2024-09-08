@@ -53,9 +53,9 @@ C [angstrom] 0.000000   0.   15.
        PERIODIC XY
     &END CELL
     &TOPOLOGY
-     COORD_FILE_NAME ./S_M.opt.xyz
+     #COORD_FILE_NAME ./S_M.opt.xyz
      #COORD_FILE_NAME ./xyz/C2H6_1L-PdGa_TiO2.xyz
-     #COORD_FILE_NAME ./xyz/C2H6_2L-PdGa_TiO2.xyz
+     COORD_FILE_NAME ./xyz/C2H6_2L-PdGa_TiO2.xyz
      COORDINATE xyz
     &END
     &KIND O
