@@ -76,7 +76,7 @@ chimera
 - PDB file format: https://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html , https://pdbj.org/help/data-format
 
 
-## Avogadro (https://avogadro.cc/)
+## Avogadro (https://avogadro.cc/ , https://github.com/cryos/avogadro)
 1. sudo apt -y install avogadro
 2. which avogadro
 
