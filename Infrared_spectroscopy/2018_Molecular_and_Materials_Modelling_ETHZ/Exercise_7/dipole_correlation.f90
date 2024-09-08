@@ -17,7 +17,8 @@ OPEN(10,FILE=filename)
 N=0
 DO 
  READ(10,'(A100)',END=999) line
- IF (INDEX(line,' DIPOLE [Non Periodic] DERIVATIVE(A.U.)|').NE.0) THEN
+ !IF (INDEX(line,' DIPOLE [Non Periodic] DERIVATIVE(A.U.)|').NE.0) THEN
+ IF (INDEX(line,' TB_DIPOLE| Derivative [a.u.]').NE.0) THEN
     N=N+1
     READ(line(45:),*) dipder(:,N)
  ENDIF

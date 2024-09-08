@@ -81,7 +81,7 @@
 ! The length of an integration step
    TIMESTEP 0.5
 ! The number of MD steps to perform 
-   STEPS  5000
+   STEPS  40000 # 5000 steps is too few to calculate the IR.
 ! The temperature in K used to initialize the velocities
    TEMPERATURE 1200
    &PRINT
