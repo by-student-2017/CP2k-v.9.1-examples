@@ -93,9 +93,9 @@
   ! description of the system
   &SUBSYS
     &CELL
-       A [angstrom] 7.042785 0 0
-       B [angstrom] 0  6.09925  0.
-       C [angstrom] 0.000000    0.   15.
+       A [angstrom] 7.042785 0.000000  0.000000
+       B [angstrom] 0.000000 6.099250  0.000000
+       C [angstrom] 0.000000 0.000000 15.000000
        PERIODIC XY
        #! unit cells that are orthorhombic are more efficient with CP2K
        #ABC [angstrom] 7.042785 6.09925 15.000
