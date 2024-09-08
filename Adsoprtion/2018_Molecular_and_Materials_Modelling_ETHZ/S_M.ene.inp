@@ -198,7 +198,7 @@
    &END FORCES
    &CELL
      &EACH
-       MD 20
+       MD 10
      &END EACH
      COMMON_ITERATION_LEVELS 3
    &END CELL
