@@ -76,6 +76,10 @@ chimera
 - PDB file format: https://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html , https://pdbj.org/help/data-format
 
 
+## Avogadro
+1. sudo apt -y install avogadro
+2. which avogadro
+
 ## Original files
 - Basic: https://www.cp2k.org/howto
 - QMMM, and NEB: https://www.cp2k.org/exercises
