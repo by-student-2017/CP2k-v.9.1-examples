@@ -186,7 +186,7 @@
    # by an appropriate colored noise. The parameters were picked from 
    # library/optimal/kv_4-4.a, 
    # and shifted so that they span a range between 
-   # ωmin=0.4 cm^-1 and ωmax=4000 cm^-1 
+   # wmin=0.4 cm^-1 and wmax=4000 cm^-1 
    # Begins CP2K input section 
    
    &THERMOSTAT
