@@ -20,7 +20,9 @@ DO
  !IF (INDEX(line,' DIPOLE [Non Periodic] DERIVATIVE(A.U.)|').NE.0) THEN
  IF (INDEX(line,' TB_DIPOLE| Derivative [a.u.]').NE.0) THEN
     N=N+1
-    READ(line(45:),*) dipder(:,N)
+    !READ(line(45:),*) dipder(:,N)
+    READ(line(33:),*) dipder(:,N)
+    !write(*,*) dipder(:,N)
  ENDIF
 ENDDO
 999 CONTINUE
