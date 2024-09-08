@@ -97,8 +97,8 @@
     ! It is alternatively possible to read the potential on a grid (the cube file read must be a valid cube file with points the fit the finest grid).
     ! Note that this is not periodic! Can only be used with molecules and slabs.
     &EXTERNAL_POTENTIAL # EXTERNAL_POTENTIAL or EFIELD for GPW
-      #FUNCTION (A/B)*(Z-15.0/2)
-      FUNCTION (A/B)*Z
+      #FUNCTION (A/B)*Z
+      FUNCTION (A/B)*(Z-15.0/2.0)
       VALUES [eV] 0.2 [angstrom] 1.0
       PARAMETERS A B
     &END EXTERNAL_POTENTIAL
