@@ -158,11 +158,24 @@
    STEPS 1000           ! The number of MD steps to perform 
    # GLE thermostat as generated at http://epfl-cosmo.github.io/gle4md 
    # GLE provides an effective NVT sampling.
+   #----------------------------------------------------------------------------
    # URL: https://gle4md.org/index.html?page=matrix
    #  GLE type: Optimal sampling
    #  GLE options: Optimize Potential nrg, Ns/Range Ns=4, wmax/wmin=10^4
    #  w0 40 cm^-1
    #  Output format: CP2K input section
+   #----------------------------------------------------------------------------
+   # Generated at http://cosmo-epfl.github.io/gle4md 
+   # Please cite: 
+   # M. Ceriotti, G. Bussi and M. Parrinello, J. Chem. Theory Comput. 6, 1170 (2010) 
+   # M. Ceriotti, G. Bussi and M. Parrinello, Phys. Rev. Lett. 102, 020601 (2009) 
+   # Optimal-sampling GLE. Enforces efficient sampling of the potential energy 
+   # by an appropriate colored noise. The parameters were picked from 
+   # library/optimal/kv_4-4.a, 
+   # and shifted so that they span a range between 
+   # ωmin=0.4 cm^-1 and ωmax=4000 cm^-1 
+   # Begins CP2K input section 
+   
    &THERMOSTAT
      REGION MASSIVE
      TYPE GLE
