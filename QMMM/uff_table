@@ -42,9 +42,19 @@
 #  of units. Distances are measured in Angstrom, angles in degrees,
 #  energies in kcal/mol, and charges in electron charges.
 #
-#  valence; bond: ri, angle: phi
-#  nonbond; distance: xi, energy: di, scale: psi
-#  effective charge: zmm
+#  ref1: https://www.scm.com/doc.2019/UFF/_downloads/UFF.pdf
+#  ref2: https://www.scm.com/wp-content/uploads/pdfs/2014/UFF.pdf
+#
+#  ri: valence bond [angstrom]
+#  phi: valence Angel [degrees]
+#  xi: nonbond distance [angstrom]
+#  di: nonbond energy [kcal/mol]
+#  psi: nonbond scale [number]
+#  zmm: effective charge [charge]
+#  vsp3: sp3 torsional barrier [kcal/mol]
+#  vsp2: sp2 torsional barrier [kcal/mol]
+#  chi: electronegativity
+#  nc: number of bonds
 #
 #  Ang = Angstrom, Deg = degrees, K/M = kcal/mol
 # 
