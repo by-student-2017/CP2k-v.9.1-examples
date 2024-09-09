@@ -59,7 +59,7 @@
       SCF_GUESS ATOMIC ! can be used to RESTART an interrupted calculation
       #SCF_GUESS RESTART
       EPS_SCF 1.0E-5 ! (defualt: 1.0E-5), accuracy of the SCF procedure typically 1.0E-6 - 1.0E-7
-      MAX_SCF 200 # 20, 30 or 200
+      MAX_SCF 30 # 20, 30 or 200
       #
       #&OT
       #  ! an accurate preconditioner suitable also for larger systems
