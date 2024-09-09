@@ -27,8 +27,8 @@
       ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
-      CUTOFF [Ry] 250 # 400
-      REL_CUTOFF 40 # 60
+      CUTOFF [Ry] 280 # 400
+      REL_CUTOFF 45 # 60
       NGRIDS 4 # 5
     &END
     
@@ -59,7 +59,7 @@
     &SCF
       SCF_GUESS ATOMIC ! can be used to RESTART an interrupted calculation
       #SCF_GUESS RESTART
-      EPS_SCF 5.0E-3 ! (defualt: 1.0E-5), accuracy of the SCF procedure typically 1.0E-6 - 1.0E-7
+      EPS_SCF 1.0E-3 ! (defualt: 1.0E-5), accuracy of the SCF procedure typically 1.0E-6 - 1.0E-7
       MAX_SCF 20 # 20, 30 or 200
       #
       &OT
@@ -81,7 +81,7 @@
       #
       &OUTER_SCF ! repeat the inner SCF cycle 50 times
         MAX_SCF 20
-        EPS_SCF 5.0E-3 ! (defualt: 1.0E-5), must match the above
+        EPS_SCF 1.0E-3 ! (defualt: 1.0E-5), must match the above
       &END OUTER_SCF
       #
       &PRINT
@@ -136,9 +136,10 @@
     ! atom coordinates can be in the &COORD section,
     ! or provided as an external file.
     &TOPOLOGY
-     #COORD_FILE_NAME ./S_M.opt.xyz
+     ! You can sort by element using the "Cartesian Editor" in Avogadro's Build.
+     COORD_FILE_NAME ./S_M.opt.xyz
      #COORD_FILE_NAME ./xyz/C2H6_1L-PdGa_TiO2.xyz
-     COORD_FILE_NAME ./xyz/C2H6_2L-PdGa_TiO2.xyz
+     #COORD_FILE_NAME ./xyz/C2H6_2L-PdGa_TiO2.xyz
      COORDINATE xyz
     &END
     
@@ -234,6 +235,13 @@
       &END CELL
     &END PRINT
   &END CELL_OPT
+  
+  &CONSTRAINT
+    &FIXED_ATOMS
+      COMPONENTS_TO_FIX XYZ
+      LIST 31..116
+    &END FIXED_ATOMS
+  &END CONSTRAINT
  
  &MD
    ENSEMBLE NVT
