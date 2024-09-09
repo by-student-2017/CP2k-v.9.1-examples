@@ -35,7 +35,7 @@
     &QS
       ! default threshold for numerics ~ roughly numerical accuracy of the total energy per electron,
       ! sets reasonable values for all other thresholds.
-      EPS_DEFAULT 1.0E-7 # 1.0E-10
+      EPS_DEFAULT 1.0E-8 # (default: 1.0E-10)
       ! use the GPW method (i.e. pseudopotential based calculations with the Gaussian and Plane Waves scheme).
       METHOD GPW
       ! used for MD, the method used to generate the initial guess.
@@ -58,7 +58,7 @@
     &SCF
       SCF_GUESS ATOMIC ! can be used to RESTART an interrupted calculation
       #SCF_GUESS RESTART
-      EPS_SCF 1.0E-5 ! accuracy of the SCF procedure typically 1.0E-6 - 1.0E-7
+      EPS_SCF 1.0E-5 ! (defualt: 1.0E-5), accuracy of the SCF procedure typically 1.0E-6 - 1.0E-7
       MAX_SCF 200 # 20, 30 or 200
       #
       #&OT
@@ -80,7 +80,7 @@
       #
       &OUTER_SCF ! repeat the inner SCF cycle 50 times
         MAX_SCF 50
-        EPS_SCF 1.0E-5 ! must match the above
+        EPS_SCF 1.0E-5 ! (defualt: 1.0E-5), must match the above
       &END OUTER_SCF
       #
       &PRINT
@@ -182,17 +182,17 @@
    MAX_FORCE [hartree/bohr] 1.0E-04 ! 1.0E-03, 4.5E-4 or 1.0E-4
    RMS_DR    [bohr] 1.0E-03
    RMS_FORCE [hartree/bohr] 1.0E-03 ! 1.0E-03, 4.5E-4 or 1.0E-4
-   MAX_ITER 200 # Maximum Iterations: 200 (BFGS), 300 (LBFGS) or 500 (CG)
+   MAX_ITER 500 # Maximum Iterations: 200 (BFGS), 300 (LBFGS) or 500 (CG)
    #
    #OPTIMIZER BFGS # CG, BFGS or LBFGS
-   OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
-   &BFGS
-     RESTART_FILE_NAME restart.hess
-     RESTART_HESSIAN .TRUE.
-     TRUST_RADIUS 0.25
-     USE_MODEL_HESSIAN .TRUE.
-     USE_RAT_FUN_OPT .FALSE.
-   &END BFGS
+   #OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
+   #&BFGS
+   #  RESTART_FILE_NAME restart.hess
+   #  RESTART_HESSIAN .TRUE.
+   #  TRUST_RADIUS 0.25
+   #  USE_MODEL_HESSIAN .TRUE.
+   #  USE_RAT_FUN_OPT .FALSE.
+   #&END BFGS
    #
    #OPTIMIZER LBFGS
    #&LBFGS
@@ -205,10 +205,10 @@
    #
    # https://www.cp2k.org/exercises:2015_cecam_tutorial:geometry_and_cell_optimization
    #OPTIMIZER CG
-   #&CG
-   #  MAX_STEEP_STEPS  0
-   #  RESTART_LIMIT 9.0E-01
-   #&END CG
+   &CG
+     MAX_STEEP_STEPS  0
+     RESTART_LIMIT 9.0E-01
+   &END CG
   &END GEO_OPT
   &CELL_OPT
     #CONSTRAINT NONE
