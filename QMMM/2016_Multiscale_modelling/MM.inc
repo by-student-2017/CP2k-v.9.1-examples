@@ -58,14 +58,3 @@
       &END EWALD
     &END POISSON
   &END MM
-  
-  #&SUBSYS
-  #  &CELL
-  #    ABC 37.8 37.8 50.0
-  #  &END CELL
-  #  &TOPOLOGY
-  #    COORD_FILE_NAME MM_region.xyz
-  #    COORDINATE XYZ
-  #    CONNECTIVITY OFF
-  #  &END TOPOLOGY
-  #&END SUBSYS

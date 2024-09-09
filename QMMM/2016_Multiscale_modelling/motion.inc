@@ -155,3 +155,11 @@
    &END CELL
  &END PRINT
 &END MOTION
+
+#&EXT_RESTART
+! name of the restart file to be read
+# RESTART_FILE_NAME S_M-1.restart
+# RESTART_DEFAULT F
+# RESTART_POS 
+# RESTART_VEL
+#&END

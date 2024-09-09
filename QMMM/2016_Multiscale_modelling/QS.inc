@@ -4,24 +4,18 @@
     
     &MGRID
       COMMENSURATE # this keyword is required for QMMM with GEEP
-      CUTOFF 150
+      #
+      ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
+      ! certain calculations (e.g. geometry optimization, vibrational frequencies,
+      ! NPT and cell optimizations, need higher cutoffs)
+      CUTOFF [Ry] 300 # 400
+      #REL_CUTOFF 50 # 60
+      #NGRIDS 4 # 5
     &END MGRID
     
     &QS
-      EPS_DEFAULT 1.0E-10 # 1.0E-6 - 1.0E-12
+      EPS_DEFAULT 1.0E-8 # 1.0E-6 - 1.0E-12
       METHOD GPW ! GAPW, GPW, LRIGPW, RIGPW, OFGPW
-      #
-      #METHOD PM6                 # Semi-empirical method based on Hartree-Fock
-      #EXTRAPOLATION ASPC
-      #EXTRAPOLATION_ORDER 3
-      #&SE
-      #  &COULOMB
-      #    CUTOFF [angstrom] 20.0
-      #  &END
-      #  &EXCHANGE
-      #    CUTOFF [angstrom] 20.0
-      #  &END
-      #&END SE
     &END QS
     
     &SCF
@@ -36,12 +30,6 @@
         #ENERGY_GAP 0.001
       &END OT
       #
-      #&OT
-      #  PRECONDITIONER NONE
-      #  MINIMIZER DIIS
-      #  N_DIIS 7
-      #&END
-      #
       &OUTER_SCF
         #MAX_SCF 8
         EPS_SCF 1.0E-05 # default: 1.0E-05
@@ -52,14 +40,6 @@
       #  &END
       #&END
     &END SCF
-    
-    #&POISSON
-    #  PERIODIC NONE           # no interaction between replica
-    #  POISSON_SOLVER WAVELET 
-    #  &WAVELET
-    #    SCF_TYPE 60
-    #  &END WAVELET
-    #&END POISSON
     
     &XC
       ! use a PBE functional 
@@ -89,20 +69,8 @@
     &END PRINT
     #&EXTERNAL_POTENTIAL
     #  FUNCTION (A/B)*Z
+    #  FUNCTION (A/B)*(Z-15.0/2.0)
     #  VALUES [eV] 0.2 [angstrom] 1.0
     #  PARAMETERS A B
     #&END EXTERNAL_POTENTIAL
   &END DFT
-
-  #&SUBSYS
-  #  &CELL
-  #    ABC 37.8 37.8 50.0
-  #    PERIODIC NONE
-  #  &END CELL
-  #  &TOPOLOGY
-  #    COORD_FILE_NAME QM_region.xyz
-  #    COORDINATE xyz
-  #    &CENTER_COORDINATES
-  #    &END
-  #  &END
-  #&END SUBSYS
