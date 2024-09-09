@@ -45,8 +45,40 @@
         # water (tip3p)
         &LENNARD-JONES
           ATOMS Ow Ow
-          EPSILON 0.152073
-          SIGMA 3.1507
+          EPSILON [kcalmol] 0.102
+          SIGMA [angstrom] 3.1507
+        &END LENNARD-JONES
+        #
+        # UFF: https://pubs.acs.org/doi/10.1021/ja00051a040
+        &LENNARD-JONES
+          ATOMS Ow H
+          EPSILON [kcalmol] 0.066992
+          SIGMA [angstrom] 2.8609168
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS Ow C
+          EPSILON [kcalmol] 0.1034891
+          SIGMA [angstrom] 3.29077548
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS Ow N
+          EPSILON [kcalmol] 0.0838927
+          SIGMA [angstrom] 3.205694
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS Ow O
+          EPSILON [kcalmol] 0.0782304
+          SIGMA [angstrom] 3.1344227
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS Ow K
+          EPSILON [kcalmol] 0.0597494
+          SIGMA [angstrom] 3.2734029
+        &END LENNARD-JONES
+        &LENNARD-JONES
+          ATOMS Ow Cl
+          EPSILON [kcalmol] 0.1521643
+          SIGMA [angstrom] 3.3335386
         &END LENNARD-JONES
       &END NONBONDED
       
@@ -57,7 +89,7 @@
       # EAM case
       &SPLINE
         EPS_SPLINE 1.0E-7
-        EMAX_SPLINE 0.9e1
+        EMAX_SPLINE 0.9e2
       &END SPLINE
       #
       #&EAM # embedded atom for Cu-Cu interaction
