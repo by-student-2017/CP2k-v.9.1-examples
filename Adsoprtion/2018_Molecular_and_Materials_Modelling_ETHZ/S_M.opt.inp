@@ -209,6 +209,9 @@
    #  MAX_STEEP_STEPS  0
    #  RESTART_LIMIT 9.0E-01
    #&END CG
+   #
+   &PRINT
+   &END PRINT
   &END GEO_OPT
   &CELL_OPT
     #CONSTRAINT NONE
@@ -220,6 +223,15 @@
     KEEP_ANGLES .TRUE.      # Fix angle between cell vectors
     EXTERNAL_PRESSURE  [bar] 0.0    # Specify the external pressure
     PRESSURE_TOLERANCE [bar] 1.0E-3 # Pressure Convergence Criteria
+    #
+    &PRINT
+      &CELL
+        &EACH
+          CELL_OPT 1
+        &END EACH
+        ADD_LAST NUMERIC
+      &END CELL
+    &END PRINT
   &END CELL_OPT
  
  &MD
