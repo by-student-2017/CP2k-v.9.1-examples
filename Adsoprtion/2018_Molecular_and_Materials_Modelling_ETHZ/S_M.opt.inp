@@ -4,7 +4,7 @@
   PROJECT S_M
   ! various runtypes (energy, geo_opt, etc.) available.
   #RUN_TYPE ENERGY # GEO_OPT, CELL_OPT, ENERGY, ENERGY_FORCE or MD, (no check: MC, TAMC, TMC, NEGF)
-  RUN_TYPE CELL_OPT
+  RUN_TYPE GEO_OPT
   WALLTIME 860000
 &END GLOBAL
 
@@ -44,8 +44,8 @@
     &END QS
     
     &POISSON
-       PERIODIC XYZ ! 3D system. Note: Stress Tensor not tested for 2D systems.
-       #PERIODIC XY ! the default, gas phase systems should have 'NONE' and a wavelet solver
+       #PERIODIC XYZ ! 3D system. Note: Stress Tensor not tested for 2D systems.
+       PERIODIC XY ! the default, gas phase systems should have 'NONE' and a wavelet solver
        POISSON_SOLVER ANALYTIC
     &END
     
@@ -173,7 +173,7 @@
     &END KIND
   &END SUBSYS
   #
-  STRESS_TENSOR ANALYTICAL ! for CELL_OPT
+  #STRESS_TENSOR ANALYTICAL ! for CELL_OPT
 &END FORCE_EVAL
 
 ! how to propagate the system, selection via RUN_TYPE in the &GLOBAL section
@@ -189,8 +189,8 @@
    #OPTIMIZER BFGS # CG, BFGS or LBFGS
    OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
    &BFGS
-     RESTART_FILE_NAME restart.hess
-     RESTART_HESSIAN .TRUE.
+     #RESTART_FILE_NAME restart.hess
+     #RESTART_HESSIAN .TRUE.
      TRUST_RADIUS 0.25
      USE_MODEL_HESSIAN .TRUE.
      USE_RAT_FUN_OPT .FALSE.
@@ -239,7 +239,7 @@
   &CONSTRAINT
     &FIXED_ATOMS
       COMPONENTS_TO_FIX XYZ
-      LIST 31..116
+      LIST 20..116
     &END FIXED_ATOMS
   &END CONSTRAINT
  
