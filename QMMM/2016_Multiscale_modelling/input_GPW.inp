@@ -1,0 +1,160 @@
+@SET METHOD = QMMM # FIST all classical treatment # QS all quantum treatment
+
+&GLOBAL
+  FLUSH_SHOULD_FLUSH
+  PRINT_LEVEL LOW
+  ! the project name is made part of most output files... useful to keep order 
+  PROJECT QMMM
+  #RUN_TYPE ENERGY # GEO_OPT, CELL_OPT, ENERGY, ENERGY_FORCE or MD, (no check: MC, TAMC, TMC, NEGF)
+  RUN_TYPE MD
+  WALLTIME 860000
+&END GLOBAL
+
+&FORCE_EVAL
+  METHOD $METHOD
+  @include QS.inc
+  @include MM.inc
+  &QMMM
+    #this defines the QS cell in the QMMM calc
+    &CELL
+      ABC 37.8 37.8 50.0
+      PERIODIC XZ
+    &END CELL
+    #
+    # Gaussian Expansion of the Electrostatic Potential (GEEP)
+    ECOUPL GAUSS # use GEEP method
+    NOCOMPATIBILITY
+    USE_GEEP_LIB 6  # use GEEP method
+    #
+    # DFTB
+    #ECOUPL COULOMB # use classical point charge method (for DFTB method)
+    #
+    &PERIODIC # apply periodic potential
+      #in this case QM box = MM box in XZ so turn
+      #off coupling/recoupling of the QM multipole
+      &MULTIPOLE OFF
+      &END
+    &END PERIODIC
+    #these are just the ionic radii of K Cl
+    #but should be treated as parameters in general
+    #fit to some physical property
+    
+    &MM_KIND K
+      RADIUS 1.52
+    &END MM_KIND
+    &MM_KIND Cl
+      RADIUS 1.67
+    &END MM_KIND
+    #define the model
+    &QM_KIND K
+      MM_INDEX 97..168
+    &END QM_KIND
+    &QM_KIND Cl
+      MM_INDEX 169..240
+    &END QM_KIND
+    #
+    &QM_KIND H
+      MM_INDEX 45..96
+    &END QM_KIND
+    &QM_KIND C
+      MM_INDEX 1..10 12..17 19..42
+    &END QM_KIND
+    &QM_KIND N
+      MM_INDEX 43 44
+    &END QM_KIND
+    &QM_KIND O
+      MM_INDEX 11 18
+    &END QM_KIND
+  &END QMMM
+
+  &SUBSYS
+    #this defines the cell of the whole system
+    #must be orthorhombic, I think
+    &CELL
+      ABC 37.8 37.8 50.0
+      # semi-empirical case
+      # PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME QMMM.xyz
+      COORD_FILE_FORMAT XYZ
+      &GENERATE
+         &ISOLATED_ATOMS
+         #ignores bonds dihedrals etc in classical part
+            LIST 1..241
+         &END
+      &END
+    &END
+    &KIND K
+      ELEMENT K
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q9
+    &END KIND
+    &KIND Cl
+      BASIS_SET DZVP-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q7
+    &END
+    #
+    &KIND H
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q1
+    &END KIND
+    #&KIND B
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  POTENTIAL GTH-PBE-q3
+    #&END KIND
+    &KIND C
+      BASIS_SET TZV2P-MOLOPT-GTH
+      POTENTIAL GTH-PBE-q4
+    &END KIND
+    &KIND N
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q5
+    &END KIND
+    &KIND O
+      BASIS_SET DZVP-MOLOPT-SR-GTH
+      POTENTIAL GTH-PBE-q6
+    &END KIND
+    #&KIND Na
+    #  ELEMENT Na
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  BASIS_SET AUX_FIT FIT3
+    #  POTENTIAL GTH-PBE
+    #&END
+    #&KIND Al
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  BASIS_SET AUX_FIT FIT3
+    #  POTENTIAL GTH-PBE
+    #&END
+    #&KIND Ti
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  POTENTIAL GTH-PADE-q12
+    #&END KIND
+    #&KIND Cu
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  POTENTIAL GTH-PBE-q11
+    #&END KIND
+    #&KIND Rh
+    #  BASIS_SET SZVP-MOLOPT-SR-GTH-q9
+    #  POTENTIAL GTH-PBE-q9
+    #&END KIND
+    #&KIND Au
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  ELEMENT Au
+    #  POTENTIAL GTH-PBE-q11
+    #&END KIND
+    #&KIND He
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  PAO_BASIS_SIZE 1
+    #  POTENTIAL GTH-PBE
+    #&END KIND
+    #&KIND Ar
+    #  BASIS_SET DZVP-MOLOPT-SR-GTH
+    #  POTENTIAL GTH-PBE-q8
+    #&END KIND
+  &END SUBSYS
+&END FORCE_EVAL
+
+#should be able to use most motion sections
+#analytic stress tensor not available, I think
+@include motion.inc
