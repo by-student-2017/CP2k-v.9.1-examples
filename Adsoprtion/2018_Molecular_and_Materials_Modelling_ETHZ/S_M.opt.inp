@@ -27,15 +27,15 @@
       ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
-      CUTOFF [Ry] 300 # 400
-      REL_CUTOFF 40 # 60
-      NGRIDS 3 # 5
+      CUTOFF [Ry] 400 # 400
+      REL_CUTOFF 60 # 60
+      NGRIDS 5 # 5
     &END
     
     &QS
       ! default threshold for numerics ~ roughly numerical accuracy of the total energy per electron,
       ! sets reasonable values for all other thresholds.
-      EPS_DEFAULT 1.0E-8 # (default: 1.0E-10)
+      EPS_DEFAULT 1.0E-9 # (default: 1.0E-10)
       ! use the GPW method (i.e. pseudopotential based calculations with the Gaussian and Plane Waves scheme).
       METHOD GPW
       ! used for MD, the method used to generate the initial guess.
