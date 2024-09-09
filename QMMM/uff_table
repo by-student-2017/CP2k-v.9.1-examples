@@ -57,6 +57,7 @@
 #  nc: number of bonds
 #
 #  Ang = Angstrom, Deg = degrees, K/M = kcal/mol
+#  1 kcal/mol = 0.043361254529175 eV = 500 K
 #
 #  X_1: sp, X_2: sp2, X_3: sp3, X_R: sp2 (resonant), X=atomic symbol 
 # 
