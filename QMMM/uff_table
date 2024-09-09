@@ -41,7 +41,13 @@
 #  The UFF force field code uses "chemical" system
 #  of units. Distances are measured in Angstrom, angles in degrees,
 #  energies in kcal/mol, and charges in electron charges.
-#            
+#
+#  valence; bond: ri, angle: phi
+#  nonbond; distance: xi, energy: di, scale: psi
+#  effective charge: zmm
+#
+#  Ang = Angstrom, Deg = degrees, K/M = kcal/mol
+# 
 #        valence       nonbond
 #        --------    --------------
 #        ri   phi    xi    di    psi    zmm   vsp3   vsp2   chi    nc
