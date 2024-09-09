@@ -27,9 +27,9 @@
       ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
-      CUTOFF [Ry] 400 # 400
-      REL_CUTOFF 60
-      NGRIDS 5 # 5
+      CUTOFF [Ry] 300 # 400
+      REL_CUTOFF 40 # 60
+      NGRIDS 3 # 5
     &END
     
     &QS
@@ -185,14 +185,14 @@
    MAX_ITER 500 # Maximum Iterations: 200 (BFGS), 300 (LBFGS) or 500 (CG)
    #
    #OPTIMIZER BFGS # CG, BFGS or LBFGS
-   #OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
-   #&BFGS
-   #  RESTART_FILE_NAME restart.hess
-   #  RESTART_HESSIAN .TRUE.
-   #  TRUST_RADIUS 0.25
-   #  USE_MODEL_HESSIAN .TRUE.
-   #  USE_RAT_FUN_OPT .FALSE.
-   #&END BFGS
+   OPTIMIZER BFGS ! Good choice for 'small' systems (use LBFGS for large systems)
+   &BFGS
+     RESTART_FILE_NAME restart.hess
+     RESTART_HESSIAN .TRUE.
+     TRUST_RADIUS 0.25
+     USE_MODEL_HESSIAN .TRUE.
+     USE_RAT_FUN_OPT .FALSE.
+   &END BFGS
    #
    #OPTIMIZER LBFGS
    #&LBFGS
@@ -205,18 +205,18 @@
    #
    # https://www.cp2k.org/exercises:2015_cecam_tutorial:geometry_and_cell_optimization
    #OPTIMIZER CG
-   &CG
-     MAX_STEEP_STEPS  0
-     RESTART_LIMIT 9.0E-01
-   &END CG
+   #&CG
+   #  MAX_STEEP_STEPS  0
+   #  RESTART_LIMIT 9.0E-01
+   #&END CG
   &END GEO_OPT
   &CELL_OPT
     #CONSTRAINT NONE
     #CONSTRAINT XY          # Fix x and y components
     CONSTRAINT Z            # Fix z component
-    KEEP_SPACE_GROUP .TRUE. # Preserve space group during optimization
-    KEEP_SYMMETRY .TRUE.    # Preserve initial cell symmetry
-    EPS_SYMMETRY 1.0E-4     # Accuracy of space group determination
+    #KEEP_SPACE_GROUP .TRUE. # Preserve space group during optimization
+    #KEEP_SYMMETRY .TRUE.    # Preserve initial cell symmetry
+    #EPS_SYMMETRY 1.0E-4     # Accuracy of space group determination
     KEEP_ANGLES .TRUE.      # Fix angle between cell vectors
     EXTERNAL_PRESSURE  [bar] 0.0    # Specify the external pressure
     PRESSURE_TOLERANCE [bar] 1.0E-3 # Pressure Convergence Criteria
