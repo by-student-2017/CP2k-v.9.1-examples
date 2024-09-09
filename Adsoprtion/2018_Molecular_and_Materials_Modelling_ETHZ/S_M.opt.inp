@@ -138,6 +138,8 @@
     &TOPOLOGY
      ! You can sort by element using the "Cartesian Editor" in Avogadro's Build.
      COORD_FILE_NAME ./S_M.opt.xyz
+     #COORD_FILE_NAME ./xyz/C2H6_03L-PdGa_TiO2.xyz
+     #COORD_FILE_NAME ./xyz/C2H6_05L-PdGa_TiO2.xyz
      #COORD_FILE_NAME ./xyz/C2H6_1L-PdGa_TiO2.xyz
      #COORD_FILE_NAME ./xyz/C2H6_2L-PdGa_TiO2.xyz
      COORDINATE xyz
@@ -239,7 +241,7 @@
   &CONSTRAINT
     &FIXED_ATOMS
       COMPONENTS_TO_FIX XYZ
-      LIST 20..116
+      LIST 10..116
     &END FIXED_ATOMS
   &END CONSTRAINT
  
