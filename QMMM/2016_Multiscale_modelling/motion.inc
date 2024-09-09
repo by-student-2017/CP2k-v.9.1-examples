@@ -58,71 +58,81 @@
     &END PRINT
   &END CELL_OPT
   
-  #&CONSTRAINT
-  #  &FIXED_ATOMS
-  #    COMPONENTS_TO_FIX XYZ
-  #    LIST 529..672
-  #    EXCLUDE_MM .FALSE.
-  #    EXCLUDE_QM .TRUE.
-  #  &END FIXED_ATOMS
-  #&END CONSTRAINT
+  # Not use them in GLE
+  &CONSTRAINT
+    &FIXED_ATOMS
+      COMPONENTS_TO_FIX XYZ
+      LIST 529..672
+      EXCLUDE_MM .FALSE.
+      EXCLUDE_QM .TRUE.
+    &END FIXED_ATOMS
+  &END CONSTRAINT
  
  &MD
    ENSEMBLE NVT
    TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
    TIMESTEP [fs] 0.5    ! The length of an integration step
    STEPS 1000           ! The number of MD steps to perform 
-   # GLE thermostat as generated at http://epfl-cosmo.github.io/gle4md 
-   # GLE provides an effective NVT sampling.
-   #----------------------------------------------------------------------------
-   # URL: https://gle4md.org/index.html?page=matrix
-   #  GLE type: Optimal sampling
-   #  GLE options: Optimize Potential nrg, Ns/Range Ns=4, wmax/wmin=10^4
-   #  w0 40 cm^-1
-   #  Output format: CP2K input section
-   #----------------------------------------------------------------------------
-   # Generated at http://cosmo-epfl.github.io/gle4md 
-   # Please cite: 
-   # M. Ceriotti, G. Bussi and M. Parrinello, J. Chem. Theory Comput. 6, 1170 (2010) 
-   # M. Ceriotti, G. Bussi and M. Parrinello, Phys. Rev. Lett. 102, 020601 (2009) 
-   # Optimal-sampling GLE. Enforces efficient sampling of the potential energy 
-   # by an appropriate colored noise. The parameters were picked from 
-   # library/optimal/kv_4-4.a, 
-   # and shifted so that they span a range between 
-   # wmin=0.4 cm^-1 and wmax=4000 cm^-1 
-   # Begins CP2K input section 
-   #
    &THERMOSTAT
-     REGION MASSIVE
-     TYPE GLE
-     &GLE
-       NDIM 5
-       A_SCALE [ps^-1] 1.00
-       A_LIST    1.859575861256e+2   2.726385349840e-1   1.152610045461e+1  -3.641457826260e+1   2.317337581602e+2
-       A_LIST   -2.780952471206e-1   8.595159180871e-5   7.218904801765e-1  -1.984453934386e-1   4.240925758342e-1
-       A_LIST   -1.482580813121e+1  -7.218904801765e-1   1.359090212128e+0   5.149889628035e+0  -9.994926845099e+0
-       A_LIST   -1.037218912688e+1   1.984453934386e-1  -5.149889628035e+0   2.666191089117e+1   1.150771549531e+1
-       A_LIST    2.180134636042e+2  -4.240925758342e-1   9.994926845099e+0  -1.150771549531e+1   3.095839456559e+2
-     &END GLE
+     #
+     # GLE（Generalized Langevin Equation) thermostat: https://gle4md.org/index.html?page=matrix
+     #REGION MASSIVE
+     #TYPE GLE
+     #&GLE
+     #  NDIM 5
+     #  A_SCALE [ps^-1] 1.00
+     #  A_LIST    1.859575861256e+2   2.726385349840e-1   1.152610045461e+1  -3.641457826260e+1   2.317337581602e+2
+     #  A_LIST   -2.780952471206e-1   8.595159180871e-5   7.218904801765e-1  -1.984453934386e-1   4.240925758342e-1
+     #  A_LIST   -1.482580813121e+1  -7.218904801765e-1   1.359090212128e+0   5.149889628035e+0  -9.994926845099e+0
+     #  A_LIST   -1.037218912688e+1   1.984453934386e-1  -5.149889628035e+0   2.666191089117e+1   1.150771549531e+1
+     #  A_LIST    2.180134636042e+2  -4.240925758342e-1   9.994926845099e+0  -1.150771549531e+1   3.095839456559e+2
+     #&END GLE
+     #
+     # CSVR（Canonical Sampling through Velocity Rescaling）thermostat
+     #TYPE CSVR
+     #REGION MOLECULE
+     #&CSVR
+     #  TIMECON [fs] 50.0 # 50.0 - 1000.0
+     #&END CSVR
+     #
+     # Nose-Hoover thermostat
+     TYPE NOSE
+     &NOSE
+       LENGTH 3
+       TIMECON 1000
+       YOSHIDA 3
+     &END NOSE
+     #
+     # Langevin thermostat
+     #TYPE LANGEVIN
+     #GAMMA 1.0
    &END THERMOSTAT
    
-   #ENSEMBLE NVT
-   #STEPS 5000
-   #TIMESTEP 0.5
-   #TEMPERATURE 298
-   #&THERMOSTAT
-   #  TYPE CSVR
-   #  REGION MOLECULE
-   #  &CSVR
-   #    TIMECON [fs] 50.
-   #  &END CSVR
-   #&END THERMOSTAT
-   
+   # Isotropic
    #ENSEMBLE NPT_I
    #STEPS 10000
    #TIMESTEP 0.5
    #TEMPERATURE 300
-   #PRESSURE 1.0
+   #PRESSURE [bar] 1.0
+   #
+   # Flexible Cell
+   #ENSEMBLE NPT_F
+   #STEPS 10000
+   #TIMESTEP 0.5
+   #TEMPERATURE 300
+   #&THERMOSTAT
+   #  TYPE NOSE
+   #  &NOSE
+   #    LENGTH 3
+   #    TIMECON 1000
+   #    YOSHIDA 3
+   #  &END NOSE
+   #&END THERMOSTAT
+   #&BAROSTAT
+   #  PRESSURE [bar] 1.0
+   #  TIMECON 4000
+   #  TYPE ISOTROPIC
+   #&END BAROSTAT
  &END MD
  
  &PRINT
