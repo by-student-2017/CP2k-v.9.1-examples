@@ -51,18 +51,18 @@
         # Closely packed and ideal HCP elements: Mg, Co
         # Close-packed HCP elements with slightly smaller c/a: Be, Ti, Zr, Hf, Ru, Y, Gd
         # Elements in HCPs with close-packed c/a significantly higher than ideal (not recommended): Zn, Cd
-        &LENNARD-JONES
-          ATOMS Cu Cu
-          EPSILON 0.167
-          SIGMA 2.338
-          RCUT 10.0
-        &END LENNARD-JONES
+        #&LENNARD-JONES
+        #  ATOMS Cu Cu
+        #  EPSILON 0.167
+        #  SIGMA 2.338
+        #  RCUT 10.0
+        #&END LENNARD-JONES
         
-        #&EAM # embedded atom for Cu-Cu interaction
-        #  atoms Cu Cu
-        #  #PARM_FILE_NAME CU.pot
-        #  PARM_FILE_NAME Cu-Cu_Zhou04.eam.alloy
-        #&END EAM
+        &EAM # embedded atom for Cu-Cu interaction
+          atoms Cu Cu
+          #PARM_FILE_NAME CU.pot
+          PARM_FILE_NAME Cu-Cu_Zhou04.eam.alloy
+        &END EAM
       &END NONBONDED
       
       # When it is long distance and can be ignored (The terms with missing parameters will be treated as zero). 

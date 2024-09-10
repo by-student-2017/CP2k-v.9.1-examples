@@ -13,7 +13,7 @@
       ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
-      CUTOFF [Ry] 200 # 150 (22.6 GB), (<=200 in 32 GB system)
+      CUTOFF [Ry] 150 # 150 (22.6 GB), (<=200 in 32 GB system)
       #REL_CUTOFF 50 # 60
       #NGRIDS 4 # 5
     &END MGRID
@@ -34,8 +34,8 @@
         MINIMIZER CG
         PRECONDITIONER FULL_ALL
         #PRECONDITIONER FULL_SINGLE_INVERSE # In this case + EAM, it causes a SIGSEGV error.
-        ENERGY_GAP 0.001
-        STEPSIZE 0.2
+        #ENERGY_GAP 0.001
+        #STEPSIZE 0.2
       &END OT
       #
       # For small systems or when high accuracy is required.
@@ -81,10 +81,10 @@
     #  #&END
     #&END PRINT
     
-    #&EXTERNAL_POTENTIAL
-    #  #FUNCTION (A/B)*Z
-    #  FUNCTION (A/B)*(Z-15.0/2.0)
-    #  VALUES [eV] 0.2 [angstrom] 1.0
-    #  PARAMETERS A B
-    #&END EXTERNAL_POTENTIAL
+    &EXTERNAL_POTENTIAL
+      #FUNCTION (A/B)*Z
+      FUNCTION (A/B)*(Z-15.0/2.0)
+      VALUES [eV] 0.2 [angstrom] 1.0
+      PARAMETERS A B
+    &END EXTERNAL_POTENTIAL
   &END DFT
