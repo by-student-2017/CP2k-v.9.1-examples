@@ -80,23 +80,22 @@
           EPSILON [kcalmol] 0.1521643
           SIGMA [angstrom] 3.3335386
         &END LENNARD-JONES
+        #
+        #&EAM # embedded atom for Cu-Cu interaction
+        #  atoms Cu Cu
+        #  #PARM_FILE_NAME ${LIBDIR}/CU.pot
+        #  PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
+        #&END EAM
       &END NONBONDED
       
       # When it is long distance and can be ignored (The terms with missing parameters will be treated as zero). 
       IGNORE_MISSING_CRITICAL_PARAMS .TRUE.
       
-      #
       # EAM case
       &SPLINE
         EPS_SPLINE 1.0E-7
         EMAX_SPLINE 0.9e2
       &END SPLINE
-      #
-      #&EAM # embedded atom for Cu-Cu interaction
-      #  atoms Cu Cu
-      #  #PARM_FILE_NAME ${LIBDIR}/CU.pot
-      #  PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
-      #&END EAM
     &END FORCEFIELD
     
     &POISSON
