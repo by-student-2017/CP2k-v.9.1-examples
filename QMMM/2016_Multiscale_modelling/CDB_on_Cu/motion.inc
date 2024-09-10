@@ -84,8 +84,10 @@
    ! Around 20 kcal/mol: Takes a very long time at room temperature
    ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
    ! Over 30 kcal/mol: Almost never occurs
+   ! Temperature in electrolysis: (<=273+85 K)
    #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
-   TEMPERATURE [K] 493  ! The temperature in K used to initialize the velocities
+   #TEMPERATURE [K] 493  ! oil bath
+   TEMPERATURE [K] 358  ! electrolysis
    TIMESTEP [fs] 0.5    ! The length of an integration step
    STEPS 1000           ! The number of MD steps to perform 
    &THERMOSTAT
