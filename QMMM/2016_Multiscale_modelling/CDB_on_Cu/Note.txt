@@ -1,21 +1,6 @@
 #---------------------------------------------------------------------
 # Usage
-1. cd qmmm_island
-2. bash run.sh
-3. (drag&drop xyz file on Ovito)
-#---------------------------------------------------------------------
-Validation of a KCl QMMM model
-https://www.cp2k.org/exercises:2017_ethz_mmm:qmmm
-#---------------------------------------------------------------------
-# Note
-
-QM region:
- 1-16 in kcl.xyz
-default: GPW in QS.inc
-
-MM region:
-17-48 in kcl.xyz
-Buckingham potential in MM.inc
-
-Buckingham database: https://www5.hp-ez.com/hp/calculations/page515
+# Multiscale modelling - mixed hamiltonians and external fields in CP2K
+# https://www.cp2k.org/events:2016_summer_school:qmmm
+1. bash run.sh
 #---------------------------------------------------------------------
