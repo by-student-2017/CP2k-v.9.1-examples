@@ -69,8 +69,8 @@
     &END PRINT
     
     &EXTERNAL_POTENTIAL
-      #FUNCTION (A/B)*Z
-      FUNCTION (A/B)*(Z-15.0/2.0)
+      #FUNCTION (A/B)*(Z-15.0/2.0)
+      FUNCTION (A/B)*Z
       VALUES [eV] 0.2 [angstrom] 1.0
       PARAMETERS A B
     &END EXTERNAL_POTENTIAL
