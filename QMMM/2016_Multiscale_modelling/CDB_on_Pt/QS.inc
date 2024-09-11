@@ -14,8 +14,8 @@
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
       CUTOFF [Ry] 200 # 150 (22.6 GB), (<=200 in 32 GB system)
-      #REL_CUTOFF 50 # 60
-      #NGRIDS 4 # 5
+      REL_CUTOFF 30 # (default: 50), 60
+      NGRIDS 4 # (default: 4), 5
     &END MGRID
     
     &QS
@@ -43,6 +43,12 @@
       #&DIAGONALIZATION
       #  ALGORITHM STANDARD
       #&END DIAGONALIZATION
+      #
+      &MIXING T
+        ALPHA 0.5 # 0.2 - 0.5
+        METHOD PULAY_MIXING
+        NPULAY 5
+      &END MIXING
       #
       &OUTER_SCF
         #MAX_SCF 8

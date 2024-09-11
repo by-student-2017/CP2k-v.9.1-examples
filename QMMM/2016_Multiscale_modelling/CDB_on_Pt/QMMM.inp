@@ -1,7 +1,7 @@
 @SET METHOD = QMMM # FIST all classical treatment # QS all quantum treatment
 
 &GLOBAL
-  FLUSH_SHOULD_FLUSH
+  FLUSH_SHOULD_FLUSH T
   PRINT_LEVEL LOW
   ! the project name is made part of most output files... useful to keep order 
   PROJECT QMMM

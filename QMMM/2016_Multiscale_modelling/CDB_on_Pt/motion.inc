@@ -2,9 +2,9 @@
 &MOTION
  &GEO_OPT
    #TYPE MINIMIZATION ! for GEO_OPT
-   MAX_DR    [bohr] 1.0E-03 ! adjust target as needed, e.g., 1.0E-01 or 0.003
+   MAX_DR    [bohr] 1.0E-02 ! adjust target as needed, e.g., 1.0E-01 or 0.003. 1.0E-03 or 1.0E-02
    MAX_FORCE [hartree/bohr] 1.0E-04 ! 1.0E-03, 4.5E-4 or 1.0E-4
-   RMS_DR    [bohr] 1.0E-03
+   RMS_DR    [bohr] 1.0E-02 ! 1.0E-03 or 1.0E-02
    RMS_FORCE [hartree/bohr] 1.0E-03 ! 1.0E-03, 4.5E-4 or 1.0E-4
    MAX_ITER 500 # Maximum Iterations: 200 (BFGS), 300 (LBFGS) or 500 (CG)
    #
@@ -79,8 +79,16 @@
  
  &MD
    ENSEMBLE NVT
-   TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
-   TIMESTEP [fs] 0.5    ! The length of an integration step
+   ! Activation energy (TS - Reactant)
+   ! Around 10 kcal/mol: Reacts at room temperature
+   ! Around 20 kcal/mol: Takes a very long time at room temperature
+   ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
+   ! Over 30 kcal/mol: Almost never occurs
+   ! Temperature in electrolysis: (<=273+85 K)
+   #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
+   #TEMPERATURE [K] 493  ! oil bath
+   TEMPERATURE [K] 358  ! electrolysis
+   TIMESTEP [fs] 0.25    ! The length of an integration step: 0.25 - 1.0 [fs] (ReaxFF 0.25 [fs])
    STEPS 1000           ! The number of MD steps to perform 
    &THERMOSTAT
      #
@@ -98,19 +106,20 @@
      #&END GLE
      #
      # CSVR（Canonical Sampling through Velocity Rescaling）thermostat
-     #TYPE CSVR
-     #REGION MOLECULE
-     #&CSVR
-     #  TIMECON [fs] 50.0 # 50.0 - 1000.0
-     #&END CSVR
+     TYPE CSVR
+     REGION MOLECULE
+     &CSVR
+       TIMECON [fs] 50.0 # 50.0 - 1000.0
+     &END CSVR
      #
-     # Nose-Hoover thermostat
-     TYPE NOSE
-     &NOSE
-       LENGTH 3
-       TIMECON 1000
-       YOSHIDA 3
-     &END NOSE
+     # Nose-Hoover-Chain thermostat
+     #TYPE NOSE
+     #&NOSE
+     #  LENGTH 3
+     #  # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
+     #  TIMECON 25.0 # 25.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
+     #  YOSHIDA 3
+     #&END NOSE
      #
      # Langevin thermostat
      #TYPE LANGEVIN
