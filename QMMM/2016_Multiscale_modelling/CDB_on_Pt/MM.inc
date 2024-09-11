@@ -55,7 +55,7 @@
         
         #Note: Since FCC has a close-packed structure, 
         # the structure can be adequately reproduced using the Lennard-Jones potential.
-        # FCC: Ca, Sr, Ph, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb
+        # FCC: Ca, Sr, Rh, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb
         # Closely packed and ideal HCP elements: Mg, Co
         # Close-packed HCP elements with slightly smaller c/a: Be, Ti, Zr, Hf, Ru, Y, Gd
         # Elements in HCPs with close-packed c/a significantly higher than ideal (not recommended): Zn, Cd
