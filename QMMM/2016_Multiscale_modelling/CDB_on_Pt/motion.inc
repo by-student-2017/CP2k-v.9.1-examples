@@ -79,16 +79,8 @@
  
  &MD
    ENSEMBLE NVT
-   ! Activation energy (TS - Reactant)
-   ! Around 10 kcal/mol: Reacts at room temperature
-   ! Around 20 kcal/mol: Takes a very long time at room temperature
-   ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
-   ! Over 30 kcal/mol: Almost never occurs
-   ! Temperature in electrolysis: (<=273+85 K)
-   #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
-   #TEMPERATURE [K] 493  ! oil bath
-   TEMPERATURE [K] 358  ! electrolysis
-   TIMESTEP [fs] 0.5    ! The length of an integration step: 0.25 - 1.0 [fs]
+   TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
+   TIMESTEP [fs] 0.5    ! The length of an integration step
    STEPS 1000           ! The number of MD steps to perform 
    &THERMOSTAT
      #
@@ -112,12 +104,11 @@
      #  TIMECON [fs] 50.0 # 50.0 - 1000.0
      #&END CSVR
      #
-     # Nose-Hoover-Chain thermostat
+     # Nose-Hoover thermostat
      TYPE NOSE
      &NOSE
        LENGTH 3
-       # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
-       TIMECON 50.0 # 50.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
+       TIMECON 1000
        YOSHIDA 3
      &END NOSE
      #
