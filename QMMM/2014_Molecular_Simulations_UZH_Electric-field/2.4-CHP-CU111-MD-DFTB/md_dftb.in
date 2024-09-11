@@ -127,20 +127,20 @@
   METHOD Quickstep
   &DFT
     ! DFTB
-    #&MGRID
-    #  ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
-    #  ! certain calculations (e.g. geometry optimization, vibrational frequencies,
-    #  ! NPT and cell optimizations, need higher cutoffs)
-    #  CUTOFF [Ry] 150 # 150 (22.6 GB), (<=200 in 32 GB system)
-    #  REL_CUTOFF 50 # 60
-    #  NGRIDS 4 # 5
-    #&END MGRID
+    &MGRID
+      ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
+      ! certain calculations (e.g. geometry optimization, vibrational frequencies,
+      ! NPT and cell optimizations, need higher cutoffs)
+      CUTOFF [Ry] 300
+      REL_CUTOFF 50 # 60
+      NGRIDS 4 # 5
+    &END MGRID
     #
     &QS
       ! use density functional tight binding methos to calculate energy and forces
       METHOD DFTB # DFTB or PM6, etc
       &DFTB
-        #SELF_CONSISTENT  F ! use of self-consistent method
+        SELF_CONSISTENT  F ! use of self-consistent method
         #DISPERSION       F ! dispersion correction
         #ORTHOGONAL_BASIS F ! Assume orthogonal basis set 
         #DO_EWALD         F ! Use Ewald type method instead of direct sum for Coulomb interaction
@@ -154,8 +154,8 @@
         &END PARAMETER
       &END DFTB
       #
-      #EXTRAPOLATION ASPC
-      #EXTRAPOLATION_ORDER 3
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
       &SE
         &COULOMB
           CUTOFF [angstrom] 20.0
@@ -180,6 +180,12 @@
         ! Type of preconditioner to be used with all minimization schemes.
         ! Based on H-eS cholesky inversion, efficiencient and cheaper to construct. Recommended for large systems.
         PRECONDITIONER FULL_SINGLE_INVERSE
+        ! Most effective state selective preconditioner based on diagonalization, requires the ENERGY_GAP parameter to be an underestimate of the HOMO-LUMO gap. 
+        #PRECONDITIONER FULL_ALL
+        ! Cholesky inversion of S and T, fast construction, robust, and relatively good, use for very large systems.
+        #PRECONDITIONER FULL_KINETIC # In the DFTB case, failed
+        #ENERGY_GAP 0.001 # (default: 0.001)
+        #STEPSIZE 0.4 # (default: 0.4)
         MINIMIZER CG
       &END
       &OUTER_SCF
