@@ -13,10 +13,26 @@
       ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
       ! certain calculations (e.g. geometry optimization, vibrational frequencies,
       ! NPT and cell optimizations, need higher cutoffs)
-      CUTOFF [Ry] 200 # 150 (22.6 GB), (<=200 in 32 GB system)
+      CUTOFF [Ry] 150 # 150 (22.6 GB), (<=200 for 32 GB system)
       REL_CUTOFF 30 # (default: 50), 60
-      NGRIDS 4 # (default: 4), 5
+      NGRIDS 3 # (default: 4), 5
     &END MGRID
+    
+    # OT not possible with kpoint calculations
+    #&KPOINTS
+    #  SCHEME MONKHORST-PACK 2 2 1
+    #&END KPOINTS
+    
+    &POISSON
+      PERIODIC XY
+      POISSON_SOLVER ANALYTIC
+      #
+      &EWALD
+        EWALD_TYPE spme
+        ALPHA 0.35 # ALPHA = 3.5/rcut, DFTB: 1.0
+        GMAX  26 26 26
+      &END EWALD
+    &END POISSON
     
     &QS
       # Accuracy of electron density convergence and matrix operations.
@@ -43,11 +59,20 @@
       #&DIAGONALIZATION
       #  ALGORITHM STANDARD
       #&END DIAGONALIZATION
+      #ADDED_MOS 50
+      #&SMEAR
+      #  ELECTRONIC_TEMPERATURE 300.0
+      #  METHOD FERMI_DIRAC
+      #&END SMEAR
       #
       &MIXING T
-        ALPHA 0.5 # (default: 0.4), 0.2 - 0.5
-        METHOD PULAY_MIXING
-        NPULAY 5
+        #ALPHA 0.5 # (default: 0.4), 0.2 - 0.5
+        #METHOD PULAY_MIXING
+        #NPULAY 5
+        #
+        METHOD BROYDEN_MIXING
+        ALPHA 0.3
+        NBUFFER 15
       &END MIXING
       #
       &OUTER_SCF
