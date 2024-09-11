@@ -40,9 +40,9 @@
     #fit to some physical property
     
     #define the model
-    &QM_KIND Pt
-      MM_INDEX 472..659 # In EAM case, it causes a SIGSEGV error.
-    &END QM_KIND
+    #&QM_KIND Pt
+    #  MM_INDEX 472..659 # In EAM case, it causes a SIGSEGV error.
+    #&END QM_KIND
     #
     &QM_KIND H
       MM_INDEX 45..96
