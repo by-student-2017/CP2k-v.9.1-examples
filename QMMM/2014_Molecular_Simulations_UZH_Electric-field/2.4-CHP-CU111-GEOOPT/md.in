@@ -19,6 +19,15 @@
     OPTIMIZER LBFGS
   &END GEO_OPT
   #
+  &CONSTRAINT
+    &FIXED_ATOMS
+      COMPONENTS_TO_FIX XYZ
+      LIST 61..348
+      EXCLUDE_MM .FALSE.
+      EXCLUDE_QM .TRUE.
+    &END FIXED_ATOMS
+  &END CONSTRAINT
+  #
   &MD
     ENSEMBLE NVT
     ! Activation energy (TS - Reactant)
@@ -169,6 +178,8 @@
     &END POISSON
     !
     ! Continuum Solvent Model
+    !   water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
+    !   Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9
     &SCCS
       RELATIVE_PERMITTIVITY 78.4
       METHOD ANDREUSSI
