@@ -77,11 +77,10 @@
       # When it is long distance and can be ignored (The terms with missing parameters will be treated as zero). 
       IGNORE_MISSING_CRITICAL_PARAMS .TRUE.
       
-      # EAM case
-      #&SPLINE
-      #  EPS_SPLINE 1.0E-6 # 1.0E-6 - 1.0E-7
-      #  EMAX_SPLINE 0.9e2 # 0.5 - 1.0
-      #&END SPLINE
+      &SPLINE
+        EPS_SPLINE 1.0E-6 # 1.0E-6 - 1.0E-7
+        EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
+      &END SPLINE
       #
     &END FORCEFIELD
     
