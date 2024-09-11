@@ -23,16 +23,16 @@
     #  SCHEME MONKHORST-PACK 2 2 1
     #&END KPOINTS
     
-    &POISSON
-      PERIODIC XY
-      POISSON_SOLVER ANALYTIC
-      #
-      &EWALD
-        EWALD_TYPE spme
-        ALPHA 0.35 # ALPHA = 3.5/rcut, DFTB: 1.0
-        GMAX  26 26 26
-      &END EWALD
-    &END POISSON
+    #&POISSON
+    #  PERIODIC XY
+    #  POISSON_SOLVER ANALYTIC
+    #  #
+    #  &EWALD
+    #    EWALD_TYPE spme
+    #    ALPHA 0.35 # ALPHA = 3.5/rcut, DFTB: 1.0
+    #    GMAX  26 26 26
+    #  &END EWALD
+    #&END POISSON
     
     &QS
       # Accuracy of electron density convergence and matrix operations.
@@ -42,17 +42,18 @@
     
     &SCF
       EPS_SCF 1.0E-03 # default: 1.0E-05, 0.74E-04*[number of QM atoms] (PBE Accuracy: 1 meV/atoms)
-      MAX_SCF 20 # 20 or 30
+      MAX_SCF 25 # 20 - 30
       SCF_GUESS ATOMIC
       #SCF_GUESS RESTART # restart case
       #
       # Often recommended for large systems
       &OT
         MINIMIZER CG
-        PRECONDITIONER FULL_ALL
-        #PRECONDITIONER FULL_SINGLE_INVERSE # In this case + EAM, it causes a SIGSEGV error.
-        #ENERGY_GAP 0.001
-        #STEPSIZE 0.2
+        #PRECONDITIONER FULL_ALL    # Most effective state selective preconditioner based on diagonalization, requires the ENERGY_GAP parameter to be an underestimate of the HOMO-LUMO gap. 
+        PRECONDITIONER FULL_KINETIC # Cholesky inversion of S and T, fast construction, robust, and relatively good, use for very large systems.
+        #PRECONDITIONER FULL_SINGLE_INVERSE # In this case + EAM, it causes a SIGSEGV error. (preconditioning efficiency but cheaper to construct, might be somewhat less robust. Recommended for large systems.)
+        ENERGY_GAP 0.001 # (default: 0.001)
+        STEPSIZE 0.4 # (default: 0.4)
       &END OT
       #
       # For small systems or when high accuracy is required.
