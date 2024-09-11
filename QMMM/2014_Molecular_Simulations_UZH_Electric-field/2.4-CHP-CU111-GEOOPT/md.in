@@ -175,13 +175,11 @@
       MAX_ITER 100
       EPS_SCCS 1.0E-6
     &END SCCS
-    ! failed
-    #&SCRF
+    #&SCRF ! failed
     #  EPS_OUT 78.4
     #  LMAX 3
     #&END SCRF
-    ! not use v.9.1
-    #&COSMO
+    #&COSMO ! not use v.9.1
     #  EPSILON 78.4
     #&END COSMO
   &END DFT
