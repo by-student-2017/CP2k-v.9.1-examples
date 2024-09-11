@@ -1,0 +1,317 @@
+###################################
+## CHP (PM6) on Cu(111) (EAM)   ###
+###################################
+
+@SET LIBDIR ../cp2klib
+
+&GLOBAL
+  FLUSH_SHOULD_FLUSH T
+  PRINT_LEVEL LOW
+  ! the project name is made part of most output files... useful to keep order 
+  PROJECT QMMM_MIXED
+  #RUN_TYPE ENERGY # GEO_OPT, CELL_OPT, ENERGY, ENERGY_FORCE or MD, (no check: MC, TAMC, TMC, NEGF)
+  RUN_TYPE MD
+  WALLTIME 860000
+&END GLOBAL
+
+&MOTION
+  &GEO_OPT
+    OPTIMIZER LBFGS
+  &END GEO_OPT
+  #
+  &MD
+    #ENSEMBLE NVE ! definition of microcanonical ensemble
+    ENSEMBLE NVT
+    ! Activation energy (TS - Reactant)
+    ! Around 10 kcal/mol: Reacts at room temperature
+    ! Around 20 kcal/mol: Takes a very long time at room temperature
+    ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
+    ! Over 30 kcal/mol: Almost never occurs
+    ! Temperature in electrolysis: (<=273+85 K)
+    #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
+    #TEMPERATURE [K] 493  ! oil bath
+    TEMPERATURE [K] 358  ! electrolysis
+    TIMESTEP [fs] 0.5    ! The length of an integration step: 0.25 - 1.0 [fs] (ReaxFF 0.25 [fs])
+    STEPS 10000           ! The number of MD steps to perform 
+    &THERMOSTAT
+      # Nose-Hoover-Chain thermostat
+      TYPE NOSE
+      &NOSE
+        LENGTH 3
+        # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
+        TIMECON 50.0 # 25.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
+        YOSHIDA 3
+      &END NOSE
+    &END THERMOSTAT
+  &END MD
+  #
+  &PRINT
+    &TRAJECTORY
+      FORMAT XYZ # ATOMIC, DCD, DCD_ALIGNED_CELL, PDB, XMOL or XYZ
+      &EACH
+        MD 100
+      &END
+      #FILENAME MDtraj
+    &END TRAJECTORY
+    &RESTART OFF
+    &END
+    &VELOCITIES OFF
+    &END VELOCITIES
+    &FORCES OFF
+    &END FORCES
+    &CELL
+      &EACH
+        MD 100
+      &END EACH
+      COMMON_ITERATION_LEVELS 3
+    &END CELL
+  &END PRINT
+&END MOTION
+
+&MULTIPLE_FORCE_EVALS
+  MULTIPLE_SUBSYS .TRUE.
+  FORCE_EVAL_ORDER 2 3
+&END
+
+########################
+## How to mix QM & MM ##
+########################
+
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX       # User defines how to couple force evals
+    &GENERIC                 # Here: simply add energies together
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2 
+      VARIABLES E1 E2
+    &END GENERIC
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1         # Atoms of CHP molecule
+            1 60
+         &END
+         &FRAGMENT 2         # Atoms of Cu(111) slab
+            61 1788
+         &END
+       &END FORCE_EVAL_MIXED
+       &FORCE_EVAL 1         # MM description of Cu(111) + interaction with CHP
+         DEFINE_FRAGMENTS 1
+       &END
+       &FORCE_EVAL 2         # QM description of CHP
+         DEFINE_FRAGMENTS 1 2
+       &END
+    &END MAPPING
+    
+  &END MIXED
+
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp_on_cu.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+  
+&END FORCE_EVAL
+
+
+#######################
+## QM - CHP with PM6 ##
+#######################
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    ! DFTB
+    #&MGRID
+    #  ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
+    #  ! certain calculations (e.g. geometry optimization, vibrational frequencies,
+    #  ! NPT and cell optimizations, need higher cutoffs)
+    #  CUTOFF [Ry] 150 # 150 (22.6 GB), (<=200 in 32 GB system)
+    #  REL_CUTOFF 50 # 60
+    #  NGRIDS 4 # 5
+    #&END MGRID
+    #
+    &QS
+      ! use density functional tight binding methos to calculate energy and forces
+      METHOD DFTB # DFTB or PM6, etc
+      &DFTB
+        #SELF_CONSISTENT  F ! use of self-consistent method
+        #DISPERSION       F ! dispersion correction
+        #ORTHOGONAL_BASIS F ! Assume orthogonal basis set 
+        #DO_EWALD         F ! Use Ewald type method instead of direct sum for Coulomb interaction
+        ! Specify file that contains the names of Slater-Koster tables
+        ! distance dependent interaction parameter file
+        &PARAMETER
+          PARAM_FILE_PATH  ./dftb_params/scc
+          PARAM_FILE_NAME  scc_parameter
+          ! Name of file with UFF parameters that will be used for the dispersion correction
+          UFF_FORCE_FIELD  uff_table
+        &END PARAMETER
+      &END DFTB
+      #
+      #EXTRAPOLATION ASPC
+      #EXTRAPOLATION_ORDER 3
+      &SE
+        &COULOMB
+          CUTOFF [angstrom] 20.0
+        &END
+        &EXCHANGE
+          CUTOFF [angstrom] 20.0
+        &END
+      &END SE
+    &END QS
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+      EPS_SCF 3.0E-7 ! DFTB
+      #EPS_SCF 1.0E-6 ! PM6
+      &OT
+        ! PM6
+        #PRECONDITIONER NONE
+        #MINIMIZER DIIS
+        #N_DIIS 7
+        
+        ! DFTB
+        ! Type of preconditioner to be used with all minimization schemes.
+        ! Based on H-eS cholesky inversion, efficiencient and cheaper to construct. Recommended for large systems.
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        MINIMIZER CG
+      &END
+      &OUTER_SCF
+        MAX_SCF 8
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART OFF
+        &END
+      &END
+    &END SCF
+
+    &POISSON
+      PERIODIC NONE           # no interaction between replica
+      POISSON_SOLVER WAVELET 
+      &WAVELET
+        SCF_TYPE 60
+      &END WAVELET
+    &END POISSON
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC  25 25 25
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+  &END SUBSYS
+  
+  &EXTERNAL_POTENTIAL
+    FUNCTION (A/B)*Z
+    VALUES [eV] 0.2 [angstrom] 1.0
+    PARAMETERS A B
+  &END EXTERNAL_POTENTIAL
+  
+&END FORCE_EVAL
+
+ 
+###############################################
+## MM - Cu(111) (EAM) + interaction with CHP ##
+###############################################
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       EPS_SPLINE 1.0E-7 # 1.0E-6 - 1.0E-7
+       EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
+     &END SPLINE
+     &CHARGE              # Setting all charges to zero
+       ATOM Cu
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED           # interaction described in section 2.1
+       &GENPOT
+          atoms Cu C
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 4.13643 1.33747 115.82004 2.206825 75.40708524085266692113
+          RCUT  15
+       &END GENPOT
+       &GENPOT
+          atoms Cu H
+          FUNCTION A*exp(-av*r)+B*exp(-ac*r)-C/(r^6)
+          VARIABLES r
+          PARAMETERS A av B ac C
+          VALUES 0.878363 1.33747 24.594164 2.206825 21.32834305207502214234
+          RCUT 15
+       &END GENPOT
+       &LENNARD-JONES      # Turning off Lennard-Jones
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+        &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &EAM                  # embedded atom for Cu-Cu interaction
+         atoms Cu Cu
+         #PARM_FILE_NAME ${LIBDIR}/CU.pot
+         PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
+       &END EAM
+     &END NONBONDED
+   &END FORCEFIELD
+
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END MM
+
+  &SUBSYS
+    &CELL
+      ABC  40.764229 39.715716 70.
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./chp_on_cu.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+  
+  &EXTERNAL_POTENTIAL
+    FUNCTION (A/B)*Z
+    VALUES [eV] 0.2 [angstrom] 1.0
+    PARAMETERS A B
+  &END EXTERNAL_POTENTIAL
+  
+&END FORCE_EVAL
