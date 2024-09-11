@@ -106,20 +106,20 @@
      #&END GLE
      #
      # CSVR（Canonical Sampling through Velocity Rescaling）thermostat
-     TYPE CSVR
-     REGION GLOBAL # GLOBAL, MOLECULE
-     &CSVR
-       TIMECON [fs] 25.0 # 25.0 - 1000.0, TIMECON = 100.0*TIMESTEP [fs]
-     &END CSVR
+     #TYPE CSVR
+     #REGION GLOBAL # GLOBAL, MOLECULE
+     #&CSVR
+     #  TIMECON [fs] 25.0 # 25.0 - 1000.0, TIMECON = 100.0*TIMESTEP [fs]
+     #&END CSVR
      #
      # Nose-Hoover-Chain thermostat
-     #TYPE NOSE
-     #&NOSE
-     #  LENGTH 3
-     #  # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
-     #  TIMECON 25.0 # 25.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
-     #  YOSHIDA 3
-     #&END NOSE
+     TYPE NOSE
+     &NOSE
+       LENGTH 3
+       # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
+       TIMECON 25.0 # 25.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
+       YOSHIDA 3
+     &END NOSE
      #
      # Langevin thermostat
      #TYPE LANGEVIN
