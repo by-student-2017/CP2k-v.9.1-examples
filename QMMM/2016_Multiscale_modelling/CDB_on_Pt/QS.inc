@@ -67,7 +67,7 @@
       #&END SMEAR
       #
       &MIXING T
-        #ALPHA 0.5 # (default: 0.4), 0.2 - 0.5
+        #ALPHA 0.4 # (default: 0.4), 0.2 - 0.5
         #METHOD PULAY_MIXING
         #NPULAY 5
         #
