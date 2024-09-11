@@ -1,0 +1,6 @@
+#---------------------------------------------------------------------
+# Usage
+# Multiscale modelling - mixed hamiltonians and external fields in CP2K
+# https://www.cp2k.org/events:2016_summer_school:qmmm
+1. bash run.sh
+#---------------------------------------------------------------------
