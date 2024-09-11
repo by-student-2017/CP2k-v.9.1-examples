@@ -206,20 +206,21 @@
 
     &POISSON
       PERIODIC NONE           # no interaction between replica
-      POISSON_SOLVER WAVELET
-      #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model
+      #POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      POISSON_SOLVER IMPLICIT
+      #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model (failed)
       &WAVELET
         SCF_TYPE 60
       &END WAVELET
     &END POISSON
     !
     ! Continuum Solvent Model
-    #&SCCS
-    #  RELATIVE_PERMITTIVITY 78.4
-    #  METHOD ANDREUSSI
-    #  MAX_ITER 100
-    #  EPS_SCCS 1.0E-6
-    #&END SCCS
+    &SCCS
+      RELATIVE_PERMITTIVITY 78.4
+      METHOD ANDREUSSI
+      MAX_ITER 100
+      EPS_SCCS 1.0E-6
+    &END SCCS
     #&SCRF
     #  EPS_OUT 78.4
     #  LMAX 3
