@@ -107,9 +107,9 @@
      #
      # CSVR（Canonical Sampling through Velocity Rescaling）thermostat
      TYPE CSVR
-     REGION MOLECULE
+     REGION GLOBAL # GLOBAL, MOLECULE
      &CSVR
-       TIMECON [fs] 50.0 # 50.0 - 1000.0
+       TIMECON [fs] 25.0 # 25.0 - 1000.0, TIMECON = 100.0*TIMESTEP [fs]
      &END CSVR
      #
      # Nose-Hoover-Chain thermostat
