@@ -88,7 +88,7 @@
       &EWALD
         EWALD_TYPE spme
         ALPHA 0.35 # ALPHA = 3.5/rcut, DFTB: 1.0
-        GMAX  26 26 26
+        GMAX 25 25 25
       &END EWALD
     &END POISSON
   &END MM
