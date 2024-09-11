@@ -116,7 +116,7 @@
 
   &SUBSYS
     &CELL
-      ABC 44.20466227 43.06765651 70.
+      ABC  40.764229 39.715716 70.
     &END CELL
     &TOPOLOGY
       COORD_FILE_NAME ./xyz/chp_on_Cu.xyz
@@ -223,9 +223,8 @@
       &END WAVELET
     &END POISSON
     !
-    ! Continuum Solvent Model
-    !   water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
-    !   Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9
+    ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
+    !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
     &SCCS
       RELATIVE_PERMITTIVITY 78.4
       METHOD ANDREUSSI
@@ -339,7 +338,7 @@
 
   &SUBSYS
     &CELL
-      ABC 44.20466227 43.06765651 70.
+      ABC  40.764229 39.715716 70.
     &END CELL
     &TOPOLOGY
       COORD_FILE_NAME ./xyz/chp_on_Cu.xyz
