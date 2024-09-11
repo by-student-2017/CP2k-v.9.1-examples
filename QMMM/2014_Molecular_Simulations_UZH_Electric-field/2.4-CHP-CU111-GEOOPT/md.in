@@ -31,7 +31,7 @@
     #TEMPERATURE [K] 493  ! oil bath
     TEMPERATURE [K] 358  ! electrolysis
     TIMESTEP [fs] 0.5    ! The length of an integration step: 0.25 - 1.0 [fs] (ReaxFF 0.25 [fs])
-    STEPS 50000           ! The number of MD steps to perform 
+    STEPS 10000           ! The number of MD steps to perform 
     &THERMOSTAT
       # Nose-Hoover-Chain thermostat
       TYPE NOSE
