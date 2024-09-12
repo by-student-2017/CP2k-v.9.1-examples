@@ -124,7 +124,7 @@
       # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Fe.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -253,7 +253,7 @@
       PERIODIC NONE
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp.xyz
+      COORD_FILE_NAME ./../xyz/chp.xyz
       COORDINATE xyz
       &CENTER_COORDINATES
       &END
@@ -354,7 +354,7 @@
       # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Fe.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
