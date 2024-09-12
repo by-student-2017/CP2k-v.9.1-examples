@@ -85,8 +85,8 @@ ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 1210  write(6,*)'error: atom type ',atomtype,' not found'
       stop
 1200  continue
-      nr=20000+1
-      nrho=20000+1
+      nr=10000+1
+      nrho=10000+1
       alatmax=blat(1)
       rhoemax=rhoe(1)
       do 2 i=2,ntypes
