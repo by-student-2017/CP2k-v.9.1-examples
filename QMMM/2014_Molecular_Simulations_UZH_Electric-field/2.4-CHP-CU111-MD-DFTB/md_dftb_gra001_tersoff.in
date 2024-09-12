@@ -153,10 +153,10 @@
       ABC 3.9872361914754663E+01 3.8846852233507882E+01 70.0
     &END CELL
     &TOPOLOGY
-      #COORD_FILE_NAME ./xyz/chp_on_C.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_Cgra.xyz
-      COORD_FILE_NAME ./xyz/chp_on_Cgra_C_R.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C_R.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_Cgra.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Cgra_C_R.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -168,6 +168,13 @@
   &END SUBSYS
   
   STRESS_TENSOR ANALYTICAL
+  
+  &QMMM
+    &IMAGE_CHARGE
+      MM_ATOM_LIST 1213..1788
+      EXT_POTENTIAL 0.0
+    &END IMAGE_CHARGE
+  &END QMMM
   
 &END FORCE_EVAL
 
@@ -293,7 +300,7 @@
       PERIODIC NONE
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp.xyz
+      COORD_FILE_NAME ./../xyz/chp.xyz
       COORDINATE xyz
       &CENTER_COORDINATES
       &END
@@ -438,10 +445,10 @@
       ABC 3.9872361914754663E+01 3.8846852233507882E+01 70.0
     &END CELL
     &TOPOLOGY
-      #COORD_FILE_NAME ./xyz/chp_on_C.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_Cgra.xyz
-      COORD_FILE_NAME ./xyz/chp_on_Cgra_C_R.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C_R.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_Cgra.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Cgra_C_R.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
