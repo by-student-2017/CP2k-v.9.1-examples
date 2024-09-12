@@ -107,7 +107,7 @@ chimera
 - https://www.youtube.com/@CP2K
 
 
-## cp2k-examples
+## cp2k-examples (Pt.pot and Au.pot)
 - https://github.com/cp2k/cp2k-examples
 
 
