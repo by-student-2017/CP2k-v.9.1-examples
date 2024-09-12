@@ -1,5 +1,5 @@
 ###################################
-## CHP (PM6) on BCC(110) (EAM)   ###
+## CHP (DFTB-D3) on BCC(110) (EAM)   ###
 ###################################
 
 @SET LIBDIR ../cp2klib
@@ -144,7 +144,7 @@
 
 
 #######################
-## QM - CHP with PM6 ##
+## QM - CHP with DFTB-D3 ##
 #######################
 
 &FORCE_EVAL
@@ -206,7 +206,7 @@
         #MINIMIZER DIIS
         #N_DIIS 7
         
-        ! DFTB
+        ! DFTB-D3
         ! Type of preconditioner to be used with all minimization schemes.
         ! Based on H-eS cholesky inversion, efficiencient and cheaper to construct. Recommended for large systems.
         PRECONDITIONER FULL_SINGLE_INVERSE
