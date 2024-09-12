@@ -1,5 +1,5 @@
 ###################################
-## CHP (PM6) on Co(110) (EAM)   ###
+## CHP (DFTB) on HCP(0001) (EAM)   ###
 ###################################
 
 @SET LIBDIR ../cp2klib
@@ -134,7 +134,7 @@
       ABC 39.924074192450362 38.894689645870351 70.0
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Co.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Co.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -146,7 +146,7 @@
 
 
 #######################
-## QM - CHP with PM6 ##
+## QM - CHP with DFTB ##
 #######################
 
 &FORCE_EVAL
@@ -263,7 +263,7 @@
       PERIODIC NONE
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp.xyz
+      COORD_FILE_NAME ./../xyz/chp.xyz
       COORDINATE xyz
       &CENTER_COORDINATES
       &END
@@ -282,7 +282,7 @@
 
  
 ###############################################
-## MM - Cu(111) (EAM) + interaction with CHP ##
+## MM - HCP(0001) (EAM) + interaction with CHP ##
 ###############################################
 
 &FORCE_EVAL
@@ -367,7 +367,7 @@
       ABC 39.924074192450362 38.894689645870351 70.0
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Co.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Co.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
