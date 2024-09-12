@@ -1,0 +1,463 @@
+###################################
+## CHP (DFTB) on HCP(0001) (Tersoff)   ###
+###################################
+
+@SET LIBDIR ../cp2klib
+
+&GLOBAL
+  FLUSH_SHOULD_FLUSH T
+  PRINT_LEVEL LOW
+  ! the project name is made part of most output files... useful to keep order 
+  PROJECT QMMM_MIXED
+  #RUN_TYPE ENERGY # GEO_OPT, CELL_OPT, ENERGY, ENERGY_FORCE or MD, (no check: MC, TAMC, TMC, NEGF)
+  RUN_TYPE MD
+  WALLTIME 860000
+&END GLOBAL
+
+&MOTION
+  &GEO_OPT
+    OPTIMIZER LBFGS
+  &END GEO_OPT
+  #
+  &CELL_OPT
+    EXTERNAL_PRESSURE 1.0 0.0 0.0  0.0 1.0 0.0  0.0 0.0 1.0
+    KEEP_ANGLES TRUE
+    KEEP_SYMMETRY .TRUE.
+    KEEP_SPACE_GROUP .TRUE.
+    EPS_SYMMETRY 1.0E-4
+  &END CELL_OPT
+  #
+  &CONSTRAINT
+    &FIXED_ATOMS
+      COMPONENTS_TO_FIX XYZ
+      #LIST 61..348
+      LIST 61..637
+      EXCLUDE_MM .FALSE.
+      EXCLUDE_QM .TRUE.
+    &END FIXED_ATOMS
+  &END CONSTRAINT
+  #
+  &MD
+    #ENSEMBLE NVE ! definition of microcanonical ensemble
+    ENSEMBLE NVT
+    ! Activation energy (TS - Reactant)
+    ! Around 10 kcal/mol: Reacts at room temperature
+    ! Around 20 kcal/mol: Takes a very long time at room temperature
+    ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
+    ! Over 30 kcal/mol: Almost never occurs
+    ! Temperature in electrolysis: (<=273+85 K)
+    TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
+    #TEMPERATURE [K] 493  ! oil bath
+    #TEMPERATURE [K] 358  ! electrolysis
+    TIMESTEP [fs] 0.01    ! The length of an integration step: <= 0.01 [fs] for Tersoff potential
+    STEPS 500000           ! The number of MD steps to perform 
+    #
+    &THERMOSTAT
+      #TYPE CSVR
+      #&CSVR
+      #  TIMECON 1 # TIMECON <= 100.0*TIMESTEP [fs] for Tersoff potential
+      #&END CSVR
+      #
+      #TYPE AD_LANGEVIN
+      #&AD_LANGEVIN
+      #  TIMECON_LANGEVIN 1 # TIMECON <= 100.0*TIMESTEP [fs] for Tersoff potential
+      #  TIMECON_NH 1 # TIMECON <= 100.0*TIMESTEP [fs] for Tersoff potential
+      #&END AD_LANGEVIN
+      #
+      # Nose-Hoover-Chain thermostat
+      TYPE NOSE
+      REGION GLOBAL
+      &NOSE
+        LENGTH 3
+        # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
+        TIMECON 1.0 # TIMECON <= 100.0*TIMESTEP [fs] for Tersoff potential
+        #YOSHIDA 3
+      &END NOSE
+    &END THERMOSTAT
+  &END MD
+  #
+  &PRINT
+    &TRAJECTORY
+      FORMAT XYZ # ATOMIC, DCD, DCD_ALIGNED_CELL, PDB, XMOL or XYZ
+      &EACH
+        MD 500
+      &END
+      #FILENAME MDtraj
+    &END TRAJECTORY
+    &RESTART OFF
+      &EACH
+        MD 100000
+      &END EACH
+    &END
+    &VELOCITIES OFF
+    &END VELOCITIES
+    &FORCES OFF
+    &END FORCES
+    &CELL
+      &EACH
+        MD 500
+      &END EACH
+      COMMON_ITERATION_LEVELS 3
+    &END CELL
+  &END PRINT
+&END MOTION
+
+&MULTIPLE_FORCE_EVALS
+  MULTIPLE_SUBSYS .TRUE.
+  FORCE_EVAL_ORDER 2 3
+&END
+
+########################
+## How to mix QM & MM ##
+########################
+
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX       # User defines how to couple force evals
+    &GENERIC                 # Here: simply add energies together
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2 
+      VARIABLES E1 E2
+    &END GENERIC
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1         # Atoms of CHP molecule
+            1 60
+         &END
+         &FRAGMENT 2         # Atoms of Co(0001) slab
+            # FCC (111), BCC(110), HCP(0001), Graphite
+            61 1788
+         &END
+       &END FORCE_EVAL_MIXED
+       &FORCE_EVAL 1         # MM description of Co(0001) + interaction with CHP
+         DEFINE_FRAGMENTS 1
+       &END
+       &FORCE_EVAL 2         # QM description of CHP
+         DEFINE_FRAGMENTS 1 2
+       &END
+    &END MAPPING
+  &END MIXED
+
+  &SUBSYS
+    &CELL
+      # FCC (Ca, Sr, Rh, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb)
+      #ABC  40.764229 39.715716 70.
+      #
+      # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
+      #ABC  41.7607676925 39.6089603006 70.0
+      #
+      # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
+      #ABC 39.924074192450362 38.894689645870351 70.0
+      #
+      # Graphite
+      ABC 3.9872361914754663E+01 3.8846852233507882E+01 70.0
+    &END CELL
+    &TOPOLOGY
+      #COORD_FILE_NAME ./xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
+      COORD_FILE_NAME ./xyz/chp_on_Cgra.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+    #
+    &KIND C_R
+      ELEMENT C
+      MASS 12.01
+    &END KIND
+  &END SUBSYS
+  
+  STRESS_TENSOR ANALYTICAL
+  
+&END FORCE_EVAL
+
+
+#######################
+## QM - CHP with DFTB ##
+#######################
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    ! DFTB
+    &MGRID
+      ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
+      ! certain calculations (e.g. geometry optimization, vibrational frequencies,
+      ! NPT and cell optimizations, need higher cutoffs)
+      CUTOFF [Ry] 300
+      REL_CUTOFF 50 # 60
+      NGRIDS 4 # 5
+    &END MGRID
+    #
+    &QS
+      ! use density functional tight binding methos to calculate energy and forces
+      METHOD DFTB # DFTB or PM6, etc
+      &DFTB
+        SELF_CONSISTENT  F ! use of self-consistent method
+        DISPERSION TRUE
+        #DISPERSION       F ! dispersion correction
+        #ORTHOGONAL_BASIS F ! Assume orthogonal basis set 
+        #DO_EWALD         F ! Use Ewald type method instead of direct sum for Coulomb interaction
+        ! Specify file that contains the names of Slater-Koster tables
+        ! distance dependent interaction parameter file
+        &PARAMETER
+          #PARAM_FILE_PATH  /usr/share/cp2k/DFTB/scc
+          #PARAM_FILE_NAME  scc_parameter
+          #DISPERSION_PARAMETER_FILE /usr/share/cp2k/dftd3.dat
+          #
+          PARAM_FILE_PATH  ./dftb_params/scc
+          PARAM_FILE_NAME  scc_parameter
+          ! Name of file with UFF parameters that will be used for the dispersion correction
+          #UFF_FORCE_FIELD  uff_table
+          DISPERSION_PARAMETER_FILE dftd3.dat
+        &END PARAMETER
+      &END DFTB
+      #
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+      &SE
+        &COULOMB
+          CUTOFF [angstrom] 20.0
+        &END
+        &EXCHANGE
+          CUTOFF [angstrom] 20.0
+        &END
+      &END SE
+    &END QS
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+      EPS_SCF 3.0E-7 ! DFTB
+      #EPS_SCF 1.0E-6 ! PM6
+      &OT
+        ! PM6
+        #PRECONDITIONER NONE
+        #MINIMIZER DIIS
+        #N_DIIS 7
+        
+        ! DFTB
+        ! Type of preconditioner to be used with all minimization schemes.
+        ! Based on H-eS cholesky inversion, efficiencient and cheaper to construct. Recommended for large systems.
+        PRECONDITIONER FULL_SINGLE_INVERSE
+        ! Most effective state selective preconditioner based on diagonalization, requires the ENERGY_GAP parameter to be an underestimate of the HOMO-LUMO gap. 
+        #PRECONDITIONER FULL_ALL
+        ! Cholesky inversion of S and T, fast construction, robust, and relatively good, use for very large systems.
+        #PRECONDITIONER FULL_KINETIC # In the DFTB case, failed
+        #ENERGY_GAP 0.001 # (default: 0.001)
+        #STEPSIZE 0.4 # (default: 0.4)
+        MINIMIZER CG
+      &END
+      &OUTER_SCF
+        MAX_SCF 8
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART OFF
+          &EACH
+            MD 100000
+          &END EACH
+        &END
+      &END
+    &END SCF
+
+    &POISSON
+      PERIODIC NONE           # no interaction between replica
+      #POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      POISSON_SOLVER IMPLICIT
+      #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model (failed)
+      &WAVELET
+        SCF_TYPE 60
+      &END WAVELET
+    &END POISSON
+    !
+    ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
+    !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
+    &SCCS
+      RELATIVE_PERMITTIVITY 78.4
+      METHOD ANDREUSSI
+      MAX_ITER 100
+      EPS_SCCS 1.0E-6
+    &END SCCS
+    #&SCRF ! failed
+    #  EPS_OUT 78.4
+    #  LMAX 3
+    #&END SCRF
+    #&COSMO ! not use v.9.1
+    #  EPSILON 78.4
+    #&END COSMO
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC  25 25 25
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./xyz/chp.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+    #
+    &KIND C_R
+      ELEMENT C
+      MASS 12.01
+    &END KIND
+  &END SUBSYS
+  
+  #&EXTERNAL_POTENTIAL
+  #  FUNCTION (A/B)*Z
+  #  VALUES [eV] 0.2 [angstrom] 1.0
+  #  PARAMETERS A B
+  #&END EXTERNAL_POTENTIAL
+  
+  STRESS_TENSOR ANALYTICAL
+  
+&END FORCE_EVAL
+
+ 
+###############################################
+## MM - HCP(0001) (Tersoff) + interaction with CHP ##
+###############################################
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       EPS_SPLINE 1.0E-6 # 5.0E-6 - 1.0E-7
+       EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
+     &END SPLINE
+     &CHARGE              # Setting all charges to zero
+       ATOM C_R
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED           # interaction described in section 2.1
+#&LENNARD-JONES		
+#  ATOMS	H	C_R
+#  EPSILON	0.067970582	
+#  SIGMA	3.000992332	
+#  RCUT	10	
+#&END LENNARD-JONES		
+#		
+#&LENNARD-JONES		
+#  ATOMS	C	C_R
+#  EPSILON	0.105	
+#  SIGMA	3.430850964	
+#  RCUT	10	
+#&END LENNARD-JONES		
+       #
+       &LENNARD-JONES      # Turning off Lennard-Jones
+         atoms C H
+         EPSILON 0.0
+         #EPSILON	0.067970582	
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+        &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       #&LENNARD-JONES
+       #  atoms C C
+       #  EPSILON 0.0
+       #  SIGMA 3.166
+       #  RCUT 15
+       #&END LENNARD-JONES
+       #
+       #&EAM                  # embedded atom for Co-Co interaction
+       #  atoms Co Co
+       #  #PARM_FILE_NAME ${LIBDIR}/CU.pot
+       #  #PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
+       #  #PARM_FILE_NAME ${LIBDIR}/Fe-Fe_Zhou04.eam.alloy
+       #  PARM_FILE_NAME ${LIBDIR}/Co-Co_Zhou04.eam.alloy
+       #&END EAM
+       #
+       # https://www.ctcms.nist.gov/potentials/Download/1989--Tersoff-J--Si-C/1/1989_SiC.tersoff
+       # these entries are in LAMMPS "metal" units:
+       #   A,B = eV; lambda1,lambda2,lambda3 = 1/Angstroms = angstrom^-1; R,D = BIGR,BIGD = Angstroms
+       #   other quantities are unitless
+       # e1 e2 e3 m   gamma     lambda3  c(C)     d(D)     costheta0(H)  n(N)    beta      lambda2  B           R    D    lambda1  A
+       # C  C  C  3.0 1.0       0.0      38049    4.3484   -0.57058      0.72751 1.5724e-7 2.2119   346.74      1.95 0.15 3.4879   1393.6      # https://www.ctcms.nist.gov/potentials/Download/1989--Tersoff-J--Si-C/1/1989_SiC.tersoff
+       # C  C  C  1   0.112330  0.0      181.91   6.284330 -0.555600     1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2021--Plummer-G-Rathod-H-Srivastava-A-et-al--Ti-Al-C/1/TACBOP2.tersoff
+       # C  C  C  3.0 1.0       0.0      38049    4.3484   -0.93000      0.72751 1.5724e-7 2.2119   430.00      1.95 0.15 3.4879   1393.6      # https://www.ctcms.nist.gov/potentials/Download/2012--Kinaci-A-Haskins-J-B-Sevik-C-Cagin-T--B-N-C/1/BNC.tersoff
+       # C  C  C  1   0.112330  0.0      181.91   6.284330 -0.555600     1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2019--Plummer-G-Tucker-G-J--Ti-Si-C/1/TSCBOP.tersoff
+       # C  C  C  3.0 1.0       0.0      19981    7.034    -0.33953      0.99054 4.1612e-6 2.3064   389.63      2.5  0.0  3.4653   1544.8      # https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
+       # C  C  C  3.0 1.0       0.0      19981    7.034    -0.33953      0.99054 4.1612e-6 2.3064   389.63      1.95 0.15 3.4653   1544.8      # https://www.ctcms.nist.gov/potentials/Download/1994--Tersoff-J--Si-C/1/1994_SiC.tersoff
+       # C  C  C  1.0 0.11233   0.0      181.910  6.28433  -0.5556       1.0     1.0       1.930901 175.426651  2.0  0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2005--Erhart-P-Albe-K--Si-C-I/1/2005_SiC_I.tersoff
+       # C  C  C  1.0 0.11233   0.0      181.910  6.28433  -0.5556       1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2005--Erhart-P-Albe-K--Si-C-II/1/2005_SiC_II.tersoff
+       &TERSOFF
+         #ATOMS C_R C_R
+         ATOMS C C
+         A    1393.6
+         ALPHA 0.0
+         B    430.00
+         BETA 1.5724E-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.93000
+         LAMBDA1 3.4879
+         LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+       &END TERSOFF
+     &END NONBONDED
+   &END FORCEFIELD
+
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END MM
+
+  &SUBSYS
+    &CELL
+      # FCC (Ca, Sr, Rh, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb)
+      #ABC  40.764229 39.715716 70.
+      #
+      # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
+      #ABC  41.7607676925 39.6089603006 70.0
+      #
+      # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
+      #ABC 39.924074192450362 38.894689645870351 70.0
+      #
+      # Graphite
+      ABC 3.9872361914754663E+01 3.8846852233507882E+01 70.0
+    &END CELL
+    &TOPOLOGY
+      #COORD_FILE_NAME ./xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
+      COORD_FILE_NAME ./xyz/chp_on_Cgra.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+    #
+    &KIND C_R
+      ELEMENT C
+      MASS 12.01
+    &END KIND
+  &END SUBSYS
+  
+  #&EXTERNAL_POTENTIAL
+  #  FUNCTION (A/B)*Z
+  #  VALUES [eV] 0.2 [angstrom] 1.0
+  #  PARAMETERS A B
+  #&END EXTERNAL_POTENTIAL
+  
+  STRESS_TENSOR ANALYTICAL
+  
+&END FORCE_EVAL
