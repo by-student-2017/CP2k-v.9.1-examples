@@ -91,7 +91,7 @@ chimera
 - I couldn't get any other method than "QMMM/EAM_potential/cp2k_version" to work (I created a script to convert the EAM potential shown by NIST to CP2k version, but all of them failed).
 
 
-## Basis
+## Basis (ls /usr/share/cp2k)
 - https://pierre-24.github.io/cp2k-basis/developers/library_content/
 - https://cp2k-basis.pierrebeaujean.net/
 - https://www.basissetexchange.org/
