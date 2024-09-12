@@ -150,8 +150,8 @@
       ABC 39.924074192450362 38.894689645870351 70.0
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_C.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C_R.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -288,7 +288,7 @@
       PERIODIC NONE
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp.xyz
+      COORD_FILE_NAME ./../xyz/chp.xyz
       COORDINATE xyz
       &CENTER_COORDINATES
       &END
@@ -430,8 +430,8 @@
       ABC 39.924074192450362 38.894689645870351 70.0
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_C.xyz
-      #COORD_FILE_NAME ./xyz/chp_on_C_R.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_C.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C_R.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
