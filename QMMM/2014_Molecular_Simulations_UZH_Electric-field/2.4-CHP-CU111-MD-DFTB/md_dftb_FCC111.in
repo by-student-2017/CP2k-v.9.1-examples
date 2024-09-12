@@ -119,7 +119,7 @@
       ABC  40.764229 39.715716 70.
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Cu.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Cu.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -246,7 +246,7 @@
       PERIODIC NONE
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp.xyz
+      COORD_FILE_NAME ./../xyz/chp.xyz
       COORDINATE xyz
       &CENTER_COORDINATES
       &END
@@ -341,7 +341,7 @@
       ABC  40.764229 39.715716 70.
     &END CELL
     &TOPOLOGY
-      COORD_FILE_NAME ./xyz/chp_on_Cu.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_Cu.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
