@@ -1,5 +1,5 @@
 ###################################
-## CHP (DFTB) on Graphite(0001) (Tersoff)   ###
+## CHP (DFTB-D3) on Graphite(0001) (Tersoff)   ###
 ###################################
 
 @SET LIBDIR ../cp2klib
