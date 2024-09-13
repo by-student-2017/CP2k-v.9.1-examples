@@ -415,7 +415,7 @@
        # Note 4: Tersoff_1 = tersoff1988, Tersoff_2 = tersoff1989. Although fc was -sin(x) in 1988 and cos(x) in 1989, the parameters for Si were the same. Therefore, it is highly likely that C and Ge can also be used.
        # Note 5: J. Tersoff, Phys. Rev. Lett. 61 (1988) 2879-2882. Amorphous Carbon (a-C); A = 1393.6 [eV], B = 346.74 [eV], lambda1 = 3.4879 [A],
        #   lambda2 = 2.2119 [A], beta = 1.5724e-7, n = 0.72751, c = 38049, d = 4.34874, h = -0.57058, R = 1.95 [A], D = 0.15 [A]. 
-       $   alpha and lambda3 = 0. (For simplicity, the parameters alpha and lambda3 have been set equal to zero here.)
+       #   alpha and lambda3 = 0. (For simplicity, the parameters alpha and lambda3 have been set equal to zero here.)
        &TERSOFF
          ATOMS C_R C_R
          #ATOMS C C
