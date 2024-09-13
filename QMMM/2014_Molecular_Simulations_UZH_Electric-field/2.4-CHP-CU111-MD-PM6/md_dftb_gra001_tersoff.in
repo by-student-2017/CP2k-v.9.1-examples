@@ -414,6 +414,7 @@
        # three-body interactions: m, gamma, lambda3, c, d, and cos(theta0)
        # both two-body and three-body interactions: R(=BIGR) and D(=BIGR)
        # m = 3 or 1 in lammps. lambda3 = 0.0 in lammps.
+       # Note 4: Tersoff_1 = tersoff1988, Tersoff_2 = tersoff1989. Although fc was -sin(x) in 1988 and cos(x) in 1989, the parameters for Si were the same. Therefore, it is highly likely that C and Ge can also be used.
        &TERSOFF
          ATOMS C_R C_R
          #ATOMS C C
