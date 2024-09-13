@@ -1,0 +1,8 @@
+#---------------------------------------------------------------------
+# Usage
+# QM/MM with Built-in Force Field
+# https://manual.cp2k.org/cp2k-2024_1-branch/methods/qm_mm/builtin.html
+1. conda activate AmberTools23
+2. bash run_ambertools.sh
+3. bash run_cp2k.sh
+#---------------------------------------------------------------------
