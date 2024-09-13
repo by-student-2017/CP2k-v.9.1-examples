@@ -109,6 +109,7 @@ chimera
 
 ## cp2k-examples (Pt.pot and Au.pot)
 - https://github.com/cp2k/cp2k-examples
+- https://manual.cp2k.org/trunk/methods/qm_mm/image_charges.html
 
 
 ## data/xc_section in CP2k github
