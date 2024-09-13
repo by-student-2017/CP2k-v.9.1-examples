@@ -1,0 +1,10 @@
+#---------------------------------------------------------------------
+# Usage
+# Image Charges
+# https://manual.cp2k.org/trunk/methods/qm_mm/image_charges.html
+1. bash run.sh
+
+#Note: The cutoff and number of grids have been reduced because the calculation stops midway.
+# CUTOFF 200 => 400
+# NGRIDS 4 => 5
+#---------------------------------------------------------------------
