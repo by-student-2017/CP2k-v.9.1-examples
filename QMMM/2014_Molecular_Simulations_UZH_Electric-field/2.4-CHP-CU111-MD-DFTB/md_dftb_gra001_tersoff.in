@@ -421,36 +421,36 @@
          #ATOMS C C
          #
          # BNC
-         #A    1393.6
-         #ALPHA 0.0
-         #B    430.00
-         #BETA 1.5724E-7
-         #BIGD 0.15
-         #BIGR 1.95
-         #C  38049
-         #D  4.3484
-         #H -0.93000
-         #LAMBDA1 3.4879
-         #LAMBDA2 2.2119
-         #LAMBDA3 0.0
-         #N 0.72751
-         #RCUT 10
-         #
-         # a-C: In this input file, the graphite sheets are pulled apart.
          A    1393.6
          ALPHA 0.0
-         B    346.74
+         B    430.00
          BETA 1.5724E-7
          BIGD 0.15
          BIGR 1.95
          C  38049
          D  4.3484
-         H -0.57058
+         H -0.93000
          LAMBDA1 3.4879
          LAMBDA2 2.2119
          LAMBDA3 0.0
          N 0.72751
          RCUT 10
+         #
+         # a-C: In this input file, the graphite sheets are pulled apart.
+         #A    1393.6
+         #ALPHA 0.0
+         #B    346.74
+         #BETA 1.5724E-7
+         #BIGD 0.15
+         #BIGR 1.95
+         #C  38049
+         #D  4.3484
+         #H -0.57058
+         #LAMBDA1 3.4879
+         #LAMBDA2 2.2119
+         #LAMBDA3 0.0
+         #N 0.72751
+         #RCUT 10
        &END TERSOFF
      &END NONBONDED
    &END FORCEFIELD
