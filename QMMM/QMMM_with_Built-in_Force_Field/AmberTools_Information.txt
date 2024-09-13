@@ -1,0 +1,50 @@
+#---------------------------------------------------------------------------------------------------
+- CTBP_SUMMER_SCHOOL_2009
+  https://mmtsb.org/workshops/mmtsb-ctbp_workshop_2009/Tutorials/Antechamber_sustiva/antechamber.html
+- https://ringo.ams.stonybrook.edu/index.php/AMBER_Tutorials
+- https://ambermd.org/antechamber/antechamber.html
+- https://tsiangsun.github.io/programming/Amber-setup-prmtop-inpdrd/
+- https://ctlee.github.io/BioChemCoRe-2018/system-prep/
+- https://emleddin.github.io/comp-chem-website/AMBERguide-tleap.html
+- https://pablito-playground.readthedocs.io/en/latest/tutorials/qmmm_amber_cpmd/mol2_file.html
+- https://carlosramosg.com/amber-custom-residue-parameterization
+- https://docs.bioexcel.eu/2020_06_09_online_ambertools4cp2k/04-parameters/index.html
+- https://www.r-ccs.riken.jp/labs/cbrt/tutorials2022/tutorial-5-2/
+- https://amber.tkanai-lab.org/TutorialB4/index.htm (Japanese)
+- https://www.ag.kagawa-u.ac.jp/charlesy/memo/ (Japanese)
+- https://qiita.com/tacoma/items/d7237f4afbb7f18ff60c (Japanese)
+- https://qiita.com/Ag_smith/items/2fe20010915ace67ed0a (Japanese)
+- https://computational-chemistry.com/top/blog/2018/01/25/md-conformation/ (Japanese)
+- https://www.ag.kagawa-u.ac.jp/charlesy/memo/conformational-search/ (Japanese)
+- https://www.ag.kagawa-u.ac.jp/charlesy/memo/md-simulation/ (Japanese)
+- https://www.ag.kagawa-u.ac.jp/charlesy/memo/md-simulation/protein-ligand-complex/ (Japanese)
+- https://www.ag.kagawa-u.ac.jp/charlesy/2016/10/27/%e8%86%9c%e3%82%bf%e3%83%b3%e3%83%91%e3%82%af%e8%b3%aa%e3%81%ae%e3%83%a2%e3%83%87%e3%83%aa%e3%83%b3%e3%82%b0-charmm-gui-amber-lipid14-force-field/ (Japanese)
+- https://oosakik.hatenablog.com/entry/2019/11/19/144858 (Japanese)
+- https://helpdesk.t3.gsic.titech.ac.jp/manuals/amber/molecular/ (Japanese)
+- https://github.com/zhanghaomiao/amber-notes (???)
+- https://www.cnblogs.com/wq242424/p/9157072.html (???)
+#---------------------------------------------------------------------------------------------------
+# tleap
+# https://tsiangsun.github.io/programming/Amber-setup-prmtop-inpdrd/
+
+A. Standard residue: PDB + lib -> prmtop + inpcrd
+
+B. Non-standard ligands or molecules: PDB/mol2 + frcmod -> prmtop + inpcrd
+1. antechamber: PDB -> mol2/prep
+2. parmchk2: mol2/prep -> frcmod
+3. tleap: (PDB + mol2/prep + frcomd/dat + new frcmod) -> prmtop + inpcrd
+
+sander or pmemd: prmtop + inpcrd + mdin -> mdcrd + mdout + restart file
+#---------------------------------------------------------------------------------------------------
+# iQmol (free): http://iqmol.org/index.html
+# Avogadro (free): https://avogadro.cc/
+# ChemSketch (free): https://www.acdlabs.com/resources/free-chemistry-software-apps/chemsketch-freeware/
+#---------------------------------------------------------------------------------------------------
+# iQmol ver.2.1.4, Installation: http://iqmol.org/index.html
+0. sudo apt update
+1. sudo apt -y install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+2. wget http://iqmol.org/download.php?get=iqmol_2.14.deb -O iqmol_2.14.deb
+3. sudo dpkg -i iqmol_2.14.deb
+4. which iqmol
+5. iqmol
+#---------------------------------------------------------------------------------------------------
