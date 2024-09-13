@@ -438,7 +438,7 @@
          #N 0.72751
          #RCUT 10
          #
-         # a-C
+         # a-C: In this input file, the graphite sheets are pulled apart.
          A    1393.6
          ALPHA 0.0
          B    346.74
