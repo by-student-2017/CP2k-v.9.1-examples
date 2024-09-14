@@ -65,7 +65,8 @@
        &NONBONDED
         &EAM
           atoms Pt Pt
-          PARM_FILE_NAME Pt.pot
+          #PARM_FILE_NAME Pt.pot
+          PARM_FILE_NAME Pt-Pt_Zhou04.eam.alloy
         &END EAM
  #for O Pt interaction: these are terms V1+V2 of Siepmann-Sprik potential
         &GENPOT
