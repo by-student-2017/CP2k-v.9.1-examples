@@ -345,9 +345,8 @@
        &END LENNARD-JONES
        &EAM                  # embedded atom for Fe-Fe interaction
          atoms Fe Fe
-         #PARM_FILE_NAME ${LIBDIR}/CU.pot
-         #PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
          PARM_FILE_NAME ${LIBDIR}/Fe-Fe_Zhou04.eam.alloy
+	 #PARM_FILE_NAME ${LIBDIR}/W-W_Zhou04.eam.alloy
        &END EAM
      &END NONBONDED
    &END FORCEFIELD
