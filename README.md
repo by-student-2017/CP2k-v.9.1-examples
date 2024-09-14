@@ -105,8 +105,10 @@ chimera
 
 ## Tersoff potential (1988 and 1989)
 - Tersoff potentials are available on this github. I haven't looked closely at the code in cp2k, so I assume it's the 1988 formula (Tersoff_1). Lammps seems to use the 1989 formula (Tersoff_2). The 1988 and 1989 papers use the same parameter values ​​for Si. Therefore, I decided to apply the same parameters for carbon (using those from NIST).
-- The Tersoff potential can reproduce various crystal structures (dimer, graphite, diamond, sc, bcc, fcc). Compared with electronic structure calculations for Si, the Tersoff cohesive energy shows good agreement, and although it tends to overestimate bond lengths, it also shows good agreement for coordination numbers from 4 to 8. 
+- The Tersoff potential can reproduce various crystal structures (dimer, graphite, diamond, SC, BCC, FCC). Compared with electronic structure calculations for Si, the Tersoff cohesive energy shows good agreement, and although it tends to overestimate bond lengths, it also shows good agreement for coordination numbers from 4 to 8. 
 - Tersoff also takes into account the universal potential and the second moment approximation. In light of these results for silicon, it is not surprising that Dr. J. Tersoff published parameters for amorphous carbon in a 1988 paper.
+- Since EAM does not take into account the angular dependence (MEAM has been proposed to solve this problem but has not yet been implemented in CP2k), it is necessary to use Tersoff.
+- Keep in mind that if you have difficulty reproducing a structure (especially BCC) using Zhou's 2004 EAM, you may be able to reproduce the structure using Tersoff.
 
 
 ## Basis (ls /usr/share/cp2k)
