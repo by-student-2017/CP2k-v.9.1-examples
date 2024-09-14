@@ -90,10 +90,11 @@ chimera
 - Probably most of the potential at NIST (for Lammps) is not available in CP2k without converting the files.
 - I couldn't get any other method than "QMMM/EAM_potential/cp2k_version" to work (I created a script to convert the EAM potential shown by NIST to CP2k version, but all of them failed).
 - EAM_potential/cp2k_version: Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr
-- EAM 10000 points: EPS_SPLINE 5.0E-6
+- EAM 10000 points: EPS_SPLINE 2.0E-6
 - EAM 20000 points: EPS_SPLINE 1.0E-7
 - EAM 30000 points: EPS_SPLINE 2.0E-8
 - EAM 40000 points: EPS_SPLINE 1.0E-8
+- Accuracy: DFT 1 meV, ReaxFF 43 meV. Typically, EAM should be considered worse than these accuracies.
 
 
 ## Basis (ls /usr/share/cp2k)
