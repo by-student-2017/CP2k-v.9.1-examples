@@ -129,10 +129,12 @@
       #
       # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
        ABC  41.7607676925 39.6089603006 70.0
+      # ABC  46.11518522 43.73900773 70.0 # W
       # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
     &END CELL
     &TOPOLOGY
       COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_W.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
@@ -365,10 +367,12 @@
       #
       # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
        ABC  41.7607676925 39.6089603006 70.0
+      # ABC  46.11518522 43.73900773 70.0 # W
       # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
     &END CELL
     &TOPOLOGY
       COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_W.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
