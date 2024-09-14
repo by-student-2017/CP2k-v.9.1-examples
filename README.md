@@ -100,6 +100,7 @@ chimera
 - As stated in NIST, the combinations shown above may not have been fully tested for all the elements, but they will be useful. Since you only need to let QS take care of the reactive parts, it is enough if the structure of the substrate you want, such as vacancies and element substitutions, is maintained.
 - I don't know about ReaxFF, but EAM takes into account the concept of universal potential. In addition, it is important to remember that the concept of density functional theory is also included as an approximation of the second moment, and the influence of many-body effects is included.
 - FCC is a close-packed structure, and the approximation of the spherical electron distribution is relatively good, so the structure can be reproduced even with Lennard-Jones. In Zhou's 2004 paper, Ca, Sr, Rh, and Ir were not prepared, so as an alternative, it would be good to construct the basic structure with Lennard-Jones.
+- Elements that are easiest to reproduce the most stable structure using EAM (left) to elements that are difficult to reproduce (right): V,Ca,Na,Cr,Mn,Nb,Ir,Sr,Rh,Ru,Os,Hf,Re,Zn
 
 
 ## Basis (ls /usr/share/cp2k)
