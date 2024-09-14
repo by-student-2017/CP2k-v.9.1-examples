@@ -109,7 +109,7 @@ chimera
 - The Tersoff potential can reproduce various crystal structures (dimer, graphite, diamond, SC, BCC, FCC). Compared with electronic structure calculations for Si, the Tersoff cohesive energy shows good agreement, and although it tends to overestimate bond lengths, it also shows good agreement for coordination numbers from 4 to 8. 
 - Tersoff also takes into account the universal potential and the second moment approximation. In light of these results for silicon, it is not surprising that Dr. J. Tersoff published parameters for amorphous carbon in a 1988 paper.
 - Since EAM does not take into account the angular dependence (MEAM has been proposed to solve this problem but has not yet been implemented in CP2k), it is necessary to use Tersoff. Therefore, even if it is difficult to reproduce a structure (especially BCC) using Zhou's 2004 EAM, please keep in mind that it may be possible to reproduce the structure using Tersoff. 
-- potfit code (https://www.potfit.net/wiki/doku.php) allows you to fit potentials using the 1989 formula. Try fitting using the results of first-principles calculations.
+- potfit code (https://www.potfit.net/wiki/doku.php) allows you to fit potentials using the 1989 formula. Try fitting using the results of first-principles calculations. gamma -> beta, mu -> lambda2
 - The Fe, Zn, In, and Al-C-Ti shown by NIST may need to be refitted for CP2k, but this shows the broad range of applicability of Tersoff.
 
 
