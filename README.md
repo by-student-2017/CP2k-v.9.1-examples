@@ -95,7 +95,7 @@ chimera
 - EAM 30000 points: EPS_SPLINE 2.0E-8
 - EAM 40000 points: EPS_SPLINE 1.0E-8
 - Accuracy: DFT 1 meV, ReaxFF 43 meV. Typically, EAM should be considered worse than these accuracies.
-- The score in EAM is specified by nr and nrho in Zhou04_create_v2.f. Just set nr and nrho to the same value. This github has 20,000 points.
+- The score in EAM is specified by nr and nrho in Zhou04_create_v2.f. Just set nr and nrho to the same value. This github has 20,000 points. The "+1" is necessary so don't leave it out !
 
 
 ## Basis (ls /usr/share/cp2k)
