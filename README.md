@@ -103,6 +103,10 @@ chimera
 - Elements that are easiest to reproduce the most stable structure using EAM (left) to elements that are difficult to reproduce (right): V,Ca,Na,Cr,Mn,Nb,Ir,Sr,Rh,Ru,Os,Hf,Re,Zn
 
 
+## Tersoff (1988)
+- Tersoff potentials are available on this github. I haven't looked closely at the code in cp2k, so I assume it's the 1988 formula (Tersoff_1). In Lammps, the 1989 formula seems to use Tersoff_2. The 1988 and 1989 papers use the same parameter values ​​for Si. Therefore, I decided to use the same parameters for carbon (using those from NIST).
+
+
 ## Basis (ls /usr/share/cp2k)
 - https://pierre-24.github.io/cp2k-basis/developers/library_content/
 - https://cp2k-basis.pierrebeaujean.net/
