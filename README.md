@@ -97,6 +97,7 @@ chimera
 - Accuracy: DFT 1 meV, ReaxFF 43 meV. Typically, EAM should be considered worse than these accuracies.
 - The score in EAM is specified by nr and nrho in Zhou04_create_v2.f. Just set nr and nrho to the same value. This github has 20,000 points. The "+1" is necessary so don't leave it out !
 - As stated in NIST, the combinations shown above may not have been fully tested for all the elements, but they will be useful. Since you only need to let QS take care of the reactive parts, it is enough if the structure of the substrate you want, such as vacancies and element substitutions, is maintained.
+- I don't know about ReaxFF, but EAM takes into account the concept of universal potential. In addition, it is important to remember that the concept of density functional theory is also included as an approximation of the second moment, and the influence of many-body effects is included.
 
 
 ## Basis (ls /usr/share/cp2k)
