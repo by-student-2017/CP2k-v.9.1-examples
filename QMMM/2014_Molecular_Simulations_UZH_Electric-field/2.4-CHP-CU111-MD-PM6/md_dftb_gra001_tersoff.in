@@ -402,7 +402,7 @@
        # C  C  C  3.0 1.0       0.0      19981    7.034    -0.33953      0.99054 4.1612e-6 2.3064   389.63      2.50 0.00 3.4653   1544.8      # https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
        # C  C  C  3.0 1.0       0.0      19981    7.034    -0.33953      0.99054 4.1612e-6 2.3064   389.63      1.95 0.15 3.4653   1544.8      # https://www.ctcms.nist.gov/potentials/Download/1994--Tersoff-J--Si-C/1/1994_SiC.tersoff
        # Note 1: gamma = 1.0 and m = 3.0 for Tersoff, then you would not use xC line. 
-       # Note 2: beta = 1 and m = 1 for Albe et al.  ("not use beta" and "gamma/3 -> beta" for CP2k)
+       # Note 2: beta = 1 and m = 1 for Albe et al.  ("not use beta" and "gamma -> beta" for CP2k)
        # C  C  C  1.0 0.11233   0.0      181.910  6.28433  -0.5556       1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2005--Erhart-P-Albe-K--Si-C-I/1/2005_SiC_I.tersoff
        # C  C  C  1.0 0.11233   0.0      181.910  6.28433  -0.5556       1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2005--Erhart-P-Albe-K--Si-C-II/1/2005_SiC_II.tersoff
        # C  C  C  1.0 0.112330  0.0      181.91   6.284330 -0.555600     1.0     1.0       1.930901 175.426651  2.00 0.15 4.184262 2019.844901 # https://www.ctcms.nist.gov/potentials/Download/2019--Plummer-G-Tucker-G-J--Ti-Si-C/1/TSCBOP.tersoff
@@ -454,11 +454,11 @@
          #N 0.72751
          #RCUT 10
          #
-         # Ti-Al-C (not use beta, gamma/3 -> beta)
+         # Ti-Al-C (not use beta, gamma -> beta (need lambda3 = 0.0))
          #A    2019.844901 
          #ALPHA 0.0
          #B    175.426651 
-         #BETA 0.03744333
+         #BETA 0.112330 
          #BIGD 0.15
          #BIGR 2.00
          #C  181.91
