@@ -455,7 +455,7 @@
          #N 0.72751
          #RCUT 10
          #
-         # Ti-Al-C (not use beta, gamma -> beta (need lambda3 = 0.0))
+         # Ti-Al-C (not use beta, gamma -> BETA (need lambda3 = 0.0))
          #A    2019.844901 
          #ALPHA 0.0
          #B    175.426651 
