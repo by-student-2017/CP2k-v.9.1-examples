@@ -110,7 +110,7 @@ chimera
 - Tersoff also takes into account the universal potential and the second moment approximation. In light of these results for silicon, it is not surprising that Dr. J. Tersoff published parameters for amorphous carbon in a 1988 paper.
 - Since EAM does not take into account the angular dependence (MEAM has been proposed to solve this problem but has not yet been implemented in CP2k), it is necessary to use Tersoff. Therefore, even if it is difficult to reproduce a structure (especially BCC) using Zhou's 2004 EAM, please keep in mind that it may be possible to reproduce the structure using Tersoff. 
 - potfit code (https://www.potfit.net/wiki/doku.php) allows you to fit potentials using the 1989 formula. Try fitting using the results of first-principles calculations. gamma -> beta, mu -> lambda2
-- NIST has presented the Tersoff potential for Fe, Zn, In, and Al-C-Ti, which shows the wide range of applicability of the Tersoff potential. gamma-> beta, not use beta, and lambda3=0.0 (m can have any value for lambda3=0.0). If lambda is non-zero, then gamma/3 -> beta.
+- NIST has presented the Tersoff potential for Fe, Zn, In, and Al-C-Ti, which shows the wide range of applicability of the Tersoff potential. gamma/3-> beta, not use beta, and lambda3=0.0 (m can have any value for lambda3=0.0).
 
 
 ## Basis (ls /usr/share/cp2k)
