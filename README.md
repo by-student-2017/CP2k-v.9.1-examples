@@ -111,6 +111,7 @@ chimera
 - Since EAM does not take into account the angular dependence (MEAM has been proposed to solve this problem but has not yet been implemented in CP2k), it is necessary to use Tersoff. Therefore, even if it is difficult to reproduce a structure (especially BCC) using Zhou's 2004 EAM, please keep in mind that it may be possible to reproduce the structure using Tersoff. 
 - potfit code (https://www.potfit.net/wiki/doku.php) allows you to fit potentials using the 1989 formula. Try fitting using the results of first-principles calculations. gamma -> beta, mu -> lambda2
 - NIST has presented the Tersoff potential for Fe, Zn, In, and Al-C-Ti, which shows the wide range of applicability of the Tersoff potential. gamma-> beta, not use beta, and lambda3=0.0 (m can have any value for lambda3=0.0).
+- If there is no description for parameters between A and B, use the values ​​of A for beta, c, d, h, and n. For B-A, use the values ​​of B. A B B = A(B,B) = A-B. B A A = B(A,A) = B-A. A B A = A(B,A) and A A B = A(A,B) often result in A(B,A)=A(A,B). e.g., https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
 
 
 ## Basis (ls /usr/share/cp2k)
