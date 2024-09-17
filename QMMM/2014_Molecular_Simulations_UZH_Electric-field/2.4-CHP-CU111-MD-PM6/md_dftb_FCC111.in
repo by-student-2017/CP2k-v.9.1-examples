@@ -165,7 +165,7 @@
     &QS
       ! use density functional tight binding methos to calculate energy and forces
       #! DFTB
-      #METHOD DFTB # DFTB or PM6, etc
+      #METHOD DFTB # DFTB, PM6, or PDG, etc
       #&DFTB
       #  SELF_CONSISTENT  F ! use of self-consistent method
       #  DISPERSION TRUE
@@ -187,7 +187,7 @@
       #  &END PARAMETER
       #&END DFTB
       #
-      METHOD PM6 # DFTB or PM6, etc
+      METHOD PM6 # DFTB, PM6, or PDG, etc
       EXTRAPOLATION ASPC
       EXTRAPOLATION_ORDER 3
       &SE
