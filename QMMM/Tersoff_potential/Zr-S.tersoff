@@ -1,0 +1,57 @@
+       # Zr-S: https://doi.org/10.1063/5.0046823
+       &TERSOFF
+         ATOMS S S
+         A    6079.509429
+         ALPHA 0.0
+         B    3469.937384
+         BETA 0
+         BIGD 0.10
+         BIGR 2.40
+         C  1
+         D  1
+         H  1
+         LAMBDA1 4.097976
+         LAMBDA2 5.406911
+         LAMBDA3 1.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Zr S
+         A    6791.038544
+         ALPHA 0.0
+         B    2571.342251
+         BETA 3.025912e-6
+         BIGD 0.20
+         BIGR 3.40
+         C  61909.933731
+         D  11.669713
+         H -0.227712 
+         LAMBDA1 2.682439
+         LAMBDA2 2.262903
+         LAMBDA3 3.220796
+         N 16.561661
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS S Zr
+         A    6791.038544
+         ALPHA 0.0
+         B    2571.342251
+         BETA 3.785443e-6
+         BIGD 0.20
+         BIGR 3.40
+         C  52020.863988
+         D  18.592590
+         H -0.179199
+         LAMBDA1 2.682439
+         LAMBDA2 2.262903
+         LAMBDA3 2.360710
+         N 17.871640
+         RCUT 10
+         #
+       &END TERSOFF
