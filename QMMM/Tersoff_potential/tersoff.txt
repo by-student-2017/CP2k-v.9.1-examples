@@ -15,6 +15,7 @@
 # B-N: https://doi.org/10.1103/PhysRevB.96.184108
 # B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
 # Al-N: https://doi.org/10.1002/pssa.201001086
+# As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
 # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
 # RuO2 (fluorite structure): https://iopscience.iop.org/article/10.1088/0953-8984/13/16/301/meta
@@ -304,6 +305,30 @@ This correlation is discussed for the specific case of a-C in Ref.
 # B-N: https://doi.org/10.1103/PhysRevB.96.184108
 #-------------------------------------------------------------------------------
 # B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
+
+#-------------------------------------------------------------------------------
+# As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
+
+Note: LAMBDA1 = lambda
+Note: LAMBDA2 = mu
+Note: LAMBDA3 = 0.0
+Note: BETA = gamma
+Note: tersoff1989
+
+Table 1 
+Parameters of the potentials used in the MD simulations 
+
+i-j            As-As[9] Ga-Ga[9]   In-In   Ga-As[12]  In-As   In-Ga 
+Aij [eV]        1571.86  993.88   2975.54  2579.46   2246.55 1214.917 
+Bij [eV]        546.431 136.123   360.61    317.21   417.665 177.22 
+lambdaij [A^-1] 2.38413  2.50842  2.6159   2.82805   2.53034 2.5621 
+muij [A^-1]     1.72872  1.49082  1.68117  1.72303   1.67123 1.58600 
+ci              5.27313  0.07297  0.084215 1.22630   1.30678 0.080256 
+di              0.75102 19.7964  19.2626   0.79040   91.4432 195.2950 
+h               0.15292  7.14591  7.39228 -0.51848  -0.56983 7.26910 
+nij             0.60879  3.47290  3.40223  6.31747   6.33190 3.43739 
+gammaij       0.0074881  0.23586  2.10871  0.35719   0.38712 0.70524 
+
 #-------------------------------------------------------------------------------
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
 
@@ -376,7 +401,7 @@ Note: m = 3 (tersoff1988: lambda3 = 0.0 or m = 3.0)
 TABLE II.
 Parameters for III-V zinc blende semiconductors.
 
-Ga-As	In-As	Al-As	Ga-P	In-P	Al-P
+	Ga-As	In-As	Al-As	Ga-P	In-P	Al-P
 De	1.78044	1.76845	2.3347	2.20178	2.17758	6.02242
 S	6.96025	1.32755	1.54131	1.59411	1.5811	1.66971
 beta	1.5665	1.49877	1.44845	1.62365	1.52761	1.45727
@@ -391,7 +416,7 @@ gamma	0.257183	0.139688	0.359702	0.339811	0.338811	0.180382
 lambda	0.244341	0.140874	1.38402	1.81771	1.89106	3.09086
 
 
-Ga-N	In-N	Al-N	Ga-Sb	In-Sb	Al-Sb
+	Ga-N	In-N	Al-N	Ga-Sb	In-Sb	Al-Sb
 De	2.39175	2.20268	3.96453	2.10427	1.89293	2.78722
 S	2.51918	1.69411	2.1498	1.43393	3.02624	2.67111
 beta	1.9793	1.89216	1.70088	1.4777	1.43782	1.73871
