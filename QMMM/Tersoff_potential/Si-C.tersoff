@@ -1,0 +1,78 @@
+       # Si-C: https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1000E-6
+         BIGD 0.0
+         BIGR 2.5
+         C  100390
+         D  16.217
+         H  −0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.7322
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C C
+         A    1544.8
+         ALPHA 0.0
+         B    389.63 
+         BETA 4.1612e-6
+         BIGD 0.0
+         BIGR 2.5
+         C  19981
+         D  7.034
+         H -0.33953
+         LAMBDA1 3.4653
+         LAMBDA2 2.3064
+         LAMBDA3 0.0
+         N 0.99054
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Si C C = Si-C
+       &TERSOFF
+         ATOMS Si C
+         A    1681.731203254551
+         ALPHA 0.0
+         B    427.269495609187
+         BETA 1.1e-6
+         BIGD 0.0
+         BIGR 2.5
+         C  100390 
+         D  16.217
+         H  -0.59825
+         LAMBDA1 2.9726
+         LAMBDA2 2.0193
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # C Si Si = C-Si
+       &TERSOFF
+         ATOMS C Si
+         A    1681.731203254551
+         ALPHA 0.0
+         B    427.269495609187
+         BETA 4.1612e-6
+         BIGD 0.0
+         BIGR 2.5
+         C  19981
+         D  7.034
+         H -0.33953
+         LAMBDA1 3.4653
+         LAMBDA2 2.3064
+         LAMBDA3 0.0
+         N 0.99054
+         RCUT 10
+         #
+       &END TERSOFF
