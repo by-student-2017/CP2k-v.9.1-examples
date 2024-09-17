@@ -356,8 +356,9 @@ Note: A = De/(S-1) * exp(-beta*sqrt(2.0*S)*-re) = De/(S-1) * exp(lambda1*re)
 Note: B = S*De/(S-1) * exp(-beta*sqrt(2.0/S)*-re) = S*De/(S-1) * exp(lambda2*re)
 Note: LAMBDA1 = beta*sqrt(2.0*S)
 Note: LAMBDA2 = beta*sqrt(2.0/S)
-Note: LAMBDA2 = lambda
+Note: LAMBDA3 = lambda
 Note: BETA = gamma
+Note: m = 3 (tersoff1988: lambda3 = 0.0 or m = 3.0)
 
 TABLE II.
 Parameters for III-V zinc blende semiconductors.
