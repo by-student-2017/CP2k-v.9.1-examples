@@ -1,0 +1,209 @@
+       # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
+       &TERSOFF
+         ATOMS Ga As
+         A    446079.3317
+         ALPHA 0.0
+         B    16.03046979
+         BETA 0.257183
+         BIGD 0.1
+         BIGR 3.5
+         C  2.16345
+         D  0.750147
+         H -0.448899
+         LAMBDA1 5.84464068
+         LAMBDA2 0.839717062
+         LAMBDA3 0.244341
+         N 3.55586
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In As
+         A    2866.660922
+         ALPHA 0.0
+         B    809.217956
+         BETA 0.139688
+         BIGD 0.1
+         BIGR 3.7
+         C  2.10031
+         D  0.827636
+         H -0.442115
+         LAMBDA1 2.442167418
+         LAMBDA2 1.83960485
+         LAMBDA3 0.140874
+         N 2.35072
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al As
+         A    1780.771194
+         ALPHA 0.0
+         B    330.9922134
+         BETA 0.359702
+         BIGD 0.1
+         BIGR 3.7
+         C  1.05025
+         D  0.850097
+         H  -0.458041
+         LAMBDA1 2.543100387
+         LAMBDA2 1.64996035
+         LAMBDA3 1.38402
+         N 8.36992
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga P
+         A    2806.027777
+         ALPHA 0.0
+         B    378.0635108
+         BETA 0.339811
+         BIGD 0.1
+         BIGR 3.1
+         C  1.26417
+         D  0.799535
+         H  -0.433247
+         LAMBDA1 2.899122442
+         LAMBDA2 1.818646418
+         LAMBDA3 1.81771
+         N 5.42195
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In P
+         A    2979.859085
+         ALPHA 0.0
+         B    404.713323
+         BETA 0.338811
+         BIGD 0.1
+         BIGR 3.3
+         C  1.2179
+         D  0.831026
+         H  -0.461576
+         LAMBDA1 2.716484053
+         LAMBDA2 1.71809756
+         LAMBDA3 1.89106
+         N 5.3449
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga N
+         A    8476.217208
+         ALPHA 0.0
+         B    120.0718354
+         BETA 0.24139
+         BIGD 0.1
+         BIGR 2.5
+         C  2.59473
+         D  0.891376
+         H  -0.505871
+         LAMBDA1 4.442794467
+         LAMBDA2 1.763587543
+         LAMBDA3 1.80993
+         N 0.643958
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In N
+         A    5089.681305
+         ALPHA 0.0
+         B    419.1914269
+         BETA 0.30813
+         BIGD 0.1
+         BIGR 2.65
+         C  1.07074
+         D  0.725308
+         H  -0.533599
+         LAMBDA1 3.482921275
+         LAMBDA2 2.055900311
+         LAMBDA3 1.59607
+         N 9.74096
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al N
+         A    2014.471229
+         ALPHA 0.0
+         B    143.5073008
+         BETA 0.19987
+         BIGD 0.15
+         BIGR 2.335
+         C  2.33154
+         D  0.831225
+         H  -0.638531
+         LAMBDA1 3.526855786
+         LAMBDA2 1.640550649
+         LAMBDA3 1.99072
+         N 2.66213
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga Sb
+         A    2521.756902
+         ALPHA 0.0
+         B    544.9039203
+         BETA 0.363018
+         BIGD 0.1
+         BIGR 3.5
+         C  1.20875
+         D  0.839761
+         H  -0.427706
+         LAMBDA1 2.502449065
+         LAMBDA2 1.74516822
+         LAMBDA3 0.968688
+         N 4.60221
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In Sb
+         A    14105.27888
+         ALPHA 0.0
+         B    67.95917399
+         BETA 0.304347
+         BIGD 0.1
+         BIGR 3.7
+         C  5.32122
+         D  1.39907
+         H  -0.489527
+         LAMBDA1 3.537294362
+         LAMBDA2 1.168874366
+         LAMBDA3 2.47677
+         N 1.8926
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al Sb
+         A    42112.56157
+         ALPHA 0.0
+         B    198.1316644
+         BETA 0.604408
+         BIGD 0.1
+         BIGR 3.5
+         C  3.44865
+         D  1.20819
+         H  -0.210583
+         LAMBDA1 4.018722666
+         LAMBDA2 1.504514103
+         LAMBDA3 0.955563
+         N 122.43
+         RCUT 10
+         #
+       &END TERSOFF
