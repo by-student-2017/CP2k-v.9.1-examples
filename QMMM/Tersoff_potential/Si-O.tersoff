@@ -1,0 +1,78 @@
+       # Si-O: https://www.ctcms.nist.gov/potentials/Download/2007--Munetoh-S-Motooka-T-Moriguchi-K-Shintani-A--Si-O/1/2007_SiO.tersoff
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1e-6
+         BIGD 0.15 
+         BIGR 2.65
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O O
+         A    1882.55
+         ALPHA 0.0
+         B    218.787
+         BETA 1.1632e-7
+         BIGD 0.2
+         BIGR 1.85
+         C  64692.1
+         D  4.11127
+         H -0.845922
+         LAMBDA1 4.17108
+         LAMBDA2 2.35692
+         LAMBDA3 0.0
+         N 1.04968
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Si O O = Si-O
+       &TERSOFF
+         ATOMS Si O
+         A    1856.4946916164345
+         ALPHA 0.0
+         B    378.6898939266548
+         BETA 1.1e-6
+         BIGD 0.15243955021550804
+         BIGR 2.2139923630243383
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 3.32549
+         LAMBDA2 2.04456
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # O Si Si = O-Si
+       &TERSOFF
+         ATOMS O Si
+         A    1856.4946916164345
+         ALPHA 0.0
+         B    378.6898939266548
+         BETA 1.1632e-7
+         BIGD 0.15243955021550804
+         BIGR 2.2139923630243383
+         C  64692.1
+         D  4.11127
+         H -0.845922
+         LAMBDA1 3.32549
+         LAMBDA2 2.04456
+         LAMBDA3 0.0
+         N 1.04968
+         RCUT 10
+         #
+       &END TERSOFF

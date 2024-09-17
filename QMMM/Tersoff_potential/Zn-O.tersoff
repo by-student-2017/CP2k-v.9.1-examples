@@ -1,0 +1,58 @@
+       # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
+       &TERSOFF
+         ATOMS Zn Zn
+         A    2258.730853636288
+         ALPHA 0.0
+         B    115.1593431985539
+         BETA 4.3909e-5
+         BIGD 0.20
+         BIGR 2.85
+         C  77.916
+         D  0.91344
+         H -1.0
+         LAMBDA1 3.261395301469603
+         LAMBDA2 1.7965160854189726
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O O
+         A    1388.081581389159
+         ALPHA 0.0
+         B    527.6505089731846
+         BETA 0.82595
+         BIGD 0.2
+         BIGR 2.45
+         C  0.035608
+         D  0.046496
+         H -0.45056
+         LAMBDA1 3.8448836805292306
+         LAMBDA2 2.7732859784544366
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Zn O O = Zn-O, O Zn Zn = O-Zn, Zn-O = O-Zn
+       &TERSOFF
+         ATOMS Zn O
+         A    7344.239422800065
+         ALPHA 0.0
+         B    6304.327815151947
+         BETA 0.019335
+         BIGD 0.20
+         BIGR 2.60
+         C  0.014108
+         D  0.084028
+         H -0.30545
+         LAMBDA1 2.628013187021709
+         LAMBDA2 2.513642455305317
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
