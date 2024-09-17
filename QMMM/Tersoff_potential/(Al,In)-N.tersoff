@@ -1,0 +1,95 @@
+       # III(Al,In)-N planar defects: https://doi.org/10.1002/pssb.200844122
+       &TERSOFF
+         ATOMS N N
+         A    1044.874791
+         ALPHA 0.0
+         B    423.7965558
+         BETA 0.7661
+         BIGD 0.2
+         BIGR 2.2
+         C  0.1785
+         D  0.2017
+         H  0.0452
+         LAMBDA1 3.557872
+         LAMBDA2 2.384313
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In In
+         A    6311.952827
+         ALPHA 0.0
+         B    1127.543212
+         BETA 1.1587
+         BIGD 0.1
+         BIGR 3.8315
+         C  0.0842
+         D  19.2626
+         H  7.3923
+         LAMBDA1 2.7447897
+         LAMBDA2 1.6992445
+         LAMBDA3 0.0
+         N 3.4022
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al Al
+         A    492.674645
+         ALPHA 0.0
+         B    23.02954942
+         BETA 0.3168
+         BIGD 0.1
+         BIGR 3.5
+         C  0.0748
+         D  19.5691
+         H  -0.6593
+         LAMBDA1 2.5852627
+         LAMBDA2 0.9274152
+         LAMBDA3 0.0
+         N 6.0865
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al N
+         A    1776.421881
+         ALPHA 0.0
+         B    249.9172611
+         BETA 0.0000
+         BIGD 0.15
+         BIGR 2.34
+         C  100390
+         D  16.217
+         H  -0.598
+         LAMBDA1 3.2000482
+         LAMBDA2 1.8530594
+         LAMBDA3 0.0
+         N 0.72
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In N
+         A    3176.176608
+         ALPHA 0.0
+         B    274.1905429
+         BETA 0.0000
+         BIGD 0.15
+         BIGR 2.6405
+         C  100390
+         D  16.217
+         H  -0.598
+         LAMBDA1 3.2496957
+         LAMBDA2 1.8247491
+         LAMBDA3 0.0
+         N 0.72
+         RCUT 10
+         #
+       &END TERSOFF
