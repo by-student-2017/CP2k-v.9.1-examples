@@ -16,7 +16,12 @@
 # B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
 # Al-N: https://doi.org/10.1002/pssa.201001086
 # As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
+# As-Ga: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.66.035205
+# Al-As: https://doi.org/10.1016/0168-583X(95)80144-B
+# III–V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+# In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
 # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
+# III–V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
 # RuO2 (fluorite structure): https://iopscience.iop.org/article/10.1088/0953-8984/13/16/301/meta
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
@@ -44,6 +49,9 @@
 # C-Pt: https://openkim.org/files/MO_500121566391_002/Tersoff_AlbeNordlundAverback_2002_PtC.params
 # C-Cu: https://doi.org/10.1016/j.carbon.2014.06.024
 # Si-As, Si-Ga, Si-In: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.91.094108
+# Ga-Sb (ZBL): https://doi.org/10.1038/s41598-020-64971-9 (Supplementary Information)
+# III–V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+# In-P: https://www.ctcms.nist.gov/potentials/Download/2022--Chrobak-D-Majtyka-Pilat-A-Ziolkowski-G-Chrobak-A--In-P/1/InP_Materials_2022_Chrobak_Majtyka.tersoff
 # armchair and zig-zag carbon sheets: https://doi.org/10.1016/j.physe.2021.114789
 # carbon nanotubes and graphene: https://doi.org/10.1103/PhysRevB.81.205441
 # Ti-Al-C, Ti-Si-C: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.214114
@@ -65,6 +73,7 @@
 # Zr-B (VASP): https://ntrs.nasa.gov/citations/20120011609
 # EAM (Sc, Cr, Nb): https://www.sciencedirect.com/science/article/pii/S0370157307003572
 # EAM (Cr, Fe, Nb): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.6952
+# SW(Zn-Cd-Hg-S-Se-Te): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.085309
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
@@ -331,6 +340,77 @@ gammaij       0.0074881  0.23586  2.10871  0.35719   0.38712 0.70524
 
 [9] R = 3.5 [A], D = 0.1 [A]
 [12] R = 3.5 [A], D = 0.1 [A]
+
+#-------------------------------------------------------------------------------
+# Al-As: https://doi.org/10.1016/0168-583X(95)80144-B
+
+Note: A = De/(S-1) * exp(-beta*sqrt(2.0*S)*-re) = De/(S-1) * exp(lambda1*re)
+Note: B = S*De/(S-1) * exp(-beta*sqrt(2.0/S)*-re) = S*De/(S-1) * exp(lambda2*re)
+Note: LAMBDA1 = beta*sqrt(2.0*S)
+Note: LAMBDA2 = beta*sqrt(2.0/S)
+Note: LAMBDA3 = lambda
+Note: m = 3 (tersoff1989)
+
+Table 1 
+Improved parameter set for GaAs, AlAs 
+P        Al      Ga-As      AI-As 
+c     0.074836  1.226302  1.449752 
+d    19.569127  0.790396  0.828713 
+h    -0.659266 -0.518489 -0.520946 
+n     6.086505  6.317410  4.047579 
+beta  1.094932  1.560903  1.479377 
+gamma 0.316846  0.357192  0.330946 
+De    1.500000  2.18      2.492976 
+re    2.466000  2.34      2.353425 
+S     2.787598  1.641366  1.802706 
+R     3.6       3.5       3.6 
+D     0.1       0.1       0.1
+
+
+Table 2
+lambda value for Tersoff potentials
+i, j species lambda
+AI-AI 1.500 
+As-As 1.500 
+Al-As 1.500 
+Ga-Ga 1.491 
+As-As 1.729 
+Ga-As 1.723 
+Si-Si 1.732
+
+#-------------------------------------------------------------------------------
+# III–V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+
+Note: LAMBDA1 = λ
+Note: LAMBDA2 = μ
+Note: LAMBDA3 = 0.0
+Note: BETA = β =gamma_ij
+Note: tersoff1990
+
+Table 1. Parameters used for the MD simulation of III–V compound semiconductors
+
+As–As	Ga–Ga	Ga–As	In–In	In–As	In–Ga	Al–Al	Al–As	Al–Ga
+A (eV)	4773.163	2839.821	13287.605	4403.956	2246.55	3296.817	746.698	6925.454	1221.284
+B (eV)	81.32	114.786	13.187	329.104	417.665	195.282	40.451	13.819	69.958
+λ	3.4841	3.2834	4.5989	2.9039	2.5303	3.0987	2.4647	4.2256	2.7506
+μ	1.7154	1.7154	0.2493	1.7978	1.6712	1.8299	0.9683	0.3215	1.288
+R	3.4	3.4	3.4	3.4	3.4	3.4	3.5	3.5	3.4496
+S	3.6	3.6	3.6	3.6	3.6	3.6	3.7	3.7	3.6497
+β	0.0074881	0.2358624	0.357192	2.10871	0.38712	0.70524	1.094932	0.8901798	1.094932
+n	0.6087913	3.4729041	6.31747	3.40223	6.3319	3.43739	6.086505	3.1224134	6.086505
+c	5.2731318	0.0762977	1.226302	0.084215	1.30678	0.080256	0.074836	85.207584	0.074836
+d	0.7510266	19.796474	0.790396	19.2626	91.4432	195.295	19.569127	12.816499	19.569127
+h	0.1529235	7.1459174	−0.518489	7.39228	−0.56983	7.2691	−0.659266	−0.5643909	−0.659266
+
+
+Table 2. Net charge density on each atom estimated from the Mulliken population analysis of band calculations
+
+Substrate	Net charge (e)
+Si	0
+Ge	0
+GaAs	0.087
+AlAs	0.223
+InAs	0.499
 
 #-------------------------------------------------------------------------------
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
