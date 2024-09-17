@@ -45,7 +45,7 @@
          ATOMS N N
          A    6368.14
          ALPHA 0.0
-         B    511.760
+         B    0.0 # (For non-N atom pairs, use the mixing rules in "B = 511.760".)
          BETA 5.2938e−3
          BIGD 0.15
          BIGR 1.95

@@ -1,0 +1,59 @@
+       # Si-N: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.58.8323
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.85
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # kai(N,N)=0.0
+       &TERSOFF
+         ATOMS N N
+         A    6368.14
+         ALPHA 0.0
+         B    0.0
+         BETA 5.2938e−3
+         BIGD 0.15
+         BIGR 1.95
+         C  0
+         D  1
+         H  0
+         LAMBDA1 5.43673
+         LAMBDA2 2.70000
+         LAMBDA3 0.0
+         N 1.33041
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # kai(Si,N)=0.67
+       &TERSOFF
+         ATOMS N Si
+         A    6368.14
+         ALPHA 0.0
+         B    342.8792
+         BETA 5.29380e-3
+         BIGD 0.15
+         BIGR 1.95
+         C  2.03120e4
+         D  2.55103e1
+         H  -5.62390e-1
+         LAMBDA1 5.43673
+         LAMBDA2 2.70000
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF

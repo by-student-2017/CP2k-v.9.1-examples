@@ -46,7 +46,7 @@
 # armchair and zig-zag carbon sheets: https://doi.org/10.1016/j.physe.2021.114789
 # carbon nanotubes and graphene: https://doi.org/10.1103/PhysRevB.81.205441
 # Ti-Al-C, Ti-Si-C: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.214114
-# Si, O, N, H: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
+# SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
 # B-N, Al-N, Ga-N: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
 # Brenner, C-H: https://journals.aps.org/prb/pdf/10.1103/PhysRevB.42.9458
 # Brenner, C: https://doi.org/10.1016/0009-2614(91)90308-V
@@ -636,8 +636,8 @@ c 0.0883168
 c 40.9755961
 d 0.9528753
 h 0.9050528
-Rc (A) 4.1978605 ˚
-Dc (A) 0.4794477 ˚
+Rc (A) 4.1978605
+Dc (A) 0.4794477
 b (A^-1) 1.0
 k3 1.5527866
 n,m 1
