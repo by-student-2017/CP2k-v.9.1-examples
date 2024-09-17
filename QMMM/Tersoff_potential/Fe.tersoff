@@ -1,0 +1,19 @@
+       # Fe: https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220
+       &TERSOFF
+         ATOMS Fe Fe
+         A    953.9485926
+         ALPHA 0.0
+         B    67.86477228
+         BETA 0.0115751
+         BIGD 0.2
+         BIGR 3.15
+         C  1.2898716
+         D  0.3413219
+         H -0.26
+         LAMBDA1 2.84810441
+         LAMBDA2 1.376354036
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF

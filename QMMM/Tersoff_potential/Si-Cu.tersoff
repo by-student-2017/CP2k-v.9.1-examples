@@ -1,0 +1,57 @@
+       # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1000E-6
+         BIGD 0.15
+         BIGR 2.85
+         C   1.0039E5
+         D  16.217
+         H  −0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.7322
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Cu Cu
+         A    803.12
+         ALPHA 0.0
+         B    43.25
+         BETA 0
+         BIGD 0.255
+         BIGR 3.075
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.83
+         LAMBDA2 1.412
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si Cu
+         A    1212.580759
+         ALPHA 0.0
+         B    145.949655
+         BETA 0 # dummy
+         BIGD 0.200674188
+         BIGR 2.960021937
+         C  0 # dummy
+         D  1 # dummy
+         H  0 # dummy
+         LAMBDA1 2.65495
+         LAMBDA2 1.5721
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF

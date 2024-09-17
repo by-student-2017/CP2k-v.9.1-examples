@@ -29,6 +29,7 @@
 # Cu, Ti, W, Si, Ru: https://www.jstage.jst.go.jp/article/matertrans/51/4/51_MG200903/_article/-char/ja/
 #-------------------------------------------------------------------------------
 # Other potentials 2
+# Fe-C (ZBL): https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
 # Fe-Cr (ZBL): https://doi.org/10.1016/j.commatsci.2021.110840
 # Fe-Cr-C (ZBL): https://iopscience.iop.org/article/10.1088/0953-8984/25/44/445401
 # Fe-Cr-C: https://doi.org/10.1063/1.4904447
@@ -84,8 +85,8 @@ S 2.0693109
 gamma 0.0115751
 c 1.2898716
 d 0.3413219
-h −0.26
-2mu (A^−1) 0.0
+h -0.26
+2mu (A^-1) 0.0
 R (A) 3.15 
 D (A) 0.2
 
@@ -96,7 +97,7 @@ Note: LAMBDA1 = λ, LAMBDA2 = µ, LAMBDA3 = η, BETA = β
 
 Table 1. Parameters for the ABOP of Cu.
 
-A (eV) B (eV) λ (A) µ (A) β m n
+A (eV) B (eV) λ (A^-1) µ (A^-1) β m n
 37188.422 66.846 4.870 1.011 0.007338 3 1
 
 η c d h R (A) S (A)
@@ -227,7 +228,7 @@ B (eV) 175.426651
 γ 0.11233
 c 181.91
 d 6.28433
-h 0.5556
+h 0.5556 # <- The paper probably has the wrong sign. Correct -0.5556 (Compared with data for lammps at NIST.)
 Rc (A) 2.0
 Dc (A) 0.15
 β (A^−1) 1.0
@@ -241,6 +242,27 @@ the PONTIFIX [27] code has been utilized. The C-C Abell-Tersoff
 potential is also given (Erhart-Albe parameterization [26] of the
 Albe-potential, parameters are converted into the form suitable for
 Tersoff formalism using Eqs. (10)-(14)).
+
+#-------------------------------------------------------------------------------
+# a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
+
+Note: The energy is well matched for 0 to 6 coordinate systems.
+Note: The bond lengths are well matched for 3 to 6 coordinated atoms. 
+  They are underestimated at low coordinated atoms and overestimated at high coordinated atoms.
+
+Amorphous Carbon
+
+A = 1393.6 eV
+B = 346.74 eV
+lambda1 = 3.4879 A
+lambda2 = 2.2119 A
+beta =1.572.4e-7
+n =0.72751
+c =38049
+d =4.3484
+h = -0.57058
+R =1.95 A
+D =0.15 A
 
 #-------------------------------------------------------------------------------
 # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039

@@ -1,0 +1,57 @@
+       &TERSOFF
+         # a-C: In this input file, the graphite sheets are pulled apart.
+         ATOMS C C
+         A    1393.6
+         ALPHA 0.0
+         B    346.74
+         BETA 1.5724E-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.57058
+         LAMBDA1 3.4879
+         LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Cu Cu
+         A    803.12
+         ALPHA 0.0
+         B    43.25
+         BETA 0
+         BIGD 0.255
+         BIGR 3.075
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.83
+         LAMBDA2 1.412
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C Cu
+         A    1057.38
+         ALPHA 0.0
+         B   125.19165 # use kai(C,Cu) = 1.02239
+         BETA 0 # dummy
+         BIGD 0.858
+         BIGR 1.59
+         C  0 # dummy
+         D  1 # dummy
+         H  0 # dummy
+         LAMBDA1 3.15895
+         LAMBDA2 1.81195
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF

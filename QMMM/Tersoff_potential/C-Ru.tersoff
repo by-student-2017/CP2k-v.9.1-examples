@@ -1,0 +1,59 @@
+       # C-Ru: https://arxiv.org/abs/1403.2101
+       &TERSOFF
+         ATOMS C C
+         A    2019.8449
+         ALPHA 0.0
+         B    175.426651
+         BETA 0.11233
+         BIGD 0.15
+         BIGR 2.0
+         C  181.91
+         D  6.28433
+         H -0.5556
+         LAMBDA1 4.18426232
+         LAMBDA2 1.93090093
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Ru-Ru was calculated backwards from C-Ru (irreg. dome) and C-C.
+       &TERSOFF
+         ATOMS Ru Ru
+         A    1764.0
+         ALPHA 0.0
+         B    407.84
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.7
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.7322
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # irreg. dome
+       &TERSOFF
+         ATOMS C Ru
+         A    48.9256612
+         ALPHA 0.0
+         B   7.34248258
+         BETA 0.04376490
+         BIGD 0.2
+         BIGR 3.0
+         C  1.55708101
+         D  0.33781624
+         H -0.173648
+         LAMBDA1 2.60152968
+         LAMBDA2 0.76877847
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF

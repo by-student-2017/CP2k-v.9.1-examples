@@ -1,0 +1,38 @@
+       # Fe-Cu: https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045016/meta
+       &TERSOFF
+         ATOMS Cu Cu
+         A    37188.422
+         ALPHA 0.0
+         B    66.846
+         BETA 0.007338
+         BIGD 0.175
+         BIGR 3.825
+         C  6.649
+         D  0.2315
+         H  0.2254
+         LAMBDA1 4.87
+         LAMBDA2 1.011
+         LAMBDA3 0.991
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Fe Cu
+         A    5956.160074 # symmetric mixing rules
+         ALPHA 0.0
+         B    79.53466995 # symmetric mixing rules
+         BETA 0 # dummy
+         BIGD 0.189607071 # symmetric mixing rules
+         BIGR 3.470993973 # symmetric mixing rules
+         C  0 # dummy
+         D  1 # dummy
+         H  0 # dummy
+         LAMBDA1 3.859052205 # symmetric mixing rules
+         LAMBDA2 1.193677018 # symmetric mixing rules
+         LAMBDA3 0.4955 # symmetric mixing rules
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
