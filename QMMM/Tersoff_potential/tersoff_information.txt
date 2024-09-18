@@ -769,6 +769,30 @@ Parameter	Si-O	Si-N	Si-H	O-N	O-H	N-H
 𝜇𝐼⁢𝐽-(𝜇𝐼+𝜇𝐽)/2	-0.30051	-0.19843	0.22168	3.50573	-0.22005	0.21563
 
 #-------------------------------------------------------------------------------
+# Ga,Si,C: https://ieeexplore.ieee.org/abstract/document/6330521
+
+Note: LAMBDA3 = lambda3 = 0.0 (tersoff1988)
+
+TABLE I. TERSOFF.ZBL POTENTIAL FUNCTION PARAMETERS FOR PURE SI, GA AND C
+Parameters Ga Si C
+m 1 1 1
+gamma 1 1 1
+lambda3 0 0 0
+c 7.6298e-2 1.0039e5 1.9981e4
+d 1.9796e1 1.6217e1 7.0340
+cos(theta0) 7.1459e-1 -5.9825e-1 -0.33953
+N 3.47290 7.8734e-1 9.9e-1
+beta 2.3586e-1 1.1e-6 4.1612e-6
+lambda2 [A^-1] 1.7154 1.7322 2.3064
+B [eV] 1.14786e2 4.7118e2 3.8963e2
+R 2.8 2.7 1.8
+D 0.1 0.15 0.15
+lambda1 [A^-1] 3.2834 2.4799 3.4653
+A [eV] 2.83982e3 1.8308e3 1.5448e3
+Zi 31 14 6
+Zj 31 14 6
+
+#-------------------------------------------------------------------------------
 # Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
 # Fe-C: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145
 

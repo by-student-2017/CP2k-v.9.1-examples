@@ -1,0 +1,64 @@
+       # Ga,Si,C: https://ieeexplore.ieee.org/abstract/document/6330521
+       #
+       &TERSOFF
+         ATOMS Ga Ga
+         A    2.83982e3
+         ALPHA 0.0
+         B    1.14786e2
+         BETA 2.3586e-1
+         BIGD 0.1
+         BIGR 2.8
+         C  7.6298e-2
+         D  1.9796e1
+         H  7.1459e-1
+         LAMBDA1 3.2834
+         LAMBDA2 1.7154
+         LAMBDA3 0.0
+         N 3.47290
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si Si
+         A    1.8308e3
+         ALPHA 0.0
+         B    4.7118e2
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.7
+         C  1.0039e5
+         D  1.6217e1
+         H -5.9825e-1
+         LAMBDA1 2.4799
+         LAMBDA2 1.7322
+         LAMBDA3 0.0
+         N 7.8734e-1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C C
+         A    1.5448e3
+         ALPHA 0.0
+         B    3.8963e2
+         BETA 4.1612e-6
+         BIGD 0.15
+         BIGR 1.8
+         C  1.9981e4
+         D  7.0340
+         H -0.33953
+         LAMBDA1 3.4653
+         LAMBDA2 2.3064
+         LAMBDA3 0.0
+         N 9.9e-1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD
