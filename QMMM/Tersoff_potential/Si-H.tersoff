@@ -1,0 +1,79 @@
+       # SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
+       # SiNH: https://doi.org/10.1063/1.370977
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.85
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         # kai(Si,H)=0.78
+         ATOMS Si H
+         A    398.4
+         ALPHA 0.0
+         B    111.93
+         BETA 1.1e-6
+         BIGD 0.131178
+         BIGR 1.600872
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 3.1339
+         LAMBDA2 1.85611
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         # kai(Si,H)=0.78
+         ATOMS H Si
+         A    398.4
+         ALPHA 0.0
+         B    111.93
+         BETA 4
+         BIGD 0.131178
+         BIGR 1.600872
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.1339
+         LAMBDA2 1.85611
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS H H
+         A    86.7120
+         ALPHA 0.0
+         B    43.5310
+         BETA 4
+         BIGD 0.10
+         BIGR 0.90
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.7879
+         LAMBDA2 1.9800
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF

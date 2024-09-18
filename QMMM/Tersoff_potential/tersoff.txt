@@ -94,6 +94,8 @@ Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: N = 1.0
 Note: BETA = gamma
 Note: LAMBDA3 = 2mu
+Note: (cos(theta)-cos(theta0))^2 in lammps or tersoff1989
+Note: (cos(theta)+h) in https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220 -> H (CP2k) = h*-1
 
 Table 1. Final parameter set of the analytic bond-order potential for iron.
 
@@ -314,7 +316,6 @@ This correlation is discussed for the specific case of a-C in Ref.
 # B-N: https://doi.org/10.1103/PhysRevB.96.184108
 #-------------------------------------------------------------------------------
 # B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
-
 #-------------------------------------------------------------------------------
 # As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
 
