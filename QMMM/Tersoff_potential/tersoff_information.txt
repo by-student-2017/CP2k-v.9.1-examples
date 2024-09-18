@@ -39,14 +39,14 @@
 # Tersoff + ZBL
 # Fe: https://www.ctcms.nist.gov/potentials/Download/2020--Byggmastar-J-Granberg-F--Fe/1/Fe_Byggmastar.tersoff.zbl
 # Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
+#  (related paper: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145 )
 #  (related paper: https://ir.library.osaka-u.ac.jp/repo/ouka/all/88030/32658_Dissertation.pdf (Japanese))
-# Fe-C: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145
 # Fe-Cr: https://doi.org/10.1016/j.commatsci.2021.110840
-# Fe-Cr-C: https://iopscience.iop.org/article/10.1088/0953-8984/25/44/445401
-# Fe,Cr,C: https://www.mdpi.com/1996-1944/14/17/4925
-# Fe-O: https://www.ctcms.nist.gov/potentials/Download/2019--Byggmastar-J-Nagel-M-Albe-K-et-al--Fe-O/1/Fe-O.tersoff.zbl
+# Fe-Cr-C (m=1,Albe): https://iopscience.iop.org/article/10.1088/0953-8984/25/44/445401
+# Fe,Cr,C (m=1,Albe): https://www.mdpi.com/1996-1944/14/17/4925
+# Fe-O (m=1,Albe): https://www.ctcms.nist.gov/potentials/Download/2019--Byggmastar-J-Nagel-M-Albe-K-et-al--Fe-O/1/Fe-O.tersoff.zbl
 #  https://iopscience.iop.org/article/10.1088/1361-648X/ab0931/meta
-# C,O,Si: https://pubs.acs.org/doi/full/10.1021/jp5098074
+# SiOC: https://pubs.acs.org/doi/full/10.1021/jp5098074
 # Si-C-He, Si-C-H: https://www.sciencedirect.com/science/article/pii/S2352179118301303
 # Si: https://doi.org/10.1016/j.molstruc.2013.12.013
 # Si-C: https://doi.org/10.1016/S0168-583X(02)01825-6
@@ -704,7 +704,47 @@ kai(Si-N) 0.65
 kai(N-N) 0.0
 
 #-------------------------------------------------------------------------------
+# SiOC: https://pubs.acs.org/doi/full/10.1021/jp5098074
 
+Note: LAMBDA1 = λ
+Note: LAMBDA2 = μ
+Note: LAMBDA3 = 0.0 # The value of lambda3 is not specified. It is probably 0.0.
+Note: m = 3 (tersoff1988: lambda3 = 0.0 or m = 3.0) # Since lambda3 is cubed, m=3 is highly likely.
+
+Table 1. Tersoﬀ/ZBL Parameters for Carbon, Oxygen, and Silicon
+Tersoff parameter	C	O	Si
+A (eV)	1.3936e3	1.88255e3	1.8308e3
+B (eV)	3.467e2	2.18787e2	4.7118e2
+λ (A^-1)	3.4879	4.17108	2.4799
+μ (A^-1)	2.2119	2.35692	1.7322
+β	1.5724e-7	1.1632e-7	1.1e-6
+n	7.2751e-1	1.04968	7.8734e-1
+c	3.8049e4	6.46921e4	1.0039e5
+d	4.384	4.11127	1.6217e1
+h	-5.7058e-1	-8.45922e-1	-5.9825e-1
+R (A)	1.8	1.7	2.7
+S (A)	2.1	2.0	3.0
+Zi	6	8	14
+
+For the Fermilike function, A_F and r_c values are 14 A^–1 and 0.95 A, respectively. 
+The argon atom interaction with silica and carbon atoms is modeled with the ZBL potential.
+
+#-------------------------------------------------------------------------------
+# Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
+# Fe-C: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145
+
+Table 1. Parameters in the Tersoff/zbl Potential
+ 	m	γ	λ3 (1/Å)	c	d	n	β	λ2 (1/Å)	B (eV)	R (Å)	D (Å)	λ1 (1/Å)	A (eV)
+C–C	1	2.0813E-4	0	330	3.5	1	1	2.6888	1397.1	1.85	0.15	3.2803	2605.8
+Fe–Fe	1	1.15751E-2	0	1.2899	0.34132	1	1	1.3764	67.865	3.15	0.2	2.8481	953.95
+C–Fe	1	7.485571E-2	0	1.1167	0.94663	0	0	2.1534	357.34	2.6	0.2	3.0801	1035.5
+
+
+Table 2. Parameters in the Morse Potential
+	D0 (eV)	A (A–1)	r0 (Å)
+Ti–Ti (28)	0.65400	1.21180	3.34760
+Ti–C (29)	0.82930	1.48870	2.67230
+Ti–Fe (28)	0.81620	1.44800	2.91400
 
 #-------------------------------------------------------------------------------
 # Fe-Cr-C: https://doi.org/10.1063/1.4904447
