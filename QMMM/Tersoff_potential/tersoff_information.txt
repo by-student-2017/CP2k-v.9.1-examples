@@ -45,10 +45,10 @@
 # Fe-Cr-C (m=1,Albe): https://iopscience.iop.org/article/10.1088/0953-8984/25/44/445401
 # Fe,Cr,C (m=1,Albe): https://www.mdpi.com/1996-1944/14/17/4925
 # Fe-O (m=1,Albe): https://www.ctcms.nist.gov/potentials/Download/2019--Byggmastar-J-Nagel-M-Albe-K-et-al--Fe-O/1/Fe-O.tersoff.zbl
+# Si-C-He, Si-C-H(m=1,Albe): https://www.sciencedirect.com/science/article/pii/S2352179118301303
 #  https://iopscience.iop.org/article/10.1088/1361-648X/ab0931/meta
 # SiOC: https://pubs.acs.org/doi/full/10.1021/jp5098074
 # SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
-# Si-C-He, Si-C-H: https://www.sciencedirect.com/science/article/pii/S2352179118301303
 # Si: https://doi.org/10.1016/j.molstruc.2013.12.013
 # Si-C: https://doi.org/10.1016/S0168-583X(02)01825-6
 # Si-C: https://iopscience.iop.org/article/10.1088/0953-8984/25/23/235402/meta

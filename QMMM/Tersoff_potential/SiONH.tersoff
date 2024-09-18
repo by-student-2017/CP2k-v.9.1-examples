@@ -5,6 +5,7 @@
        #  large compared with the i-j distance. However, in multicomponent systems, e_ijk is generally set to unity.
        #  e_ijk = exp[mu^3 * (r_ij - r_ik)^3], pure Si
        #  e_ijk = 1, mixed systems # -> lambda3 = 0.0
+       # Note: The items marked as "Original" in the table may be correct using the above formula, but the results should be checked.
        #
        # kai(Si,N)=0.67, kai(Si,H)=0.78, others=1.0
        &TERSOFF

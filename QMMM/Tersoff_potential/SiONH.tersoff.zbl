@@ -5,6 +5,9 @@
        #  large compared with the i-j distance. However, in multicomponent systems, e_ijk is generally set to unity.
        #  e_ijk = exp[mu^3 * (r_ij - r_ik)^3], pure Si
        #  e_ijk = 1, mixed systems # -> lambda3 = 0.0
+       # Note: Since it uses equation (11), it is likely that in order to use it, CP2k will need to be rewritten or 
+       #   the parameters will need to be refitted to tersoff1989, which is used in CP2k.
+       #   e_ijk(I,J,K) = exp[(mu_IJ*r_ij - mu_IK*r_ik)^mI]   (11)
        #
        &TERSOFF
          ATOMS Si Si
