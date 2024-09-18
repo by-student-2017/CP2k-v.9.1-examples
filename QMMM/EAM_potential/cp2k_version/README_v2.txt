@@ -39,6 +39,7 @@ list of the included elements.
 EAM_code
 ------------
 Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr
+W -> W0
 
 Note
 ------------
