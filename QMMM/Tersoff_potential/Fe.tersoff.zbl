@@ -1,0 +1,30 @@
+       # Fe: https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220
+       # Fe: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
+       # format of a single entry (one or more lines):
+       #   element 1, element 2, element 3, m, gamma, lambda3, c, d, costheta0, n, beta, lambda2, B, R, D, lambda1, A
+       #   Fe	Fe	Fe	1	0.0115751	0	1.2898716	0.3413219	0.26	1	1	1.3763540363	67.8647722799	3.15	0.2	2.8481044096	953.9485925552
+       #   Z_i, Z_j, ZBLcut, ZBLexpscale
+       #   26	26	0.95	2.9
+       &TERSOFF
+         ATOMS Fe Fe
+         A    953.9485925552
+         ALPHA 0.0
+         B    67.8647722799
+         BETA 0.0115751
+         BIGD 0.2
+         BIGR 3.15
+         C  1.2898716
+         D  0.3413219
+         H  0.26
+         LAMBDA1 2.8481044096
+         LAMBDA2 1.3763540363
+         LAMBDA3 0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD
