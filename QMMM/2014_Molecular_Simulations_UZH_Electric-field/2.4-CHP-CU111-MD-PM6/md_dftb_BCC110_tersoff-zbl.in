@@ -1,0 +1,421 @@
+####################################
+## CHP (PM6) on BCC(110) (EAM)   ###
+####################################
+
+@SET LIBDIR ../cp2klib
+
+&GLOBAL
+  FLUSH_SHOULD_FLUSH T
+  PRINT_LEVEL LOW
+  ! the project name is made part of most output files... useful to keep order 
+  PROJECT QMMM_MIXED
+  #RUN_TYPE ENERGY # GEO_OPT, CELL_OPT, ENERGY, ENERGY_FORCE or MD, (no check: MC, TAMC, TMC, NEGF)
+  RUN_TYPE MD
+  WALLTIME 860000
+&END GLOBAL
+
+&MOTION
+  &GEO_OPT
+    OPTIMIZER LBFGS
+  &END GEO_OPT
+  #
+  &CELL_OPT
+    EXTERNAL_PRESSURE 1.0 0.0 0.0  0.0 1.0 0.0  0.0 0.0 1.0
+    KEEP_ANGLES TRUE
+    KEEP_SYMMETRY .TRUE.
+    KEEP_SPACE_GROUP .TRUE.
+    EPS_SYMMETRY 1.0E-4
+  &END CELL_OPT
+  #
+  &CONSTRAINT
+    &FIXED_ATOMS
+      COMPONENTS_TO_FIX XYZ
+      LIST 61..348
+      EXCLUDE_MM .FALSE.
+      EXCLUDE_QM .TRUE.
+    &END FIXED_ATOMS
+  &END CONSTRAINT
+  #
+  &MD
+    #ENSEMBLE NVE ! definition of microcanonical ensemble
+    ENSEMBLE NVT
+    ! Activation energy (TS - Reactant)
+    ! Around 10 kcal/mol: Reacts at room temperature
+    ! Around 20 kcal/mol: Takes a very long time at room temperature
+    ! Around 25 kcal/mol: Reacts when heated in an oil bath (<=273+220 K)
+    ! Over 30 kcal/mol: Almost never occurs
+    ! Temperature in electrolysis: (<=273+85 K)
+    #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
+    #TEMPERATURE [K] 493  ! oil bath
+    TEMPERATURE [K] 358  ! electrolysis
+    TIMESTEP [fs] 0.5    ! The length of an integration step: 0.25 - 1.0 [fs] (ReaxFF 0.25 [fs])
+    STEPS 500000           ! The number of MD steps to perform 
+    &THERMOSTAT
+      # Nose-Hoover-Chain thermostat
+      TYPE NOSE
+      &NOSE
+        LENGTH 3
+        # Note (TIMECON): If temperature control is not possible, reduce the value to a lower value than the current value.
+        TIMECON 50.0 # 25.0 - 1000.0 [fs], TIMECON = 100.0*TIMESTEP [fs]
+        YOSHIDA 3
+      &END NOSE
+    &END THERMOSTAT
+  &END MD
+  #
+  &PRINT
+    &TRAJECTORY
+      FORMAT XYZ # ATOMIC, DCD, DCD_ALIGNED_CELL, PDB, XMOL or XYZ
+      &EACH
+        MD 100
+      &END
+      #FILENAME MDtraj
+    &END TRAJECTORY
+    &RESTART OFF
+    &END
+    &VELOCITIES OFF
+    &END VELOCITIES
+    &FORCES OFF
+    &END FORCES
+    &CELL
+      &EACH
+        MD 100
+      &END EACH
+      COMMON_ITERATION_LEVELS 3
+    &END CELL
+  &END PRINT
+&END MOTION
+
+&MULTIPLE_FORCE_EVALS
+  MULTIPLE_SUBSYS .TRUE.
+  FORCE_EVAL_ORDER 2 3
+&END
+
+########################
+## How to mix QM & MM ##
+########################
+
+&FORCE_EVAL
+  METHOD MIXED
+  &MIXED
+    MIXING_TYPE GENMIX       # User defines how to couple force evals
+    &GENERIC                 # Here: simply add energies together
+      ERROR_LIMIT 1.0E-10
+      MIXING_FUNCTION E1+E2 
+      VARIABLES E1 E2
+    &END GENERIC
+    &MAPPING
+       &FORCE_EVAL_MIXED
+         &FRAGMENT 1         # Atoms of CHP molecule
+            1 60
+         &END
+         &FRAGMENT 2         # Atoms of Fe(111) slab
+            # FCC (111), BCC(110)
+            61 1788
+         &END
+       &END FORCE_EVAL_MIXED
+       &FORCE_EVAL 1         # MM description of Fe(111) + interaction with CHP
+         DEFINE_FRAGMENTS 1
+       &END
+       &FORCE_EVAL 2         # QM description of CHP
+         DEFINE_FRAGMENTS 1 2
+       &END
+    &END MAPPING
+  &END MIXED
+
+  &SUBSYS
+    &CELL
+      # FCC (Ca, Sr, Rh, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb)
+      #ABC  40.764229 39.715716 70.
+      #
+      # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
+       ABC  41.7607676925 39.6089603006 70.0
+      # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+  
+  STRESS_TENSOR ANALYTICAL
+  
+  ! In this example, ZBL correction is used.  The effect of charge is taken into account by ZBL correction. 
+  ! Therefore, "&IMAGE_CHARGE", which creates the mirror charge, is disabled by commenting it with "#" or "!".
+  #&QMMM
+  #  &IMAGE_CHARGE
+  #    MM_ATOM_LIST 1501..1788
+  #    EXT_POTENTIAL 0.0
+  #  &END IMAGE_CHARGE
+  #&END QMMM
+  
+&END FORCE_EVAL
+
+
+#######################
+## QM - CHP with PM6 ##
+#######################
+
+&FORCE_EVAL
+  METHOD Quickstep
+  &DFT
+    #! DFTB
+    #&MGRID
+    #  ! PW cutoff ... depends on the element (basis) too small cutoffs lead to the eggbox effect.
+    #  ! certain calculations (e.g. geometry optimization, vibrational frequencies,
+    #  ! NPT and cell optimizations, need higher cutoffs)
+    #  CUTOFF [Ry] 300
+    #  REL_CUTOFF 50 # 60
+    #  NGRIDS 4 # 5
+    #&END MGRID
+    #
+    &QS
+      ! use density functional tight binding methos to calculate energy and forces
+      #! DFTB
+      #METHOD DFTB # DFTB or PM6, etc
+      #&DFTB
+      #  SELF_CONSISTENT  F ! use of self-consistent method
+      #  DISPERSION TRUE
+      #  #DISPERSION       F ! dispersion correction
+      #  #ORTHOGONAL_BASIS F ! Assume orthogonal basis set 
+      #  #DO_EWALD         F ! Use Ewald type method instead of direct sum for Coulomb interaction
+      #  ! Specify file that contains the names of Slater-Koster tables
+      #  ! distance dependent interaction parameter file
+      #  &PARAMETER
+      #    #PARAM_FILE_PATH  /usr/share/cp2k/DFTB/scc
+      #    #PARAM_FILE_NAME  scc_parameter
+      #    #DISPERSION_PARAMETER_FILE /usr/share/cp2k/dftd3.dat
+      #    #
+      #    PARAM_FILE_PATH  ./dftb_params/scc
+      #    PARAM_FILE_NAME  scc_parameter
+      #    ! Name of file with UFF parameters that will be used for the dispersion correction
+      #    #UFF_FORCE_FIELD  uff_table
+      #    DISPERSION_PARAMETER_FILE dftd3.dat
+      #  &END PARAMETER
+      #&END DFTB
+      #
+      METHOD PM6 # DFTB or PM6, etc
+      EXTRAPOLATION ASPC
+      EXTRAPOLATION_ORDER 3
+      &SE
+        &COULOMB
+          CUTOFF [angstrom] 20.0
+        &END
+        &EXCHANGE
+          CUTOFF [angstrom] 20.0
+        &END
+      &END SE
+    &END QS
+    &SCF
+      MAX_SCF 20
+      SCF_GUESS ATOMIC
+      #EPS_SCF 3.0E-7 ! DFTB
+      EPS_SCF 1.0E-6 ! PM6
+      &OT
+        ! PM6
+        PRECONDITIONER NONE
+        MINIMIZER DIIS
+        N_DIIS 7
+        
+        #! DFTB-D3
+        #! Type of preconditioner to be used with all minimization schemes.
+        #! Based on H-eS cholesky inversion, efficiencient and cheaper to construct. Recommended for large systems.
+        #PRECONDITIONER FULL_SINGLE_INVERSE
+        #! Most effective state selective preconditioner based on diagonalization, requires the ENERGY_GAP parameter to be an underestimate of the HOMO-LUMO gap. 
+        ##PRECONDITIONER FULL_ALL
+        #! Cholesky inversion of S and T, fast construction, robust, and relatively good, use for very large systems.
+        ##PRECONDITIONER FULL_KINETIC # In the DFTB case, failed
+        ##ENERGY_GAP 0.001 # (default: 0.001)
+        ##STEPSIZE 0.4 # (default: 0.4)
+        #MINIMIZER CG
+      &END
+      &OUTER_SCF
+        MAX_SCF 8
+        EPS_SCF 1.0E-6
+      &END
+      &PRINT
+        &RESTART OFF
+        &END
+      &END
+    &END SCF
+
+    &POISSON
+      PERIODIC NONE           # no interaction between replica
+      #POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      POISSON_SOLVER IMPLICIT
+      #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model (failed)
+      &WAVELET
+        SCF_TYPE 60
+      &END WAVELET
+    &END POISSON
+    !
+    ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
+    !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
+    &SCCS
+      RELATIVE_PERMITTIVITY 78.4
+      METHOD ANDREUSSI
+      MAX_ITER 100
+      EPS_SCCS 1.0E-6
+    &END SCCS
+    #&SCRF ! failed
+    #  EPS_OUT 78.4
+    #  LMAX 3
+    #&END SCRF
+    #&COSMO ! not use v.9.1
+    #  EPSILON 78.4
+    #&END COSMO
+  &END DFT
+
+  &SUBSYS
+    &CELL
+      ABC  25 25 25
+      PERIODIC NONE
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./../xyz/chp.xyz
+      COORDINATE xyz
+      &CENTER_COORDINATES
+      &END
+    &END
+  &END SUBSYS
+  
+  &EXTERNAL_POTENTIAL
+    FUNCTION (A/B)*Z
+    VALUES [eV] 0.2 [angstrom] 1.0
+    PARAMETERS A B
+  &END EXTERNAL_POTENTIAL
+  
+  STRESS_TENSOR ANALYTICAL
+  
+&END FORCE_EVAL
+
+ 
+################################################
+## MM - BCC(110) (EAM) + interaction with CHP ##
+################################################
+
+&FORCE_EVAL
+  METHOD FIST
+  &MM
+   &FORCEFIELD
+     &SPLINE
+       # Note: EPS_SPLINE >= 1.7E-6 (EAM 10000 points) - 1.0E-7 (EAM 20000 points) - 1.7E-8 (EAM 30000 points) - 1.0E-8 (EAM 40000 points)
+       EPS_SPLINE 1.0E-6
+       EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
+     &END SPLINE
+     &CHARGE              # Setting all charges to zero
+       ATOM Fe
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM H
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
+       ATOM C
+       CHARGE 0.0
+     &END CHARGE
+     &NONBONDED           # interaction described in section 2.1
+&LENNARD-JONES		
+  ATOMS	H	Fe
+  EPSILON	0.023916521	
+  SIGMA	2.582715384	
+  RCUT	15	
+&END LENNARD-JONES		
+		
+&LENNARD-JONES		
+  ATOMS	C	Fe
+  EPSILON	0.036945906	
+  SIGMA	3.012574015	
+  RCUT	15	
+&END LENNARD-JONES		
+       #
+       &LENNARD-JONES      # Turning off Lennard-Jones
+         atoms C H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT  15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms H H
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       &LENNARD-JONES
+         atoms C C
+         EPSILON 0.0
+         SIGMA 3.166
+         RCUT 15
+       &END LENNARD-JONES
+       #&EAM                  # embedded atom for Fe-Fe interaction
+       #  atoms Fe Fe
+       #  #PARM_FILE_NAME ${LIBDIR}/CU.pot
+       #  #PARM_FILE_NAME ${LIBDIR}/Cu-Cu_Zhou04.eam.alloy
+       #  PARM_FILE_NAME ${LIBDIR}/Fe-Fe_Zhou04.eam.alloy
+       #&END EAM
+       #
+       # https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
+       # format of a single entry (one or more lines):
+       #   element 1, element 2, element 3, m, gamma, lambda3, c, d, costheta0, n, beta, lambda2, B, R, D, lambda1, A
+       #   Fe	Fe	Fe	1	0.0115751	0	1.2898716	0.3413219	0.26	1	1	1.3763540363	67.8647722799	3.15	0.2	2.8481044096	953.9485925552
+       #   Z_i, Z_j, ZBLcut, ZBLexpscale
+       #   26	26	0.95	2.9
+       &TERSOFF
+         ATOMS Fe Fe
+         A    953.9485925552
+         ALPHA 0.0
+         B    67.8647722799
+         BETA 0.0115751
+         BIGD 0.2
+         BIGR 3.15
+         C  1.2898716
+         D  0.3413219
+         H  0.26
+         LAMBDA1 2.8481044096
+         LAMBDA2 1.3763540363
+         LAMBDA3 0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+     &END NONBONDED
+     #
+     ! In this example, ZBL correction is used.  The effect of charge is taken into account by ZBL correction. 
+     ! Therefore, "&IMAGE_CHARGE", which creates the mirror charge, is disabled by commenting it with "#" or "!".
+     ZBL_SCATTERING T
+     #
+   &END FORCEFIELD
+
+   &POISSON
+     &EWALD
+       EWALD_TYPE none
+     &END EWALD
+   &END POISSON
+  &END MM
+
+  &SUBSYS
+    &CELL
+      # FCC (Ca, Sr, Rh, Ir, Ni, Pd, Pt, Cu, Ag, Au, Al, Pb, Yb)
+      #ABC  40.764229 39.715716 70.
+      #
+      # BCC (V, Nb, Ta, Cr, Mo, W, Mn, Fe)
+       ABC  41.7607676925 39.6089603006 70.0
+      # HCP (Mg, Sc, Y, Ti, Zr, Hf, Tc, Re, Ru, Os, Co, Zn, Cd)
+    &END CELL
+    &TOPOLOGY
+      COORD_FILE_NAME ./../xyz/chp_on_Fe.xyz
+      COORDINATE XYZ
+      CONNECTIVITY OFF
+    &END TOPOLOGY
+  &END SUBSYS
+  
+  &EXTERNAL_POTENTIAL
+    FUNCTION (A/B)*Z
+    VALUES [eV] 0.2 [angstrom] 1.0
+    PARAMETERS A B
+  &END EXTERNAL_POTENTIAL
+  
+  STRESS_TENSOR ANALYTICAL
+  
+&END FORCE_EVAL
