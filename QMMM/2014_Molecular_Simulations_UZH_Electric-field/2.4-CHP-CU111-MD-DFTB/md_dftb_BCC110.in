@@ -298,7 +298,7 @@
    &FORCEFIELD
      &SPLINE
        # Note: EPS_SPLINE >= 1.7E-6 (EAM 10000 points) - 1.0E-7 (EAM 20000 points) - 1.7E-8 (EAM 30000 points) - 1.0E-8 (EAM 40000 points)
-       EPS_SPLINE 1.0E-7
+       EPS_SPLINE 1.0E-6
        EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
      &END SPLINE
      &CHARGE              # Setting all charges to zero
