@@ -194,7 +194,7 @@
       #  &END PARAMETER
       #&END DFTB
       #
-      METHOD PM6 # DFTB or PM6, etc
+      METHOD PM6 # DFTB, PM6, or PDG, etc
       EXTRAPOLATION ASPC
       EXTRAPOLATION_ORDER 3
       &SE
