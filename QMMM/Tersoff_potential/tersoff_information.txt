@@ -47,6 +47,7 @@
 # Fe-O (m=1,Albe): https://www.ctcms.nist.gov/potentials/Download/2019--Byggmastar-J-Nagel-M-Albe-K-et-al--Fe-O/1/Fe-O.tersoff.zbl
 #  https://iopscience.iop.org/article/10.1088/1361-648X/ab0931/meta
 # SiOC: https://pubs.acs.org/doi/full/10.1021/jp5098074
+# SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
 # Si-C-He, Si-C-H: https://www.sciencedirect.com/science/article/pii/S2352179118301303
 # Si: https://doi.org/10.1016/j.molstruc.2013.12.013
 # Si-C: https://doi.org/10.1016/S0168-583X(02)01825-6
@@ -126,7 +127,7 @@ Table 1. Final parameter set of the analytic bond-order potential for iron.
 Parameter Value
 D0 (eV) 1.5
 r0 (A) 2.29 
-beta (A^−1) 1.4
+beta (A^-1) 1.4
 S 2.0693109
 gamma 0.0115751
 c 1.2898716
@@ -160,13 +161,13 @@ Parameter values for Tersoff potential.
 Si Cu
 A(eV) 1830.8 803.12
 B(eV) 471.18 43.25
-lambda(A^−1) 2.4799 2.83
-mu(A^−1) 1.7322 1.412
+lambda(A^-1) 2.4799 2.83
+mu(A^-1) 1.7322 1.412
 beta 1.1000E-6 0
 n 0.78734 1
 c 1.0039E5 0
 d 16.217 1
-h −0.59825 0
+h -0.59825 0
 R(A) 2.85 3.075
 D(A) 0.15 0.255
 
@@ -182,14 +183,14 @@ Optimized Tersoff-type EIAP parameters obtained by using the PSO method for the 
 S–S	Zr–S	S–Zr
 A (eV) 	6079.509429 	6791.038544 	6791.038544 
 B (eV) 	3469.937384 	2571.342251 	2571.342251 
-λ1 (A^−1) 	4.097976 	2.682439 	2.682439 
-λ2 (A^−1) 	5.406911 	2.262903 	2.262903 
-λ3 (A^−1) 	1 	3.220796 	2.360710 
+λ1 (A^-1) 	4.097976 	2.682439 	2.682439 
+λ2 (A^-1) 	5.406911 	2.262903 	2.262903 
+λ3 (A^-1) 	1 	3.220796 	2.360710 
 n 	1 	16.561661 	17.871640 
 β 	0 	3.025912e–6 	3.785443e–6 
 c 	1 	61 909.933731 	52 020.863988 
 d 	1 	11.669713 	18.592590 
-h 	1 	−0.227712 	−0.179199 
+h 	1 	-0.227712 	-0.179199 
 R (A) 	2.40 	3.40 	3.40 
 D (A) 	0.10 	0.20 	0.20 
 
@@ -224,15 +225,15 @@ Note: LAMBDA1 = λ1, LAMBDA2 = λ2, LAMBDA3 = λ3, BETA = β
 TABLE II: Parameters for the Tersoff potential of zirconia.
 
 two-body
-A (eV) B (eV) λ1 (A^−1) λ2 (A^−1) R (A) S (A)
+A (eV) B (eV) λ1 (A^-1) λ2 (A^-1) R (A) S (A)
 2023.6003 17.3376 3.0500 1.5250 2.85 3.15
 
 three-body for Zr
-m λ3 (A^−1) β n c d h
+m λ3 (A^-1) β n c d h
 3 0 0.2403 5.0062 0.0 0.0 0.0
 
 three-body for O
-m λ3 (A^−1) β n c d h
+m λ3 (A^-1) β n c d h
 3 0 0.0601 2.2611 2.0204 0.1093 -0.4112
 #-------------------------------------------------------------------------------
 # C-Ru: https://arxiv.org/abs/1403.2101
@@ -261,7 +262,7 @@ d 0.33781624 0.22311075 0.19358384
 h -0.173648 -0.17 -0.17
 Rc (A) 3.0 2.6 2.6
 Dc (A) 0.2 0.3 0.6
-β (A^−1) 1.0 1.0 1.0
+β (A^-1) 1.0 1.0 1.0
 n 1 1 1
 µ 0.0 0.0 0.0
 
@@ -277,13 +278,13 @@ d 6.28433
 h 0.5556 # <- The paper probably has the wrong sign. Correct -0.5556 (Compared with data for lammps at NIST.)
 Rc (A) 2.0
 Dc (A) 0.15
-β (A^−1) 1.0
+β (A^-1) 1.0
 n 1
 µ 0.0
 
 pw: present work, The parameters have been fitted to a small
 data base which includes dimer, NaCl (B1) and CsCl (B2) type unit
-cells with fictitious bond distances (d ≈ 1.7 − 2.0, A). For fitting
+cells with fictitious bond distances (d ≈ 1.7 - 2.0, A). For fitting
 the PONTIFIX [27] code has been utilized. The C-C Abell-Tersoff
 potential is also given (Erhart-Albe parameterization [26] of the
 Albe-potential, parameters are converted into the form suitable for
@@ -425,7 +426,7 @@ S	3.6	3.6	3.6	3.6	3.6	3.6	3.7	3.7	3.6497
 n	0.6087913	3.4729041	6.31747	3.40223	6.3319	3.43739	6.086505	3.1224134	6.086505
 c	5.2731318	0.0762977	1.226302	0.084215	1.30678	0.080256	0.074836	85.207584	0.074836
 d	0.7510266	19.796474	0.790396	19.2626	91.4432	195.295	19.569127	12.816499	19.569127
-h	0.1529235	7.1459174	−0.518489	7.39228	−0.56983	7.2691	−0.659266	−0.5643909	−0.659266
+h	0.1529235	7.1459174	-0.518489	7.39228	-0.56983	7.2691	-0.659266	-0.5643909	-0.659266
 
 
 Table 2. Net charge density on each atom estimated from the Mulliken population analysis of band calculations
@@ -551,8 +552,8 @@ B (eV) 325.11
 lambda 3.4207
 mu 1.898
 n 0.766
-h −0.6281
-beta 1.59365e−4
+h -0.6281
+beta 1.59365e-4
 c 1.0021e5
 d 16.7601
 R 2.5
@@ -571,11 +572,11 @@ fluorite structure, oxygen atoms deviate from their positions in fluorite, u = 0
 Table 1. Adjusted Tersoff parameters for RuO2 in the fluorite structure.
 A (eV) 6865.8
 B (eV) 409.5
-λ (A^−1) 3.4390
-µ (A^−1) 1.7322
+λ (A^-1) 3.4390
+µ (A^-1) 1.7322
 n 0.78734
-h −0.59825
-β 1.100e−6
+h -0.59825
+β 1.100e-6
 c 1.0039e5
 d 16.217
 R (A) 2.5
@@ -590,13 +591,13 @@ Tersoff
 parameters Tersoff-4a Tersoff-ARK
 A [eV] 1.8308e3 1.8308e3
 B [eV] 4.7118e2 4.7118e2
-labmda [A^−1] 2.4799 2.4799
-mu[A^−1] 1.7322 1.7322
-beta 1.1e−6 1.15e−6
+labmda [A^-1] 2.4799 2.4799
+mu[A^-1] 1.7322 1.7322
+beta 1.1e-6 1.15e-6
 n 0.78734 0.988
 c 1.0039e5 1.0039e5
 d 16.217 16.217
-h −0.59825 −0.74525
+h -0.59825 -0.74525
 R [A]2.7 2.7
 S [A] 3.0 3.0
 
@@ -730,6 +731,46 @@ For the Fermilike function, A_F and r_c values are 14 A^–1 and 0.95 A, respect
 The argon atom interaction with silica and carbon atoms is modeled with the ZBL potential.
 
 #-------------------------------------------------------------------------------
+# SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
+
+Note: In the original Tersoff potential for silicon,  the term e_ijk was designed to represent the fact that 
+  the influence of a third atom k on the i-j bond decreases, when the i-k distance becomes 
+  large compared with the i-j distance. However, in multicomponent systems, e_ijk is generally set to unity.
+  e_ijk = exp[mu^3 * (r_ij - r_ik)^3], pure Si
+  e_ijk = 1, mixed systems # -> lambda3 = 0.0
+
+TABLE II.
+Comparison of parameters of the Original and ZRL potentials (see text). Values are in eV, A, and A^-1.
+Silicon	Oxygen	Nitrogen	Hydrogen
+Parameter	Original	ZRL	Original	ZRL	Original	ZRL	Original	ZRL
+𝐴𝐼	1830.8	1803.79	3331.0	3331.06	6368.14	6368.21	86.7120	86.9235
+𝐵𝐼	471.18	471.195	261.2	260.476	511.760	511.205	43.5310	42.9815
+𝜆𝐼	2.4799	2.62392	5.36	3.78336	5.43673	5.60181	3.7879	3.85393
+𝜇𝐼	1.7322	1.88891	2.68	3.34402	2.70000	3.16170	1.9800	1.97047
+𝑅𝐼	2.70	2.44809	2.70	2.26069	1.80	1.75256	0.80	0.77985
+𝑆𝐼	3.00	3.08354	3.00	3.31294	2.10	2.41523	1.00	0.88641
+𝛽𝐼	1.0999e-6	1.0999e-6	2	1.0027	5.2938e-3	4.4422e-3	4	4
+𝑛𝐼	0.78734	0.78766	1	3.98638	1.33041	2.42635	1	1.00921
+𝑚𝐼	3	3	1	1	1	1	1	1
+𝑐𝐼	1.0039e5	1.0039e5	0	0a	2.03120e4	2.2955e4	0	0
+𝑑𝐼	16.217	16.21701	1	1	25.5103	24.78674	1	1
+ℎ𝐼	-0.59826	-0.56239	0	-0.52909	-0.56239	-0.52909	1	1
+𝜒Si,𝐼	1	1	1	1	0.67	1	0.78	1
+𝜒O,𝐼	1	1	1	1	1	1	1	1
+𝜒N,𝐼	0.67	1	1	1	0	1	0.76	1
+𝜒H,𝐼	0.78	1	1	1	0.76	1	1	1
+
+
+TABLE III.
+Coefficients of mixed terms [Eq. (2)] of the ZRL potential expressed in terms of their deviation from 
+the combination rule in Eqs. (4) and (5). The values for the inverse decay lengths are given in A^-1.
+Parameter	Si-O	Si-N	Si-H	O-N	O-H	N-H
+𝐴𝐼⁢𝐽/(𝐴𝐼⁢𝐴𝐽)1/2	1.04752	0.58647	1.52966	1.26527	0.99853	0.83424
+𝐵𝐼⁢𝐽/(𝐵𝐼⁢𝐵𝐽)1/2	0.99978	1.10293	1.68173	1.00075	1.01274	0.97237
+𝜆𝐼⁢𝐽-(𝜆𝐼+𝜆𝐽)/2	0.74003	-0.73787	-0.15903	2.34383	1.03160	0.07480
+𝜇𝐼⁢𝐽-(𝜇𝐼+𝜇𝐽)/2	-0.30051	-0.19843	0.22168	3.50573	-0.22005	0.21563
+
+#-------------------------------------------------------------------------------
 # Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
 # Fe-C: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145
 
@@ -782,7 +823,7 @@ p [1/A] 	1.24328337 	0.94408543 	1.31524339 	0.00000113 	0.77698255 	0.00000000
 a 	1.94912051 	0.81351925 	0.21969819 	0.58258009 	0.20852683 	0.00020813 
 c 	516.631230 	613.629240 	1134.43688 	667.144758 	0.00000000 	330.000000 
 d 	19.7763588 	17.1140666 	31.7598073 	22.1238197 	… 	3.50000000 
-h 	−0.12926865 	−0.20621532 	−0.11230184 	−0.14354177 	… 	−1.00000000 
+h 	-0.12926865 	-0.20621532 	-0.11230184 	-0.14354177 	… 	-1.00000000 
 #-----------------------------------
 
 #-----------------------------------
@@ -810,7 +851,7 @@ p [1/A] 	1.19107593 	0.77893906 	1.02295139 	0.00000102 	1.12179318 	0.00000000
 a 	2.30133008 	0.97636141 	0.19439212 	0.96604860 	0.25943745 	0.00020813 
 c 	248.640955 	335.308947 	1077.84210 	436.882649 	0.00000000 	330.000000 
 d 	11.3948015 	12.5632431 	23.4441963 	21.2876623 	… 	3.50000000 
-h 	−0.23114796 	−0.06147392 	−0.01013638 	−0.53329684 	… 	−1.00000000 
+h 	-0.23114796 	-0.06147392 	-0.01013638 	-0.53329684 	… 	-1.00000000 
 #-----------------------------------
 #-------------------------------------------------------------------------------
 # C-Cu: https://doi.org/10.1016/j.carbon.2014.06.024

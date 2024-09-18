@@ -6,82 +6,83 @@
        #  e_ijk = exp[mu^3 * (r_ij - r_ik)^3], pure Si
        #  e_ijk = 1, mixed systems # -> lambda3 = 0.0
        #
-       # kai(Si,N)=0.67, kai(Si,H)=0.78, others=1.0
        &TERSOFF
          ATOMS Si Si
-         A    1830.8
+         A    1803.79
          ALPHA 0.0
-         B    471.18
+         B    471.195
          BETA 1.1e-6
-         BIGD 0.15
-         BIGR 2.85
+         BIGD 0.317725
+         BIGR 2.765815
          C  100390
-         D  16.217
-         H -0.59825
-         LAMBDA1 2.4799
-         LAMBDA2 1.73222
+         D  16.21701
+         H -0.56239
+         LAMBDA1 2.62392
+         LAMBDA2 1.88891
          LAMBDA3 0.0
-         N 0.78734
+         N 0.78766
          RCUT 10
          #
        &END TERSOFF
        
-       # kai(O,X)=1.0
        &TERSOFF
          ATOMS O O
-         A    3331.0
+         A    3331.06
          ALPHA 0.0
-         B    261.2
-         BETA 2
-         BIGD 0.15
-         BIGR 2.85
+         B    260.476
+         BETA 1.0027
+         BIGD 0.526125
+         BIGR 2.786815
          C  0
          D  1
-         H  0
-         LAMBDA1 5.36
-         LAMBDA2 2.68
+         H -0.52909
+         LAMBDA1 3.78336
+         LAMBDA2 3.34402
          LAMBDA3 0.0
-         N 1.0
+         N 3.98638
          RCUT 10
          #
        &END TERSOFF
        
-       # kai(Si,N)=0.67, kai(N,N)=0.0, kai(H,N)=0.76, others=1.0
        &TERSOFF
          ATOMS N N
-         A    6368.14
+         A    6368.21
          ALPHA 0.0
-         B    0.0 # (For non-N atom pairs, use the mixing rules in "B = 511.760".)
-         BETA 5.2938e−3
-         BIGD 0.15
-         BIGR 1.95
-         C  0
-         D  1
-         H  0
-         LAMBDA1 5.43673
-         LAMBDA2 2.70000
+         B    0.0 # (For non-N atom pairs, use the mixing rules in "B = 511.205".)
+         BETA 4.4422e−3
+         BIGD 0.331335
+         BIGR 2.083895
+         C  2.2955e4
+         D  24.78674
+         H -0.52909
+         LAMBDA1 5.60181
+         LAMBDA2 3.16170
          LAMBDA3 0.0
-         N 1.33041
+         N 2.42635
          RCUT 10
          #
        &END TERSOFF
        
-       # kai(Si,H)=0.78, kai(N,H)=0.76, others=1.0
        &TERSOFF
          ATOMS H H
-         A    86.7120
+         A    86.9235
          ALPHA 0.0
-         B    43.5310
+         B    42.9815
          BETA 4
-         BIGD 0.10
-         BIGR 0.90
+         BIGD 0.05328
+         BIGR 0.83313
          C  0
          D  1
          H  1
-         LAMBDA1 3.7879
-         LAMBDA2 1.9800
+         LAMBDA1 3.85393
+         LAMBDA2 1.97047
          LAMBDA3 0.0
-         N 1.0
+         N 1.00921
          RCUT 10
          #
        &END TERSOFF
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD
