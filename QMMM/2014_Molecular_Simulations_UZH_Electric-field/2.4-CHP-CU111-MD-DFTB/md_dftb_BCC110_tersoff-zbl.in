@@ -140,8 +140,9 @@
   
   STRESS_TENSOR ANALYTICAL
   
-  ! In this example, ZBL correction is used.  The effect of charge is taken into account by ZBL correction. 
-  ! Therefore, "&IMAGE_CHARGE", which creates the mirror charge, is disabled by commenting it with "#" or "!".
+  ! If &IMAGE_CHARGE is enabled, double counting can occur when dealing with short distance interactions, 
+  ! such as collisions, that are within about 1 Angstrom.
+  ! The same results should be obtained if you are not dealing with short-distance interactions such as within about 1 Angstrom.
   #&QMMM
   #  &IMAGE_CHARGE
   #    MM_ATOM_LIST 1501..1788
@@ -381,6 +382,9 @@
      #
      ! In this example, ZBL correction is used.  The effect of charge is taken into account by ZBL correction. 
      ! Therefore, "&IMAGE_CHARGE", which creates the mirror charge, is disabled by commenting it with "#" or "!".
+     ! If &IMAGE_CHARGE is enabled, double counting can occur when dealing with short distance interactions, 
+     ! such as collisions, that are within about 1 Angstrom.
+     ! The same results should be obtained if you are not dealing with short-distance interactions such as within about 1 Angstrom.
      ZBL_SCATTERING T
      #
    &END FORCEFIELD
