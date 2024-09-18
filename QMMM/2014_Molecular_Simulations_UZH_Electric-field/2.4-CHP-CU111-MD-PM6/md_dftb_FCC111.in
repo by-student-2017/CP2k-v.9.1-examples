@@ -1,6 +1,6 @@
-###################################
+####################################
 ## CHP (PM6) on FCC(111) (EAM)   ###
-###################################
+####################################
 
 @SET LIBDIR ../cp2klib
 
@@ -135,12 +135,12 @@
   
   STRESS_TENSOR ANALYTICAL
   
-  #&QMMM
-  #  &IMAGE_CHARGE
-  #    MM_ATOM_LIST 1501..1788
-  #    EXT_POTENTIAL 0.0
-  #  &END IMAGE_CHARGE
-  #&END QMMM
+  &QMMM
+    &IMAGE_CHARGE
+      MM_ATOM_LIST 1501..1788
+      EXT_POTENTIAL 0.0
+    &END IMAGE_CHARGE
+  &END QMMM
   
 &END FORCE_EVAL
 
@@ -282,9 +282,9 @@
 &END FORCE_EVAL
 
  
-###############################################
+################################################
 ## MM - FCC(111) (EAM) + interaction with CHP ##
-###############################################
+################################################
 
 &FORCE_EVAL
   METHOD FIST
