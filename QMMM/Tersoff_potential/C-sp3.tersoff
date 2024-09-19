@@ -1,15 +1,15 @@
+       # C-sp3: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
        &TERSOFF
-         # a-C: In this input file, the graphite sheets are pulled apart.
          ATOMS C C
          A    1393.6
          ALPHA 0.0
-         B    346.74
-         BETA 1.5724E-7
+         B    393.747
+         BETA 1.5724e-7
          BIGD 0.15
          BIGR 1.95
-         C  38049
-         D  4.3484
-         H -0.57058
+         C  38049.0
+         D  1.5724e7
+         H  −0.7482
          LAMBDA1 3.4879
          LAMBDA2 2.2119
          LAMBDA3 0.0
@@ -17,6 +17,7 @@
          RCUT 10
          #
        &END TERSOFF
+       
        
        &TERSOFF
          ATOMS H H
@@ -37,12 +38,11 @@
          #
        &END TERSOFF
        
-       
        &TERSOFF
          ATOMS H C
          A    384.63
          ALPHA 0.0
-         B    117.12
+         B    124.743
          BETA 4
          BIGD 0.106
          BIGR 1.343
@@ -52,23 +52,22 @@
          LAMBDA1 3.74506
          LAMBDA2 2.107
          LAMBDA3 0.0
-         N 1
+         N 1.0
          RCUT 10
          #
        &END TERSOFF
-       
        
        &TERSOFF
          ATOMS C H
          A    384.63
          ALPHA 0.0
-         B    117.12
-         BETA 1.5724E-7
+         B    124.743
+         BETA 1.5724e-7
          BIGD 0.106
          BIGR 1.343
-         C  38049
-         D  4.3484
-         H -0.57058
+         C  38049.0
+         D  1.5724e7
+         H  −0.7482
          LAMBDA1 3.74506
          LAMBDA2 2.107
          LAMBDA3 0.0

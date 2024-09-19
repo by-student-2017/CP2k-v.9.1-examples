@@ -7,7 +7,9 @@
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
 # C-Ru: https://arxiv.org/abs/1403.2101
+# a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
 # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
+# C-sp3: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 # B-N-C: https://iopscience.iop.org/article/10.1143/JJAP.39.L48/meta
 # B-N: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
 # B-N: https://doi.org/10.1103/PhysRevB.96.184108
@@ -28,7 +30,6 @@
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
 # Si: https://iopscience.iop.org/article/10.1088/1361-6528/abf26d/meta
 # Si: https://iopscience.iop.org/article/10.1088/1361-648X/ab5c5f/meta
-# Si: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
 # Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
 # Si-O: https://www.researchgate.net/publication/229329783_Interatomic_potential_for_Si-O_systems_using_Tersoff_parameterization
@@ -340,6 +341,21 @@ the remaining parameters are A = 87.193 eV, B = 39.520 eV, lambda = 4.0042 A^-1 
 
 This correlation is discussed for the specific case of a-C in Ref.
 1. For further discussion of this correlation, see, e.g., J.J. Gilman, 3. Appl. Phys. 46, 5110 (1975); A. P. Gerk, 3. Mater. Sci. 12, 735 (1977)
+
+#-------------------------------------------------------------------------------
+# C-sp3: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
+
+Table 1 Parameters for the new optimized Tersoff-sp3, the original Tersoff-1989 and Tersoff-2010 potential
+Tersoff-sp3	Tersoff-1989	Tersoff-2010
+H	−0.7482	−0.57058	−0.930
+B/eV	393.747	346.7	430.0
+Unaltered parameters
+A = 1393.6 eV, lambda1 = 3.4879 A^-1
+lambda2 = 2.2119 A^-1, lambda3 = 0.0000 A^-1
+n = 0.72751, c = 38049.0
+beta = 1.5724e-7, d = 4.3484
+R = 1.95 A, D = 0.15 A
+
 #-------------------------------------------------------------------------------
 # B-N-C: https://iopscience.iop.org/article/10.1143/JJAP.39.L48/meta
 #-------------------------------------------------------------------------------
@@ -986,8 +1002,6 @@ kai 1.0 1.0
 # Si: https://iopscience.iop.org/article/10.1088/1361-6528/abf26d/meta
 #-------------------------------------------------------------------------------
 # Si: https://iopscience.iop.org/article/10.1088/1361-648X/ab5c5f/meta
-#-------------------------------------------------------------------------------
-# Si: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 #-------------------------------------------------------------------------------
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
 # Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
