@@ -808,14 +808,14 @@ parameters N-N[14] In-In[18] Al-Al[30] Al-N[24] In-N[24]
 13 x      1.0000 1.1300 1.0000 1.0000 1.0000
 
 #-------------------------------------------------------------------------------
-# Al-As: https://doi.org/10.1016/0168-583X(95)80144-B
+# Al-Ga-As: https://doi.org/10.1016/0168-583X(95)80144-B
 
 Note: A = De/(S-1) * exp(-beta*sqrt(2.0*S)*-re) = De/(S-1) * exp(lambda1*re)
 Note: B = S*De/(S-1) * exp(-beta*sqrt(2.0/S)*-re) = S*De/(S-1) * exp(lambda2*re)
 Note: LAMBDA1 = beta*sqrt(2.0*S)
 Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: LAMBDA3 = lambda
-Note: m = 3 (tersoff1989 (Tersoff_2 in lammps))
+Note: m = 3 (tersoff1988 (Tersoff_1 in lammps))
 
 Table 1 
 Improved parameter set for GaAs, AlAs 
@@ -833,6 +833,7 @@ R     3.6       3.5       3.6
 D     0.1       0.1       0.1
 
 
+Note: In the parameters of "[7] R. Smith Nucl. Instr. and Meth., B 67 (1992), p. 335", change only the lambda parameter.
 Table 2
 lambda value for Tersoff potentials
 i, j species lambda
@@ -842,7 +843,30 @@ Al-As 1.500
 Ga-Ga 1.491 
 As-As 1.729 
 Ga-As 1.723 
-Si-Si 1.732
+Si-Si 1.732 
+
+#--------------------------------------------------------
+[7] R. Smith Nucl. Instr. and Meth., B 67 (1992), p. 335
+
+The cutoff distance for the.potential was chosen 
+with R=3.5 ,A and D=0.1 A. 
+
+Table 2 
+Potential patlameters for As-As, Ga-Ga and Ga-As/As-Ga 
+As-As Ga-Ga Ga-As/As-Ga 
+c 5.2731318 0.07629773 0.07837998 
+d 0.75102662 19.796474 4.5049412 
+h 0.15292354 7.1459174 -3.4109679 
+n 0.60879133 3.4729041 5.5039372 
+beta 1.43553337 1.36741067 1.6137669 
+gamma 0.00748809 0.23586237 0.38090204 
+De [eV] 3.964 1.40 2.18 
+re [A] 2.1026 2.465 2.345 
+S 1.37912649 1.68257787 1.53511190
+#--------------------------------------------------------
+Note: "[4] tersoff1989"
+#--------------------------------------------------------
+
 
 #-------------------------------------------------------------------------------
 # As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N

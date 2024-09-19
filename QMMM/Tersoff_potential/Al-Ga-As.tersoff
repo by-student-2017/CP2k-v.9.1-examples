@@ -1,0 +1,118 @@
+       # Al-Ga-As: https://doi.org/10.1016/0168-583X(95)80144-B
+       # + [7] R. Smith Nucl. Instr. and Meth., B 67 (1992), p. 335
+       # + (Not [4]) Tersoff1988
+       #
+       &TERSOFF
+         ATOMS As As
+         A    1571.860841
+         ALPHA 0.0
+         B    546.4316579
+         BETA 0.00748809
+         BIGD 0.1
+         BIGR 3.5
+         C  5.2731318
+         D  0.75102662
+         H  0.15292354
+         LAMBDA1 2.384132239
+         LAMBDA2 1.728726303
+         LAMBDA3 1.5
+         N 0.60879133
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga Ga
+         A    993.8880943
+         ALPHA 0.0
+         B    136.1230323
+         BETA 0.23586237
+         BIGD 0.1
+         BIGR 3.5
+         C  0.07629773
+         D  19.796474
+         H  7.1459174
+         LAMBDA1 2.508427472
+         LAMBDA2 1.490824001
+         LAMBDA3 1.491
+         N 3.4729041
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al Al
+         A    492.7658759
+         ALPHA 0.0
+         B    23.03111693
+         BETA 0.316846
+         BIGD 0.1
+         BIGR 3.6
+         C  0.074836
+         D  19.569127
+         H -0.659266
+         LAMBDA1 2.585337338
+         LAMBDA2 0.927442672
+         LAMBDA3 1.5
+         N 6.086505
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Ga-As/As-Ga 
+       &TERSOFF
+         ATOMS Ga As
+         A    2543.297197
+         ALPHA 0.0
+         B    314.4596603
+         BETA 0.357192
+         BIGD 0.1
+         BIGR 3.5
+         C  1.226302
+         D  0.790396
+         H -0.518489
+         LAMBDA1 2.828092628
+         LAMBDA2 1.723011582
+         LAMBDA3 1.723
+         N 6.31741
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al As
+         A    2307.879401
+         ALPHA 0.0
+         B    219.1395956
+         BETA 0.330946
+         BIGD 0.1
+         BIGR 3.6
+         C  1.449752
+         D  0.828713
+         H -0.520946
+         LAMBDA1 2.809029579
+         LAMBDA2 1.55822945
+         LAMBDA3 1.5
+         N 4.047579
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.85
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 1.732
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
