@@ -20,7 +20,7 @@
 # III-V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
 # Al-As: https://doi.org/10.1016/0168-583X(95)80144-B
-# As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
+# In-Ga-As: https://doi.org/10.1016/0022-0248(95)80202-N
 # As-Ga: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.66.035205
 # In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
@@ -869,7 +869,7 @@ Note: "[4] tersoff1989"
 
 
 #-------------------------------------------------------------------------------
-# As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
+# In-Ga-As: https://doi.org/10.1016/0022-0248(95)80202-N
 
 Note: LAMBDA1 = lambda
 Note: LAMBDA2 = mu
@@ -1198,7 +1198,7 @@ Note: The shape of the fc is different. I'll list it here for reference.
 Abell-Tersoff-type BOP
 
 Note: beta = a for Tersoff1988 in CP2k (Tersoff_1 in lammps)
-Note: lambda3 = p^(1/3) for Tersoff1988 in CP2k (Tersoff_1 in lammps)
+Note: lambda3 = p
 Note: the form of Albe et al. when beta = 1 (use gamma instead) and m = 1 in lammps manual.
 
 #-----------------------------------
