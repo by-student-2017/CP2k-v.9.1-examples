@@ -1,4 +1,9 @@
-       # Al-N: https://doi.org/10.1002/pssa.201001086
+       # Al-N(m=3 or "m=1 and lambda3=0.0"): https://www.sciencedirect.com/science/article/pii/S0168583X2300469X
+       #   https://ars.els-cdn.com/content/image/1-s2.0-S0168583X2300469X-mmc1.pdf
+       # Note: Perhaps the Al-N and N-N are reversed in the supporting information of the paper.
+       #   This file has been corrected so that the bonding rules hold true.
+       #
+       # For confirmation, please refer to the literature "Al-N: https://doi.org/10.1002/pssa.201001086".
        #
        &TERSOFF
          ATOMS Al Al
@@ -57,4 +62,8 @@
          #
        &END TERSOFF
        
-       
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD
