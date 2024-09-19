@@ -47,7 +47,7 @@
          A    6368.21
          ALPHA 0.0
          B    0.0 # (For non-N atom pairs, use the mixing rules in "B = 511.205".)
-         BETA 4.4422e−3
+         BETA 4.4422e-3
          BIGD 0.331335
          BIGR 2.083895
          C  2.2955e4
@@ -82,13 +82,89 @@
        
        
        &TERSOFF
+         ATOMS Si O
+         A    2451.230858
+         ALPHA 0.0
+         B    350.3355375
+         BETA 0.0000011
+         BIGD 0.288464244
+         BIGR 2.915937136
+         C  100390
+         D  16.21701
+         H -0.56239
+         LAMBDA1 3.20364
+         LAMBDA2 2.616465
+         LAMBDA3 0.0
+         N 0.78766
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O Si
+         A    2451.230858
+         ALPHA 0.0
+         B    350.3355375
+         BETA 1.0027
+         BIGD 0.288464244
+         BIGR 2.915937136
+         C  0
+         D  1
+         H -0.52909
+         LAMBDA1 3.20364
+         LAMBDA2 2.616465
+         LAMBDA3 0.0
+         N 3.98638
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si N
+         A    3389.234946
+         ALPHA 0.0
+         B    490.7924612
+         BETA 0.0000011
+         BIGD 0.328834578
+         BIGR 2.400168595
+         C  100390
+         D  16.21701
+         H -0.56239
+         LAMBDA1 4.112865
+         LAMBDA2 2.525305
+         LAMBDA3 0.0
+         N 0.78766
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N Si
+         A    3389.234946
+         ALPHA 0.0
+         B    490.7924612
+         BETA 4.4422e-3
+         BIGD 0.328834578
+         BIGR 2.400168595
+         C  2.2955e4
+         D  24.78674
+         H -0.52909
+         LAMBDA1 4.112865
+         LAMBDA2 2.525305
+         LAMBDA3 0.0
+         N 2.42635
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
          ATOMS Si H
          A    395.969367584
          ALPHA 0.0
          B    142.311868418
          BETA 1.1e-6
-         BIGD 0.106
-         BIGR 1.343
+         BIGD 0.135773122
+         BIGR 1.517490527
          C  100390
          D  16.21701
          H -0.56239
@@ -106,13 +182,127 @@
          ALPHA 0.0
          B    142.311868418
          BETA 4
-         BIGD 0.106
-         BIGR 1.343
+         BIGD 0.135773122
+         BIGR 1.517490527
          C  0
          D  1
          H  0
          LAMBDA1 3.238925
          LAMBDA2 1.92969
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O N
+         A    4605.745282
+         ALPHA 0.0
+         B    364.9063354
+         BETA 1.0027
+         BIGD 0.306428997
+         BIGR 2.529539251
+         C  0
+         D  1
+         H -0.52909
+         LAMBDA1 4.692585
+         LAMBDA2 3.25286
+         LAMBDA3 0.0
+         N 3.98638
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N O
+         A    4605.745282
+         ALPHA 0.0
+         B    364.9063354
+         BETA 4.4422e-3
+         BIGD 0.306428997
+         BIGR 2.529539251
+         C  2.2955e4
+         D  24.78674
+         H -0.52909
+         LAMBDA1 4.692585
+         LAMBDA2 3.25286
+         LAMBDA3 0.0
+         N 2.42635
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O H
+         A    538.0960824
+         ALPHA 0.0
+         B    105.8094948
+         BETA 1.0027
+         BIGD 0.117551083
+         BIGR 1.600513322
+         C  0
+         D  1
+         H -0.52909
+         LAMBDA1 3.818645
+         LAMBDA2 2.657245
+         LAMBDA3 0.0
+         N 3.98638
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS H O
+         A    538.0960824
+         ALPHA 0.0
+         B    105.8094948
+         BETA 4
+         BIGD 0.117551083
+         BIGR 1.600513322
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.818645
+         LAMBDA2 2.657245
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N H
+         A    744.0074609
+         ALPHA 0.0
+         B    148.2307583
+         BETA 4.4422e-3
+         BIGD 0.147051025
+         BIGR 1.316124981
+         C  2.2955e4
+         D  24.78674
+         H -0.52909
+         LAMBDA1 4.72787
+         LAMBDA2 2.566085
+         LAMBDA3 0.0
+         N 2.42635
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS H N
+         A    744.0074609
+         ALPHA 0.0
+         B    148.2307583
+         BETA 4
+         BIGD 0.147051025
+         BIGR 1.316124981
+         C  0
+         D  1
+         H  0
+         LAMBDA1 4.72787
+         LAMBDA2 2.566085
          LAMBDA3 0.0
          N 1.0
          RCUT 10
