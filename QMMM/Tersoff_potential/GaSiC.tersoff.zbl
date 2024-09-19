@@ -1,4 +1,5 @@
        # Ga,Si,C: https://ieeexplore.ieee.org/abstract/document/6330521
+       # Ga-C: https://doi.org/10.1016/j.nimb.2015.05.023 (mixing rules: kai(X,Y)=1.0)
        #
        &TERSOFF
          ATOMS Ga Ga
@@ -17,6 +18,52 @@
          N 3.47290
          RCUT 10
          #
+       &END TERSOFF
+       
+       # Not mentioned in the paper. Assume the value of element "Ga" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS Ga Si
+         A    2280.162813
+         ALPHA 0.0
+         B    232.5615348
+         BETA 0.23586
+         BIGD 0.221616768
+         BIGR 7.308562513
+         C  7.6298e-2
+         D  1.9796e1
+         H  7.1459e-1
+         LAMBDA1 2.88165
+         LAMBDA2 1.7238
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
+       &END TERSOFF
+       
+       # Not mentioned in the paper. Assume the value of element "Si" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS Si Ga
+         A    2280.162813
+         ALPHA 0.0
+         B    232.5615348
+         BETA 1.1e-6
+         BIGD 0.221616768
+         BIGR 7.308562513
+         C  1.0039e5
+         D  1.6217e1
+         H -5.9825e-1
+         LAMBDA1 2.88165
+         LAMBDA2 1.7238
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
        &END TERSOFF
        
        &TERSOFF
@@ -38,6 +85,52 @@
          #
        &END TERSOFF
        
+       # Not mentioned in the paper. Assume the value of element "Ga" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS Ga C
+         A    2094.505654
+         ALPHA 0.0
+         B    211.4806591
+         BETA 0.23586
+         BIGD 0.264001523
+         BIGR 5.964738317
+         C  7.6298e-2
+         D  1.9796e1
+         H  7.1459e-1
+         LAMBDA1 3.37435
+         LAMBDA2 2.0109
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
+       &END TERSOFF
+       
+       # Not mentioned in the paper. Assume the value of element "G" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS C Ga
+         A    2094.505654
+         ALPHA 0.0
+         B    211.4806591
+         BETA 4.1612e-6
+         BIGD 0.264001523
+         BIGR 5.964738317
+         C  1.9981e4
+         D  7.0340
+         H -0.33953
+         LAMBDA1 3.37435
+         LAMBDA2 2.0109
+         LAMBDA3 0.0
+         N 9.9e-1
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
+       &END TERSOFF
+       
        &TERSOFF
          ATOMS C C
          A    1.5448e3
@@ -55,6 +148,52 @@
          N 9.9e-1
          RCUT 10
          #
+       &END TERSOFF
+       
+       # Not mentioned in the paper. Assume the value of element "Si" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS Si C
+         A    1681.731203
+         ALPHA 0.0
+         B    428.4692094
+         BETA 1.1e-6
+         BIGD 0.153107949
+         BIGR 2.204327098
+         C  1.0039e5
+         D  1.6217e1
+         H -5.9825e-1
+         LAMBDA1 2.9726
+         LAMBDA2 2.0193
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
+       &END TERSOFF
+       
+       # Not mentioned in the paper. Assume the value of element "G" is "BETA,C,D,H,and N".
+       &TERSOFF
+         ATOMS C Si
+         A    1681.731203
+         ALPHA 0.0
+         B    428.4692094
+         BETA 4.1612e-6
+         BIGD 0.153107949
+         BIGR 2.204327098
+         C  1.9981e4
+         D  7.0340
+         H -0.33953
+         LAMBDA1 2.9726
+         LAMBDA2 2.0193
+         LAMBDA3 0.0
+         N 9.9e-1
+         RCUT 10
+         # Not mentioned in the paper. Could be "BETA,C,D,H,N = 1,0,1,0,1e-6".
+         # In lammps, n = 0.0 does not seem to result in NAN, but other codes do not. 
+         # Therefore, a sufficiently small value is set to 1e-6, which is the number of significant digits of a float. 
+         # If the code is designed for doubles, it can be set to 1e-12 to 1e-16.
        &END TERSOFF
        
      &END NONBONDED
