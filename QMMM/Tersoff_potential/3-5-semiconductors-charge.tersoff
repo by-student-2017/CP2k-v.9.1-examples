@@ -1,0 +1,208 @@
+       # III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+       #
+     # Al-As case
+     &CHARGE
+       ATOM Al
+       CHARGE 3.0
+     &END CHARGE
+     
+     &CHARGE
+       ATOM Si
+       CHARGE 0.0
+     &END CHARGE
+     
+     # Ga-As case
+     &CHARGE
+       ATOM Ga
+       CHARGE 3.0
+     &END CHARGE
+     
+     &CHARGE
+       ATOM Ge
+       CHARGE 0.0
+     &END CHARGE
+     
+     # Al-As or Ga-As case
+     &CHARGE
+       ATOM As
+       CHARGE -3.0
+     &END CHARGE
+     
+     # In-As case
+     &CHARGE
+       ATOM In
+       CHARGE 3.0
+     &END CHARGE
+     
+     &NONBONDED
+       &TERSOFF
+         ATOMS As As
+         A    4773.163
+         ALPHA 0.0
+         B    81.32
+         BETA 0.0074881
+         BIGD 0.1
+         BIGR 3.5
+         C  5.2731318
+         D  0.7510266
+         H  0.1529235
+         LAMBDA1 3.4841
+         LAMBDA2 1.7154
+         LAMBDA3 0.0
+         N 0.6087913
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga Ga
+         A    2839.821
+         ALPHA 0.0
+         B    114.786
+         BETA 0.2358624
+         BIGD 0.1
+         BIGR 3.5
+         C  0.0762977
+         D  19.796474
+         H  7.1459174
+         LAMBDA1 3.2834
+         LAMBDA2 1.7154
+         LAMBDA3 0.0
+         N 3.4729041
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga As
+         A    13287.605
+         ALPHA 0.0
+         B    13.187
+         BETA 0.357192
+         BIGD 0.1
+         BIGR 3.5
+         C  1.226302
+         D  0.790396
+         H -0.518489
+         LAMBDA1 4.5989
+         LAMBDA2 0.2493
+         LAMBDA3 0.0
+         N 6.31747
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In In
+         A    4403.956
+         ALPHA 0.0
+         B    329.104
+         BETA 2.10871
+         BIGD 0.1
+         BIGR 3.5
+         C  0.084215
+         D  19.2626
+         H  7.39228
+         LAMBDA1 2.9039
+         LAMBDA2 1.7978
+         LAMBDA3 0.0
+         N 3.40223
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In As
+         A    2246.55
+         ALPHA 0.0
+         B    417.665
+         BETA 0.38712
+         BIGD 0.1
+         BIGR 3.5
+         C  1.30678
+         D  91.4432
+         H -0.56983
+         LAMBDA1 2.5303
+         LAMBDA2 1.6712
+         LAMBDA3 0.0
+         N 6.3319
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In Ga
+         A    3296.817
+         ALPHA 0.0
+         B    195.282
+         BETA 0.70524
+         BIGD 0.1
+         BIGR 3.5
+         C  0.080256
+         D  195.295
+         H  7.2691
+         LAMBDA1 3.0987
+         LAMBDA2 1.8299
+         LAMBDA3 0.0
+         N 3.43739
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al Al
+         A    746.698
+         ALPHA 0.0
+         B    40.451
+         BETA 1.094932
+         BIGD 0.1
+         BIGR 3.6
+         C  0.074836
+         D  19.569127
+         H -0.659266
+         LAMBDA1 2.4647
+         LAMBDA2 0.9683
+         LAMBDA3 0.0
+         N 6.086505
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al As
+         A    6925.454
+         ALPHA 0.0
+         B    13.819
+         BETA 0.8901798
+         BIGD 0.1
+         BIGR 3.6
+         C  85.207584
+         D  12.816499
+         H -0.5643909
+         LAMBDA1 4.2256
+         LAMBDA2 0.3215
+         LAMBDA3 0.0
+         N 3.1224134
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al Ga
+         A    1221.284
+         ALPHA 0.0
+         B    69.958
+         BETA 1.094932
+         BIGD 0.10005
+         BIGR 3.54965
+         C  0.074836
+         D  19.569127
+         H -0.659266
+         LAMBDA1 2.7506
+         LAMBDA2 1.288
+         LAMBDA3 0.0
+         N 6.086505
+         RCUT 10
+         #
+       &END TERSOFF
+       
