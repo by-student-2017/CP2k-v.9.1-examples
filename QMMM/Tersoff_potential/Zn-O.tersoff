@@ -1,4 +1,5 @@
        # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
+       # Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
        &TERSOFF
          ATOMS Zn Zn
          A    2258.730853636288

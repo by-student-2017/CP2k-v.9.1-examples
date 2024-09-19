@@ -6,7 +6,6 @@
 # Fe-Cu: https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045016/meta
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
-# Zr-O (Ecoul): https://arxiv.org/abs/2007.13947
 # C-Ru: https://arxiv.org/abs/1403.2101
 # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
@@ -29,6 +28,7 @@
 # Si: https://iopscience.iop.org/article/10.1088/1361-648X/ab5c5f/meta
 # Si: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
+# Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
 # Si-O: https://www.researchgate.net/publication/229329783_Interatomic_potential_for_Si-O_systems_using_Tersoff_parameterization
 # Si-O: https://www.ctcms.nist.gov/potentials/Download/2007--Munetoh-S-Motooka-T-Moriguchi-K-Shintani-A--Si-O/1/2007_SiO.tersoff
 # Si-C: https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
@@ -82,6 +82,7 @@
 # Other potentials 2
 # Fe-Cr-C: https://doi.org/10.1063/1.4904447
 # Fe-Si (Elong=Ecoul+EvdW): https://arxiv.org/abs/1401.1310
+# Zr-O (Ecoul): https://arxiv.org/abs/2007.13947
 # C-Pt: https://openkim.org/files/MO_500121566391_002/Tersoff_AlbeNordlundAverback_2002_PtC.params
 # C-Cu: https://doi.org/10.1016/j.carbon.2014.06.024
 # Si-As, Si-Ga, Si-In: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.91.094108
@@ -620,6 +621,7 @@ kai 1.0 1.0
 # Si: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 #-------------------------------------------------------------------------------
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
+# Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
 
 # e1 e2 e3 m   gamma lambda3  c       d       costheta0 n       beta      lambda2 B                  R                  D                   lambda1 A
 
