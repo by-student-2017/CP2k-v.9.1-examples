@@ -15,14 +15,14 @@
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
 # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
 # Al-N: https://doi.org/10.1002/pssa.201001086
+# III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
 # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
+# III-V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
 # Al-As: https://doi.org/10.1016/0168-583X(95)80144-B
 # As-Ga-In: https://doi.org/10.1016/0022-0248(95)80202-N
 # As-Ga: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.66.035205
-# III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
 # In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
-# III-V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
 # RuO2 (fluorite structure): https://iopscience.iop.org/article/10.1088/0953-8984/13/16/301/meta
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
@@ -130,7 +130,7 @@ Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: N = 1.0
 Note: BETA = gamma
 Note: LAMBDA3 = 2mu
-Note: (cos(theta)-cos(theta0))^2 in lammps or tersoff1989
+Note: (cos(theta)-cos(theta0))^2 in lammps or tersoff1989 (Tersoff_2 in lammps)
 Note: (cos(theta)+h) in https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220 -> H (CP2k) = h*-1
 
 Table 1. Final parameter set of the analytic bond-order potential for iron.
@@ -354,7 +354,7 @@ This correlation is discussed for the specific case of a-C in Ref.
 #-------------------------------------------------------------------------------
 # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
 
-Note: m=3 (tersoff1988)
+Note: m=3 (tersoff1988 (Tersoff_1 in lammps))
 
 TABLE I. Optimized Tersoff-type empirical interatomic potential parameters obtained by using the PSO method for BN, AlN, and GaN.
 
@@ -382,7 +382,7 @@ Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: N = 1.0
 Note: BETA = gamma
 
-tersoff1988: lambda3 = 0.0 or m = 3.0
+tersoff1988 (Tersoff_1 in lammps): lambda3 = 0.0 or m = 3.0
 
 Note: In the formula of the paper, β appears together with ɤ. Looking at Al-Al[6], in this "Al-N" paper, β=1.0.
 
@@ -404,6 +404,40 @@ d             19.5691 0.2017 16.2170
 h             -0.6593 0.0452 -0.5980
 
 #-------------------------------------------------------------------------------
+# III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+
+Note: LAMBDA1 = λ
+Note: LAMBDA2 = μ
+Note: LAMBDA3 = 0.0
+Note: BETA = β
+Note: tersoff1989 (Tersoff_2 in lammps)
+
+Table 1. Parameters used for the MD simulation of III-V compound semiconductors
+
+As-As	Ga-Ga	Ga-As	In-In	In-As	In-Ga	Al-Al	Al-As	Al-Ga
+A (eV)	4773.163	2839.821	13287.605	4403.956	2246.55	3296.817	746.698	6925.454	1221.284
+B (eV)	81.32	114.786	13.187	329.104	417.665	195.282	40.451	13.819	69.958
+λ	3.4841	3.2834	4.5989	2.9039	2.5303	3.0987	2.4647	4.2256	2.7506
+μ	1.7154	1.7154	0.2493	1.7978	1.6712	1.8299	0.9683	0.3215	1.288
+R	3.4	3.4	3.4	3.4	3.4	3.4	3.5	3.5	3.4496
+S	3.6	3.6	3.6	3.6	3.6	3.6	3.7	3.7	3.6497
+β	0.0074881	0.2358624	0.357192	2.10871	0.38712	0.70524	1.094932	0.8901798	1.094932
+n	0.6087913	3.4729041	6.31747	3.40223	6.3319	3.43739	6.086505	3.1224134	6.086505
+c	5.2731318	0.0762977	1.226302	0.084215	1.30678	0.080256	0.074836	85.207584	0.074836
+d	0.7510266	19.796474	0.790396	19.2626	91.4432	195.295	19.569127	12.816499	19.569127
+h	0.1529235	7.1459174	-0.518489	7.39228	-0.56983	7.2691	-0.659266	-0.5643909	-0.659266
+
+
+Table 2. Net charge density on each atom estimated from the Mulliken population analysis of band calculations
+
+Substrate	Net charge (e)
+Si	0
+Ge	0
+GaAs	0.087
+AlAs	0.223
+InAs	0.499
+
+#-------------------------------------------------------------------------------
 # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
 
 Note: A = De/(S-1) * exp(-beta*sqrt(2.0*S)*-re) = De/(S-1) * exp(lambda1*re)
@@ -412,7 +446,7 @@ Note: LAMBDA1 = beta*sqrt(2.0*S)
 Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: LAMBDA3 = lambda
 Note: BETA = gamma
-Note: m = 3 (tersoff1988: lambda3 = 0.0 or m = 3.0)
+Note: m = 3 (tersoff1988 (Tersoff_1 in lammps): lambda3 = 0.0 or m = 3.0)
 
 TABLE II.
 Parameters for III-V zinc blende semiconductors.
@@ -445,6 +479,45 @@ d	0.891376	0.725308	0.831225	0.839761	1.39907	1.20819
 n	6.15189	9.74096	2.66213	4.60221	1.8926	122.43
 gamma	0.24139	0.30813	0.19987	0.363018	0.304347	0.604408
 lambda	1.80993	1.59607	1.99072	0.968688	2.47677	0.955563
+
+#-------------------------------------------------------------------------------
+# III-V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
+
+Note: A = De/(S-1) * exp(-β*sqrt(2.0*S)*-re) = De/(S-1) * exp(lambda1*re)
+Note: B = S*De/(S-1) * exp(-β*sqrt(2.0/S)*-re) = S*De/(S-1) * exp(lambda2*re)
+Note: LAMBDA1 = β*sqrt(2.0*S)
+Note: LAMBDA2 = β*sqrt(2.0/S)
+Note: LAMBDA3 = λ
+Note: BETA = γ
+Note: m = 3 (tersoff1988 (Tersoff_1 in lammps))
+
+Table 1. This table lists all input parameter sets for modeling 
+InxGa1 − xAs, InxAl1 − xAs and GaAs1 − xSbx interactions, using the empirical Tersoff potential.
+
+Parameter	GaAs Powell [27]	AlAs Powell [26]	GaSb Powell [27]	 
+De	2.126 73	2.3347	2.170 13	 
+S	1.602 28	1.541 31	1.412 56	 
+re	2.352 18	2.368 43	2.485 49	 
+β	1.562 95	1.448 45	1.477 05	 
+γ	0.363 585	0.359 702	0.369 53	 
+n	5.436 47	8.369 92	4.616 25	 
+c	1.205 95	1.050 25	1.179 45	 
+d	0.800 338	0.850 097	0.842 774	 
+h	−0.442 817	−0.458 041	−0.429 907	 
+λ	1.830 57	1.384 02	1.8244
+
+
+Parameter	InAs Powell [27]	InAs Migliorato [22]	InAs Titantah [23]	InAs Adhikari [24]
+De	2.131 23	2.1643	1.729 05	5.172 83
+S	1.470 58	1.5	1.246 46	1.826 12
+re	2.499 36	2.4908	2.577 05	2.213 81
+β	1.498 07	1.453 72	1.475 71	1.3592
+γ	0.379 62	0.3779	0.0053	0.318 64
+n	7.038 76	7.141 47	0.83	0.756 169
+c	1.009 04	0.9989	0.8495	5.172 42
+d	0.823 55	0.826 08	0.4	1.665 97
+h	−0.462 05	−0.5145	−0.254	−0.541 33
+λ	1.4331	1.5	2.33	2.597 56
 
 #-------------------------------------------------------------------------------
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
@@ -481,7 +554,7 @@ Note: B = S*De/(S-1) * exp(-beta*sqrt(2.0/S)*-re) = S*De/(S-1) * exp(lambda2*re)
 Note: LAMBDA1 = beta*sqrt(2.0*S)
 Note: LAMBDA2 = beta*sqrt(2.0/S)
 Note: LAMBDA3 = lambda
-Note: m = 3 (tersoff1989)
+Note: m = 3 (tersoff1989 (Tersoff_2 in lammps))
 
 Table 1 
 Improved parameter set for GaAs, AlAs 
@@ -517,7 +590,7 @@ Note: LAMBDA1 = lambda
 Note: LAMBDA2 = mu
 Note: LAMBDA3 = 0.0
 Note: BETA = gamma
-Note: tersoff1989
+Note: tersoff1989 (Tersoff_2 in lammps)
 
 Table 1 
 Parameters of the potentials used in the MD simulations 
@@ -537,38 +610,28 @@ gammaij       0.0074881  0.23586  2.10871  0.35719   0.38712 0.70524
 [12] R = 3.5 [A], D = 0.1 [A]
 
 #-------------------------------------------------------------------------------
-# III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
+# In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
 
-Note: LAMBDA1 = λ
-Note: LAMBDA2 = μ
-Note: LAMBDA3 = 0.0
-Note: BETA = β =gamma_ij
-Note: tersoff1990
+Note: LAMBDA1 = lambda_ij
+Note: LAMBDA2 = mu_ij
+Note: LAMBDA3 = lambda
+Note: I don't know if the multiplier in equation (2) is an error in the paper.
+Note: m=3
 
-Table 1. Parameters used for the MD simulation of III-V compound semiconductors
-
-As-As	Ga-Ga	Ga-As	In-In	In-As	In-Ga	Al-Al	Al-As	Al-Ga
-A (eV)	4773.163	2839.821	13287.605	4403.956	2246.55	3296.817	746.698	6925.454	1221.284
-B (eV)	81.32	114.786	13.187	329.104	417.665	195.282	40.451	13.819	69.958
-λ	3.4841	3.2834	4.5989	2.9039	2.5303	3.0987	2.4647	4.2256	2.7506
-μ	1.7154	1.7154	0.2493	1.7978	1.6712	1.8299	0.9683	0.3215	1.288
-R	3.4	3.4	3.4	3.4	3.4	3.4	3.5	3.5	3.4496
-S	3.6	3.6	3.6	3.6	3.6	3.6	3.7	3.7	3.6497
-β	0.0074881	0.2358624	0.357192	2.10871	0.38712	0.70524	1.094932	0.8901798	1.094932
-n	0.6087913	3.4729041	6.31747	3.40223	6.3319	3.43739	6.086505	3.1224134	6.086505
-c	5.2731318	0.0762977	1.226302	0.084215	1.30678	0.080256	0.074836	85.207584	0.074836
-d	0.7510266	19.796474	0.790396	19.2626	91.4432	195.295	19.569127	12.816499	19.569127
-h	0.1529235	7.1459174	-0.518489	7.39228	-0.56983	7.2691	-0.659266	-0.5643909	-0.659266
-
-
-Table 2. Net charge density on each atom estimated from the Mulliken population analysis of band calculations
-
-Substrate	Net charge (e)
-Si	0
-Ge	0
-GaAs	0.087
-AlAs	0.223
-InAs	0.499
+TABLE I. Parameters for InAs used in the model potential, Eqs. (1)-(3)
+In-As parameters
+A 2291.292969
+B 424.874512
+lambda_ij 2.517917
+mu_ij 1.678611
+c 0.9989
+d 0.82608
+h -0.5145
+n 7.141472
+beta 0.3779
+lambda 1.5
+R 3.6
+S 3.8
 
 #-------------------------------------------------------------------------------
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
@@ -658,7 +721,7 @@ Zn Zn Zn 1 4.3909e-5 0.0 77.916 0.91344 -1.0 1 1 1.7965160854189726 115.15934319
 #-------------------------------------------------------------------------------
 # Si-O: https://www.researchgate.net/publication/229329783_Interatomic_potential_for_Si-O_systems_using_Tersoff_parameterization
 
-Note: tersoff1990
+Note: tersoff1989 (Tersoff_2 in lammps)
 Note: LAMBDA3 = 0.0
 Note: beta: The literature may be mislabeled.
 
@@ -712,7 +775,7 @@ kai(Si-O) = 1.17945
 #-------------------------------------------------------------------------------
 # Si-N: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.58.8323
 
-Note: tersoff1990
+Note: tersoff1989 (Tersoff_2 in lammps)
 Note: LAMBDA3 = 0.0
 Note: beta: The literature may be mislabeled.
 
@@ -742,7 +805,7 @@ kai(N-N) 0.0
 Note: LAMBDA1 = λ
 Note: LAMBDA2 = μ
 Note: LAMBDA3 = 0.0 # The value of lambda3 is not specified. It is probably 0.0.
-Note: m = 3 (tersoff1988: lambda3 = 0.0 or m = 3.0) # Since lambda3 is cubed, m=3 is highly likely.
+Note: m = 3 (tersoff1988 (Tersoff_1 in lammps): lambda3 = 0.0 or m = 3.0) # Since lambda3 is cubed, m=3 is highly likely.
 
 Table 1. Tersoﬀ/ZBL Parameters for Carbon, Oxygen, and Silicon
 Tersoff parameter	C	O	Si
@@ -804,7 +867,7 @@ Parameter	Si-O	Si-N	Si-H	O-N	O-H	N-H
 # GaSiC: https://ieeexplore.ieee.org/abstract/document/6330521
 # Ga-C: https://doi.org/10.1016/j.nimb.2015.05.023 (mixing rules: kai(X,Y)=1.0)
 
-Note: LAMBDA3 = lambda3 = 0.0 (tersoff1988)
+Note: LAMBDA3 = lambda3 = 0.0 (tersoff1988 (Tersoff_1 in lammps))
 
 TABLE I. TERSOFF.ZBL POTENTIAL FUNCTION PARAMETERS FOR PURE SI, GA AND C
 Parameters Ga Si C
@@ -849,8 +912,8 @@ Note: The shape of the fc is different. I'll list it here for reference.
 
 Abell-Tersoff-type BOP
 
-Note: beta = a for Tersoff1988 in CP2k
-Note: lambda3 = p^(1/3) for Tersoff1988 in CP2k
+Note: beta = a for Tersoff1988 in CP2k (Tersoff_1 in lammps)
+Note: lambda3 = p^(1/3) for Tersoff1988 in CP2k (Tersoff_1 in lammps)
 Note: the form of Albe et al. when beta = 1 (use gamma instead) and m = 1 in lammps manual.
 
 #-----------------------------------
