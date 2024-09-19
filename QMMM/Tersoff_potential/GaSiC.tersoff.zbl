@@ -1,5 +1,6 @@
        # Ga,Si,C: https://ieeexplore.ieee.org/abstract/document/6330521
        # Ga-C: https://doi.org/10.1016/j.nimb.2015.05.023 (mixing rules: kai(X,Y)=1.0)
+       # Note: BIGR = 1.95 for C-C, BIGR = 2.85 for Si-Si in https://doi.org/10.1063/1.373622 (Other parameters are the same)
        #
        &TERSOFF
          ATOMS Ga Ga

@@ -1,0 +1,71 @@
+       # Al-N(m=3 or "m=1 and lambda3=0.0"): https://www.sciencedirect.com/science/article/pii/S0168583X2300469X
+       #   https://ars.els-cdn.com/content/image/1-s2.0-S0168583X2300469X-mmc1.pdf
+       # Note: Perhaps the Al-N and N-N are reversed in the supporting information of the paper.
+       #   This file has been corrected so that the bonding rules hold true.
+       #
+       # For confirmation, please refer to the literature "Al-N: https://doi.org/10.1002/pssa.201001086".
+       #
+       &TERSOFF
+         ATOMS Be Be
+         A    222.675806324
+         ALPHA 0.0
+         B    35.4600794674
+         BETA 8.19587e-07
+         BIGD 0.15
+         BIGR 2.535
+         C  89.3894
+         D  0.27443
+         H -0.7606934
+         LAMBDA1 2.5273685129
+         LAMBDA2 1.33735938497
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O O
+         A    1388.08158139
+         ALPHA 0.0
+         B    527.650508973
+         BETA 0.82595
+         BIGD 0.2
+         BIGR 2.1
+         C  0.035608
+         D  0.046496
+         H -0.45056
+         LAMBDA1 3.84488368053
+         LAMBDA2 2.77328597845
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # Be O O = Be-O
+       # O Be Be = O-Be
+       &TERSOFF
+         ATOMS Be O
+         A    706.306379773
+         ALPHA 0.0
+         B    161.176273532
+         BETA 0.3940568
+         BIGD 0.2
+         BIGR 2.5
+         C  1.4 
+         D  0.821
+         H -0.488
+         LAMBDA1 3.20039381053
+         LAMBDA2 1.70651264292
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD

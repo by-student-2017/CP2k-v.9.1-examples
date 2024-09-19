@@ -4,6 +4,7 @@
 #-------------------------------------------------------------------------------
 # Fe: https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220
 # Fe-Cu: https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045016/meta
+# x Fe-Pt(Compared to the referenced paper, Pt and Fe are reversed.): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.76.155412
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
 # C-Ru: https://arxiv.org/abs/1403.2101
@@ -32,6 +33,7 @@
 # Si: https://iopscience.iop.org/article/10.1088/1361-648X/ab5c5f/meta
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
 # Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
+#  Please keep in mind that the "shell-model potential by Lewis and Catlow" can also reproduce phonons quite well.
 # Si-O: https://www.researchgate.net/publication/229329783_Interatomic_potential_for_Si-O_systems_using_Tersoff_parameterization
 # Si-O: https://www.ctcms.nist.gov/potentials/Download/2007--Munetoh-S-Motooka-T-Moriguchi-K-Shintani-A--Si-O/1/2007_SiO.tersoff
 # Si-C: https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
@@ -1238,6 +1240,39 @@ Zi 13 13 7
 Zj 13 7 7
 rc 1.3 0.7 0.95
 dc 10.986 21.9722 4.882
+
+#-------------------------------------------------------------------------------
+# Be-O(m=1,lambda3=0.0): https://www.ctcms.nist.gov/potentials/Download/2018--Byggmastar-J-Hodille-E-A-Ferro-Y-Nordlund-K--Be-O/1/Be-O.tersoff.zbl
+#   https://iopscience.iop.org/article/10.1088/1361-648X/aaafb3/meta
+
+Note: A = D0/(S-1) * exp(-beta*sqrt(2.0*S)*-r0) = D0/(S-1) * exp(lambda1*r0)
+Note: B = S*D0/(S-1) * exp(-beta*sqrt(2.0/S)*-r0) = S*D0/(S-1) * exp(lambda2*r0)
+Note: LAMBDA1 = beta*sqrt(2.0*S)
+Note: LAMBDA2 = beta*sqrt(2.0/S)
+Note: N = 1.0
+Note: H = h*-1
+Note: m = 1 (Albe form)
+Note: LAMBDA3 = α = 0.0 (tersoff1988 (Tersoff_1 in lammps) is OK)
+
+Table 2. Parameters for the Be-O ABOP. The Be-Be and O-O 
+parameters are taken from earlier studies (Be-Be version II from 
+[28]), and the Be-O parameters are fitted in this study
+
+Be-Be [28] O-O [29] Be-O
+D0 1.03571 5.166 6.783
+r0 2.07880 1.2075 1.41
+β 1.3 2.3090 1.6525
+S 1.88982 1.3864 1.8754
+γ 8.19587e−7 0.82595 0.3940568
+c 89.3894 0.035608 1.4
+d 0.27443 0.046496 0.821
+h 0.7606934 0.45056 0.488
+R 2.535 2.1 2.5
+D 0.15 0.2 0.2
+α 0.0 0.0 0.0
+ω 1.0 1.0 1.0
+bf 15.0 12.0 15.0
+rf 0.8 0.5 0.8
 
 #-------------------------------------------------------------------------------
 # Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
