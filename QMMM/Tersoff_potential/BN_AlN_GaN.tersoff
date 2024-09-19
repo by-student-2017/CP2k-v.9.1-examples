@@ -1,0 +1,115 @@
+       # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
+       #
+       &TERSOFF
+         ATOMS B N
+         A    1205.446293
+         ALPHA 0.0
+         B    436.750025
+         BETA 0.741928e−6
+         BIGD 0.10
+         BIGR 2.20
+         C  26320.215836
+         D  5.255691
+         H −0.870210
+         LAMBDA1 2.965635
+         LAMBDA2 2.060658
+         LAMBDA3 1.165721
+         N 1.156834
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N B
+         A    1205.446293
+         ALPHA 0.0
+         B    436.750025
+         BETA 1.335243e−6
+         BIGD 0.10
+         BIGR 2.20
+         C  27483.938392
+         D  7.783163
+         H −0.749741
+         LAMBDA1 2.965635
+         LAMBDA2 2.060658
+         LAMBDA3 1.108293
+         N 0.939775
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al N
+         A    1258.567263
+         ALPHA 0.0
+         B    453.228512
+         BETA 133047e−6
+         BIGD 0.15
+         BIGR 2.55
+         C  19110.741778
+         D  10.882090
+         H −0.972662
+         LAMBDA1 2.434869
+         LAMBDA2 1.717680
+         LAMBDA3 1.186759
+         N 1.220882
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N Al
+         A    1258.567263
+         ALPHA 0.0
+         B    453.228512
+         BETA 2.496023e−6
+         BIGD 0.15
+         BIGR 2.55
+         C  27568.039128
+         D  8.292436
+         H −0.816226
+         LAMBDA1 2.434869
+         LAMBDA2 1.717680
+         LAMBDA3 1.100709
+         N 0.761872
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga N
+         A    2249.391746
+         ALPHA 0.0
+         B    764.751142
+         BETA 2.143554e−6
+         BIGD 0.15
+         BIGR 2.65
+         C  45996.528912
+         D  13.083985
+         H −0.990019
+         LAMBDA1 2.652624
+         LAMBDA2 1.963739
+         LAMBDA3 1.453060
+         N 0.761872
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N Ga
+         A    2249.391746
+         ALPHA 0.0
+         B    764.751142
+         BETA 2.642801e−6
+         BIGD 0.15
+         BIGR 2.65
+         C  44736.208668
+         D  12.497037
+         H −0.693793
+         LAMBDA1 2.652624
+         LAMBDA2 1.963739
+         LAMBDA3 1.453060
+         N 1.070552
+         RCUT 10
+         #
+       &END TERSOFF
