@@ -79,6 +79,46 @@
          RCUT 10
          #
        &END TERSOFF
+       
+       
+       &TERSOFF
+         ATOMS Si H
+         A    395.969367584
+         ALPHA 0.0
+         B    142.311868418
+         BETA 1.1e-6
+         BIGD 0.106
+         BIGR 1.343
+         C  100390
+         D  16.21701
+         H -0.56239
+         LAMBDA1 3.238925
+         LAMBDA2 1.92969
+         LAMBDA3 0.0
+         N 0.78766
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS H Si
+         A    395.969367584
+         ALPHA 0.0
+         B    142.311868418
+         BETA 4
+         BIGD 0.106
+         BIGR 1.343
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.238925
+         LAMBDA2 1.92969
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
      &END NONBONDED
      
      ZBL_SCATTERING T
