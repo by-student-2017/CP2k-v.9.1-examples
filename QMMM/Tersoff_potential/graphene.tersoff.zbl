@@ -1,0 +1,26 @@
+       # Graphene(m=3): https://pubs.acs.org/doi/full/10.1021/jp208049t
+       #
+       &TERSOFF
+         ATOMS C C
+         A    1393.6
+         ALPHA 0.0
+         B    346.7 
+         BETA 1.5724e-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.57058
+         LAMBDA1 3.4879
+         LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+     &END NONBONDED
+     
+     ZBL_SCATTERING T
+     
+   &END FORCEFIELD
