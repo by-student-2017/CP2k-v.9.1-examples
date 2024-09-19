@@ -509,32 +509,276 @@ Note: BETA = γ
 Note: m = 3 (tersoff1988 (Tersoff_1 in lammps))
 
 Table 1. This table lists all input parameter sets for modeling 
-InxGa1 − xAs, InxAl1 − xAs and GaAs1 − xSbx interactions, using the empirical Tersoff potential.
+InxGa1−xAs, InxAl1−xAs and GaAs1−xSbx interactions, using the empirical Tersoff potential.
 
 Parameter	GaAs Powell [27]	AlAs Powell [26]	GaSb Powell [27]	 
-De	2.126 73	2.3347	2.170 13	 
-S	1.602 28	1.541 31	1.412 56	 
-re	2.352 18	2.368 43	2.485 49	 
-β	1.562 95	1.448 45	1.477 05	 
-γ	0.363 585	0.359 702	0.369 53	 
-n	5.436 47	8.369 92	4.616 25	 
-c	1.205 95	1.050 25	1.179 45	 
-d	0.800 338	0.850 097	0.842 774	 
-h	−0.442 817	−0.458 041	−0.429 907	 
-λ	1.830 57	1.384 02	1.8244
+De	2.12673	2.3347	2.17013	 
+S	1.60228	1.54131	1.41256	 
+re	2.35218	2.36843	2.48549	 
+β	1.56295	1.44845	1.47705	 
+γ	0.363585	0.359702	0.36953	 
+n	5.43647	8.36992	4.61625	 
+c	1.20595	1.05025	1.17945	 
+d	0.800338	0.850097	0.842774	 
+h	-0.442817	-0.458041	-0.429907	 
+λ	1.83057	1.38402	1.8244
+BIGD 0.1 0.1 0.1
+GIBR 3.5 3.7 3.5
 
 
 Parameter	InAs Powell [27]	InAs Migliorato [22]	InAs Titantah [23]	InAs Adhikari [24]
-De	2.131 23	2.1643	1.729 05	5.172 83
-S	1.470 58	1.5	1.246 46	1.826 12
-re	2.499 36	2.4908	2.577 05	2.213 81
-β	1.498 07	1.453 72	1.475 71	1.3592
-γ	0.379 62	0.3779	0.0053	0.318 64
-n	7.038 76	7.141 47	0.83	0.756 169
-c	1.009 04	0.9989	0.8495	5.172 42
-d	0.823 55	0.826 08	0.4	1.665 97
-h	−0.462 05	−0.5145	−0.254	−0.541 33
-λ	1.4331	1.5	2.33	2.597 56
+De	2.13123	2.1643	1.72905	5.17283
+S	1.47058	1.5	1.24646	1.82612
+re	2.49936	2.4908	2.57705	2.21381
+β	1.49807	1.45372	1.47571	1.3592
+γ	0.37962	0.3779	0.0053	0.31864
+n	7.03876	7.14147	0.83	0.756169
+c	1.00904	0.9989	0.8495	5.17242
+d	0.82355	0.82608	0.4	1.66597
+h	-0.46205	-0.5145	-0.254	-0.54133
+λ	1.4331	1.5	2.33	2.59756
+BIGD 0.1 0.1 ??? ???
+GIBR 3.7 3.7 ??? ???
+
+#--------------------------------------------------------
+[22] In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
+#--------------------------------------------------------
+[23] https://doi.org/10.1063/1.2748338
+	A	B	lambda	mu	lambda3
+Ga-As 	2269.35 	357.02 	2.8005 	1.6632 	3.99 
+In-As 	2843.18 	1081.10 	2.330 	1.8693 	6.39 
+
+	gamma	n	c	d	h
+Ga-As 	0.3000 	0.81 	0.505 	0.505 	
+In-As 	0.0053 	0.83 	0.8495 	0.400 	
+#--------------------------------------------------------
+[24] https://doi.org/10.1016/j.commatsci.2008.01.005
+  I don't have money so I can't read it
+#--------------------------------------------------------
+Note: The A parameter is not included in the parameter fit of this author. It is arbitrarily set to 1.5 here. 
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.2: The Tersoff parameters for diamond Silicon (Si)
+Parameter Tersoff (T3) Powell (PI) 
+De 2.666029 2.36291 
+S 1.431648 1.48565 
+beta 1.465552 1.46405 
+re 2.295161 2.34358 
+R 2.85 2.85 
+Rcut 0.15 0.15 
+c 100390 113031 
+d 16.217 14.248 
+h -0.59825 -0.423876 
+n 0.78734 0.938777 
+gamma 1.le-06 1.2467e-06 
+lambda 1.5 1.4606 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.5: The Tersoff parameters for diamond Carbon (C)
+Parameter Tersoff (T3) Powell 
+De 5.164533 5.03634 
+S  1.576879 2.18415 
+beta 1.964037 1.99468 
+re 1.447206 1.46388 
+R 1.95 1.95 
+Rcut 0.15 0.15 
+c 38049 40064 
+d 4.384 4.37865 
+h -0.57058 -0.545985 
+n 0.72751 0.619052 
+gamma 1.5724e-07 1.61144e-07 
+lambda 1.5 1.65768
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.8: The Tersoff parameters for Germanium (Ge)
+Parameter Tersoff (T3) Powell 
+De 2.010567 2.06459 
+S 1.434329 1.35835 
+beta 1.443634 1.43283 
+re 2.431721 2.42024 
+R 2.95 2.95 
+Rcut 0.15 0.15 
+c 106430 113656 
+d 15.652 15.3874 
+h -0.43884 -0.483616 
+n 0.75627 0.834411 
+gamma 9.0166e-07 1.0068ge-06 
+lambda 1.5 0.933196 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.11: The Tersoff parameters for Gallium Arsenide (GaAs)
+Parameter Smith Sayed Powell 
+De 2.180 2.180 2.12673 
+S 1.5351119 1.641366 1.60228 
+beta 1.614 1.560903 1.56295 
+re 2.345 2.345 2.35218 
+R 3.5 3.5 3.5 
+Rcut 0.1 0.1 0.1 
+c 0.07837998 1.226302 1.20595 
+d 4.5049412 0.790396 0.800338 
+h -3.4109679 -0.518489 -0.442817 
+n 5.5039372 6.317410 5.43647 
+gamma 0.38090204 0.357192 0.363585 
+lambda 1.5 1.723 1.83057 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.14: The Tersoff parameters for Indium Arsenide (InAs)
+Parameter Ashu Nordlund Migliorato Powell 
+De 2.39804 5.17318 2.1643 2.13123 
+S 1.51406 1.826141 1.5 1.47058 
+beta 1.45409 1.359198 1.45372 1.49807 
+re 2.44121 2.21379 2.4908 2.49936 
+R 3.7 3.7 3.7 3.7 
+Rcut 0.1 0.1 0.1 0.1 
+c 0.9989 5.162421 0.9989 1.00904 
+d 0.82608 1.665967 0.82608 0.82355 
+h -0.5145 -0.5413316 -0.5145 -0.462045 
+n 7.141472 0.7561694 7.141472 7.03876 
+gamma 0.3779 0.3186402 0.3779 0.379623 
+lambda 1.5 1.5 1.5 1.4331 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.17: The Tersoff parameters for Gallium Phosphide (GaP)
+Parameter Powell 
+De 2.20178 
+S 1.59411 
+beta 1.62365 
+re 2.28675 
+R 3.1 
+Rcut 0.1 
+c 1.26417 
+d 0.799535 
+h -0.433247 
+n 5.42195 
+gamma 0.339811 
+lambda 1.81771 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.20: The Tersoff parameters for Indium Phosphide (InP)
+Parameter Powell 
+De 2.17758 
+S 1.5811 
+beta 1.52761 
+re 2.45854 
+R 3.3 
+Rcut 0.1 
+c 1.2179 
+d 0.831026 
+h -0.461576 
+n 5.3449 
+gamma 0.338811 
+lambda 1.89106 
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.23: The Tersoff parameters for Gallium Antimonide  (GaSb)
+Parameter Powell 
+De 2.17013 
+S 1.41256 
+beta 1.47705 
+re 2.48549 
+R 3.5 
+Rcut 0.1 
+c 1.17945 
+d 0.842774 
+h -0.429907 
+n 4.61625 
+gamma 0.36953 
+lambda 1.8244
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.26: The Tersoff parameters for Indium Antimonide (InSb)
+Parameter Powell 
+De 2.1872 
+S 1.40689 
+beta 1.43604 
+re 2.62026 
+R 3.7 
+Rcut 0.1 
+c 1.21528 
+d 0.90126 
+h -0.443878 
+n 4.49087 
+gamma 0.386354 
+lambda 1.75633 
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.29: The Tersoff parameters for Boron Nitride (BN)
+Parameter Albe Sekkal Powell 
+De 6.36 4.750 3.40327 
+S 1.0796 1.56216 2.45545 
+beta 2.043057 1.96201 1.99278 
+re 1.33 1.47217 1.5658 
+R 2.0 1.95 1.95 
+Rcut 0.1 0.15 0.15 
+c 1092.9287 38049 6.55459 
+d 12.38 4.384 1.17872 
+h -0.5413 -0.57085 -0.396692 
+n 0.364153367 0.72751 8.7359 
+gamma 0.000011134 1.5724e-07 0.256813 
+lambda 1.9925 1.5 1.06665
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.32: The Tersoff parameters for cubic Gallium Nitride (GaN)
+Parameter Moon Benkabou Powell 
+De 2.77484 3.078133 2.38972 
+S 1.925 1.518829 1.85196 
+beta 1.88503 1.93460 1.97764 
+re 1.92667 1.84401 1.93005 
+R 2.5 2.5 2.5 
+Rcutt 0.1 0.1 0.1 
+c 7.2239 38049 1.09984 
+d 10.018 4.384 0.666512 
+h -0.518 -0.57085 -0.488761 
+n 0.78734 0.72751 11.5642 
+gamma 1.0ge-06 1.572410e-06 0.295653 
+lambda 1.5 1.5 1.60024
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.35: The Tersoff parameters for cubic Indium Nitride (InN)
+Parameoter Benkabou Powell 
+De 690.2616 2.20268 
+S 1.780896 1.69411 
+beta 1.748556 1.89216 
+re 0.398836 2.11896 
+R 2.65 2.65 
+Rcut 0.1 0.1 
+c 10039 1.07074 
+d 16.217 0.725308 
+h -0.598 -0.533599 
+n 0.72 9.74096 
+gamma 1.11e-06 0.30813 
+lambda 1.5 1.59607
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 4.38: The Tersoff parameters for cubic Aluminium Nitride (AlN)
+Parameter Benkabou Goumri-Said Powell 
+De 3.340698 3.026364718 3.19655 
+S 1.726929 1.765299132 1.48636 
+beta 1.721859 1.878941653 1.70916 
+re 1.853366 1.878365524 1.86255 
+R 2.35 2.335 2.335 
+Rcut 0.1 0.15 0.1 
+C 10039 20312 20673.3 
+d 16.217 16.5103 16.1559 
+h -0.598 -0.58239 -0.659096 
+n 0.72 1.33041 1.55299 
+gamma 1.11e-06 1.1566e-04 0.000122132 
+lambda 1.5 1.5 1.45221
+
+[27] https://etheses.whiterose.ac.uk/15100/
+Table 5.34: The modified Tersoff parameters for diamond silicon (Si)
+Parameter Tersoff(T3) Powell(PI) Powell(P2) 
+De 2.666029 2.36291 2.31633 
+S 1.431648 1.48565 2.39078 
+beta 1.465552 1.46405 1.35209 
+re 2.295161 2.34358 2.32496 
+R 2.85 2.85 2.85 
+Rcut 0.15 0.15 0.15 
+c 100390 113031 83780.9 
+d 16.217 14.248 19.8881 
+h -0.59825 -0.423876 -0.356865 
+n 0.78734 0.938777 0.736002 
+gamma 1.1e-06 1.2467e-06 6.87108e-07 
+lambda 1.5 1.4606 1.5004 
+#--------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 # III(Al, In)-N: https://doi.org/10.1002/pssb.200844122
@@ -575,7 +819,7 @@ Note: m = 3 (tersoff1989 (Tersoff_2 in lammps))
 
 Table 1 
 Improved parameter set for GaAs, AlAs 
-P        Al      Ga-As      AI-As 
+P        Al      Ga-As      Al-As 
 c     0.074836  1.226302  1.449752 
 d    19.569127  0.790396  0.828713 
 h    -0.659266 -0.518489 -0.520946 
@@ -592,7 +836,7 @@ D     0.1       0.1       0.1
 Table 2
 lambda value for Tersoff potentials
 i, j species lambda
-AI-AI 1.500 
+Al-Al 1.500 
 As-As 1.500 
 Al-As 1.500 
 Ga-Ga 1.491 

@@ -1,0 +1,76 @@
+       # III-V alloys InGaAs, InAlAs and GaAsSb: https://iopscience.iop.org/article/10.1088/0268-1242/28/8/085011/meta
+       &TERSOFF
+         ATOMS Ga As
+         A    2547.171724
+         ALPHA 0.0
+         B    343.9145961
+         BETA 0.363585
+         BIGD 0.1
+         BIGR 3.5
+         C  1.20595
+         D  0.800338
+         H -0.442817
+         LAMBDA1 2.797881319
+         LAMBDA2 1.746187507
+         LAMBDA3 1.83057
+         N 5.43647
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Al As
+         A    1780.771194
+         ALPHA 0.0
+         B    330.9922134
+         BETA 0.359702
+         BIGD 0.1
+         BIGR 3.7
+         C  1.05025
+         D  0.850097
+         H -0.458041
+         LAMBDA1 2.543100387
+         LAMBDA2 1.64996035
+         LAMBDA3 1.38402
+         N 8.36992
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga Sb
+         A    2516.781427
+         ALPHA 0.0
+         B    586.3564002
+         BETA 0.36953
+         BIGD 0.1
+         BIGR 3.5
+         C  1.17945
+         D  0.842774
+         H -0.429907
+         LAMBDA1 2.482639419
+         LAMBDA2 1.757546171
+         LAMBDA3 1.8244
+         N 4.61625
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS In As
+         A    2784.290797
+         ALPHA 0.0
+         B    524.5950531
+         BETA 0.37962
+         BIGD 0.1
+         BIGR 3.5
+         C  1.00904
+         D  0.82355
+         H -0.46205
+         LAMBDA1 2.569161661
+         LAMBDA2 1.747039713
+         LAMBDA3 1.4331
+         N 7.03876
+         RCUT 10
+         #
+       &END TERSOFF
