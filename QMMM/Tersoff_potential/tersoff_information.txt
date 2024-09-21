@@ -444,26 +444,6 @@ c	5.2731318	0.0762977	1.226302	0.084215	1.30678	0.080256	0.074836	85.207584	0.07
 d	0.7510266	19.796474	0.790396	19.2626	91.4432	195.295	19.569127	12.816499	19.569127
 h	0.1529235	7.1459174	-0.518489	7.39228	-0.56983	7.2691	-0.659266	-0.5643909	-0.659266
 
-#--------------------------------------------------------
-Note: atomic charge (https://sciencenotes.org/element-charges-chart-how-to-know-the-charge-of-an-atom/)
-Group 1 (Alkali Metals): 1+
-Group 2 (Alkaline Earth Metals): 2+
-Groups 3-12 (Transition Metals): Variable positive charges
-Lanthanide and Actinide Series: Variable positive charges
-Group 13: 3+
-Group 14: 4+ or 4-
-Group 15: 3-
-Group 16: 2-
-Group 17 (Halogens): 1-
-Group 18 (Noble Gases): 0
-#--------------------------------------------------------
-13	aluminum	3+ : Al
-31	gallium	3+ : Ga
-32	germanium	4-, 2+, 4+ : Ge
-33	arsenic	3-, 3+, 5+ : As
-49	indium	3+ : In
-#--------------------------------------------------------
-
 Table 2. Net charge density on each atom estimated from the Mulliken population analysis of band calculations
 Substrate	Net charge (e)
 Si	0

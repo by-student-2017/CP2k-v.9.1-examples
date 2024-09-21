@@ -1,37 +1,51 @@
        # III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
        #
-     # Al-As case
-     &CHARGE
-       ATOM Al
-       CHARGE 3.0
-     &END CHARGE
-     
+     # Si (Net charge [e])
      &CHARGE
        ATOM Si
-       CHARGE 0.0
+       CHARGE 0.0 # 
      &END CHARGE
      
-     # Ga-As case
-     &CHARGE
-       ATOM Ga
-       CHARGE 3.0
-     &END CHARGE
-     
+     # Ge (Net charge [e])
      &CHARGE
        ATOM Ge
        CHARGE 0.0
      &END CHARGE
      
-     # Al-As or Ga-As case
+     # Al-As case (Net charge [e])
      &CHARGE
-       ATOM As
-       CHARGE -3.0
+       ATOM Al
+       CHARGE 0.223
      &END CHARGE
      
-     # In-As case
+     # Al-As case (Net charge [e])
+     &CHARGE
+       ATOM As
+       CHARGE -0.223
+     &END CHARGE
+     
+     # Ga-As case (Net charge [e])
+     &CHARGE
+       ATOM Ga
+       CHARGE 0.087
+     &END CHARGE
+     
+     # Ga-As case (Net charge [e])
+     &CHARGE
+       ATOM As
+       CHARGE -0.087
+     &END CHARGE
+     
+     # In-As case (Net charge [e])
      &CHARGE
        ATOM In
-       CHARGE 3.0
+       CHARGE 0.499
+     &END CHARGE
+     
+     # In-As case (Net charge [e])
+     &CHARGE
+       ATOM As
+       CHARGE -0.499
      &END CHARGE
      
      &NONBONDED
