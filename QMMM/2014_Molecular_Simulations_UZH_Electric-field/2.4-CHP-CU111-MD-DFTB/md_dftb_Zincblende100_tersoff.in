@@ -356,7 +356,7 @@
        ATOM Ga
        CHARGE 0.0 # 0.087 (net charge)
      &END CHARGE
-     # Al-As or Ga-As case
+     # Ga-As case
      &CHARGE
        ATOM As
        CHARGE 0.0 # -0.087 (net charge)
