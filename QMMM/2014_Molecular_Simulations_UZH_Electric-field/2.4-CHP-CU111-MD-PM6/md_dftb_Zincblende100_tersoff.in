@@ -1,5 +1,5 @@
 ############################################
-## CHP (PM6) on Diamond(100) (Tersoff)   ###
+## CHP (PM6) on Zincblende(100) (Tersoff)   ###
 ############################################
 
 @SET LIBDIR ../cp2klib
@@ -130,7 +130,7 @@
          &FRAGMENT 1         # Atoms of CHP molecule
             1 60
          &END
-         &FRAGMENT 2         # Atoms of Co(0001) slab
+         &FRAGMENT 2         # Atoms of Zincblende(0001) slab
             # FCC (111), BCC(110), HCP(0001), Graphite
             #61 1788
             #
@@ -141,10 +141,10 @@
             61 1040
          &END
        &END FORCE_EVAL_MIXED
-       &FORCE_EVAL 1         # MM description of Co(0001) + interaction with CHP
+       &FORCE_EVAL 1         # QM description of CHP
          DEFINE_FRAGMENTS 1
        &END
-       &FORCE_EVAL 2         # QM description of CHP
+       &FORCE_EVAL 2         # MM description of Zincblende(0001) + interaction with CHP
          DEFINE_FRAGMENTS 1 2
        &END
     &END MAPPING
@@ -339,7 +339,7 @@
 
  
 ########################################################
-## MM - Diamond(100) (Tersoff) + interaction with CHP ##
+## MM - Zincblende(100) (Tersoff) + interaction with CHP ##
 ########################################################
 
 &FORCE_EVAL
