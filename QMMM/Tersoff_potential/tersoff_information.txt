@@ -80,6 +80,9 @@
 #   https://ars.els-cdn.com/content/image/1-s2.0-S0168583X2300469X-mmc1.pdf
 #-------------------------------------------------------------------------------
 # Other potentials 1
+# A theoretically constant potential value is added by Φ. Coulomb and vdW are multiplied by the fc function. 
+# Therefore, if the charge is fixed (the charge seems to be fixed in the paper), it is possible to refit in the Tersoff form.
+# Si: m = M = 3 (Tersoff), other elements: m = M = 1 (Albe)
 # Si-O-H: https://doi.org/10.1299/jsmea1993.39.3_313
 # Cu, Ti, W, Si, Ru: https://iopscience.iop.org/article/10.1149/2.014309jss/meta
 # Cu, Ti, W, Si, Ru: https://www.jstage.jst.go.jp/article/matertrans/51/4/51_MG200903/_article/-char/ja/
