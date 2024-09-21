@@ -127,7 +127,7 @@
          &FRAGMENT 1         # Atoms of CHP molecule
             1 60
          &END
-         &FRAGMENT 2         # Atoms of Co(0001) slab
+         &FRAGMENT 2         # Atoms of Diamond(100) slab
             # FCC (111), BCC(110), HCP(0001), Graphite
             #61 1788
             #
@@ -135,10 +135,10 @@
             61 1060
          &END
        &END FORCE_EVAL_MIXED
-       &FORCE_EVAL 1         # MM description of Co(0001) + interaction with CHP
+       &FORCE_EVAL 1         # QM description of CHP
          DEFINE_FRAGMENTS 1
        &END
-       &FORCE_EVAL 2         # QM description of CHP
+       &FORCE_EVAL 2         # MM description of Diamond(100) + interaction with CHP
          DEFINE_FRAGMENTS 1 2
        &END
     &END MAPPING
