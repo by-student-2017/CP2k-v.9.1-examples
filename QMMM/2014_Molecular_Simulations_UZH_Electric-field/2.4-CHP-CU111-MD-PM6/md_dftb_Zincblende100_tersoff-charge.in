@@ -345,7 +345,7 @@
 
  
 ########################################################
-## MM - Diamond(100) (Tersoff) + interaction with CHP ##
+## MM - Zincblende(100) (Tersoff) + interaction with CHP ##
 ########################################################
 
 &FORCE_EVAL
