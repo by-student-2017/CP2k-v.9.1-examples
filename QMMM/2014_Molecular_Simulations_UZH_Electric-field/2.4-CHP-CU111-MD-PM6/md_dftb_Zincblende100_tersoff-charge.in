@@ -54,7 +54,7 @@
     #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
     #TEMPERATURE [K] 493  ! oil bath
     #TEMPERATURE [K] 358  ! electrolysis
-    TEMPERATURE [K] 77 ! or 273 K for MBE(Molecular Beam Epitaxy) (LN2 = 77 K)
+    TEMPERATURE [K] 92 ! or 293 K for MBE(Molecular Beam Epitaxy) (Low temperature: (Liquid N2) 77 K + (Loss to sample) about 15 K)
     TIMESTEP [fs] 0.5     ! The length of an integration step: <= 0.01 [fs] for Tersoff potential
     STEPS 500000           ! The number of MD steps to perform 
     #
