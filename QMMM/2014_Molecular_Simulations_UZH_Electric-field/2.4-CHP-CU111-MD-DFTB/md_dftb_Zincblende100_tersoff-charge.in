@@ -326,11 +326,6 @@
       &CENTER_COORDINATES
       &END
     &END
-    #
-    &KIND C_R
-      ELEMENT C
-      MASS 12.01
-    &END KIND
   &END SUBSYS
   
   &EXTERNAL_POTENTIAL
