@@ -130,7 +130,7 @@
          &FRAGMENT 1         # Atoms of CHP molecule
             1 60
          &END
-         &FRAGMENT 2         # Atoms of Diamond(100) slab
+         &FRAGMENT 2         # Atoms of Diamond(100) with H slab
             # FCC (111), BCC(110), HCP(0001), Graphite
             #61 1788
             #
@@ -138,13 +138,16 @@
             #61 1060
             #
             # C Diamond(100)
-            61 3132
+            #61 3132
+            #
+            # C Diamond(100) with H
+            61 3388
          &END
        &END FORCE_EVAL_MIXED
        &FORCE_EVAL 1         # QM description of CHP
          DEFINE_FRAGMENTS 1
        &END
-       &FORCE_EVAL 2         # MM description of Diamond(100) + interaction with CHP
+       &FORCE_EVAL 2         # MM description of Diamond(100) with H + interaction with CHP
          DEFINE_FRAGMENTS 1 2
        &END
     &END MAPPING
@@ -176,11 +179,16 @@
       #COORD_FILE_NAME ./../xyz/chp_on_Cgra.xyz
       #COORD_FILE_NAME ./../xyz/chp_on_Cgra_C_R.xyz
       #COORD_FILE_NAME ./../xyz/chp_on_SiwH-dia100.xyz
-      COORD_FILE_NAME ./../xyz/chp_on_C-dia100.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C-dia100.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_CwH-dia100.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
     #
+    &KIND H_R
+      ELEMENT H
+      MASS 1.008
+    &END KIND
     &KIND C_R
       ELEMENT C
       MASS 12.01
@@ -321,6 +329,10 @@
       &END
     &END
     #
+    &KIND H_R
+      ELEMENT H
+      MASS 1.008
+    &END KIND
     &KIND C_R
       ELEMENT C
       MASS 12.01
@@ -350,7 +362,12 @@
        EPS_SPLINE 1.0E-6 # 5.0E-6 - 1.0E-7
        EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
      &END SPLINE
-     &CHARGE              # Setting all charges to zero
+     # Setting all charges to zero
+     &CHARGE
+       ATOM H_R
+       CHARGE 0.0
+     &END CHARGE
+     &CHARGE
        ATOM C_R
        CHARGE 0.0
      &END CHARGE
@@ -364,6 +381,20 @@
      &END CHARGE
      &NONBONDED           # interaction described in section 2.1
 &LENNARD-JONES		
+  ATOMS	H	H_R
+  EPSILON	0.356348144	
+  SIGMA	1.305166622	
+  RCUT	10	
+&END LENNARD-JONES		
+		
+&LENNARD-JONES		
+  ATOMS	C	H_R
+  EPSILON	0.550481607	
+  SIGMA	1.735025254	
+  RCUT	10	
+&END LENNARD-JONES		
+
+&LENNARD-JONES		
   ATOMS	H	C_R
   EPSILON	0.067970582	
   SIGMA	3.000992332	
@@ -376,6 +407,7 @@
   SIGMA	3.430850964	
   RCUT	10	
 &END LENNARD-JONES		
+
        #
        &LENNARD-JONES      # Turning off Lennard-Jones
          atoms C H
@@ -383,7 +415,7 @@
          SIGMA 3.166
          RCUT  15
        &END LENNARD-JONES
-       &LENNARD-JONES
+        &LENNARD-JONES
          atoms H H
          EPSILON 0.0
          SIGMA 3.166
@@ -406,7 +438,6 @@
        #
        &TERSOFF
          ATOMS C_R C_R
-         # a-C: In this input file, the graphite sheets are pulled apart.
          A    1393.6
          ALPHA 0.0
          B    346.74
@@ -418,6 +449,65 @@
          H -0.57058
          LAMBDA1 3.4879
          LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS H_R H_R
+         A    87.193
+         ALPHA 0.0
+         B    39.520
+         BETA 4
+         BIGD 0.075
+         BIGR 0.925
+         C  0
+         D  1
+         H  0
+         LAMBDA1 4.0042
+         LAMBDA2 2.0021
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       
+       &TERSOFF
+         ATOMS H_R C_R
+         A    384.63
+         ALPHA 0.0
+         B    117.12
+         BETA 4
+         BIGD 0.106
+         BIGR 1.343
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.74506
+         LAMBDA2 2.107
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       
+       &TERSOFF
+         ATOMS C_R H_R
+         A    384.63
+         ALPHA 0.0
+         B    117.12
+         BETA 1.5724E-7
+         BIGD 0.106
+         BIGR 1.343
+         C  38049
+         D  4.3484
+         H -0.57058
+         LAMBDA1 3.74506
+         LAMBDA2 2.107
          LAMBDA3 0.0
          N 0.72751
          RCUT 10
@@ -447,6 +537,9 @@
       # Graphite
       #ABC 3.9872361914754663E+01 3.8846852233507882E+01 70.0
       #
+      # Diamond (100)
+      #ABC 38.6697463989 38.6697463989 70.0
+      #
       # C Diamond (100)
       ABC 40.3084793091 40.3084793091 70.0
     &END CELL
@@ -456,11 +549,16 @@
       #COORD_FILE_NAME ./../xyz/chp_on_Cgra.xyz
       #COORD_FILE_NAME ./../xyz/chp_on_Cgra_C_R.xyz
       #COORD_FILE_NAME ./../xyz/chp_on_SiwH-dia100.xyz
-      COORD_FILE_NAME ./../xyz/chp_on_C-dia100.xyz
+      #COORD_FILE_NAME ./../xyz/chp_on_C-dia100.xyz
+      COORD_FILE_NAME ./../xyz/chp_on_CwH-dia100.xyz
       COORDINATE XYZ
       CONNECTIVITY OFF
     &END TOPOLOGY
     #
+    &KIND H_R
+      ELEMENT H
+      MASS 1.008
+    &END KIND
     &KIND C_R
       ELEMENT C
       MASS 12.01
