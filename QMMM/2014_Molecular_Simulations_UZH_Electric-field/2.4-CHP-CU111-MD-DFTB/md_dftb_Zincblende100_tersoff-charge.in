@@ -1,5 +1,5 @@
 ###################################
-## CHP (DFTB-D3) on Diamond(100) (Tersoff)   ###
+## CHP (DFTB-D3) on Zincblende(100) (Tersoff)   ###
 ###################################
 
 @SET LIBDIR ../cp2klib
@@ -340,7 +340,7 @@
 
  
 ###############################################
-## MM - Diamond(100) (Tersoff) + interaction with CHP ##
+## MM - Zincblende(100) (Tersoff) + interaction with CHP ##
 ###############################################
 
 &FORCE_EVAL
