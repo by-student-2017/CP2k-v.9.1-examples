@@ -125,6 +125,10 @@
       MIXING_FUNCTION E1+E2 
       VARIABLES E1 E2
     &END GENERIC
+    &COUPLING
+      ! If the interaction between QS (PM6 or DFTB, etc) and MM (Tersoff, etc) is strong, set the coupling parameters to larger values.
+      COUPLING_PARAMETER 0.1
+    &END COUPLING
     &MAPPING
        &FORCE_EVAL_MIXED
          &FRAGMENT 1         # Atoms of CHP molecule
