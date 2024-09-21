@@ -349,7 +349,8 @@
      &SPLINE
        EPS_SPLINE 1.0E-6 # 5.0E-6 - 1.0E-7
        EMAX_SPLINE 0.9e0 # 0.5 - 1.0, Note: 0.9e2 for EAM potential
-     &END SPLINE              # Setting all charges to zero
+     &END SPLINE
+     # Setting all charges to zero
      # Ga-As case
      &CHARGE
        ATOM Ga
