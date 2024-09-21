@@ -53,7 +53,8 @@
     ! Temperature in electrolysis: (<=273+85 K)
     #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
     #TEMPERATURE [K] 493  ! oil bath
-    TEMPERATURE [K] 358  ! electrolysis
+    #TEMPERATURE [K] 358  ! electrolysis
+    TEMPERATURE [K] 77 ! or 273 K for MBE(Molecular Beam Epitaxy) (LN2 = 77 K)
     TIMESTEP [fs] 0.5     ! The length of an integration step: <= 0.01 [fs] for Tersoff potential
     STEPS 500000           ! The number of MD steps to perform 
     #
@@ -288,8 +289,8 @@
 
     &POISSON
       PERIODIC NONE           # no interaction between replica
-      #POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
-      POISSON_SOLVER IMPLICIT
+      POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      #POISSON_SOLVER IMPLICIT
       #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model (failed)
       &WAVELET
         SCF_TYPE 60
@@ -298,12 +299,13 @@
     !
     ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
     !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
-    &SCCS
-      RELATIVE_PERMITTIVITY 78.4
-      METHOD ANDREUSSI
-      MAX_ITER 100
-      EPS_SCCS 1.0E-6
-    &END SCCS
+    ! vacuum 0.0: not use Continuum Solvent Model (SCCS, SCRF or COSMO). e.g., MBE(Molecular Beam Epitaxy)
+    #&SCCS
+    #  RELATIVE_PERMITTIVITY 78.4
+    #  METHOD ANDREUSSI
+    #  MAX_ITER 100
+    #  EPS_SCCS 1.0E-6
+    #&END SCCS
     #&SCRF ! failed
     #  EPS_OUT 78.4
     #  LMAX 3
