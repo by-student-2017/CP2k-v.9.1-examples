@@ -53,10 +53,10 @@
             61 1788
          &END
        &END FORCE_EVAL_MIXED
-       &FORCE_EVAL 1         # MM description of Cu(111) + interaction with CHP
+       &FORCE_EVAL 1         # QM description of CHP
          DEFINE_FRAGMENTS 1
        &END
-       &FORCE_EVAL 2         # QM description of CHP
+       &FORCE_EVAL 2         # MM description of Cu(111) + interaction with CHP
          DEFINE_FRAGMENTS 1 2
        &END
     &END MAPPING
