@@ -23,4 +23,6 @@ export OMP_NUM_THREADS=1
 
 #mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i md_dftb_C-dia100_tersoff.in | tee md_dftb_C-dia100_tersoff.out
 
-mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i md_dftb_CwH-dia100_tersoff.in | tee md_dftb_CwH-dia100_tersoff.out
+#mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i md_dftb_CwH-dia100_tersoff.in | tee md_dftb_CwH-dia100_tersoff.out
+
+mpirun -np ${NCPUs} ${cp2k_adress}/cp2k -i md_dftb_ZTC_tersoff.in | tee md_dftb_ZTC_tersoff.out
