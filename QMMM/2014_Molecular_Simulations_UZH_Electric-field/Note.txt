@@ -18,3 +18,6 @@ tar zxvf week3.tar
 Failed: Cu1.eam.fs, Cu_Zhou04.eam.alloy, Cu01.eam.alloy, cuu6.txt, Cu_u3.eam
   Probably most of the potential at NIST is not available in CP2k without converting the files.
 #---------------------------------------------------------------------
+sort -nk 4 case.xyz
+sort -nrk 4 case.xyz
+#---------------------------------------------------------------------
