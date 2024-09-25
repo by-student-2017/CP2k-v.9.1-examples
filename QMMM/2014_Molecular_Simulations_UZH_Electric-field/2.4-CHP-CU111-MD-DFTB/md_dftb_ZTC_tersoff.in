@@ -452,17 +452,18 @@
        #  PARM_FILE_NAME ${LIBDIR}/Co-Co_Zhou04.eam.alloy
        #&END EAM
        #
+       # BCN
        &TERSOFF
          ATOMS C_R C_R
          A    1393.6
          ALPHA 0.0
-         B    346.74
+         B    430.0
          BETA 1.5724E-7
          BIGD 0.15
          BIGR 1.95
          C  38049
          D  4.3484
-         H -0.57058
+         H -0.93
          LAMBDA1 3.4879
          LAMBDA2 2.2119
          LAMBDA3 0.0
@@ -490,39 +491,18 @@
          #
        &END TERSOFF
        
-       
-       #&TERSOFF
-       #  ATOMS H_R C_R
-       #  A    384.63
-       #  ALPHA 0.0
-       #  B    117.12
-       #  BETA 4
-       #  BIGD 0.106
-       #  BIGR 1.343
-       #  C  0
-       #  D  1
-       #  H  0
-       #  LAMBDA1 3.74506
-       #  LAMBDA2 2.107
-       #  LAMBDA3 0.0
-       #  N 1
-       #  RCUT 10
-       #  #
-       #&END TERSOFF
-       
-       
        &TERSOFF
          ATOMS C_R H_R
-         A    384.63
+         A    348.585950377
          ALPHA 0.0
-         B    117.12
-         BETA 1.5724E-7
-         BIGD 0.106
-         BIGR 1.343
-         C  38049
-         D  4.3484
-         H -0.57058
-         LAMBDA1 3.74506
+         B    130.359502914
+         BETA 1.5724e-7
+         BIGD 0.106102993
+         BIGR 1.343034681
+         C  38049.0
+         D  1.5724e7
+         H  -0.7482
+         LAMBDA1 3.74605
          LAMBDA2 2.107
          LAMBDA3 0.0
          N 0.72751
