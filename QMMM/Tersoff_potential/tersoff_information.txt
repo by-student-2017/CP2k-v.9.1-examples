@@ -41,7 +41,7 @@
 # Si-N: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.58.8323
 # Si,N,H: https://doi.org/10.1063/1.370977
 # SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
-# Si-C-Ag: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
+# AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
 #-------------------------------------------------------------------------------
 # Tersoff + ZBL
 # Fe: https://www.ctcms.nist.gov/potentials/Download/2020--Byggmastar-J-Granberg-F--Fe/1/Fe_Byggmastar.tersoff.zbl
@@ -1276,7 +1276,7 @@ Parameter	Si-O	Si-N	Si-H	O-N	O-H	N-H
 𝜇𝐼⁢𝐽-(𝜇𝐼+𝜇𝐽)/2	-0.30051	-0.19843	0.22168	3.50573	-0.22005	0.21563
 
 #-------------------------------------------------------------------------------
-# Si-C-Ag: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
+# AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
 
 Note: Tersoff1989 (Tersoff_2 in lammps)
 Note: LAMBDA1 = λ
