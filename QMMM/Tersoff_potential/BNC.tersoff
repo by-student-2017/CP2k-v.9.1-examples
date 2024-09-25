@@ -1,0 +1,173 @@
+       # BNC: https://www.ctcms.nist.gov/potentials/Download/2012--Kinaci-A-Haskins-J-B-Sevik-C-Cagin-T--B-N-C/1/BNC.tersoff
+       #DOI:https://doi.org/10.1103/PhysRevB.86.115410
+       
+       &TERSOFF
+         ATOMS B B
+         A    40.0520156
+         ALPHA 0.0
+         B    43.132016
+         BETA 1.6e-6
+         BIGD 0.1
+         BIGR 2.0
+         C  5.2629e-1
+         D  1.587e-3
+         H -0.93
+         LAMBDA1 2.2372578
+         LAMBDA2 2.0774982
+         LAMBDA3 0.0
+         N 3.9929061
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C B
+         A    1386.78
+         ALPHA 0.0
+         B    339.06891
+         BETA 1.5724e-7
+         BIGD 0.10
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.93
+         LAMBDA1 3.5279
+         LAMBDA2 2.2054
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C C
+         A    1393.6
+         ALPHA 0.0
+         B    430.0
+         BETA 1.5724E-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.93
+         LAMBDA1 3.4879
+         LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS C N
+         A    1386.78
+         ALPHA 0.0
+         B    387.57515
+         BETA 1.5724E-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.89
+         LAMBDA1 3.5279
+         LAMBDA2 2.2054
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS B C
+         A    1386.78
+         ALPHA 0.0
+         B    339.068910
+         BETA 1.25724e-7
+         BIGD 0.10
+         BIGR 1.95
+         C  25000
+         D  4.3484
+         H -0.89
+         LAMBDA1 3.5279
+         LAMBDA2 2.2054
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS B N
+         A    1380.0
+         ALPHA 0.0
+         B    340.0
+         BETA 1.25724e-7
+         BIGD 0.05
+         BIGR 1.95
+         C  25000
+         D  4.3484
+         H -0.89
+         LAMBDA1 3.568
+         LAMBDA2 2.199
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N B
+         A    1380.0
+         ALPHA 0.0
+         B    340.0
+         BETA 1.25724e-7
+         BIGD 0.05
+         BIGR 1.95
+         C  25000
+         D  4.3484
+         H -0.89
+         LAMBDA1 3.568
+         LAMBDA2 2.199
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N C
+         A    1386.78
+         ALPHA 0.0
+         B    387.575152
+         BETA 1.25724e-7
+         BIGD 0.10
+         BIGR 1.95
+         C  25000
+         D  4.3484
+         H -0.89
+         LAMBDA1 3.5279
+         LAMBDA2 2.2054
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N N
+         A    128.86866
+         ALPHA 0.0
+         B    138.77866
+         BETA 0.019251
+         BIGD 0.1
+         BIGR 2.0
+         C  17.7959
+         D  5.9484
+         H  0.0
+         LAMBDA1 2.8293093
+         LAMBDA2 2.6272721
+         LAMBDA3 0.0
+         N 0.6184432
+         RCUT 10
+         #
+       &END TERSOFF

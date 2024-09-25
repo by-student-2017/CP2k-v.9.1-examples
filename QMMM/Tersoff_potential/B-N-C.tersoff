@@ -1,0 +1,138 @@
+       # B-N-C: https://iopscience.iop.org/article/10.1143/JJAP.39.L48/meta
+       
+       &TERSOFF
+         ATOMS B B
+         A    2.7702e2
+         ALPHA 0.0
+         B    1.8349e2
+         BETA 1.6e-6
+         BIGD 0.15
+         BIGR 1.95
+         C  5.2629e-1
+         D  1.587e-3
+         H  0.5
+         LAMBDA1 1.9922
+         LAMBDA2 1.5856
+         LAMBDA3 0.0
+         N 3.9929
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N N
+         A    1.1e4
+         ALPHA 0.0
+         B    2.1945e2
+         BETA 1.0562e-1
+         BIGD 0.15
+         BIGR 2.05
+         C  7.9934e4
+         D  1.3432e2
+         H -0.9973
+         LAMBDA1 5.7708
+         LAMBDA2 2.5115
+         LAMBDA3 0.0
+         N 12.4498
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         # a-C: In this input file, the graphite sheets are pulled apart.
+         ATOMS C C
+         A    1393.6
+         ALPHA 0.0
+         B    346.74
+         BETA 1.5724E-7
+         BIGD 0.15
+         BIGR 1.95
+         C  38049
+         D  4.3484
+         H -0.57058
+         LAMBDA1 3.4879
+         LAMBDA2 2.2119
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS B B
+         A    2.7702e2
+         ALPHA 0.0
+         B    1.8349e2
+         BETA 1.6e-6
+         BIGD 0.15
+         BIGR 1.95
+         C  5.2629e-1
+         D  1.587e-3
+         H  0.5
+         LAMBDA1 1.9922
+         LAMBDA2 1.5856
+         LAMBDA3 0.0
+         N 3.9929
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # kai(B-N): 1.1593
+       &TERSOFF
+         ATOMS B N
+         A    1745.628827
+         ALPHA 0.0
+         B    232.6322005
+         BETA 1.6e-6
+         BIGD 0.150047163
+         BIGR 1.999371363
+         C  5.2629e-1
+         D  1.587e-3
+         H  0.5
+         LAMBDA1 3.8815
+         LAMBDA2 2.04855
+         LAMBDA3 0.0
+         N 3.9929
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # kai(B-C): 1.0025
+       &TERSOFF
+         ATOMS B C
+         A    621.3333019
+         ALPHA 0.0
+         B    252.8672317
+         BETA 1.6e-6
+         BIGD 0.150047163
+         BIGR 1.999371363
+         C  5.2629e-1
+         D  1.587e-3
+         H  0.5
+         LAMBDA1 3.8815
+         LAMBDA2 2.04855
+         LAMBDA3 0.0
+         N 3.9929
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # beta-C3N4; omega(C-N): 0.6381, kai(C-N): 0.9685
+       &TERSOFF
+         ATOMS C N
+         A    3915.303309
+         ALPHA 0.0
+         B    267.1587422
+         BETA 1.00335E-07
+         BIGD 0.150047163
+         BIGR 1.999371363
+         C  38049
+         D  4.3484
+         H -0.57058
+         LAMBDA1 4.62935
+         LAMBDA2 2.3617
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
