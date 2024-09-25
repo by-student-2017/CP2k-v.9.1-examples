@@ -50,6 +50,8 @@
 # SiONH: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.73.155329
 # Ge-on-SiO2: https://doi.org/10.1016/j.susc.2012.12.013
 # AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
+# SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
+# ZnTe: https://doi.org/10.1016/S1293-2558(03)00154-7
 #-------------------------------------------------------------------------------
 # Tersoff + ZBL
 # Fe: https://www.ctcms.nist.gov/potentials/Download/2020--Byggmastar-J-Granberg-F--Fe/1/Fe_Byggmastar.tersoff.zbl
@@ -88,6 +90,7 @@
 # Graphene(m=3): https://pubs.acs.org/doi/full/10.1021/jp208049t
 # Al-N(m=3 or "m=1 and lambda3=0.0"): https://www.sciencedirect.com/science/article/pii/S0168583X2300469X
 #   https://ars.els-cdn.com/content/image/1-s2.0-S0168583X2300469X-mmc1.pdf
+# NO(m=1,Albe): https://doi.org/10.1063/1.470879
 #-------------------------------------------------------------------------------
 # Other potentials 1
 # Fortunately, all the coefficients related to vdW are zero.
@@ -116,6 +119,7 @@
 # Brenner, Au: https://link.springer.com/article/10.1140/epjb/e2012-30429-y?utm_source=getftr&utm_medium=getftr&utm_campaign=getftr_pilot
 # AIREBO formula: https://iopscience.iop.org/article/10.1088/2053-1591/3/3/035011/meta
 # COMB: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.81.125328
+# COMB3: https://pubs.acs.org/doi/full/10.1021/jp212083t
 # diposite: https://doi.org/10.1016/j.apsusc.2013.03.004
 # CNT/Au: https://www.sciencedirect.com/science/article/pii/S0921452607008277
 # Gupta potential (Ag, Au): https://link.springer.com/article/10.1140/epjb/e2013-40067-6
@@ -125,6 +129,7 @@
 # Zr-B (VASP): https://ntrs.nasa.gov/citations/20120011609
 # EAM (Sc, Cr, Nb): https://www.sciencedirect.com/science/article/pii/S0370157307003572
 # EAM (Cr, Fe, Nb): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.43.6952
+# SW(Zn-Te): https://doi.org/10.1103/PhysRevB.72.014107
 # SW(Zn-Cd-Hg-S-Se-Te): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.085309
 # SW(N,B,Si): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.68.094110
 # https://mavmatrix.uta.edu/chemistry_dissertations/210/
