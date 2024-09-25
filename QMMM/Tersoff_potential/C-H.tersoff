@@ -1,3 +1,6 @@
+       # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
+       # + a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
+       
        &TERSOFF
          # a-C: In this input file, the graphite sheets are pulled apart.
          ATOMS C C

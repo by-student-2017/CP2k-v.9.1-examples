@@ -171,3 +171,47 @@
          RCUT 10
          #
        &END TERSOFF
+       
+       
+       # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
+       # + a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
+       &TERSOFF
+         ATOMS H H
+         A    87.193
+         ALPHA 0.0
+         B    39.520
+         BETA 4
+         BIGD 0.075
+         BIGR 0.925
+         C  0
+         D  1
+         H  0
+         LAMBDA1 4.0042
+         LAMBDA2 2.0021
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
+       # + a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
+       # + mixing rules
+       &TERSOFF
+         ATOMS C_R H_R
+         A    348.585950377
+         ALPHA 0.0
+         B    130.359502914
+         BETA 1.5724e-7
+         BIGD 0.106102993
+         BIGR 1.343034681
+         C  38049.0
+         D  1.5724e7
+         H  -0.7482
+         LAMBDA1 3.74605
+         LAMBDA2 2.107
+         LAMBDA3 0.0
+         N 0.72751
+         RCUT 10
+         #
+       &END TERSOFF
