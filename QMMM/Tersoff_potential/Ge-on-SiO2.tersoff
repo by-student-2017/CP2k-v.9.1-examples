@@ -1,0 +1,141 @@
+       # Ge-on-SiO2: https://doi.org/10.1016/j.susc.2012.12.013
+       
+       # The original parameters (T-Si)
+       #&TERSOFF
+       #  ATOMS Si Si
+       #  A    1830.8
+       #  ALPHA 0.0
+       #  B    471.18
+       #  BETA 1.1e-6
+       #  BIGD 0.15
+       #  BIGR 2.85
+       #  C  100390
+       #  D  16.217
+       #  H -0.59825
+       #  LAMBDA1 2.4799
+       #  LAMBDA2 1.73222
+       #  LAMBDA3 0.0
+       #  N 0.78734
+       #  RCUT 10
+       #  #
+       #&END TERSOFF
+       
+       # The refitted values (M-Si)
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 1.1e-6
+         BIGD 0.15
+         BIGR 2.65
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ge Ge
+         A    1.769e3
+         ALPHA 0.0
+         B    4.1923e2
+         BETA 9.0166e-7
+         BIGD 0.15
+         BIGR 2.95
+         C  1.0643e5
+         D  1.5652e1
+         H -4.3884e-1
+         LAMBDA1 2.4451
+         LAMBDA2 1.7047
+         LAMBDA3 0.0
+         N 7.5627e-1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS O O
+         A    1882.55
+         ALPHA 0.0
+         B    218.787
+         BETA 1.1632e-7
+         BIGD 0.15
+         BIGR 1.85
+         C  64692.1
+         D  4.11127
+         H -0.845922
+         LAMBDA1 4.17108
+         LAMBDA2 2.35692
+         LAMBDA3 0.0
+         N 1.04968
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # The refitted values (M-Si)
+       # kai(Si-Ge) = 1.00061
+       &TERSOFF
+         ATOMS Si Ge
+         A    1799.634741
+         ALPHA 0.0
+         B    444.717725
+         BETA 0.0000011
+         BIGD 0.150216331
+         BIGR 2.795967642
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4625
+         LAMBDA2 1.71846
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # The refitted values (M-Si)
+       # kai(Si-O) = 1.17945 
+       &TERSOFF
+         ATOMS Si O
+         A    1856.494692
+         ALPHA 0.0
+         B    378.6898939
+         BETA 0.0000011
+         BIGD 0.15243955
+         BIGR 2.213992363
+         C  100390
+         D  16.217
+         H -0.59825
+         LAMBDA1 3.32549
+         LAMBDA2 2.04457
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # kai(Ge-0) = 0.8 * kai(Si-O) = 0.94356
+       &TERSOFF
+         ATOMS Ge O
+         A    1824.892038
+         ALPHA 0.0
+         B    285.7633016
+         BETA 9.0166E-07
+         BIGD 0.154118748
+         BIGR 2.335861171
+         C  1.0643e5
+         D  1.5652e1
+         H -4.3884e-1
+         LAMBDA1 3.30809
+         LAMBDA2 2.03081
+         LAMBDA3 0.0
+         N 0.75627
+         RCUT 10
+         #
+       &END TERSOFF
