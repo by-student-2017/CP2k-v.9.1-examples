@@ -79,7 +79,7 @@ chimera
 ## Avogadro (https://avogadro.cc/ , https://github.com/cryos/avogadro)
 1. sudo apt -y install avogadro
 2. which avogadro
-- It is 32 bit and can only handle small systems, but version 1.2.0 (https://sourceforge.net/projects/avogadro/) has an excellent user interface. The later version, Avogadro2, is difficult to use.: 
+- It is 32 bit and can only handle small systems, but version 1.2.0 (https://sourceforge.net/projects/avogadro/) has an excellent user interface. The later version, Avogadro2, is difficult to use. There are cases where Avogadro2 is used for large systems. In most cases, I divide the structure and use Avogadro ver.1.2.0.
 
 
 ## Original files
