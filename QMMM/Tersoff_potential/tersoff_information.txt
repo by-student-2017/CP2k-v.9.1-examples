@@ -14,12 +14,14 @@
 # CN: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.57.5724
 # (related paper: https://repozytorium.uw.edu.pl/server/api/core/bitstreams/217ad01c-c8f4-4ade-9c59-1aebac764516/content)
 # BNC: https://www.ctcms.nist.gov/potentials/Download/2012--Kinaci-A-Haskins-J-B-Sevik-C-Cagin-T--B-N-C/1/BNC.tersoff
+# (related parer: https://www.rsc.org/suppdata/d3/dt/d3dt00678f/d3dt00678f1.pdf)
 # B-N-C: https://iopscience.iop.org/article/10.1143/JJAP.39.L48/meta
 # BN-nanosheet: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
 # h-BN: https://doi.org/10.1103/PhysRevB.96.184108
 # c-BN: https://doi.org/10.1016/j.apsusc.2016.04.054
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
 # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
+# GaN: https://doi.org/10.1016/S0375-9601(03)01039-9
 # Al-N: https://doi.org/10.1002/pssa.201001086
 # III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
 # III-V semiconductors: https://doi.org/10.1103/PhysRevB.75.115202
@@ -547,6 +549,24 @@ d 5.255691 7.783163 10.882090 8.292436 13.083985 12.497037
 h -0.870210 -0.749741 -0.972662 -0.816226 -0.990019 -0.693793
 R (A) 2.20 2.20 2.55 2.55 2.65 2.65
 D (A) 0.10 0.10 0.15 0.15 0.15 0.15
+
+#-------------------------------------------------------------------------------
+# GaN: https://doi.org/10.1016/S0375-9601(03)01039-9
+
+Table 1. Tersoff potential parameters used in this study
+
+Ga Ga	Ga N	N N
+A (eV)	2.83982e3	3.73208e3	1.10000e4
+B (eV)	1.14786e2	2.34013e2	2.19450e2
+λ (A^-1)	3.2834	3.6987	5.7708
+μ (A^-1)	1.7154	1.9214	2.5115
+β	2.3586e−1	1.0900e−6	1.0562e−1
+n	3.47290	0.78734	12.4498
+c	7.6298e−2	7.2239	7.9934e4
+d	1.9796e1	1.0018e1	1.3432e2
+h	7.1459	−0.5180	−0.9973
+R (A)	2.8	2.4	2.0
+D (A)	3.0	2.6	2.3
 
 #-------------------------------------------------------------------------------
 # Al-N: https://doi.org/10.1002/pssa.201001086

@@ -1,0 +1,59 @@
+       # GaN: https://doi.org/10.1016/S0375-9601(03)01039-9
+       
+       &TERSOFF
+         ATOMS Ga Ga
+         A    2.83982e3
+         ALPHA 0.0
+         B    1.14786e2
+         BETA 2.3586e−1
+         BIGD 0.1
+         BIGR 2.9
+         C  7.6298e−2
+         D  1.9796e1
+         H  7.1459
+         LAMBDA1 3.2834
+         LAMBDA2 1.7154
+         LAMBDA3 0.0
+         N 3.47290
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga N
+         A    3.73208e3
+         ALPHA 0.0
+         B    2.34013e2
+         BETA 1.0900e−6
+         BIGD 0.1
+         BIGR 2.5
+         C  7.2239
+         D  1.0018e1
+         H -0.5180
+         LAMBDA1 3.6987
+         LAMBDA2 1.9214
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS N N
+         A    1.10000e4
+         ALPHA 0.0
+         B    2.19450e2
+         BETA 1.0562e−1
+         BIGD 0.15
+         BIGR 2.15
+         C  7.9934e4
+         D  1.3432e2
+         H -0.9973
+         LAMBDA1 5.7708
+         LAMBDA2 2.5115
+         LAMBDA3 0.0
+         N 12.4498
+         RCUT 10
+         #
+       &END TERSOFF
+       
