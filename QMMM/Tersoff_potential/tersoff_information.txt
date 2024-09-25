@@ -13,9 +13,9 @@
 # C-sp3: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
 # BNC: https://www.ctcms.nist.gov/potentials/Download/2012--Kinaci-A-Haskins-J-B-Sevik-C-Cagin-T--B-N-C/1/BNC.tersoff
 # B-N-C: https://iopscience.iop.org/article/10.1143/JJAP.39.L48/meta
-# B-N: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
-# B-N: https://doi.org/10.1103/PhysRevB.96.184108
-# B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
+# BN-nanosheet: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
+# h-BN: https://doi.org/10.1103/PhysRevB.96.184108
+# c-BN: https://doi.org/10.1016/j.apsusc.2016.04.054
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
 # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
 # Al-N: https://doi.org/10.1002/pssa.201001086
@@ -416,11 +416,86 @@ omega(i-j) 1.0 1.0 0.6381
 Note: BETA = beta*omega(i-j)
 
 #-------------------------------------------------------------------------------
-# B-N: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
+# BN-nanosheet: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
+
+Note: tersoff1989 (Tersoff_2 in lammps)
+Note: m = 3.0 (tersoff1988 (Tersoff_1 in lammps))
+
+Table 2.  Four sets of interatomic potential parameters (IPPs) used in the present study.
+
+Parameter	Albe et al [27]	Sekkal et al [32]	Matsunaga et al [26] (χi-j = 1.1593)	Sevik et al [29]
+ 	B–N	B–N	B–B	N–N	B–N
+m	3.0	3.0	3	3	3
+γ	1.0	1.0	1	1	1
+λ3	1.9925	0.0	0	0	0
+c	1092.9287	38 049	0.526 29	79 934	25 000
+d	12.38	4.384	0.001 587	134.32	4.3484
+h	−0.5413	−0.570 58	0.5	−0.9973	−0.89
+n	0.364 533 67	0.727 51	3.9929	12.4498	0.727 51
+β	0.000 011 134	0.000 000 157 24	0.000 001 6	0.105 62	0.000 000 1257
+λ2	2.784 247 207	2.22	1.5856	2.5115	2.199
+B	3613.431 337	346.7	183.49	219.45	340
+R	2.0	1.95	1.95	2.15	1.95
+D	0.1	0.2	0.15	0.15	0.05
+λ1	2.998 355 817	3.468	1.9922	5.7708	3.568
+A	4460.833 973	1393.6	277.02	11 000	1380
+
 #-------------------------------------------------------------------------------
-# B-N: https://doi.org/10.1103/PhysRevB.96.184108
+# h-BN: https://doi.org/10.1103/PhysRevB.96.184108
+
+Note: A = D0/(S-1) * exp(-beta*sqrt(2.0*S)*-r0) = D0/(S-1) * exp(lambda1*r0)
+Note: B = S*D0/(S-1) * exp(-beta*sqrt(2.0/S)*-r0) = S*D0/(S-1) * exp(lambda2*r0)
+Note: LAMBDA1 = beta*sqrt(2.0*S)
+Note: LAMBDA2 = beta*sqrt(2.0/S)
+Note: N = 1.0
+Note: BETA = gamma
+Note: bij = 0.5*(bij + bji) + Fij for "bij * fA(rij)"
+Note: tersoff1988 (Tersoff_1 in lammps)
+Note: m = 3.0
+
+TABLE I.
+Tersoff potential parameters for BN systems. The parameters for BB were taken from Ref. [16], 
+except for 𝜆3. For NN, part the parameters were adopted from Refs. [7,16], 
+but 𝑛,𝛾,𝑐,𝑑, and ℎ where refitted in this work. The BN part was completely refitted in the present work.
+
+	BB	NN	BN
+𝐷0 (eV)	3.08	9.91	6.36
+𝑟0 (Å)	1.59	1.11	1.3253868267
+𝛽 (Å−1)	1.84	1.92787	1.9931611199
+𝑆	1.065264	1.0769	1.0952902519
+𝑛	1.142247	0.665	0.6576543657
+𝛾	0.01498959	0.019251	0.0027024851
+𝑐	26617.3	23.5	306.586555205
+𝑑	141.2	3.75	10.0
+ℎ	−0.13	−0.4	−0.7218
+𝜆3 (Å−1)	0	0	0
+𝑅 (Å)	2.0	2.0	2.0
+𝐷 (Å)	0.2	0.2	0.2
+
 #-------------------------------------------------------------------------------
-# B-N: https://doi.org/10.1016/j.apsusc.2016.04.054
+# c-BN: https://doi.org/10.1016/j.apsusc.2016.04.054
+
+Note: tersoff1988 (Tersoff_1 in lammps)
+Note: m = 3.0
+
+Table 1. Parameters used in Tersoff potentials for B-B, N-N and B-N [24], [25], [26]].
+
+Empty Cell	B-B	N-N	B-N
+m	3	3	3
+γ	1	1	1
+λ3	0	0	1.9925
+c	0.52629	17.7959	1092.9287
+d	0.001587	5.9484	12.38
+h	0.5	0	−0.5413
+n	3.9929061	0.6184432	0.364153367
+β	0.0000016	0.019251	0.000011134
+λ2	2.077498242	2.627272104	2.784247207
+B	1173.196962	2563.560342	3624
+R	2	2	2.3
+D	0.1	0.1	0.5
+λ1	2.237257857	2.829309329	2.998355817
+A	1404.475204	2978.95279	4483.25
+
 #-------------------------------------------------------------------------------
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
   Appendix A. Supplementary data: Tersoff_Potential_Parameters
