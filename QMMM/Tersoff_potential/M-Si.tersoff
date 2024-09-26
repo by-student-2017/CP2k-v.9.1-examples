@@ -1,0 +1,252 @@
+       # M-Si (M=Na,Mg,K,Ca,Rb,Sr,Cs,Ba)(Ba-Ga): https://doi.org/10.1063/1.4955331
+       # Note: Since the only difference from Tersoff's formula is the slight difference in the value of C, 
+       # the parameters are set here as if they follow Tersoff's original formula.
+       #
+       # Note: 5.197495^(1/3) = 1.73222
+       &TERSOFF
+         ATOMS Si Si
+         A    1830.8
+         ALPHA 0.0
+         B    471.18
+         BETA 0.0000010999
+         BIGD 0.15
+         BIGR 2.85
+         C  11084.9595
+         D  16.217
+         H -0.59825
+         LAMBDA1 2.4799
+         LAMBDA2 1.73222
+         LAMBDA3 0.0
+         N 0.78734
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ga Ga
+         A    785.069203
+         ALPHA 0.0
+         B    138.357095
+         BETA 1
+         BIGD 0.15
+         BIGR 3.15
+         C  2389153.77
+         D  67.0438016
+         H -1.0
+         LAMBDA1 2.36791466
+         LAMBDA2 1.47186845
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si Ga
+         A    3167.614191
+         ALPHA 0.0
+         B    42.58745217
+         BETA 1.0
+         BIGD 0.15
+         BIGR 3.05
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.346702242
+         LAMBDA2 1.133553756
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Si Ga
+         A    3167.614191
+         ALPHA 0.0
+         B    42.58745217
+         BETA 1.0
+         BIGD 0.15
+         BIGR 3.05
+         C  0
+         D  1
+         H  0
+         LAMBDA1 3.346702242
+         LAMBDA2 1.133553756
+         LAMBDA3 0.0
+         N 1
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Na Si
+         A    243.595103
+         ALPHA 0.0
+         B    7.04298555
+         BETA 4
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.45462348
+         LAMBDA2 1.22731174
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS K Si
+         A    947.439362
+         ALPHA 0.0
+         B    14.3000171
+         BETA 4
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.67258681
+         LAMBDA2 1.33629341
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Rb Si
+         A    1524.94457
+         ALPHA 0.0
+         B    17.2841824
+         BETA 4
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.74926128
+         LAMBDA2 1.37463064
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Cs Si
+         A    2067.83177
+         ALPHA 0.0
+         B    19.8710688
+         BETA 4
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.78074859
+         LAMBDA2 1.39037429
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Mg Si
+         A    594.493459
+         ALPHA 0.0
+         B    10.7967238
+         BETA 2
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.85528227
+         LAMBDA2 1.42764113
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ca Si
+         A    688.238764
+         ALPHA 0.0
+         B    16.6876434
+         BETA 2
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.68258064
+         LAMBDA2 1.34129032
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Sr Si
+         A    1416.29493
+         ALPHA 0.0
+         B    23.5246459
+         BETA 2
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.78576576
+         LAMBDA2 1.39288288
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ba Si
+         A    1897.20265
+         ALPHA 0.0
+         B    29.5175786
+         BETA 2
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.73860841
+         LAMBDA2 1.36930420
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Ba Ga
+         A    1897.20265
+         ALPHA 0.0
+         B    29.5175786
+         BETA 2
+         BIGD 0.0
+         BIGR 8.0
+         C  0
+         D  1
+         H  0
+         LAMBDA1 2.73860841
+         LAMBDA2 1.36930420
+         LAMBDA3 0.0
+         N 1.0
+         RCUT 10
+         #
+       &END TERSOFF
+       
