@@ -57,7 +57,7 @@
     #TEMPERATURE [K] 300  ! The temperature in K used to initialize the velocities
     #TEMPERATURE [K] 493  ! oil bath
     TEMPERATURE [K] 358  ! electrolysis
-    TIMESTEP [fs] 0.5     ! The length of an integration step: <= 0.01 [fs] for Tersoff potential
+    TIMESTEP [fs] 0.25     ! The length of an integration step: <= 0.01 [fs] for Tersoff potential
     STEPS 500000           ! The number of MD steps to perform 
     #
     &THERMOSTAT
@@ -305,7 +305,7 @@
         &END
       &END
     &END SCF
-
+    
     &POISSON
       PERIODIC NONE           # no interaction between replica
       #
@@ -512,16 +512,16 @@
          A    348.585950377
          ALPHA 0.0
          B    130.359502914
-         BETA 1.5724e-7
+         BETA 4 # 1.5724e-7
          BIGD 0.106102993
          BIGR 1.343034681
-         C  38049.0
-         D  1.5724e7
-         H  -0.7482
+         C  0 # 38049.0
+         D  1 # 1.5724e7
+         H  0 # -0.7482
          LAMBDA1 3.74605
          LAMBDA2 2.107
          LAMBDA3 0.0
-         N 0.72751
+         N 1.0 # 0.72751
          RCUT 10
          #
        &END TERSOFF
