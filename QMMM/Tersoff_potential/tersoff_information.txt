@@ -55,8 +55,8 @@
 # M-Si (M=Na,Mg,K,Ca,Rb,Sr,Cs,Ba)(Ba-Ga): https://doi.org/10.1063/1.4955331
 # ortho-Mo2C: https://doi.org/10.1063/5.0150030
 #  GULP (Default): m = 3, omega_ik = 1
-# Si-Zr: http://ir.meiho.edu.tw/handle/987654321/3036
 # Si-Zr: https://pubs.rsc.org/en/content/articlehtml/2015/ra/c4ra16962j
+# (related paper: http://ir.meiho.edu.tw/handle/987654321/3036)
 # SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
 # ZnTe: https://doi.org/10.1016/S1293-2558(03)00154-7
 #-------------------------------------------------------------------------------
@@ -1518,6 +1518,32 @@ d	28.2031	28.4780
 h	-0.9166	-0.2410
 R (A)	2.75	2.75
 D (A)	0.15	0.15
+
+#-------------------------------------------------------------------------------
+# Si-Zr: https://pubs.rsc.org/en/content/articlehtml/2015/ra/c4ra16962j
+# (related paper: http://ir.meiho.edu.tw/handle/987654321/3036)
+
+Note: tersoff1989
+Note: LAMBDA3 = 0.0
+
+Table II. The parameters of the Tersoff potential for Si-Si, Si-Zr
+Type Si-Si Zr-Si
+A(eV) 7835.380 2251.660
+B(eV) 45.087 175.073
+λ 3.851 2.603
+μ 1.079 1.474
+β 0.429 0.468E-05
+n 21.161 39.960
+c 27340.700 4061.980
+d 119.344 3.252
+h -0.330 -0.062
+R(A) 2.783 3.216
+S(A) 2.986 3.562
+
+
+Table I. The parameters of the tight-binding potential for Zr-Zr
+Type A(eV) ζ(eV) p q r0(Å)
+Zr-Zr 0.179 2.201 9.300 2.099 3.174
 
 #-------------------------------------------------------------------------------
 # GaSiC: https://ieeexplore.ieee.org/abstract/document/6330521

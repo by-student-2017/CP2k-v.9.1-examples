@@ -1,0 +1,42 @@
+       # M-Si (M=Na,Mg,K,Ca,Rb,Sr,Cs,Ba)(Ba-Ga): https://doi.org/10.1063/1.4955331
+       # Note: Since the only difference from Tersoff's formula is the slight difference in the value of C, 
+       # the parameters are set here as if they follow Tersoff's original formula.
+       #
+       &TERSOFF
+         ATOMS Si Si
+         A    7835.380
+         ALPHA 0.0
+         B    45.087
+         BETA 0.429
+         BIGD 0.1015
+         BIGR 2.8845
+         C  27340.700
+         D  119.344
+         H -0.330
+         LAMBDA1 3.851
+         LAMBDA2 1.079
+         LAMBDA3 0.0
+         N 21.161
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       &TERSOFF
+         ATOMS Zr Si
+         A    2251.660
+         ALPHA 0.0
+         B    175.073
+         BETA 0.468E-05
+         BIGD 0.173
+         BIGR 3.389
+         C  4061.980
+         D  3.252
+         H -0.062
+         LAMBDA1 2.603
+         LAMBDA2 1.474
+         LAMBDA3 0.0
+         N 39.960
+         RCUT 10
+         #
+       &END TERSOFF
+       
