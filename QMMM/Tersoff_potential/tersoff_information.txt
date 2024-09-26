@@ -8,6 +8,7 @@
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
 # C-Ru: https://arxiv.org/abs/1403.2101
+# C-Co: https://pubs.rsc.org/en/content/articlehtml/2017/nr/c7nr06038f
 # a-C: https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.61.2879
 # a-C:H: https://doi.org/10.1103/PhysRevB.44.12039
 # C-sp3: https://pubs.rsc.org/en/content/articlehtml/2021/cp/d1cp00399b
@@ -20,6 +21,7 @@
 # BN-nanosheet: https://iopscience.iop.org/article/10.1088/0957-4484/27/8/085706/meta
 # h-BN: https://doi.org/10.1103/PhysRevB.96.184108
 # c-BN: https://doi.org/10.1016/j.apsusc.2016.04.054
+# v-BN: https://link.springer.com/article/10.1007/s12540-011-0204-2
 # N-B-Al: https://doi.org/10.1016/j.physe.2022.115176
 # BN_AlN_GaN: https://journals.aps.org/prapplied/abstract/10.1103/PhysRevApplied.13.034027
 # GaN: https://doi.org/10.1016/S0375-9601(03)01039-9
@@ -52,6 +54,17 @@
 # AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
 # SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
 # ZnTe: https://doi.org/10.1016/S1293-2558(03)00154-7
+# M-Si (M=Na,Mg,K,Ca,Rb,Sr,Cs,Ba)(Ba-Ga): https://doi.org/10.1063/1.4955331
+# Li-X (X=C,Si): https://link.springer.com/article/10.1134/S1063783416090146
+# ortho-Mo2C: https://doi.org/10.1063/5.0150030
+# Si-Zr: http://ir.meiho.edu.tw/handle/987654321/3036
+# Si-Zr: https://pubs.rsc.org/en/content/articlehtml/2015/ra/c4ra16962j
+#-------------------------------------------------------------------------------
+# Tersoff (m=1, Albe)
+# X-Y (X=Ag, Pd, Ru, I)(Y=Si,C): https://iopscience.iop.org/article/10.1088/1361-648X/ab5465/meta
+# Ru-C: https://theses.hal.science/tel-01229111/
+# Ti-C: https://www.cell.com/heliyon/fulltext/S2405-8440(24)01944-3
+# Mo-Er: https://iopscience.iop.org/article/10.1088/0965-0393/24/4/045018/meta
 #-------------------------------------------------------------------------------
 # Tersoff + ZBL
 # Fe: https://www.ctcms.nist.gov/potentials/Download/2020--Byggmastar-J-Granberg-F--Fe/1/Fe_Byggmastar.tersoff.zbl
@@ -106,23 +119,33 @@
 # Zr-O (Ecoul): https://arxiv.org/abs/2007.13947
 # C-Pt: https://openkim.org/files/MO_500121566391_002/Tersoff_AlbeNordlundAverback_2002_PtC.params
 # C-Cu: https://doi.org/10.1016/j.carbon.2014.06.024
+# C-Al (Ito-Khor-Das Sarma): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.59.10125
+# CH4/Ir: https://pubs.acs.org/doi/full/10.1021/acs.jpclett.0c00260
 # Si-As, Si-Ga, Si-In: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.91.094108
 # III-V compound semiconductor (Ecoul): https://doi.org/10.1016/S0022-0248(99)00546-1
 # In-P: https://www.ctcms.nist.gov/potentials/Download/2022--Chrobak-D-Majtyka-Pilat-A-Ziolkowski-G-Chrobak-A--In-P/1/InP_Materials_2022_Chrobak_Majtyka.tersoff
 # armchair and zig-zag carbon sheets: https://doi.org/10.1016/j.physe.2021.114789
 # carbon nanotubes and graphene: https://doi.org/10.1103/PhysRevB.81.205441
 # Ti-Al-C, Ti-Si-C: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.214114
+# M-BKS, O-X (X=Si,Ta,Hf,Ti): https://doi.org/10.1063/1.4825197
+# Ti-C-X(X=O,F) (m=1, Albe): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.106.054105
+# 2NNMEAM+QEq: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.144110
+# Co, Fe, Ni: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.7b12687
 # Brenner, C-H: https://journals.aps.org/prb/pdf/10.1103/PhysRevB.42.9458
 # Brenner, C: https://doi.org/10.1016/0009-2614(91)90308-V
 # Brenner, Ru: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.92.165425
 # Brenner, W-C-H: https://pubs.aip.org/aip/jap/article/98/12/123520/916675
 # Brenner, Au: https://link.springer.com/article/10.1140/epjb/e2012-30429-y?utm_source=getftr&utm_medium=getftr&utm_campaign=getftr_pilot
+# Brenner, Ni-C: https://pubs.acs.org/doi/full/10.1021/jp212165g
+# Brenner, Si-C-F: https://doi.org/10.1063/1.371637
+# REBO, H-Si-C: https://pubs.acs.org/doi/full/10.1021/jp3074688
 # AIREBO formula: https://iopscience.iop.org/article/10.1088/2053-1591/3/3/035011/meta
 # COMB: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.81.125328
 # COMB3: https://pubs.acs.org/doi/full/10.1021/jp212083t
 # diposite: https://doi.org/10.1016/j.apsusc.2013.03.004
 # CNT/Au: https://www.sciencedirect.com/science/article/pii/S0921452607008277
-# Gupta potential (Ag, Au): https://link.springer.com/article/10.1140/epjb/e2013-40067-6
+# Gupta (Ag, Au): https://link.springer.com/article/10.1140/epjb/e2013-40067-6
+# Gupta (Cu, Ag, Al, Ga): https://link.springer.com/article/10.1007/s13204-017-0556-0
 # Mo-Se: https://openkim.org/files/MO_152208847456_001/MoSe-i7.tersoff
 # Hf-B: https://www.ctcms.nist.gov/potentials/Download/2011--Daw-M-S-Lawson-J-W-Bauschlicher-C-W--Hf-B/1/HfB_DLB2011.lbtrsff
 # Zr-B: https://www.ctcms.nist.gov/potentials/Download/2011--Daw-M-S-Lawson-J-W-Bauschlicher-C-W--Zr-B/1/ZrB_pot2_DLB2011.lbtrsff
@@ -132,8 +155,24 @@
 # SW(Zn-Te): https://doi.org/10.1103/PhysRevB.72.014107
 # SW(Zn-Cd-Hg-S-Se-Te): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.085309
 # SW(N,B,Si): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.68.094110
+# Fe-Cr-N (Morse): https://www.sciencedirect.com/science/article/pii/S0925838819331615
+# Li-X (X=Si,C,P,N)(Morse): https://www.mdpi.com/2079-3197/7/4/60 (Open Access)
+# Li-C (Morse): https://open.metu.edu.tr/handle/11511/17968
+# Al-X (X=Si,C) (Morse): https://link.springer.com/article/10.1007/s00339-018-1624-3
+# Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # https://mavmatrix.uta.edu/chemistry_dissertations/210/
 # Lammps script: https://dspace.mit.edu/handle/1721.1/109645
+# Lammps script: https://bearworks.missouristate.edu/theses/3159/
+# Lammps script (strain): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/1?pq-origsite=gscholar&cbl=18750&diss=y
+#   Mechanical Behavior of NixCr Alloys with Ti3SiC2 Nanoparticle Inclusions Using Molecular Dynamics
+# mobility: http://mail.imt.si/izvodi/mit203/liu.pdf
+# Ge/O/H (ReaxFF): https://pubs.acs.org/doi/full/10.1021/acs.jpcc.8b08862
+# CHONi (ReaxFF): https://pubs.acs.org/doi/full/10.1021/jp711825a
+# NiCH: https://pubs.acs.org/doi/full/10.1021/jp9035056
+# NiCOH: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.5b01275
+# FeCrOS (ReaxFF): https://doi.org/10.1021/acscatal.5b01766
+# C/H/O/Mn/F/Li/N/S/P: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.3c07242
+# carbon: 10.34808/tq2020/24.4/a 
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
