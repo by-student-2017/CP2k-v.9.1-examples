@@ -264,22 +264,38 @@
 
     &POISSON
       PERIODIC NONE           # no interaction between replica
-      #POISSON_SOLVER WAVELET # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      #
+      # IMPLICIT, WAVELET, ANALYTIC (<=2D system), PERIODIC (3D system) for Continuum Solvent Model
+      ##POISSON_SOLVER WAVELET 
+      #&WAVELET
+      #  SCF_TYPE 60
+      #&END WAVELET
+      #
+      # continuum solvent model (Poisson-Boltzmann (PB) model)
+      ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
+      !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
       POISSON_SOLVER IMPLICIT
+      &IMPLICIT
+        &DIELECTRIC
+          DIELECTRIC_CONSTANT 78.4
+          DIELECTRIC_FUNCTION_TYPE DENSITY_DEPENDENT
+          DIELECTRIC_CORE_CORRECTION TRUE
+          RHO_MIN 1.0E-4
+          RHO_MAX 1.0E-3
+        &END DIELECTRIC
+      &END IMPLICIT
+      #
       #POISSON_SOLVER MULTIPOLE ! Continuum Solvent Model (failed)
-      &WAVELET
-        SCF_TYPE 60
-      &END WAVELET
     &END POISSON
     !
     ! Continuum Solvent Model (water 78.4, Formamide 110, DMSO 48.9, Methanol 32.6, Ethanol 24.3, Acetone 20.7, 
     !        Ammonia 16.9, Chloroform 4.8, Diethyl ether 4.3, Benzene 2.3, Carbon tetrachloride 2.2, Hexane 1.9)
-    &SCCS
-      RELATIVE_PERMITTIVITY 78.4
-      METHOD ANDREUSSI
-      MAX_ITER 100
-      EPS_SCCS 1.0E-6
-    &END SCCS
+    #&SCCS
+    #  RELATIVE_PERMITTIVITY 78.4
+    #  METHOD ANDREUSSI
+    #  MAX_ITER 100
+    #  EPS_SCCS 1.0E-6
+    #&END SCCS
     #&SCRF ! failed
     #  EPS_OUT 78.4
     #  LMAX 3
