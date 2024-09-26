@@ -57,8 +57,6 @@
 #  GULP (Default): m = 3, omega_ik = 1
 # Si-Zr: https://pubs.rsc.org/en/content/articlehtml/2015/ra/c4ra16962j
 # (related paper: http://ir.meiho.edu.tw/handle/987654321/3036)
-# SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
-# ZnTe: https://doi.org/10.1016/S1293-2558(03)00154-7
 #-------------------------------------------------------------------------------
 # Tersoff (m=1, Albe)
 # X-Y (X=Ag, Pd, Ru, I)(Y=Si,C): https://iopscience.iop.org/article/10.1088/1361-648X/ab5465/meta
@@ -119,6 +117,8 @@
 # Zr-O (Ecoul): https://arxiv.org/abs/2007.13947
 # C-Pt: https://openkim.org/files/MO_500121566391_002/Tersoff_AlbeNordlundAverback_2002_PtC.params
 # C-Cu: https://doi.org/10.1016/j.carbon.2014.06.024
+# SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
+# ZnTe: https://doi.org/10.1016/S1293-2558(03)00154-7
 # C-Al (Ito-Khor-Das Sarma): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.59.10125
 # CH4/Ir: https://pubs.acs.org/doi/full/10.1021/acs.jpclett.0c00260
 # Si-As, Si-Ga, Si-In: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.91.094108
