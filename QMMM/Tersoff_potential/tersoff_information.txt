@@ -53,8 +53,8 @@
 # Ge-on-SiO2: https://doi.org/10.1016/j.susc.2012.12.013
 # AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
 # M-Si (M=Na,Mg,K,Ca,Rb,Sr,Cs,Ba)(Ba-Ga): https://doi.org/10.1063/1.4955331
-# Li-X (X=C,Si): https://link.springer.com/article/10.1134/S1063783416090146
 # ortho-Mo2C: https://doi.org/10.1063/5.0150030
+#  GULP (Default): m = 3, omega_ik = 1
 # Si-Zr: http://ir.meiho.edu.tw/handle/987654321/3036
 # Si-Zr: https://pubs.rsc.org/en/content/articlehtml/2015/ra/c4ra16962j
 # SiCdTe: https://doi.org/10.1016/S0022-0248(98)00500-4
@@ -156,6 +156,7 @@
 # SW(Zn-Cd-Hg-S-Se-Te): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.88.085309
 # SW(N,B,Si): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.68.094110
 # Fe-Cr-N (Morse): https://www.sciencedirect.com/science/article/pii/S0925838819331615
+# Li-X (X=C,Si) (Morse): https://link.springer.com/article/10.1134/S1063783416090146
 # Li-X (X=Si,C,P,N)(Morse): https://www.mdpi.com/2079-3197/7/4/60 (Open Access)
 # Li-C (Morse): https://open.metu.edu.tr/handle/11511/17968
 # Al-X (X=Si,C) (Morse): https://link.springer.com/article/10.1007/s00339-018-1624-3
@@ -1499,6 +1500,24 @@ B (eV) 	17.284 182 4 	23.524 645 9 	19.871 068 8 	29.517 578 6
 λ1 (1/Å) 	2.749 261 28 	2.785 765 76 	2.780 748 59 	2.738 608 41 
 λ2 (1/Å) 	1.374 630 64 	1.392 882 88 	1.390 374 29 	1.369 304 20 
 
+#-------------------------------------------------------------------------------
+# ortho-Mo2C: https://doi.org/10.1063/5.0150030
+#  GULP (Default): m = 3, omega_ik = 1
+
+TABLE I. Optimized Tersoff-type EIAP parameters obtained for ortho-Mo2C.
+EIAP parameters	Mo (Mo-C and Mo-C-C)	C (C-Mo and C-Mo-Mo)
+n	0.8440	1.1230
+β	36.8372e−6	30.9220e−6
+A (eV)	7041.4714	7041.4714
+B (eV)	2694.0291	2694.0291
+λ1 (A^−1)	2.9433	2.9433
+λ2 (A^−1)	2.3171	2.3171
+λ3 (A^−1)	4.3978	2.1670
+c	53270.7978	112790.0428
+d	28.2031	28.4780
+h	-0.9166	-0.2410
+R (A)	2.75	2.75
+D (A)	0.15	0.15
 
 #-------------------------------------------------------------------------------
 # GaSiC: https://ieeexplore.ieee.org/abstract/document/6330521

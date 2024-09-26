@@ -1,0 +1,43 @@
+       # ortho-Mo2C: https://doi.org/10.1063/5.0150030
+       #  GULP (Default): m = 3, omega_ik = 1
+       #
+       # Mo-C, Mo-C-C
+       &TERSOFF
+         ATOMS Mo C
+         A    7041.4714
+         ALPHA 0.0
+         B    2694.0291
+         BETA 36.8372e−6
+         BIGD 0.15
+         BIGR 2.75
+         C  53270.7978
+         D  28.2031
+         H -0.9166
+         LAMBDA1 2.9433
+         LAMBDA2 2.3171
+         LAMBDA3 4.3978
+         N 0.8440
+         RCUT 10
+         #
+       &END TERSOFF
+       
+       # C-Mo, C-Mo-Mo
+       &TERSOFF
+         ATOMS C-Mo
+         A    7041.4714
+         ALPHA 0.0
+         B    2694.0291
+         BETA 30.9220e−6
+         BIGD 0.15
+         BIGR 2.75
+         C  112790.0428
+         D  28.4780
+         H -0.2410
+         LAMBDA1 2.9433
+         LAMBDA2 2.3171
+         LAMBDA3 2.1670
+         N 1.1230
+         RCUT 10
+         #
+       &END TERSOFF
+       
