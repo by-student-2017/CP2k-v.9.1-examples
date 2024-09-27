@@ -24,9 +24,18 @@
 # Zn-Cd: https://js.vnu.edu.vn/MaP/article/view/1836/1740
 # Ni-base (Al,Ti,V,Cr,Co,Ni,Nb,Mo,Hf,Ta,W, and Re): https://doi.org/10.2320/matertrans1989.38.761
 # cubic-metals (Al, Cu, Ag, Au, Na, and K): https://journals.aps.org/pr/abstract/10.1103/PhysRev.157.463
+# (related paper: https://iopscience.iop.org/article/10.1088/1742-6596/1436/1/012037/meta)
 # Au,Al,Cr,Fe: https://www.iaeng.org/IJAM/issues_v50/issue_2/IJAM_50_2_03.pdf
+# Au-Cu: https://iopscience.iop.org/article/10.1088/0305-4608/4/12/009/meta
+# Cu-Si: https://pubs.aip.org/aip/acp/article/1710/1/030039/884397/Effects-of-temperature-on-Cu-structure-deposited
+# Si-diamond: https://doi.org/10.1016/j.procir.2013.06.141
+# Si-O: https://pubs.aip.org/aip/acp/article/1728/1/020236/1007805/Study-of-interaction-in-silica-glass-via-model
+# X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
+# Cu: https://pubs.acs.org/doi/full/10.1021/cg070584h
 # Derivation of Morse Potential Function: https://doi.org/10.1080/00268976.2024.2360542
+# Combination Rules for Morse-Based van der Waals Force Fields: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b11252
 # [lammps-users] How to add a numeric term to Morse potential function in LAMMPS: https://matsci.org/t/lammps-users-how-to-add-a-numeric-term-to-morse-potential-function-in-lammps/34933
+# Lichang Wang, "Molecular Dynamics: Studies of Synthetic and Biological Macromolecules"
 #-------------------------------------------------------------------------------
 # Other potential
 # LJ+Ecoul: https://doi.org/10.1063/1.3103886
@@ -78,6 +87,7 @@ C2H4	199.2	5.07
 
 #-------------------------------------------------------------------------------
 # cubic metals: https://journals.aps.org/pr/abstract/10.1103/Physr0v.114.687
+# (related paper: https://iopscience.iop.org/article/10.1088/1742-6596/1436/1/012037/meta)
 
 TABLE I. Morse potential constani. s for the pairwise atomic interaction in cubic metals
 
@@ -255,6 +265,65 @@ Au-Au	0.12	3.011	1.735
 Al-Al	0.123	3.178	1.089
 Cr-Cr	0.462	3.116	1.116
 Fe-Fe	0.028	3.636	1.357
+
+#-------------------------------------------------------------------------------
+# Au-Cu: https://iopscience.iop.org/article/10.1088/0305-4608/4/12/009/meta
+
+Table 1. Parameters of the Morse potential for pure metals Au(A), Cu(B) and Au, Cu(A-B) interactions from
+1st neighbour consideration.
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Au(A)	0.63272	1.6506	2.8709
+Cu(B)	0.58877	1.4311	2.5421
+Au,Cu(A-B) Combination rule	0.61035	2.5421	2.6956
+
+#-------------------------------------------------------------------------------
+# Cu-Si: https://pubs.aip.org/aip/acp/article/1710/1/030039/884397/Effects-of-temperature-on-Cu-structure-deposited
+
+TABLE 3. Morse parameters for Cu-Si interaction
+Parameter	D0 [eV]	alpha [A^-1]	r0 [A]
+Cu-Si	0.900	1.110	3.150
+
+#-------------------------------------------------------------------------------
+# Si-diamond: https://doi.org/10.1016/j.procir.2013.06.141
+
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Si-diamond	0.435	4.6487	1.9475
+
+#-------------------------------------------------------------------------------
+# Si-O: https://pubs.aip.org/aip/acp/article/1728/1/020236/1007805/Study-of-interaction-in-silica-glass-via-model
+
+Table2. Morse Constants for Si and O
+
+Bonded-interaction
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Si-O	24.43372	0.8496	
+O-O	2.60610	0.6192	
+Si-Si	5.26738	0.6524	
+
+Non-Bonded-interaction
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Si-O	3.70567	0.8496	3.49
+O-O	3.70567	0.6192	3.154
+Si-Si	5.267383	0.6524	3.826
+
+#-------------------------------------------------------------------------------
+# X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
+
+Table 2. Morse potential parameters describing the interaction of deposited particles with metal and graphite substrates.
+
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Si-Ni	0.181	4.081	2.032
+Si-Cu	0.163	4.049	1.864
+C-Ni	1.009	1.987	2.664
+C-Cu	0.912	1.957	2.443
+Si-C	0.435	4.648	1.947
+C-C	2.423	2.555	2.552
+
+#-------------------------------------------------------------------------------
+# Cu: https://pubs.acs.org/doi/full/10.1021/cg070584h
+
+Element	D0 [eV]	alpha[A^-1]	r0 [A]
+Cu	0.343	1.358	2.626
 
 #-------------------------------------------------------------------------------
 # C. L. Kong, J. Chem. Phys. 59, 2464–2467 (1973): https://doi.org/10.1063/1.1680358
