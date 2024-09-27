@@ -129,6 +129,7 @@
 # Ti-Al-C, Ti-Si-C: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.214114
 # M-BKS, O-X (X=Si,Ta,Hf,Ti): https://doi.org/10.1063/1.4825197
 # Ti-C-X(X=O,F) (m=1, Albe): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.106.054105
+# InAs_quantum_dots (m=1,Albe): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.77.235303 (Open Access)
 # 2NNMEAM+QEq: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.144110
 # Co, Fe, Ni: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.7b12687
 # Brenner, C-H: https://journals.aps.org/prb/pdf/10.1103/PhysRevB.42.9458
