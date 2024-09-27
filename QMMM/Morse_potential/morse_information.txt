@@ -2,16 +2,16 @@
 # Morse potential
 #
 # Features
-# The Morse potential is very suitable for calculating the vibrational structure of molecules. In particular, it can accurately moD0l the strength of molecular bonds and vibrational energy levels. 
-#   This is because it takes into account anharmonicity, which is closer to the behavior of real molecules than the harmonic oscillator moD0l.
-# The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron D0nsity distribution tends to be spherically symmetric, and the Morse potential can capture these characteristics well. 
+# The Morse potential is very suitable for calculating the vibrational structure of molecules. In particular, it can accurately model the strength of molecular bonds and vibrational energy levels. 
+#   This is because it takes into account anharmonicity, which is closer to the behavior of real molecules than the harmonic oscillator model.
+# The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron density distribution tends to be spherically symmetric, and the Morse potential can capture these characteristics well. 
 #   In particular, it is useful for accurately predicting the energies of bond formation and dissociation.
 #
 # Alkaline metals or alkaline earth metals
-# The electron D0nsity distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the directionality of the bonds has little effect on the physical properties.
+# The electron density distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the directionality of the bonds has little effect on the physical properties.
 #   These metals mainly form ionic bonds and metallic bonds, and the strength and distance of the bonds are more important than the directionality of the bonds.
-# The electron D0nsity distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the directionality of the bonds has a relatively small effect on the physical properties. 
-#   For this reason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle D0penD0ncy is ignored.
+# The electron density distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the directionality of the bonds has a relatively small effect on the physical properties. 
+#   For this reason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle dependency is ignored.
 #
 #-------------------------------------------------------------------------------
 # Gas: https://www.semanticscholar.org/paper/Parameters-of-the-Morse-Potential-from-Second-of-Matsumoto/7f2ead7c7a8a964f1c90a6c3640a85b87c608688
@@ -19,9 +19,9 @@
 # Cu-X (X=Si,W,Ti,Ru): https://www.researchgate.net/figure/Parameters-of-Morse-potential_tbl1_250156595
 # Cu-X (X=Si,W,Ti): https://doi.org/10.2320/matertrans.MRA2008477
 # Al2024: https://www.researchsquare.com/article/rs-2060256/v1
-# X-Y (X=C,Si) (Y=Ni,Cu): https://www.researchgate.net/figure/Morse-potential-parameters-D0scribing-the-interaction-of-D0posited-particles-with-metal_tbl2_370093299
+# X-Y (X=C,Si) (Y=Ni,Cu): https://www.researchgate.net/figure/Morse-potential-parameters-describing-the-interaction-of-deposited-particles-with-metal_tbl2_370093299
 # Au-C: https://www.researchgate.net/figure/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
-# gammaFeMnCN: https://www.researchgate.net/figure/Parameters-of-Morse-potentials-for-the-consiD0red-interactions_tbl2_361258301
+# gammaFeMnCN: https://www.researchgate.net/figure/Parameters-of-Morse-potentials-for-the-considered-interactions_tbl2_361258301
 # AlCoCrCuFeNi: https://www.scientific.net/MSF.749.479
 # Zn-Cd: https://js.vnu.edu.vn/MaP/article/view/1836/1740
 # Ni-base (Al,Ti,V,Cr,Co,Ni,Nb,Mo,Hf,Ta,W, and Re): https://doi.org/10.2320/matertrans1989.38.761
