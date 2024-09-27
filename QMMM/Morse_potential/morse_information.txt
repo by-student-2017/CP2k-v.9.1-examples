@@ -17,21 +17,43 @@
 # Gas: https://www.semanticscholar.org/paper/Parameters-of-the-Morse-Potential-from-Second-of-Matsumoto/7f2ead7c7a8a964f1c90a6c3640a85b87c608688
 # cubic metals: https://journals.aps.org/pr/abstract/10.1103/Physr0v.114.687
 # Cu-X (X=Si,W,Ti,Ru): https://www.r0searchgate.net/figur0/Parameters-of-Morse-potential_tbl1_250156595
+# Cu-X (X=Si,W,Ti): https://doi.org/10.2320/matertrans.MRA2008477
 # Al2024: https://www.r0searchsquar0.com/article/rs-2060256/v1
 # Au-C: https://www.r0searchgate.net/figur0/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
 # gammaFeMnCN: https://www.r0searchgate.net/figur0/Parameters-of-Morse-potentials-for-the-consiD0r0d-interactions_tbl2_361258301
 # AlCoCrCuFeNi: https://www.scientific.net/MSF.749.479
 # Zn-Cd: https://js.vnu.edu.vn/MaP/article/view/1836/1740
 # Ni-base (Al,Ti,V,Cr,Co,Ni,Nb,Mo,Hf,Ta,W, and Re): https://doi.org/10.2320/matertrans1989.38.761
+# NiFeCrBN: https://doi.org/10.1016/j.jallcom.2019.153331
+# NiFeCrBN: https://link.springer.com/article/10.1007/s11665-024-09989-0
 # cubic-metals (Al, Cu, Ag, Au, Na, and K): https://journals.aps.org/pr/abstract/10.1103/PhysRev.157.463
 # (related paper: https://iopscience.iop.org/article/10.1088/1742-6596/1436/1/012037/meta)
 # Au,Al,Cr,Fe: https://www.iaeng.org/IJAM/issues_v50/issue_2/IJAM_50_2_03.pdf
 # Au-Cu: https://iopscience.iop.org/article/10.1088/0305-4608/4/12/009/meta
+# Ar-Cu: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.60.15107
 # Cu-Si: https://pubs.aip.org/aip/acp/article/1710/1/030039/884397/Effects-of-temperature-on-Cu-structure-deposited
+# Si-C: https://www.sciencedirect.com/science/article/pii/S0169433207008501
+# Si-C: https://www.sciencedirect.com/science/article/pii/S0169433212011506
+# Si-C: https://iopscience.iop.org/article/10.1088/0957-4484/11/3/307/meta
+# Si-C: https://pubs.aip.org/aip/adv/article/7/5/055104/125196
+# Si-C: https://pubs.rsc.org/en/content/articlehtml/2017/ra/c6ra25426h
+# Si-C: https://link.springer.com/article/10.1134/S003602441712007X
+# Si-C: https://iopscience.iop.org/article/10.1088/0022-3727/39/16/022/meta
+# Si-C: https://pubs.aip.org/aip/adv/article/2/4/042116/21787
+# Si-C: https://link.springer.com/article/10.1007/s10853-024-09661-x
 # Si-diamond: https://doi.org/10.1016/j.procir.2013.06.141
 # Si-O: https://pubs.aip.org/aip/acp/article/1728/1/020236/1007805/Study-of-interaction-in-silica-glass-via-model
+# Si-O: https://iopscience.iop.org/article/10.1088/0957-4484/13/5/316/meta
+# Si-Li: https://link.springer.com/article/10.1134/S1023193516100049
+# Si-Li: https://link.springer.com/article/10.1134/S1063783419020136
+# Li-Si-Ag: https://iopscience.iop.org/article/10.1149/2.0751809jes/meta
 # X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
+# C-X (X=Al,Si): https://www.sciencedirect.com/science/article/pii/S0169433210004733
+# P-P, Si-P, N-N, C-N: https://iopscience.iop.org/article/10.1088/1742-6596/1435/1/012061/pdf (Open Access)
+# X-Y (X=P,Si,N,C,Li)(Y=P,N): https://link.springer.com/article/10.1134/S1990793120060044
 # Cu: https://pubs.acs.org/doi/full/10.1021/cg070584h
+# As-S: https://pubs.aip.org/aip/jap/article/109/3/034301/926551
+# As-Co: https://link.springer.com/article/10.1007/s11595-007-3415-0
 # Derivation of Morse Potential Function: https://doi.org/10.1080/00268976.2024.2360542
 # Combination Rules for Morse-Based van der Waals Force Fields: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b11252
 # [lammps-users] How to add a numeric term to Morse potential function in LAMMPS: https://matsci.org/t/lammps-users-how-to-add-a-numeric-term-to-morse-potential-function-in-lammps/34933
@@ -133,7 +155,7 @@ r: Equilibrium distance [A]
 D(A,B) = {D(A) * D(B)}^(1/2)
 alpha(A,B) = (1/2)*{alpha(A) + alpha(b)}
 sigma(A,B) = {sigma(A) * sigma(B)*^(1/2)
-r0(A,B) = sigma(A,B) + ln(2/alpha)
+r0(A,B) = sigma(A,B) + ln(2)/alpha
 
 Table 3 Morse potential parameters of differ0nt atoms
 Element	D [ev]	alpha [A^-1]	r0 [A]	sigma [A]
@@ -246,6 +268,36 @@ Ta	BCC	2.98	1.225	1.154	4.29
 W	BCC	2.85	1.368	1.391	4.10
 
 #-------------------------------------------------------------------------------
+# NiFeCrBN: https://doi.org/10.1016/j.jallcom.2019.153331
+
+V(r) = 4*D*[exp{-2*alpha*(r-s)} - 2*exp{-alpha*(r-s)}]
+s = r0 - ln(2)/alpha
+
+Table 3
+Parameter of Morse potential between the same elements [29-31].
+D(eV) a(1/A) r0(A)
+Ni-Ni 0.4205 1.4199 2.780
+Fe-Fe 0.4174 1.3885 2.845
+Cr-Cr 0.4414 1.5721 2.754
+N-N 5.7100 2.900 1.270
+B-B 2.992 1.26 1.138
+
+D(A,B) = sqrt{D(A) * D(B)}
+alpha(A,B) = (1/2)*{alpha(A) + alpha(B)}
+s(A,B) = sqrt{s(A) * s(B)}
+r0(A,B) = s(A,B) + ln(2)/alpha
+
+Table 4
+Parameters of Morse potential between different kinds of elements.
+D(eV) a(1/A) r0(A)
+Ni-N 1.550 2.160 1.860
+Ni-B 1.122 1.34 2.131
+Fe-N 1.540 2.144 1.877
+Fe-B 1.1175 1.324 1.6339
+Cr-N 1.588 2.240 1.852
+Cr-B 1.149 1.416 1.6224
+
+#-------------------------------------------------------------------------------
 # cubic-metals (Al, Cu, Ag, Au, Na, and K): https://journals.aps.org/pr/abstract/10.1103/PhysRev.157.463
 
 Table 1. Parameters of the Morse potential and data used to evaluate these parameters
@@ -277,11 +329,23 @@ Cu(B)	0.58877	1.4311	2.5421
 Au,Cu(A-B) Combination rule	0.61035	2.5421	2.6956
 
 #-------------------------------------------------------------------------------
+# Ar-Cu: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.60.15107
+
+Element	D0 [eV]	r0 [A]	alpha [A^-1]
+Ar	0.0118	3.82	1.56
+Cu	0.3593	2.813	1.3534
+#-------------------------------------------------------------------------------
 # Cu-Si: https://pubs.aip.org/aip/acp/article/1710/1/030039/884397/Effects-of-temperature-on-Cu-structure-deposited
 
 TABLE 3. Morse parameters for Cu-Si interaction
 Parameter	D0 [eV]	alpha [A^-1]	r0 [A]
 Cu-Si	0.900	1.110	3.150
+
+#-------------------------------------------------------------------------------
+# Si-C: https://www.sciencedirect.com/science/article/pii/S0169433207008501
+
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+C-Si	0.435	4.6487	1.9475
 
 #-------------------------------------------------------------------------------
 # Si-diamond: https://doi.org/10.1016/j.procir.2013.06.141
@@ -305,12 +369,19 @@ Element	D0 [eV]	alpha [A^-1]	r0 [A]
 Si-O	3.70567	0.8496	3.49
 O-O	3.70567	0.6192	3.154
 Si-Si	5.267383	0.6524	3.826
+#-------------------------------------------------------------------------------
+# Si-O: https://iopscience.iop.org/article/10.1088/0957-4484/13/5/316/meta
+
+Table 1. Parameters for the Morse potential.
+Element	alpha [A^-1]	D0 [eV]	r0[A]
+Si-O	1.865	4.67465	 1.631
+Si-C	4.6417	4.350288	 1.9475
+O-O	2.667	5.165533	1.210
 
 #-------------------------------------------------------------------------------
 # X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
 
 Table 2. Morse potential parameters describing the interaction of deposited particles with metal and graphite substrates.
-
 Element	D0 [eV]	alpha [A^-1]	r0 [A]
 Si-Ni	0.181	4.081	2.032
 Si-Cu	0.163	4.049	1.864
@@ -319,11 +390,40 @@ C-Cu	0.912	1.957	2.443
 Si-C	0.435	4.648	1.947
 C-C	2.423	2.555	2.552
 
+Table 3. LJ potential parameters used for simulation.
+Element	E [J]	sigma [A]
+Al–Al	6.283393e−27	2.62
+Si–Si	2.7904e−21	3.826
+Al–Si	4.187264e−24	3.223
+
+#-------------------------------------------------------------------------------
+# Si-P, C-N: https://iopscience.iop.org/article/10.1088/1742-6596/1435/1/012061/pdf (Open Access)
+
+Table 1. Morse potential perameters.
+Interaction	D0 [eV]	alpha [A^-1]	r0 [A]
+P-P	1.001	2.322	2.263
+Si-P	4.479	2.301	1.3
+N-N	2.775	2.233	1.342
+C-N	4.44	2.096	1.350
+
+#-------------------------------------------------------------------------------
+# C-X (X=Al,Si): https://www.sciencedirect.com/science/article/pii/S0169433210004733
+
+Element	D0 [eV]	alpha [A^-1]	r0 [A]
+Al-C	0.28	2.78	2.2
+Si-C	0.435	4.6487	1.9475
+
 #-------------------------------------------------------------------------------
 # Cu: https://pubs.acs.org/doi/full/10.1021/cg070584h
 
 Element	D0 [eV]	alpha[A^-1]	r0 [A]
 Cu	0.343	1.358	2.626
+
+#-------------------------------------------------------------------------------
+# As-S: https://pubs.aip.org/aip/jap/article/109/3/034301/926551
+
+Element	D0 [eV]	alpha[A^-1]	r0 [A]
+As-S	2.35	1.62724	2.239
 
 #-------------------------------------------------------------------------------
 # C. L. Kong, J. Chem. Phys. 59, 2464–2467 (1973): https://doi.org/10.1063/1.1680358
