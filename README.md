@@ -117,7 +117,10 @@ chimera
 
 ## Morse potential
 - The Morse potential is very suitable for calculating the vibrational structure of molecules. In particular, it can accurately model the strength of molecular bonds and vibrational energy levels. This is because it takes into account anharmonicity, which is closer to the behavior of real molecules than the harmonic oscillator model.
+- Consideration of anharmonicity: The vibrations of real molecules are not perfectly harmonic, and the spacing between energy levels decreases with the vibrational quantum number. The Morse potential takes this anharmonicity into account.
 - The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron density distribution tends to be spherically symmetric, and the Morse potential can capture these characteristics well. In particular, it is useful for accurately predicting the energies of bond formation and dissociation.
+- Bond dissociation: The Morse potential explicitly includes states in which bonds are broken (dissociated), so it can accurately express the dissociation energy of molecules.
+- For these reasons, the Morse potential is widely used in the analysis of molecular vibrations and the study of bond breaking processes.
 ### Alkaline metals or alkaline earth metals
 - The electron density distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the directionality of the bonds has little effect on the physical properties. These metals mainly form ionic bonds and metallic bonds, and the strength and distance of the bonds are more important than the directionality of the bonds.
 - The electron density distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the directionality of the bonds has a relatively small effect on the physical properties. For this reason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle dependency is ignored.
