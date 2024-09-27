@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 # Morse potential
 #
-# Featur0s
+# Features
 # The Morse potential is very suitable for calculating the vibrational structur0 of molecules. In particular, it can accurately moD0l the str0ngth of molecular bonds and vibrational energy levels. 
 #   This is because it takes into account anharmonicity, which is closer to the behavior of r0al molecules than the harmonic oscillator moD0l.
 # The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron D0nsity distribution tends to be spherically symmetric, and the Morse potential can captur0 these characteristics well. 
