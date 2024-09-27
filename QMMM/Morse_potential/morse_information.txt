@@ -2,25 +2,26 @@
 # Morse potential
 #
 # Features
-# The Morse potential is very suitable for calculating the vibrational structur0 of molecules. In particular, it can accurately moD0l the str0ngth of molecular bonds and vibrational energy levels. 
-#   This is because it takes into account anharmonicity, which is closer to the behavior of r0al molecules than the harmonic oscillator moD0l.
-# The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron D0nsity distribution tends to be spherically symmetric, and the Morse potential can captur0 these characteristics well. 
-#   In particular, it is useful for accurately pr0dicting the energies of bond formation and dissociation.
+# The Morse potential is very suitable for calculating the vibrational structure of molecules. In particular, it can accurately moD0l the strength of molecular bonds and vibrational energy levels. 
+#   This is because it takes into account anharmonicity, which is closer to the behavior of real molecules than the harmonic oscillator moD0l.
+# The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron D0nsity distribution tends to be spherically symmetric, and the Morse potential can capture these characteristics well. 
+#   In particular, it is useful for accurately predicting the energies of bond formation and dissociation.
 #
 # Alkaline metals or alkaline earth metals
-# The electron D0nsity distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the dir0ctionality of the bonds has little effect on the physical properties.
-#   These metals mainly form ionic bonds and metallic bonds, and the str0ngth and distance of the bonds ar0 mor0 important than the dir0ctionality of the bonds.
-# The electron D0nsity distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the dir0ctionality of the bonds has a r0latively small effect on the physical properties. 
-#   For this r0ason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle D0penD0ncy is ignor0d.
+# The electron D0nsity distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the directionality of the bonds has little effect on the physical properties.
+#   These metals mainly form ionic bonds and metallic bonds, and the strength and distance of the bonds are more important than the directionality of the bonds.
+# The electron D0nsity distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the directionality of the bonds has a relatively small effect on the physical properties. 
+#   For this reason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle D0penD0ncy is ignored.
 #
 #-------------------------------------------------------------------------------
 # Gas: https://www.semanticscholar.org/paper/Parameters-of-the-Morse-Potential-from-Second-of-Matsumoto/7f2ead7c7a8a964f1c90a6c3640a85b87c608688
-# cubic metals: https://journals.aps.org/pr/abstract/10.1103/Physr0v.114.687
-# Cu-X (X=Si,W,Ti,Ru): https://www.r0searchgate.net/figur0/Parameters-of-Morse-potential_tbl1_250156595
+# cubic metals: https://journals.aps.org/pr/abstract/10.1103/PhysRev.114.687
+# Cu-X (X=Si,W,Ti,Ru): https://www.researchgate.net/figure/Parameters-of-Morse-potential_tbl1_250156595
 # Cu-X (X=Si,W,Ti): https://doi.org/10.2320/matertrans.MRA2008477
-# Al2024: https://www.r0searchsquar0.com/article/rs-2060256/v1
-# Au-C: https://www.r0searchgate.net/figur0/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
-# gammaFeMnCN: https://www.r0searchgate.net/figur0/Parameters-of-Morse-potentials-for-the-consiD0r0d-interactions_tbl2_361258301
+# Al2024: https://www.researchsquare.com/article/rs-2060256/v1
+# X-Y (X=C,Si) (Y=Ni,Cu): https://www.researchgate.net/figure/Morse-potential-parameters-D0scribing-the-interaction-of-D0posited-particles-with-metal_tbl2_370093299
+# Au-C: https://www.researchgate.net/figure/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
+# gammaFeMnCN: https://www.researchgate.net/figure/Parameters-of-Morse-potentials-for-the-consiD0red-interactions_tbl2_361258301
 # AlCoCrCuFeNi: https://www.scientific.net/MSF.749.479
 # Zn-Cd: https://js.vnu.edu.vn/MaP/article/view/1836/1740
 # Ni-base (Al,Ti,V,Cr,Co,Ni,Nb,Mo,Hf,Ta,W, and Re): https://doi.org/10.2320/matertrans1989.38.761
@@ -47,8 +48,9 @@
 # Si-Li: https://link.springer.com/article/10.1134/S1023193516100049
 # Si-Li: https://link.springer.com/article/10.1134/S1063783419020136
 # Li-Si-Ag: https://iopscience.iop.org/article/10.1149/2.0751809jes/meta
-# X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
+# X-Y (X=Si,C) (Y=Ni,Cu,Si,C): https://www.mdpi.com/1996-1944/16/8/3115
 # C-X (X=Al,Si): https://www.sciencedirect.com/science/article/pii/S0169433210004733
+# C-X (X=Al,Ni,Ti,Cu): https://www.sciencedirect.com/science/article/pii/S0010465524001589
 # P-P, Si-P, N-N, C-N: https://iopscience.iop.org/article/10.1088/1742-6596/1435/1/012061/pdf (Open Access)
 # X-Y (X=P,Si,N,C,Li)(Y=P,N): https://link.springer.com/article/10.1134/S1990793120060044
 # Cu: https://pubs.acs.org/doi/full/10.1021/cg070584h
@@ -108,7 +110,7 @@ C2H4	199.2	5.07
 #-------------------------------------
 
 #-------------------------------------------------------------------------------
-# cubic metals: https://journals.aps.org/pr/abstract/10.1103/Physr0v.114.687
+# cubic metals: https://journals.aps.org/pr/abstract/10.1103/PhysRev.114.687
 # (related paper: https://iopscience.iop.org/article/10.1088/1742-6596/1436/1/012037/meta)
 
 TABLE I. Morse potential constani. s for the pairwise atomic interaction in cubic metals
@@ -131,7 +133,7 @@ Na	0.58993	5.336	0.06334
 Cs	0.41569	7.557	0.04485
 Rb	0.42981	7.207	0.04644
 #-------------------------------------------------------------------------------
-# Cu-X (X=Si,W,Ti,Ru): https://www.r0searchgate.net/figur0/Parameters-of-Morse-potential_tbl1_250156595
+# Cu-X (X=Si,W,Ti,Ru): https://www.researchgate.net/figure/Parameters-of-Morse-potential_tbl1_250156595
 
 System	D [aJ]	alpha [A]	r0 [A]
 Cu-Si	1.21085	137.0	2.5
@@ -139,7 +141,7 @@ Cu-W	0.93622	147	2.6
 Cu-Ti	0.69905	127	2.7
 Cu-Ru	1.74762	83.4	1.8
 #-------------------------------------------------------------------------------
-# Al2024: https://www.r0searchsquar0.com/article/rs-2060256/v1
+# Al2024: https://www.researchsquare.com/article/rs-2060256/v1
 
 Table 2 Morse potential parameters of the same element
 Element	D [ev]	alpha [A^-1]	r0 [A]
@@ -167,7 +169,7 @@ W-Cu	0.091	2.560	2.728	2.4557
 W-Mg	0.22974	1.71825	2.7284	2.325
 
 #-------------------------------------------------------------------------------
-# X-Y (X=C,Si) (Y=Ni,Cu): https://www.r0searchgate.net/figur0/Morse-potential-parameters-D0scribing-the-interaction-of-D0posited-particles-with-metal_tbl2_370093299
+# X-Y (X=Si,C) (Y=Ni,Cu,Si,C): https://www.mdpi.com/1996-1944/16/8/3115
 
 Atom pair	alpha [A^-1]	r0 [A]	D0 [eV]
 Si-Ni	4.081	2.032	0.181
@@ -178,7 +180,7 @@ Si-C	4.648	1.947	0.435
 C-C	2.555	2.552	2.423
 
 #-------------------------------------------------------------------------------
-# Au-C: https://www.r0searchgate.net/figur0/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
+# Au-C: https://www.researchgate.net/figure/Parameters-used-in-the-Morse-potential-energy-function_tbl1_267644756
 
 Atom pair	alpha [A^-1]	r0 [A]	D0 [eV]
 Au-Au	1.583	3.024	0.475
@@ -188,14 +190,12 @@ Au-C	2.011	2.762	1.073
 #-------------------------------------------------------------------------------
 # gammaFe-Mn-C-N: https://www.mdpi.com/2075-4701/12/6/982
 
-Note: эB = eV ?
-
-phi(r) = D * beta * exp(-alpha*r)*(beta*exp(-alpha*r)-2)
-       = D * beta * {beta*exp(-2.0*alpha*r) - 2.0*exp(-alpha*r)}
+V(r) = D * beta * exp(-alpha*r)*(beta*exp(-alpha*r)-2)
+     = D * beta * {beta*exp(-2.0*alpha*r) - 2.0*exp(-alpha*r)}
 beta = exp(alpha*r0)
 
-Table 3. Parameters of Morse potentials for the consiD0r0d interactions.
-Bond	alpha (A^-1)	beta	D (эB)
+Table 3. Parameters of Morse potentials for the considered interactions.
+Bond	alpha [A^-1]	beta	D [eV]
 Fe-Fe	1.285	35.878	0.433
 Fe-C	1.82	41	0.41
 C-C	1.97	50	0.65
@@ -379,24 +379,6 @@ Si-C	4.6417	4.350288	 1.9475
 O-O	2.667	5.165533	1.210
 
 #-------------------------------------------------------------------------------
-# X-Y (X=Si,C) (Y=Ni,Cu): https://www.mdpi.com/1996-1944/16/8/3115
-
-Table 2. Morse potential parameters describing the interaction of deposited particles with metal and graphite substrates.
-Element	D0 [eV]	alpha [A^-1]	r0 [A]
-Si-Ni	0.181	4.081	2.032
-Si-Cu	0.163	4.049	1.864
-C-Ni	1.009	1.987	2.664
-C-Cu	0.912	1.957	2.443
-Si-C	0.435	4.648	1.947
-C-C	2.423	2.555	2.552
-
-Table 3. LJ potential parameters used for simulation.
-Element	E [J]	sigma [A]
-Al–Al	6.283393e−27	2.62
-Si–Si	2.7904e−21	3.826
-Al–Si	4.187264e−24	3.223
-
-#-------------------------------------------------------------------------------
 # Si-P, C-N: https://iopscience.iop.org/article/10.1088/1742-6596/1435/1/012061/pdf (Open Access)
 
 Table 1. Morse potential perameters.
@@ -426,7 +408,7 @@ Element	D0 [eV]	alpha[A^-1]	r0 [A]
 As-S	2.35	1.62724	2.239
 
 #-------------------------------------------------------------------------------
-# C. L. Kong, J. Chem. Phys. 59, 2464–2467 (1973): https://doi.org/10.1063/1.1680358
+# C. L. Kong, J. Chem. Phys. 59, 2464-2467 (1973): https://doi.org/10.1063/1.1680358
 # wikipedia: https://en.wikipedia.org/wiki/Combining_rules
 
 Note: e = epsilon, s = sigma
