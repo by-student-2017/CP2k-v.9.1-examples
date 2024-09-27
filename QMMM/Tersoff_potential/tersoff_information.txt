@@ -138,6 +138,7 @@
 # Brenner, Au: https://link.springer.com/article/10.1140/epjb/e2012-30429-y?utm_source=getftr&utm_medium=getftr&utm_campaign=getftr_pilot
 # Brenner, Ni-C: https://pubs.acs.org/doi/full/10.1021/jp212165g
 # Brenner, Si-C-F: https://doi.org/10.1063/1.371637
+# Brenner, Si-X (X=F,Cl): https://pubs.aip.org/aip/jcp/article/120/5/2405/534132/Improved-interatomic-potentials-for-silicon
 # REBO, H-Si-C: https://pubs.acs.org/doi/full/10.1021/jp3074688
 # AIREBO formula: https://iopscience.iop.org/article/10.1088/2053-1591/3/3/035011/meta
 # COMB: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.81.125328
@@ -174,6 +175,9 @@
 # FeCrOS (ReaxFF): https://doi.org/10.1021/acscatal.5b01766
 # C/H/O/Mn/F/Li/N/S/P: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.3c07242
 # carbon: 10.34808/tq2020/24.4/a 
+# carbon (Tersoff Coarse-Grained Model): https://pubs.acs.org/doi/full/10.1021/acs.jctc.7b00051
+# C-Cu(tight binding approximation): https://link.springer.com/article/10.1134/S0021364020020083
+# Ge-Te: https://iopscience.iop.org/article/10.1088/1367-2630/15/12/123006/meta
 #-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
