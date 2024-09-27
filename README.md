@@ -115,16 +115,24 @@ chimera
 - If there is no description for parameters between A and B, use the values ​​of A for beta, c, d, h, and n. For B-A, use the values ​​of B. A B B = A(B,B) = A-B. B A A = B(A,A) = B-A. A B A = A(B,A) and A A B = A(A,B) often result in A(B,A)=A(A,B). e.g., https://www.ctcms.nist.gov/potentials/Download/1990--Tersoff-J--Si-C/1/1990_SiC.tersoff
 
 
+## Morse potential
+- The Morse potential is very suitable for calculating the vibrational structure of molecules. In particular, it can accurately model the strength of molecular bonds and vibrational energy levels. This is because it takes into account anharmonicity, which is closer to the behavior of real molecules than the harmonic oscillator model.
+- The Morse potential is also useful in ionic bond systems. In ionic bonds, the electron density distribution tends to be spherically symmetric, and the Morse potential can capture these characteristics well. In particular, it is useful for accurately predicting the energies of bond formation and dissociation.
+### Alkaline metals or alkaline earth metals
+- The electron density distribution of alkaline earth metals and alkali metals is close to spherical symmetry, so the directionality of the bonds has little effect on the physical properties. These metals mainly form ionic bonds and metallic bonds, and the strength and distance of the bonds are more important than the directionality of the bonds.
+- The electron density distribution of alkaline earth metals and alkali metals tends to be spherical symmetric, so the directionality of the bonds has a relatively small effect on the physical properties. For this reason, in combination with these metals, the accuracy of the simulation is often maintained even if the angle dependency is ignored.
+
+
+## Buckingham database
+- https://www5.hp-ez.com/hp/calculations/page515
+
+
 ## Basis (ls /usr/share/cp2k)
 - https://pierre-24.github.io/cp2k-basis/developers/library_content/
 - https://cp2k-basis.pierrebeaujean.net/
 - https://www.basissetexchange.org/
 - https://github.com/cp2k/cp2k/tree/master/data
 - https://www.cp2k.org/tools:cp2k-basis
-
-
-## Buckingham database
-- https://www5.hp-ez.com/hp/calculations/page515
 
 
 ## Videos
