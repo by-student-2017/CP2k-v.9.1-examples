@@ -3,6 +3,7 @@
 # For the albe form (m=1), cp2k can only be applied when lambda3=0.0. In other cases, refitting is required. (Edit: 16/Aug/2024)
 #-------------------------------------------------------------------------------
 # Fe: https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220
+# Fe: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.8b06394 (Supporting Information)
 # Fe-Cu: https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045016/meta
 # x Fe-Pt(Compared to the referenced paper, Pt and Fe are reversed.): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.76.155412
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
@@ -40,6 +41,7 @@
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
 # Si: https://iopscience.iop.org/article/10.1088/1361-6528/abf26d/meta
 # Si: https://iopscience.iop.org/article/10.1088/1361-648X/ab5c5f/meta
+# SiC: https://doi.org/10.1063/1.4832043
 # Zn-O: https://openkim.org/files/MO_616776018688_002/Tersoff_ErhartJuslinGoy_2006_ZnO.params
 # Zn-O: https://iopscience.iop.org/article/10.1088/0953-8984/18/29/003
 #  Please keep in mind that the "shell-model potential by Lewis and Catlow" can also reproduce phonons quite well.
@@ -108,6 +110,7 @@
 # Since "qi is the charge of atom i, and is optimized at every step to minimize UT," it is possible that highly accurate calculations can be performed using QEq.
 # Si: m = M = 3 (Tersoff), other elements: m = M = 1 (Albe)
 # Si-O-H: https://doi.org/10.1299/jsmea1993.39.3_313
+# Si-O-H: https://doi.org/10.1299/jmmp.4.599
 # Cu, Ti, W, Si, Ru: https://iopscience.iop.org/article/10.1149/2.014309jss/meta
 # Cu, Ti, W, Si, Ru: https://www.jstage.jst.go.jp/article/matertrans/51/4/51_MG200903/_article/-char/ja/
 #-------------------------------------------------------------------------------
@@ -130,6 +133,7 @@
 # M-BKS, O-X (X=Si,Ta,Hf,Ti): https://doi.org/10.1063/1.4825197
 # Ti-C-X(X=O,F) (m=1, Albe): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.106.054105
 # InAs_quantum_dots (m=1,Albe): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.77.235303 (Open Access)
+# IGZO (m=1,Albe): https://pubs.rsc.org/en/content/articlehtml/2023/tc/d3tc00753g
 # 2NNMEAM+QEq: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.144110
 # Co, Fe, Ni: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.7b12687
 # Brenner, C-H: https://journals.aps.org/prb/pdf/10.1103/PhysRevB.42.9458
@@ -162,10 +166,13 @@
 # Li-X (X=Si,C,P,N)(Morse): https://www.mdpi.com/2079-3197/7/4/60 (Open Access)
 # Li-C (Morse): https://open.metu.edu.tr/handle/11511/17968
 # Al-X (X=Si,C) (Morse): https://link.springer.com/article/10.1007/s00339-018-1624-3
+# Graphite-SiO-H2O: https://www.sciencedirect.com/science/article/pii/S0008622322010053
 # Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # https://mavmatrix.uta.edu/chemistry_dissertations/210/
 # Lammps script: https://dspace.mit.edu/handle/1721.1/109645
 # Lammps script: https://bearworks.missouristate.edu/theses/3159/
+# Lammps script: https://www.sciencedirect.com/science/article/pii/S0008622321006837
+# Lammps script: https://digital.library.ncat.edu/theses/26/
 # Lammps script (strain): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/1?pq-origsite=gscholar&cbl=18750&diss=y
 #   Mechanical Behavior of NixCr Alloys with Ti3SiC2 Nanoparticle Inclusions Using Molecular Dynamics
 # mobility: http://mail.imt.si/izvodi/mit203/liu.pdf
@@ -177,6 +184,8 @@
 # C/H/O/Mn/F/Li/N/S/P: https://pubs.acs.org/doi/full/10.1021/acs.jpcc.3c07242
 # carbon: 10.34808/tq2020/24.4/a 
 # carbon (Tersoff Coarse-Grained Model): https://pubs.acs.org/doi/full/10.1021/acs.jctc.7b00051
+# carbon (Tersoff Coarse-Grained Model): https://pubs.rsc.org/en/content/articlehtml/2023/cp/d3cp02219f
+# graphite: https://pubs.aip.org/aip/jcp/article/109/23/10339/476752
 # C-Cu(tight binding approximation): https://link.springer.com/article/10.1134/S0021364020020083
 # Ge-Te: https://iopscience.iop.org/article/10.1088/1367-2630/15/12/123006/meta
 #-------------------------------------------------------------------------------
