@@ -173,7 +173,7 @@
 # Lammps script (Ti-Al-N): https://bearworks.missouristate.edu/theses/3159/
 # Lammps script (Low-density_microporous_carbon): https://www.sciencedirect.com/science/article/pii/S0008622321006837
 # Lammps script (Nano-Diamond): https://digital.library.ncat.edu/theses/26/
-# Lammps script (NixCr_Ti3SiC2): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/1?pq-origsite=gscholar&cbl=18750&diss=y
+# Lammps script (NixCr_Ti3SiC2): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/
 #   Mechanical Behavior of NixCr Alloys with Ti3SiC2 Nanoparticle Inclusions Using Molecular Dynamics
 # mobility: http://mail.imt.si/izvodi/mit203/liu.pdf
 # Ge/O/H (ReaxFF): https://pubs.acs.org/doi/full/10.1021/acs.jpcc.8b08862
