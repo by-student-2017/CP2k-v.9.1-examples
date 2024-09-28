@@ -13,15 +13,18 @@ X. W. Zhou, R. A. Johnson, and H. N. G. Wadley, Phys. Rev. B, 69,
 Parameters for Cr were taken from:
 Lin Z B, Johnson R A and Zhigilei L V, Phys. Rev. B 77 214108 (2008)
 
-Parameters for Cr were taken from:
+Parameters for Nb were taken from:
 De-Ye Lin et al., J. Phys.: Condens. Matter 25 (2013) 105404
+
+Parameters for Hf were taken from:
+K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
 
 This tool can be used to create an DYNAMO-formatted EAM
 setfl file for alloy systems, using any combination
 of the elements discussed in the paper and listed in
 the EAM_code file, namely:
 
-Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb
+Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb, Hf
 
 WARNING: Please note that the parameter sets used here are all optimized
 for the pure metals of the individual elements and that mixing rules will
