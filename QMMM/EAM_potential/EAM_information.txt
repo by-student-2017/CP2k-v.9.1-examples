@@ -1,0 +1,36 @@
+#---------------------------------------------------------------------
+# EAM
+# BCC (V, Nb, Ta, Cr, Mo, W and Fe): https://link.springer.com/article/10.1007/s002570050195
+# O-Al-Ni-Co-Fe system: https://iopscience.iop.org/article/10.1088/0953-8984/17/23/014/meta
+# Al⁢Ox: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.71.054418
+# Zr-Nb: https://iopscience.iop.org/article/10.1088/0953-8984/25/10/105404
+# Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
+# Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
+# Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
+# BCC, FCC and HCP metals: https://link.springer.com/article/10.1007/s00339-015-9149-5
+# GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
+# GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
+# GEAM(Cu,Ag,Au): https://njp.nipngr.org/index.php/njp/article/view/170
+#---------------------------------------------------------------------
+# FLAM2020-GSFE: https://github.com/shuozhixu/FLAM2020-GSFE?tab=readme-ov-file
+# https://www.sciencedirect.com/science/article/abs/pii/S0749641921002242
+# LAMMPS (Plimpton, 1995) is used for all molecular statics (MS) simulations in this work. 
+# Embedded-atom method (EAM) potentials are used to describe interatomic interactions in four MPEAs: 
+# CrMoNbTa, CrNbTaW, MoNbTaV, and MoNbTaW. The six elemental potentials are: 
+# Cr (Lin et al., 2008), Mo (Zhou et al., 2004), Nb (Lin et al., 2013), Ta (Zhou et al., 2004), V (Ghafarollahi et al., 2019), W (Zhou et al., 2004). 
+# They were validated against density functional theory (DFT) calculations by Xu et al.
+#---------------------------------------------------------------------
+# https://doi.org/10.1016/j.ijrmhm.2024.106885
+# Selecting a reliable interatomic potential is crucial to performing reliable MD simulations. 
+# In this study, the embedded atom method (EAM) potential is utilized to describe the interactions among 
+# Hf, Nb, Zr and Ti. The potential parameters of the four constituent metals are previously reported by 
+# Zhou el. al [45]. and Lin et al. [46], while the alloy interactions are obtained using 
+# an empirical mixing rule proposed by Johnson [47]. The final quaternary potential is found accurate in predicting
+#---------------------------------------------------------------------
+# FS
+# HCP (Co, Zr, Ti, Ru, Hf, Zn, Mg and Be): https://www.tandfonline.com/doi/abs/10.1080/13642819108225975
+# V-Ti-Cr ternary alloys: https://www.sciencedirect.com/science/article/pii/S0925838817305418
+#---------------------------------------------------------------------
+# Other potential
+# BOP, Al-Cu-H ternary system: https://pubs.rsc.org/en/content/articlelanding/2018/nj/c8nj00513c (Supplementary information)
+#---------------------------------------------------------------------
