@@ -170,10 +170,10 @@
 # Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # https://mavmatrix.uta.edu/chemistry_dissertations/210/
 # Lammps script: https://dspace.mit.edu/handle/1721.1/109645
-# Lammps script: https://bearworks.missouristate.edu/theses/3159/
-# Lammps script: https://www.sciencedirect.com/science/article/pii/S0008622321006837
-# Lammps script: https://digital.library.ncat.edu/theses/26/
-# Lammps script (strain): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/1?pq-origsite=gscholar&cbl=18750&diss=y
+# Lammps script (Ti-Al-N): https://bearworks.missouristate.edu/theses/3159/
+# Lammps script (Low-density_microporous_carbon): https://www.sciencedirect.com/science/article/pii/S0008622321006837
+# Lammps script (Nano-Diamond): https://digital.library.ncat.edu/theses/26/
+# Lammps script (NixCr_Ti3SiC2): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/1?pq-origsite=gscholar&cbl=18750&diss=y
 #   Mechanical Behavior of NixCr Alloys with Ti3SiC2 Nanoparticle Inclusions Using Molecular Dynamics
 # mobility: http://mail.imt.si/izvodi/mit203/liu.pdf
 # Ge/O/H (ReaxFF): https://pubs.acs.org/doi/full/10.1021/acs.jpcc.8b08862
