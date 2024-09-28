@@ -6,11 +6,15 @@
 # Zr-Nb: https://iopscience.iop.org/article/10.1088/0953-8984/25/10/105404
 # Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
 # Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
+# Ni, Al, Re: https://iopscience.iop.org/article/10.1088/0965-0393/21/1/015007
 # Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
 # BCC, FCC and HCP metals: https://link.springer.com/article/10.1007/s00339-015-9149-5
 # GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
 # GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
 # GEAM(Cu,Ag,Au): https://njp.nipngr.org/index.php/njp/article/view/170
+# IrPdRu: https://pubs.acs.org/doi/full/10.1021/acsnano.1c10414 (supporting information)
+# LaAlNi: https://doi.org/10.1063/1.5098808 (supplementary material)
+# WTaVCr high-entropy alloy: https://www.sciencedirect.com/science/article/pii/S2238785424018581 (Appendix A. Supplementary data)
 #---------------------------------------------------------------------
 # FLAM2020-GSFE: https://github.com/shuozhixu/FLAM2020-GSFE?tab=readme-ov-file
 # https://www.sciencedirect.com/science/article/abs/pii/S0749641921002242
@@ -32,5 +36,9 @@
 # V-Ti-Cr ternary alloys: https://www.sciencedirect.com/science/article/pii/S0925838817305418
 #---------------------------------------------------------------------
 # Other potential
+# ADP, Ni-Rh: https://www.sciencedirect.com/science/article/pii/S0022459622002201
 # BOP, Al-Cu-H ternary system: https://pubs.rsc.org/en/content/articlelanding/2018/nj/c8nj00513c (Supplementary information)
+# MEAM, V-N: https://www.sciencedirect.com/science/article/pii/S1386947715000582
+# MEAM, Alfcc-Xbcc (X=Cr, Fe, Mo, Ta, V and W) binary alloys: https://www.sciencedirect.com/science/article/pii/S0921452623009559
+# MEAM, Li,V: https://www.researchsquare.com/article/rs-879826/v1
 #---------------------------------------------------------------------
