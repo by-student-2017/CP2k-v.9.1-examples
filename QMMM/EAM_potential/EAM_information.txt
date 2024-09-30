@@ -1,17 +1,27 @@
 #---------------------------------------------------------------------
 # EAM
+# Ni, Al, Re: https://iopscience.iop.org/article/10.1088/0965-0393/21/1/015007
+# Cr: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.77.214108
+# (related paper: Cr of AlCoCrFe https://www.researchgate.net/figure/Parameters-of-the-EAM-potential-for-Cr-24_tbl1_348923109)
+# Nb-Cr: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11193778/
+#  https://github.com/lheaton4/NbCr_EAM_Potential_and_DFT_data
+#  fit code: https://github.com/lheaton4/NbCr-EAM-Potential
+# Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
+# Fe-W: https://doi.org/10.1063/1.5111093
+# Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
+# Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
+# Zr-Nb: https://iopscience.iop.org/article/10.1088/0953-8984/25/10/105404
+# Cu-Zn: https://iopscience.iop.org/article/10.1088/1361-651X/aca4ec
+#  https://cnam.hal.science/hal-04072754
+#  https://cnam.hal.science/hal-04072754/file/Clement_2023_Modelling_Simul._Mater._Sci._Eng._31_015004_vHAL.pdf
+# Ni-Mo: https://doi.org/10.1016/j.cpc.2021.108132
+#  https://ars.els-cdn.com/content/image/1-s2.0-S0010465521002447-mmc1.pdf
+#  SNAP: https://github.com/materialsvirtuallab/snap
 # BCC (V, Nb, Ta, Cr, Mo, W and Fe): https://link.springer.com/article/10.1007/s002570050195
 # O-Al-Ni-Co-Fe system: https://iopscience.iop.org/article/10.1088/0953-8984/17/23/014/meta
+# (related paper: https://web.archive.org/web/20100607153800id_/http://www.ipm.virginia.edu/newpeople/wadley/PDF/A_Charge_Transfer_Ionic_Embedded_Atom.pdf)
 # Al⁢Ox: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.71.054418
-# Zr-Nb: https://iopscience.iop.org/article/10.1088/0953-8984/25/10/105404
-# Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
-# Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
-# Ni, Al, Re: https://iopscience.iop.org/article/10.1088/0965-0393/21/1/015007
-# Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
 # BCC, FCC and HCP metals: https://link.springer.com/article/10.1007/s00339-015-9149-5
-# GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
-# GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
-# GEAM(Cu,Ag,Au): https://njp.nipngr.org/index.php/njp/article/view/170
 # IrPdRu: https://pubs.acs.org/doi/full/10.1021/acsnano.1c10414 (supporting information)
 # LaAlNi: https://doi.org/10.1063/1.5098808 (supplementary material)
 # WTaVCr high-entropy alloy: https://www.sciencedirect.com/science/article/pii/S2238785424018581 (Appendix A. Supplementary data)
@@ -21,9 +31,18 @@
 # La-Br: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.78.224307
 # Fe-Ni-Cr-H: https://doi.org/10.1016/j.ijhydene.2021.09.261 (https://www.nature.com/articles/s41524-017-0060-9)
 # Mg-Co-Ti: https://onlinelibrary.wiley.com/doi/abs/10.1002/adts.202100377
+# MgY: https://iopscience.iop.org/article/10.1088/1367-2630/15/4/043020/meta
 # Pt-Rh: https://doi.org/10.1016/j.jcrysgro.2017.02.024
 # Ga-Pd: https://doi.org/10.1063/5.0031185
 # 18 elements: https://github.com/brucefan1983/GPUMD/tree/master/potentials/eam
+# Zhou2005: https://github.com/OpenMD/OpenMD/blob/main/forceFields/EAM.Zhou2005.frc
+# AuPtAgPtNi: https://pubs.rsc.org/en/content/articlehtml/2017/sc/c8ra00945g
+# (related paper: https://iopscience.iop.org/article/10.1088/1361-651X/aa92d3/meta)
+# HCP metals: https://iopscience.iop.org/article/10.1088/0953-8984/13/6/302
+# Pd-Ba: https://www.tandfonline.com/doi/full/10.1080/08927022.2024.2376327
+# GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
+# GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
+# GEAM(Cu,Ag,Au): https://njp.nipngr.org/index.php/njp/article/view/170
 #---------------------------------------------------------------------
 # FLAM2020-GSFE: https://github.com/shuozhixu/FLAM2020-GSFE?tab=readme-ov-file
 # https://www.sciencedirect.com/science/article/abs/pii/S0749641921002242
@@ -55,7 +74,11 @@
 # MEAM, CoNiCrFeMn HEA: https://www.nature.com/articles/s41524-017-0060-9  or NIST
 # MEAM, CoNiCrFeMn HEA: https://doi.org/10.1016/j.jallcom.2019.152876
 # MEAM, Al, Si, Mg, Cu, and Fe alloys: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.85.245102
+# MEAM, Mg–X (X=Y, Sn, Ca) : https://doi.org/10.1016/j.calphad.2014.10.001
+# MEAM, HCP metals: https://iopscience.iop.org/article/10.1088/0965-0393/2/1/011/meta
 #---------------------------------------------------------------------
 # Lammps script (GSF energy curve): https://iopscience.iop.org/article/10.1088/1674-1056/24/8/088106/meta
 # Lammps script: https://www.osti.gov/biblio/1902939 ,  https://www.osti.gov/servlets/purl/1902939
+#---------------------------------------------------------------------
+# Embedded Atom Method (EAM) Tabulation: https://atsimpotentials.readthedocs.io/en/latest/potentials/eam_tabulation.html
 #---------------------------------------------------------------------
