@@ -11,13 +11,21 @@ X. W. Zhou, R. A. Johnson, and H. N. G. Wadley, Phys. Rev. B, 69,
 144113 (2004).
 
 Parameters for Cr were taken from:
+m = 20, n = 20
 Lin Z B, Johnson R A and Zhigilei L V, Phys. Rev. B 77 214108 (2008)
 
 Parameters for Nb were taken from:
+m = 20, n = 20
 De-Ye Lin et al., J. Phys.: Condens. Matter 25 (2013) 105404
 
 Parameters for Hf were taken from:
+Maybe, m = 20, n = 20
 K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
+
+Parameters for V were taken from:
+m = 19, n = 31
+Y. Wu et al., Journal of Materials Research and Technology 32 (2024) 2624-2637.
+Note: Because the values ​​of m and n are different, you will need to rewrite or refit the Fortran code, or look for other literature.
 
 This tool can be used to create an DYNAMO-formatted EAM
 setfl file for alloy systems, using any combination
