@@ -61,6 +61,13 @@
 # As-Co: https://link.springer.com/article/10.1007/s11595-007-3415-0
 # Derivation of Morse Potential Function: https://doi.org/10.1080/00268976.2024.2360542
 # Combination Rules for Morse-Based van der Waals Force Fields: https://pubs.acs.org/doi/full/10.1021/acs.jpca.7b11252
+# Fe-Cr-N (Morse): https://www.sciencedirect.com/science/article/pii/S0925838819331615
+# Li-X (X=C,Si) (Morse): https://link.springer.com/article/10.1134/S1063783416090146
+# Li-X (X=Si,C,P,N)(Morse): https://www.mdpi.com/2079-3197/7/4/60 (Open Access)
+# Li-C (Morse): https://open.metu.edu.tr/handle/11511/17968
+# Al-X (X=Si,C) (Morse): https://link.springer.com/article/10.1007/s00339-018-1624-3
+# Graphite-SiO-H2O: https://www.sciencedirect.com/science/article/pii/S0008622322010053
+# Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # [lammps-users] How to add a numeric term to Morse potential function in LAMMPS: https://matsci.org/t/lammps-users-how-to-add-a-numeric-term-to-morse-potential-function-in-lammps/34933
 # Lichang Wang, "Molecular Dynamics: Studies of Synthetic and Biological Macromolecules"
 #-------------------------------------------------------------------------------
