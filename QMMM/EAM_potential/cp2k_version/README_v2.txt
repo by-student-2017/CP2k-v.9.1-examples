@@ -40,6 +40,8 @@ EAM_code
 ------------
 Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr
 W -> W0
+Elements that have been published and verified in pure metals (additional elements, combinations not fully verified): Cr, Nb, Hf, V
+V -> V0
 
 Note
 ------------
