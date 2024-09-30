@@ -103,6 +103,8 @@ chimera
 - FCC is a close-packed structure, and the approximation of the spherical electron distribution is relatively good, so the structure can be reproduced even with Lennard-Jones. In Zhou's 2004 paper, Ca, Sr, Rh, and Ir were not prepared, so as an alternative, it would be good to construct the basic structure with Lennard-Jones.
 - Elements that are easiest to reproduce the most stable structure using EAM (left) to elements that are difficult to reproduce (right): V,Ca,Na,Cr,Mn,Nb,Ir,Sr,Rh,Ru,Os,Hf,Re,Zn.
 - This github does not provide examples of grain boundaries or vacancy defects. However, since EAM allows such calculations, it may be possible to consider them as substrate structures. I would like to see the passive state of Fe, Cr, O and Al, O addressed in QS to promote research. In addition, it is also important to compare and consider at low cost using ReaxFF in Lammps.
+- We also added elements that have been verified in papers as pure metals (and may show relatively good results in HEA): V, Cr, Nb
+- We have also added elements that have been published and verified as pure metals: Hf
 
 
 ## Tersoff potential (1988 and 1989)
