@@ -49,3 +49,49 @@ Please make the element name two characters. For example, C should be CA.
 It is a good idea to refer to the atom names in the PDB. 
 It would be better to create parameters in EAM.
 input and EAM_code by classifying them in the same way.
+------------------------------------------------------------------------------
+EAM_code
+Note: () indicates arguments for Zhou04_create_v2.f in the Fortran code.
+Ref: A. Clement et al., Modelling Simul. Mater. Sci. Eng. 31 (2023) 015004.: https://iopscience.iop.org/article/10.1088/1361-651X/aca4ec
+
+Line  1 : element : W
+Line  2 : re      : 2.74084 (about the distance to the first neighbour fcc shell)
+Line  3 : fe      : 3.48734 (about the element’s cohesive energy / characteristic atomic distance = Ec/(V^(1/3), V is 
+the atomic volume of the pure element)
+Line  4 : rhoe    : 37.234847 (the equilibrium electronic density [eV/A] evaluated from DFT))
+Line  5 : rhos    : 37.234847 (almost same value as rhoe) (In some literature, it is the same value as rhoe.)
+Line  6 : alpha   : 8.900114 (about 1.875 * beta)
+Line  7 : beta    : 4.746728
+Line  8 : A       : 0.882435
+Line  9 : B       : 1.394592
+Line 10 : chi (cai): 0.139209
+Line 11 : lambda (ramda): 0.278417 (about 2 * chi)
+Line 12 : Fn0 (Fi0): -4.946281 (=F0+0.0225*F2-0.003375*F3)) (continuity)
+Line 13 : Fn1 (Fi1): -0.148818 (=0.85*(-0.3*F2+0.0675*F3)) (1st derivative continuity)
+Line 14 : Fn2 (Fi2): 0.365057 (=0.7225*(F2-0.45*F3)) ((2nd derivative continuity)
+Line 15 : Fn3 (Fi3): -4.432406 (=Fn0+Fn2-Fn1) (no interation at infinity)
+Line 16 : F0 (Fm0) : -4.96 (=Fe*(1-eta*ln(rhoh))*rhoh^eta - F2*0.00225 - F3*0.003375))(continuity)
+Line 17 : F1 (Fm1) : 0.00 (fix value: This comes from the need to keep a symmetric curve in compression or in tension around the equilibrium density, relegating anharmonic effect as a third order correction.)
+Line 18 : F2 (Fm2) : 0.661935
+Line 19 : F3 (Fm3) : 0.348147 (or F3-)
+Line 20 : eta (fnn): -0.582714
+Line 21 : Fe (Fn)  : -4.961306
+Line 22 : atomic number (ielement) : 74
+Line 23 : atomic mass (amass): 183.84
+Line 24 : Fm4     : 0.348147 (or F3+) (almost same value as F3=Fm3)
+Line 25 : beta1(=beta) : 4.746728
+Line 26 : lambda1(=lambda=ramda) : 0.278417
+Line 27 : rhol    : 0.85 (fix value ?) (Note: Anything other than Pt 0.25 will result in 0.85 (when I fitted it, it converged to an optimal solution with a value close to 0.85).)
+Line 28 : rhoh    : 1.15 (fix value ?)
+
+Note: For F2=(1/0.3)*(-Fe*eta^2*rhoh^(eta-1)*ln(rhoh)-3*F3*rhoh^2) (1st derivative continuity)
+For W, the 1st derivative continuity equation (F2 = ...) was not satisfied. Multiplying the formula for F2 by -sqrt(8/3)/10 = -0.1633 gives the same result.
+
+Note: For F3=Fe*eta^2/0.45*rhoh^(eta-2)*(ln(rhoh)*(rhoh/0.15-eta+1)-1) (2nd derivative continuity)
+The constraints on the piecewise embedding function could however not all be simultaneously fullfilled strictly. To cope with this issue, the constraint derived from the continuity of
+the second derivative (F3 = ...) of the embedding energy function was removed. For copper and zinc, there is therefore a cusp at ρ = 1.15ρe with a mismatch of the second derivative of 0.145 eV for Cu and 0.125 eV at high density in the
+embedding term. The fact that this condition is not satisfied will trigger odd behaviour of the potential only at extremely large compression which is deemed not important in the context of our planned applications of these potentials for plasticity and fracture.
+
+Note: For Zn
+The potential fitting procedure was made with a builtin cutoff of 2.5 times the highest lattice parameter (2.5 × 0.3935 nm). To choose this cutoff, we compute every contribution of the neighbouring atoms and no longer take it into account when the contribution is deemed negligible (roughly less than 2 meV atom−1). This corresponds to approximatively five neighbouring shells.
+------------------------------------------------------------------------------
