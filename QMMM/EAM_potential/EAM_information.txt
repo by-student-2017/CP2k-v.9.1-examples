@@ -14,6 +14,7 @@
 # Cu-Zn: https://iopscience.iop.org/article/10.1088/1361-651X/aca4ec
 #  https://cnam.hal.science/hal-04072754
 #  https://cnam.hal.science/hal-04072754/file/Clement_2023_Modelling_Simul._Mater._Sci._Eng._31_015004_vHAL.pdf
+#  NIST: https://www.ctcms.nist.gov/potentials/system/Zn/#Cu-Zn
 # Ni-Mo: https://doi.org/10.1016/j.cpc.2021.108132
 #  https://ars.els-cdn.com/content/image/1-s2.0-S0010465521002447-mmc1.pdf
 #  SNAP: https://github.com/materialsvirtuallab/snap
