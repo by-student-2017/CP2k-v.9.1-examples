@@ -30,12 +30,19 @@ Parameters for V were taken from:
 m = 20, n = 20
 S. Zhao et al., Acta Materialia, 219, 117233 (2021)
 
+Parameters for Zn were taken from:
+Maybe, m = 20, n = 20
+A. Clement et al., Modelling Simul. Mater. Sci. Eng. 31 (2023) 015004
+re = a/sqrt(2) = 3.935/sqrt(2) = 2.78 (FCC case)
+fe = Cohesive energy [eV/atom] / Lattice parameter [A] = 1.087 / 3.935 = 0.276239
+rhos = rhoe = 6.84
+
 This tool can be used to create an DYNAMO-formatted EAM
 setfl file for alloy systems, using any combination
 of the elements discussed in the paper and listed in
 the EAM_code file, namely:
 
-Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb, Hf, V
+Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb, Hf, V, Zn
 
 WARNING: Please note that the parameter sets used here are all optimized
 for the pure metals of the individual elements and that mixing rules will
