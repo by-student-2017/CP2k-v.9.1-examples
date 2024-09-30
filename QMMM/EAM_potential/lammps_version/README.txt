@@ -14,6 +14,10 @@ Parameters for Cr were taken from:
 m = 20, n = 20
 Lin Z B, Johnson R A and Zhigilei L V, Phys. Rev. B 77 214108 (2008)
 
+Or (Only three main parameters are different: beta(ntypes)=beta1(ntypes), A(ntypes), B(ntypes))
+For EAM_Cr_Anand-2016_code
+G. Anand et al., Scripta Materialia, 124, 90-94 (2016).
+
 Parameters for Nb were taken from:
 m = 20, n = 20
 De-Ye Lin et al., J. Phys.: Condens. Matter 25 (2013) 105404
@@ -23,16 +27,15 @@ Maybe, m = 20, n = 20
 K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
 
 Parameters for V were taken from:
-m = 19, n = 31
-Y. Wu et al., Journal of Materials Research and Technology 32 (2024) 2624-2637.
-Note: Because the values ​​of m and n are different, you will need to rewrite or refit the Fortran code, or look for other literature.
+m = 20, n = 20
+S. Zhao et al., Acta Materialia, 219, 117233 (2021)
 
 This tool can be used to create an DYNAMO-formatted EAM
 setfl file for alloy systems, using any combination
 of the elements discussed in the paper and listed in
 the EAM_code file, namely:
 
-Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb, Hf
+Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr, Cr, Nb, Hf, V
 
 WARNING: Please note that the parameter sets used here are all optimized
 for the pure metals of the individual elements and that mixing rules will
