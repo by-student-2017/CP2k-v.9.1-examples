@@ -86,9 +86,14 @@ S. Zhao et al., Acta Materialia, 219, 117233 (2021)
 Parameters for Zn were taken from:
 Maybe, m = 20, n = 20
 A. Clement et al., Modelling Simul. Mater. Sci. Eng. 31 (2023) 015004
-re = a/sqrt(2) = 3.935/sqrt(2) = 2.78 (FCC case)
-fe = Cohesive energy [eV/atom] / Lattice parameter [A] = 1.087 / 3.935 = 0.276239
-rhos = rhoe = 6.84
+For Zn
+re = a/sqrt(2) = 3.935/sqrt(2) = 2.78 [Angstrom](FCC case)
+fe = Cohesive energy [eV/atom] / (Lattice parameter^3/4)^(1/3) [Angstrom/atom] = 0.43834 [eV/Angstrom]
+rhos = rhoe = 6.84 [eV/Angstrom]
+For Cu (Calculation for checking)
+re = a/sqrt(2) = 3.635/sqrt(2) = 2.57 [Angstrom](FCC case)
+fe = Cohesive energy [eV/atom] / (Lattice parameter^3/4)^(1/3) [Angstrom/atom] = 1.62206 [eV/Angstrom]
+rhos = rhoe = 21.42 [eV/Angstrom]
 
 This tool can be used to create an DYNAMO-formatted EAM
 setfl file for alloy systems, using any combination
