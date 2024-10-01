@@ -14,6 +14,7 @@ Instructions
 
 Compile the code with
     
+    sudo apt -y install gfortran
     gfortran -o Zhou04_EAM_2 Zhou04_create_v2.f -std=legacy
     
 The generated executable needs two input files: EAM_code and EAM.input.
