@@ -40,7 +40,7 @@ EAM_code
 ------------
 Cu, Ag, Au, Ni, Pd, Pt, Al, Pb, Fe, Mo, Ta, W, Mg, Co, Ti, Zr
 W -> W0
-Elements that have been published and verified in pure metals (additional elements, combinations not fully verified): Cr, Nb, Hf, V
+Elements that have been published and verified in pure metals (additional elements, combinations not fully verified): Cr, Nb, Hf, V, Zn
 V -> V0
 
 Note
@@ -56,24 +56,23 @@ Ref: A. Clement et al., Modelling Simul. Mater. Sci. Eng. 31 (2023) 015004.: htt
 
 Line  1 : element : W
 Line  2 : re      : 2.74084 (about the distance to the first neighbour fcc shell)
-Line  3 : fe      : 3.48734 (about the element’s cohesive energy / characteristic atomic distance = Ec/(V^(1/3), V is 
-the atomic volume of the pure element) (the fe means the coefficient for mixing phi between A and B atoms.)
-Line  4 : rhoe    : 37.234847 (the equilibrium electronic density [eV/A] evaluated from DFT))
-Line  5 : rhos    : 37.234847 (almost same value as rhoe) (In some literature, it is the same value as rhoe.)
+Line  3 : fe      : 3.48734 (about the element’s cohesive energy / characteristic atomic distance = Ec/(V^(1/3)), V is the atomic volume of the pure element) (the fe means the coefficient for mixing phi between A and B atoms.)
+Line  4 : rhoe    : 37.234847 (the equilibrium electronic density [eV/A] evaluated from DFT)) (in near equilibrium area)
+Line  5 : rhos    : 37.234847 (almost same value as rhoe) (In some literature, it is the same value as rhoe.)(in repulsive core area)
 Line  6 : alpha   : 8.900114 (about 1.875 * beta)
 Line  7 : beta    : 4.746728
 Line  8 : A       : 0.882435
 Line  9 : B       : 1.394592 (The formula used for B and fe is the same. Additional fe is used during mixing.)
 Line 10 : chi (cai): 0.139209
 Line 11 : lambda (ramda): 0.278417 (about 2 * chi)
-Line 12 : Fn0 (Fi0): -4.946281 (=F0+0.0225*F2-0.003375*F3)) (continuity)
-Line 13 : Fn1 (Fi1): -0.148818 (=0.85*(-0.3*F2+0.0675*F3)) (1st derivative continuity)
-Line 14 : Fn2 (Fi2): 0.365057 (=0.7225*(F2-0.45*F3)) ((2nd derivative continuity)
+Line 12 : Fn0 (Fi0): -4.946281 (=F0+(rhol-1)^2*F2+(rhol-1)^3*F3)) (continuity)
+Line 13 : Fn1 (Fi1): -0.148818 (=rhol*(2*(rhol-1)*F2+3*(rhol-1)^2*F3)) (1st derivative continuity)
+Line 14 : Fn2 (Fi2): 0.365057 (=rhol^2*(F2+3*(rhol-1)*F3)) (2nd derivative continuity)
 Line 15 : Fn3 (Fi3): -4.432406 (=Fn0+Fn2-Fn1) (no interation at infinity)
-Line 16 : F0 (Fm0) : -4.96 (=Fe*(1-eta*ln(rhoh))*rhoh^eta - F2*0.00225 - F3*0.003375))(continuity)
+Line 16 : F0 (Fm0) : -4.96 (=Fe*(1-eta*ln(rhoh))*rhoh^eta - F2*(rhoh-1)^2 - F3*(rhoh-1)^3))(continuity)
 Line 17 : F1 (Fm1) : 0.00 (fix value: This comes from the need to keep a symmetric curve in compression or in tension around the equilibrium density, relegating anharmonic effect as a third order correction.)
-Line 18 : F2 (Fm2) : 0.661935
-Line 19 : F3 (Fm3) : 0.348147 (or F3-)
+Line 18 : F2 (Fm2) : 0.661935 (=(1/(2*(rhoh-1)))*(-Fe*eta^2*rhoh^(eta-1)*ln(rhoh)-3*F3*(rhoh-1)^2) (1st derivative continuity)(After correcting the formula, the values ​​were close.)
+Line 19 : F3 (Fm3) : 0.348147 (or F3-) (=(1/(3*2*(rhoh-1)))*(-2*F2+Fe*eta^2*(rhoh)^(eta-2)*(ln(rhoh)*(-eta+1)-1)))(2nd derivative continuity)(Even modifying the formula did not work. The constraints can be removed for the reason below (not calculating very high compression).)
 Line 20 : eta (fnn): -0.582714
 Line 21 : Fe (Fn)  : -4.961306
 Line 22 : atomic number (ielement) : 74
@@ -85,6 +84,7 @@ Line 27 : rhol    : 0.85 (fix value ?) (Note: Anything other than Pt 0.25 will r
 Line 28 : rhoh    : 1.15 (fix value ?)
 
 Note: In the mixed case, first try changing fe. If that doesn't work, try using Tersoff and similar mixing rules to get a better fit. If that doesn't work, try fitting by adding constraints based on the relationships shown above. In the case of high entropy alloys (HEA), they basically have FCC, BCC, and HCP crystal structures, so it would be sufficient to make them into a shape that suits the crystal. Furthermore, the amount of each element is also small, so it is more likely to be within the applicable range (looking at the paper, there is a relatively good agreement with DFT up to around 20 at.% Zn. Even above that, semi-quantitative evaluation is possible). Furthermore, since the parameters of many pure metals reproduce FCC, BCC, and HCP quite well, it is possible that simply changing the fe value will not result in such bad results.
+Note: By increasing the read parameters and rewriting "psi=0.5d0*(f2/f1*psia+f1/f2*psib)", it is possible to flexibly exchange. I hope that this will be officially introduced in v3. Someone could publish it in a paper.
 
 Note: Relationship with the Morse potential and the Tersoff potential
 #--------------------------------------------------------------------
@@ -94,17 +94,34 @@ Tersoff potential(tersoff1988): fc*A*exp(-lambda1*r) - fc*bij*B*exp(-lambda2*r)
 or
 Tersoff potential: fc*[D/(S-1)]*exp(-beta*sqrt(2*S)*(r-r0)) - fc*bij*[S*D/(S-1)]*exp(-beta*sqrt(2/S)*(r-r0)
 Note: A mixing rule is used with cutoffs on B, lambda1, lambda2, and distance.
+Note: Looking at previous papers, there is almost no mixing of "A" through repulsive forces, but mixing of "B" through attractive forces is taking place.
 #--------------------------------------------------------------------
 EAM potential (Zhou2004): (1/2)*(sum phi(r_ij) for j) + F(sum rho_ij for j)
 phi(r_ij) is a pairwise potential and F(rho_i) is the embedding potential, which depends on the electron density rho_i at site i.
 Note: Mixing is done at phi(r_ij). The fe means the coefficient for mixing phi between A and B atoms.
 #--------------------------------------------------------------------
 
-Note: For F2=(1/0.3)*(-Fe*eta^2*rhoh^(eta-1)*ln(rhoh)-3*F3*rhoh^2) (1st derivative continuity)
-For W, the 1st derivative continuity equation (F2 = ...) was not satisfied. Multiplying the formula for F2 by -sqrt(8/3)/10 = -0.1633 gives the same result.
+Note: rhoin(ntypes)=rhol(ntypes)*rhoe(ntypes) in long range part.
 
-Note: For F3=Fe*eta^2/0.45*rhoh^(eta-2)*(ln(rhoh)*(rhoh/0.15-eta+1)-1) (2nd derivative continuity)
-The constraints on the piecewise embedding function could however not all be simultaneously fullfilled strictly. To cope with this issue, the constraint derived from the continuity of
+Note: The series of Fnx (x=0,1,2,3) vanishes except when rho=rhol, which becomes a constant term. (I'm not sure about differentiation either.)
+
+Note: rho < rho_n = rhol*rhoe (long range part)
+Note: rho_n <= rho < rho_o = rhoh*rhoe (near equilibirum) (Compression side)
+Note: rho_o <= rho (replusive core)
+
+Note: The first derivative relates to force.
+Note: The second derivative is related to the frequency (spring constant).
+Note: Phonons are affected by both first and second derivatives, but the second derivative is the most important.
+Note: Phonons that follow Bose-Einstein statistics, especially low-frequency (low-energy) phonons, play an important role in thermal conduction.
+Note: Low-frequency phonons can efficiently travel long distances within a crystal lattice, so they can effectively transmit heat. This increases the thermal conductivity of the material. In particular, low-frequency phonons become dominant in low-temperature environments and are the main driver of heat conduction.
+
+Note: For F2=(1/(2*(rhoh-1)))*(-Fe*eta^2*rhoh^(eta-1)*ln(rhoh)-3*F3*(rhoh-1)^2) (1st derivative continuity)
+The paper erroneously states that F3 is 1.15^2 instead of 0.15^2.
+
+Note: For F3=(1/(3*2*(rhoh-1)))*(-2*F2+Fe*eta^2*(rhoh)^(eta-2)*(ln(rhoh)*(-eta+1)-1)) (2nd derivative continuity)
+Perhaps the formula in the paper is wrong. I don't know if the statement in the paper is wrong. If so, removing condition F3 was the right choice. Rather, this means that the fitting results are correct.
+
+[Ref] The constraints on the piecewise embedding function could however not all be simultaneously fullfilled strictly. To cope with this issue, the constraint derived from the continuity of
 the second derivative (F3 = ...) of the embedding energy function was removed. For copper and zinc, there is therefore a cusp at ρ = 1.15ρe with a mismatch of the second derivative of 0.145 eV for Cu and 0.125 eV at high density in the
 embedding term. The fact that this condition is not satisfied will trigger odd behaviour of the potential only at extremely large compression which is deemed not important in the context of our planned applications of these potentials for plasticity and fracture.
 
