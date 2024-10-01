@@ -71,6 +71,7 @@
 # Fe-C: https://www.ctcms.nist.gov/potentials/Download/2013--Henriksson-K-O-E-Bjorkas-C-Nordlund-K--Fe-C/1/FeC_Henriksson_2013.tersoff.zbl
 #  (related paper: https://pubs.acs.org/doi/full/10.1021/acs.langmuir.1c02145 )
 #  (related paper: https://ir.library.osaka-u.ac.jp/repo/ouka/all/88030/32658_Dissertation.pdf (Japanese))
+# Fe-C-H: https://onlinelibrary.wiley.com/doi/am-pdf/10.1002/jcc.26176
 # Fe-Cr (m=1,Albe): https://doi.org/10.1016/j.commatsci.2021.110840
 # Fe-Cr-C (m=1,Albe): https://iopscience.iop.org/article/10.1088/0953-8984/25/44/445401
 # Fe,Cr,C (m=1,Albe): https://www.mdpi.com/1996-1944/14/17/4925
