@@ -1,6 +1,8 @@
 #---------------------------------------------------------------------
 # EAM
 # Ni, Al, Re: https://iopscience.iop.org/article/10.1088/0965-0393/21/1/015007
+# Ni, Al, Re: https://www.sciencedirect.com/science/article/pii/S2238785423007329
+#   https://iopscience.iop.org/article/10.1088/0965-0393/21/1/015007/data , EAM potential (Ni-Al-Re)
 # Cr: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.77.214108
 # (related paper: Cr of AlCoCrFe https://www.researchgate.net/figure/Parameters-of-the-EAM-potential-for-Cr-24_tbl1_348923109)
 # Nb-Cr: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11193778/
@@ -9,7 +11,13 @@
 # Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
 # Fe-W: https://doi.org/10.1063/1.5111093
 # Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
+# Hf: https://www.sciencedirect.com/science/article/abs/pii/S1359645421001385
+# Hf-Nb: https://doi.org/10.1063/1.2912718
+# Hf/Nb/Ta/Ti/Zr/O system: https://doi.org/10.1016/j.matdes.2023.111999 (Download: Download Word document (308KB))
 # Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
+# Ta–Nb–Hf–Zr high-entropy alloys: https://www.nature.com/articles/s41598-021-84260-3
+# Ni-Hf-Ti: https://iopscience.iop.org/article/10.1088/0953-8984/19/8/086228/meta
+# Cu-Zr-Hf-Ni-Al systems: https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=c70d77c1c1bf402ade5e3eda21b3ac44714c6a33
 # Zr-Nb: https://iopscience.iop.org/article/10.1088/0953-8984/25/10/105404
 # Cu-Zn: https://iopscience.iop.org/article/10.1088/1361-651X/aca4ec
 #  https://cnam.hal.science/hal-04072754
@@ -24,7 +32,12 @@
 # Al⁢Ox: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.71.054418
 # BCC, FCC and HCP metals: https://link.springer.com/article/10.1007/s00339-015-9149-5
 # IrPdRu: https://pubs.acs.org/doi/full/10.1021/acsnano.1c10414 (supporting information)
+# RuRhPd: https://iopscience.iop.org/article/10.1088/1361-651X/acda50/pdf
+# Ru: https://doi.org/10.1016/j.pnsc.2020.08.006
+# Ru-W: https://doi.org/10.1016/j.apsusc.2020.146952 (Supplementary data)
+# Ni-Al-Ru: https://doi.org/10.1016/j.pnsc.2020.08.006
 # LaAlNi: https://doi.org/10.1063/1.5098808 (supplementary material)
+# Sc-W: https://pubs.acs.org/doi/full/10.1021/jp046672j
 # WTaVCr high-entropy alloy: https://www.sciencedirect.com/science/article/pii/S2238785424018581 (Appendix A. Supplementary data)
 # Al-Pd-Mn: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.85.054201
 # fcc metals: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.83.134118
@@ -40,6 +53,7 @@
 # AuPtAgPtNi: https://pubs.rsc.org/en/content/articlehtml/2017/sc/c8ra00945g
 # (related paper: https://iopscience.iop.org/article/10.1088/1361-651X/aa92d3/meta)
 # HCP metals: https://iopscience.iop.org/article/10.1088/0953-8984/13/6/302
+# binary hcp alloys: https://link.springer.com/article/10.1007/BF01320504
 # Pd-Ba: https://www.tandfonline.com/doi/full/10.1080/08927022.2024.2376327
 # GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
 # GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
@@ -75,11 +89,34 @@
 # MEAM, CoNiCrFeMn HEA: https://www.nature.com/articles/s41524-017-0060-9  or NIST
 # MEAM, CoNiCrFeMn HEA: https://doi.org/10.1016/j.jallcom.2019.152876
 # MEAM, Al, Si, Mg, Cu, and Fe alloys: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.85.245102
-# MEAM, Mg–X (X=Y, Sn, Ca) : https://doi.org/10.1016/j.calphad.2014.10.001
+# MEAM, Mg-X (X=Y, Sn, Ca) : https://doi.org/10.1016/j.calphad.2014.10.001
 # MEAM, HCP metals: https://iopscience.iop.org/article/10.1088/0965-0393/2/1/011/meta
 #---------------------------------------------------------------------
 # Lammps script (GSF energy curve): https://iopscience.iop.org/article/10.1088/1674-1056/24/8/088106/meta
-# Lammps script: https://www.osti.gov/biblio/1902939 ,  https://www.osti.gov/servlets/purl/1902939
+# Lammps script: https://www.osti.gov/biblio/1902939
+# python script: https://github.com/Asif-Iqbal-Bhatti/High-Entropy-Alloys/tree/master
 #---------------------------------------------------------------------
 # Embedded Atom Method (EAM) Tabulation: https://atsimpotentials.readthedocs.io/en/latest/potentials/eam_tabulation.html
+#---------------------------------------------------------------------
+# Hf: https://www.sciencedirect.com/science/article/abs/pii/S1359645421001385
+Parameter Value 
+re (Å) 3.15 
+fe (eV/Å) 2.287245 
+ρe (eV/Å) 28.2843069 
+α 10.3125 
+β 5.5 
+A (eV) 0.405 
+B (eV) 0.652357508 
+κ 0.5 
+λ 1.0 
+Fn0 (eV) -4.6299425 
+Fn1 (eV) -0.1327275 
+Fn2 (eV) 0.5353725 
+Fn3 (eV) -3.9618425 
+Fo (eV) -4.64 
+F1 (eV) 0 
+F2 (eV) 0.30 
+F3 (eV) -0.98 
+η 0.202787111 
+Fe (eV) -4.63845603
 #---------------------------------------------------------------------
