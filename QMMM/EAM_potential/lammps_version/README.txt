@@ -29,6 +29,7 @@ K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
 Parameters for V were taken from:
 m = 20, n = 20
 S. Zhao et al., Acta Materialia, 219, 117233 (2021)
+In this paper, confirmation is given for BCC VTaTi and VTaW.
 
 Parameters for Zn were taken from:
 Maybe, m = 20, n = 20
