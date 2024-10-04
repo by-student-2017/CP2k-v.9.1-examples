@@ -12,7 +12,8 @@ X. W. Zhou, R. A. Johnson, and H. N. G. Wadley, Phys. Rev. B, 69,
 
 Parameters for Cr were taken from:
 m = 20, n = 20
-Lin Z B, Johnson R A and Zhigilei L V, Phys. Rev. B 77 214108 (2008)
+Lin Z B, Johnson R A and Zhigilei L V, Phys. Rev. B 77 214108 (2008).
+X. Yang et al., 2021.: https://www.researchgate.net/publication/348923109 (In this paper, confirmation is given for AlCoCrFe High Entropy Alloy.)
 
 Or (Only three main parameters are different: beta(ntypes)=beta1(ntypes), A(ntypes), B(ntypes))
 For EAM_Cr_Anand-2016_code
@@ -20,15 +21,15 @@ G. Anand et al., Scripta Materialia, 124, 90-94 (2016).
 
 Parameters for Nb were taken from:
 m = 20, n = 20
-De-Ye Lin et al., J. Phys.: Condens. Matter 25 (2013) 105404
+De-Ye Lin et al., J. Phys.: Condens. Matter 25 (2013) 105404.
 
 Parameters for Hf were taken from:
 Maybe, m = 20, n = 20
-K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
+K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102.
 
 Parameters for V were taken from:
 m = 20, n = 20
-S. Zhao et al., Acta Materialia, 219, 117233 (2021)
+S. Zhao et al., Acta Materialia, 219, 117233 (2021).
 In this paper, confirmation is given for BCC VTaTi and VTaW.
 
 Parameters for Zn were taken from:
