@@ -82,7 +82,8 @@ K. Sasikumar et al., Chem. Mater. 2019, 31, 9, 3089-3102
 
 Parameters for V were taken from:
 m = 20, n = 20
-S. Zhao et al., Acta Materialia, 219, 117233 (2021)
+S. Zhao et al., Acta Materialia, 219, 117233 (2021).
+In this paper, confirmation is given for BCC VTaTi and VTaW.
 
 Parameters for Zn were taken from:
 Maybe, m = 20, n = 20
@@ -140,7 +141,7 @@ Ref: A. Clement et al., Modelling Simul. Mater. Sci. Eng. 31 (2023) 015004.: htt
 
 Line  1 : element : W
 Line  2 : re      : 2.74084 (about the distance to the first neighbour fcc shell)
-Line  3 : fe      : 3.48734 (about the element's cohesive energy / characteristic atomic distance = Ec/(V^(1/3)), V is the atomic volume of the pure element) (the fe means the coefficient for mixing phi between A and B atoms.)
+Line  3 : fe      : 3.48734 (about the element's cohesive energy / characteristic atomic distance = Ec/(V^(1/3)), V is the atomic volume of the pure element) (the fe means the coefficient for mixing phi between A and B elements.)
 Line  4 : rhoe    : 37.234847 (the equilibrium electronic density [eV/A] evaluated from DFT)) (in near equilibrium area)
 Line  5 : rhos    : 37.234847 (almost same value as rhoe) (In some literature, it is the same value as rhoe.)(in repulsive core area)
 Line  6 : alpha   : 8.900114 (about 1.875 * beta)
