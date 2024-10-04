@@ -33,6 +33,7 @@
 # BCC, FCC and HCP metals: https://link.springer.com/article/10.1007/s00339-015-9149-5
 # IrPdRu: https://pubs.acs.org/doi/full/10.1021/acsnano.1c10414 (supporting information)
 # RuRhPd: https://iopscience.iop.org/article/10.1088/1361-651X/acda50/pdf
+# Rh,Pd,Ir,Pt: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.63.165106
 # Ru: https://doi.org/10.1016/j.pnsc.2020.08.006
 # Ru-W: https://doi.org/10.1016/j.apsusc.2020.146952 (Supplementary data)
 # Ni-Al-Ru: https://doi.org/10.1016/j.pnsc.2020.08.006
@@ -58,6 +59,9 @@
 # GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
 # GEAM(Sr,Ir): https://njp.nipngr.org/index.php/njp/article/view/243
 # GEAM(Cu,Ag,Au): https://njp.nipngr.org/index.php/njp/article/view/170
+#---------------------------------------------------------------------------------------------------
+# Interatomic potentials: https://libatoms.github.io/matscipy/cli/calculators.html
+#   https://journals.aps.org/prb/abstract/10.1103/PhysRevB.93.104201
 #---------------------------------------------------------------------
 # FLAM2020-GSFE: https://github.com/shuozhixu/FLAM2020-GSFE?tab=readme-ov-file
 # https://www.sciencedirect.com/science/article/abs/pii/S0749641921002242
