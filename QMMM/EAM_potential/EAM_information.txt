@@ -10,10 +10,13 @@
 #  fit code: https://github.com/lheaton4/NbCr-EAM-Potential
 # Fe-Ni-Cr: https://onlinelibrary.wiley.com/doi/full/10.1002/jcc.25573
 # Fe-W: https://doi.org/10.1063/1.5111093
+# Fe-C: https://github.com/arn-all/FeC-EAM-potential?tab=readme-ov-file
 # Cu/Hf: https://pubs.acs.org/doi/full/10.1021/acs.chemmater.8b03969
 # Hf: https://www.sciencedirect.com/science/article/abs/pii/S1359645421001385
 # Hf-Nb: https://doi.org/10.1063/1.2912718
 # Hf/Nb/Ta/Ti/Zr/O system: https://doi.org/10.1016/j.matdes.2023.111999 (Download: Download Word document (308KB))
+# Hf-Nb-Ta-Zr HEA: https://b2find.eudat.eu/dataset/58984f3a-3fff-5c93-b452-d2cf9002c86b
+#   https://archive.materialscloud.org/record/2019.0052/v1
 # Ta-Nb-Hf-Zr high-entropy alloys: https://www.nature.com/articles/s41598-019-52170-0
 # Ta–Nb–Hf–Zr high-entropy alloys: https://www.nature.com/articles/s41598-021-84260-3
 # Ni-Hf-Ti: https://iopscience.iop.org/article/10.1088/0953-8984/19/8/086228/meta
@@ -54,6 +57,7 @@
 # AuPtAgPtNi: https://pubs.rsc.org/en/content/articlehtml/2017/sc/c8ra00945g
 # (related paper: https://iopscience.iop.org/article/10.1088/1361-651X/aa92d3/meta)
 # HCP metals: https://iopscience.iop.org/article/10.1088/0953-8984/13/6/302
+# Y-Ag: https://github.com/ppy17136/EAM_YAg
 # binary hcp alloys: https://link.springer.com/article/10.1007/BF01320504
 # Pd-Ba: https://www.tandfonline.com/doi/full/10.1080/08927022.2024.2376327
 # GEAM(Li,V): https://njp.nipngr.org/index.php/njp/article/view/177
