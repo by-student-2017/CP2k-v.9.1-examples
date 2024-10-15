@@ -7,6 +7,7 @@
 # Fe-Cu: https://iopscience.iop.org/article/10.1088/0965-0393/20/4/045016/meta
 # x Fe-Pt(Compared to the referenced paper, Pt and Fe are reversed.): https://journals.aps.org/prb/abstract/10.1103/PhysRevB.76.155412
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
+# Cu-I: https://iopscience.iop.org/article/10.1088/0953-8984/12/28/313/meta
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
 # C-Ru: https://arxiv.org/abs/1403.2101
 # C-Co: https://pubs.rsc.org/en/content/articlehtml/2017/nr/c7nr06038f
@@ -170,11 +171,12 @@
 # Graphite-SiO-H2O: https://www.sciencedirect.com/science/article/pii/S0008622322010053
 # Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # https://mavmatrix.uta.edu/chemistry_dissertations/210/
-# Lammps script: https://dspace.mit.edu/handle/1721.1/109645
+# Lammps script (substrate-supported-graphene): https://dspace.mit.edu/handle/1721.1/109645
 # Lammps script (Ti-Al-N): https://bearworks.missouristate.edu/theses/3159/
 # Lammps script (Low-density_microporous_carbon): https://www.sciencedirect.com/science/article/pii/S0008622321006837
 # Lammps script (Nano-Diamond): https://digital.library.ncat.edu/theses/26/
 # Lammps script (NixCr_Ti3SiC2): https://www.proquest.com/openview/95d9950a23ab02ced3bfd2b782403241/
+# QCL: https://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1361&context=spacegrant
 #   Mechanical Behavior of NixCr Alloys with Ti3SiC2 Nanoparticle Inclusions Using Molecular Dynamics
 # mobility: http://mail.imt.si/izvodi/mit203/liu.pdf
 # Ge/O/H (ReaxFF): https://pubs.acs.org/doi/full/10.1021/acs.jpcc.8b08862
@@ -262,6 +264,24 @@ R(A) 2.85 3.075
 D(A) 0.15 0.255
 
 kai(Cu,Si) = 1.02239
+#-------------------------------------------------------------------------------
+# Cu-I: https://iopscience.iop.org/article/10.1088/0953-8984/12/28/313/meta
+
+Note: tersoff1988
+
+Table 1. The adjusted Tersoff parameters for CuI-III
+A (eV) 688.00
+B (eV) 61.50
+λ1 (A^−1) 2.3832
+λ2 (A^−1) 1.1916
+n 21.45
+h −0.3333
+β 0.3333
+c 69219.5
+d 0.15
+R (A) 3.17
+D (A) 0.15
+
 #-------------------------------------------------------------------------------
 # Zr-S: https://doi.org/10.1063/5.0046823 (including lammmps format in supplementary material)
 
