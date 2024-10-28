@@ -193,6 +193,13 @@
 # C-Cu(tight binding approximation): https://link.springer.com/article/10.1134/S0021364020020083
 # Ge-Te: https://iopscience.iop.org/article/10.1088/1367-2630/15/12/123006/meta
 #-------------------------------------------------------------------------------
+# other information
+# CP2k: https://www.academia.edu/download/106104072/1040028.pdf
+# CP2k: https://jollywatt.github.io/assets/pdf/2019.Crystal-Band-Structures-CP2K.pdf
+# CP2k: https://github.com/MarsalekGroup/aml
+# CP2k: https://www.pure.ed.ac.uk/ws/portalfiles/portal/19653859/wp140.pdf
+# PdCNT (CP2k): https://doi.org/10.1063/1.5040048
+#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 # mixed parameters
