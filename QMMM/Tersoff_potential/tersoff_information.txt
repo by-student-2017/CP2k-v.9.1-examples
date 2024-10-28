@@ -37,6 +37,7 @@
 # In-Ga-As: https://doi.org/10.1016/0022-0248(95)80202-N
 # As-Ga: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.66.035205
 # In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
+# Si, O, Ga, N, As: https://link.springer.com/article/10.1007/s11051-014-2351-0
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
 # RuO2 (fluorite structure): https://iopscience.iop.org/article/10.1088/0953-8984/13/16/301/meta
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
@@ -1005,7 +1006,8 @@ d 0.90126
 h -0.443878 
 n 4.49087 
 gamma 0.386354 
-lambda 1.75633 
+lambda 1.75633 
+
 [27] https://etheses.whiterose.ac.uk/15100/
 Table 4.29: The Tersoff parameters for Boron Nitride (BN)
 Parameter Albe Sekkal Powell 
