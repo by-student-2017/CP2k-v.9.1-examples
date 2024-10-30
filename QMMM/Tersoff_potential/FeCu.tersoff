@@ -44,7 +44,7 @@
          A    7033.36140  # symmetric mixing rules
          ALPHA 0.0
          B    48.84069    # symmetric mixing rules
-         BETA 0 # dummy
+         BETA 1 # dummy
          BIGD 0.189607071 # symmetric mixing rules
          BIGR 3.470993973 # symmetric mixing rules
          C  0 # dummy
