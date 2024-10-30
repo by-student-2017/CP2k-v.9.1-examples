@@ -37,7 +37,6 @@
 # In-Ga-As: https://doi.org/10.1016/0022-0248(95)80202-N
 # As-Ga: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.66.035205
 # In-As: https://journals.aps.org/prb/abstract/10.1103/PhysRevB.65.115316
-# Si, O, Ga, N, As: https://link.springer.com/article/10.1007/s11051-014-2351-0
 # BP: https://doi.org/10.1016/S0378-4371(02)00780-X
 # RuO2 (fluorite structure): https://iopscience.iop.org/article/10.1088/0953-8984/13/16/301/meta
 # Si: https://doi.org/10.1103/PhysRevB.72.125206
@@ -193,22 +192,15 @@
 # C-Cu(tight binding approximation): https://link.springer.com/article/10.1134/S0021364020020083
 # Ge-Te: https://iopscience.iop.org/article/10.1088/1367-2630/15/12/123006/meta
 #-------------------------------------------------------------------------------
-# other information
-# CP2k: https://www.academia.edu/download/106104072/1040028.pdf
-# CP2k: https://jollywatt.github.io/assets/pdf/2019.Crystal-Band-Structures-CP2K.pdf
-# CP2k: https://github.com/MarsalekGroup/aml
-# CP2k: https://www.pure.ed.ac.uk/ws/portalfiles/portal/19653859/wp140.pdf
-# PdCNT (CP2k): https://doi.org/10.1063/1.5040048
-#-------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------
 # mixed parameters
-Aij = sqrt(Ai*Aj) * kappa(i,j), Bij = sqrt(Bi*Bj) * kai(i,j)
+Aij = sqrt(Ai*Aj) * kappa(i,j), Bij = sqrt(Bi*Bj) * chi(i,j)
 lambdaij = (lambdai + lambdaj)/2, muij = (mui + muj)/2
 Qij = sqrt(Qi*Qj), Q=R-D
 Sij = sqrt(Si*Sj), S=R+D
 
-The parameter kai(i,j) is used to weaken or strengthen the antipolar bonds.
+The parameter chi(i,j) is used to weaken or strengthen the antipolar bonds.
 #-------------------------------------------------------------------------------
 # Fe: https://iopscience.iop.org/article/10.1088/0953-8984/19/32/326220
 
@@ -251,7 +243,7 @@ A (eV) B (eV) λ (A^-1) µ (A^-1) β m n
 0.991 6.649 0.2315 0.2254 3.65 4.00
 
 Fe3Cu and Cu3Fe with L12 structure
-kappa(ij) = 1.180855 and kai(ij) = 0.725140
+kappa(ij) = 1.180855 and chi(ij) = 0.725140
 #-------------------------------------------------------------------------------
 # Cu-Si: https://www.sciencedirect.com/science/article/pii/S0169433212014602
 
@@ -271,7 +263,7 @@ h -0.59825 0
 R(A) 2.85 3.075
 D(A) 0.15 0.255
 
-kai(Cu,Si) = 1.02239
+chi(Cu,Si) = 1.02239
 #-------------------------------------------------------------------------------
 # Cu-I: https://iopscience.iop.org/article/10.1088/0953-8984/12/28/313/meta
 
@@ -443,7 +435,7 @@ cases somewhat arbitrary), are taken here to be 1.8 A and 2.1 A. To reduce the n
 to include H, we take omega = 1 and lambda = 2*mu. Since H ends up singly coordinated, we omit bond-angle forces on the H, 
 taking c = 0; d and h are then irrelevant. Similarly, for singly coordinated atoms n and beta play no role; we somewhat arbitrarily
 take n = 1 and beta = 4 so that H form bonds to no more than one atom at once, and R = 0.85 A, S = 1.0 A. The fitted values of
-the remaining parameters are A = 87.193 eV, B = 39.520 eV, lambda = 4.0042 A^-1 , mu = 2.0021 A^-1 , and kai = 0.889.
+the remaining parameters are A = 87.193 eV, B = 39.520 eV, lambda = 4.0042 A^-1 , mu = 2.0021 A^-1 , and chi = 0.889.
 
 This correlation is discussed for the specific case of a-C in Ref.
 1. For further discussion of this correlation, see, e.g., J.J. Gilman, 3. Appl. Phys. 46, 5110 (1975); A. P. Gerk, 3. Mater. Sci. 12, 735 (1977)
@@ -504,7 +496,7 @@ d	4.384	16.217	0.001587	134.32
 h	-0.57058	-0.59825	0.5	-0.9973
 Q [A]	1.8	2.7	1.8	2.0
 S [A]	2.1	3.0	2.1	2.3
-kai	1	1	1	1
+chi	1	1	1	1
 omega_ijk	1	1	1	1
 
 [a] parameters proposed by Matsunaga et al. (2000)
@@ -528,8 +520,8 @@ h	0.5000	−5.6239e−1
 1.80	1.80
 2.10	2.10
 
-kai(B-N) = 0.707
-kai(N-N) = 0.0
+chi(B-N) = 0.707
+chi(N-N) = 0.0
 
 #-------------------------------------------------------------------------------
 # BNC: https://www.ctcms.nist.gov/potentials/Download/2012--Kinaci-A-Haskins-J-B-Sevik-C-Cagin-T--B-N-C/1/BNC.tersoff
@@ -579,7 +571,7 @@ R [A] 1.8 2.0 1.8
 S [A] 2.1 2.3 2.1
 
 Interactions (i-j) B-N B-C C-N
-kai(i-j) 1.1593 1.0025 0.9685
+chi(i-j) 1.1593 1.0025 0.9685
 omega(i-j) 1.0 1.0 0.6381
 
 Note: BETA = beta*omega(i-j)
@@ -1013,8 +1005,7 @@ d 0.90126
 h -0.443878 
 n 4.49087 
 gamma 0.386354 
-lambda 1.75633 
-
+lambda 1.75633 
 [27] https://etheses.whiterose.ac.uk/15100/
 Table 4.29: The Tersoff parameters for Boron Nitride (BN)
 Parameter Albe Sekkal Powell 
@@ -1296,7 +1287,7 @@ h -0.59825 -0.74525
 R [A]2.7 2.7
 S [A] 3.0 3.0
 
-kai 1.0 1.0
+chi 1.0 1.0
 
 #-------------------------------------------------------------------------------
 # Si: https://iopscience.iop.org/article/10.1088/1361-6528/abf26d/meta
@@ -1342,8 +1333,8 @@ R (A) 2.5 1.7
 S (A) 2.8 2.0
 
 b(i,j)*fa(i,j)
-b(i,j) = kai(Si-O) * (1 + beta(i)^n * zeta(i,j)^n)^(-1/(2n))
-kai(Si-O) = 1.17945
+b(i,j) = chi(Si-O) * (1 + beta(i)^n * zeta(i,j)^n)^(-1/(2n))
+chi(Si-O) = 1.17945
 
 #-------------------------------------------------------------------------------
 # Si-O: https://www.ctcms.nist.gov/potentials/Download/2007--Munetoh-S-Motooka-T-Moriguchi-K-Shintani-A--Si-O/1/2007_SiO.tersoff
@@ -1395,8 +1386,8 @@ h -5.62390e-1 -5.9825e-1
 R(A) 1.80 2.70
 S(A) 2.10 3.00
 
-kai(Si-N) 0.65
-kai(N-N) 0.0
+chi(Si-N) 0.65
+chi(N-N) 0.0
 
 #-------------------------------------------------------------------------------
 # SiOC: https://pubs.acs.org/doi/full/10.1021/jp5098074
@@ -1484,10 +1475,10 @@ h	-5.9825e-1	-5.9825e-1	-4.3884e-1	-8.45922e-1
 R (A)	2.7	2.5	2.8	1.7
 S (A)	3.0	2.8	3.1	2.0
 
-kai(i-j) = kai(j-i)
-kai(Si-Ge) = 1.00061 [26]
-kai(Si-O) = 1.17945 [27], [33]
-kai(GS) = kai(Ge-O)/kai(Si-O) = about 0.8 => kai(Ge-0) = 0.8 * 1.17945 = 0.94356
+chi(i-j) = chi(j-i)
+chi(Si-Ge) = 1.00061 [26]
+chi(Si-O) = 1.17945 [27], [33]
+chi(GS) = chi(Ge-O)/chi(Si-O) = about 0.8 => chi(Ge-0) = 0.8 * 1.17945 = 0.94356
 
 #-------------------------------------------------------------------------------
 # AgSiC: 10.3969/j.issn.1000-5641.2017.04.010 , https://xblk.ecnu.edu.cn/EN/10.3969/j.issn.1000-5641.2017.04.010
@@ -1591,7 +1582,7 @@ Zr-Zr 0.179 2.201 9.300 2.099 3.174
 
 #-------------------------------------------------------------------------------
 # GaSiC: https://ieeexplore.ieee.org/abstract/document/6330521
-# Ga-C: https://doi.org/10.1016/j.nimb.2015.05.023 (mixing rules: kai(X,Y)=1.0)
+# Ga-C: https://doi.org/10.1016/j.nimb.2015.05.023 (mixing rules: chi(X,Y)=1.0)
 
 Note: LAMBDA3 = lambda3 = 0.0 (tersoff1988 (Tersoff_1 in lammps))
 
