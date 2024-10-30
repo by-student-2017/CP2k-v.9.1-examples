@@ -38,11 +38,12 @@
          #
        &END TERSOFF
        
+       # kappa = 1.18085, chi = 0.725140
        &TERSOFF
          ATOMS Fe Cu
-         A    5956.160074 # symmetric mixing rules
+         A    7033.36140  # symmetric mixing rules
          ALPHA 0.0
-         B    79.53466995 # symmetric mixing rules
+         B    48.84069    # symmetric mixing rules
          BETA 0 # dummy
          BIGD 0.189607071 # symmetric mixing rules
          BIGR 3.470993973 # symmetric mixing rules
