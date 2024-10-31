@@ -56,7 +56,7 @@
          LAMBDA1 5.60181
          LAMBDA2 3.16170
          LAMBDA3 0.0
-         N 2.42635
+         N 2.42395
          RCUT 10
          #
        &END TERSOFF
@@ -152,7 +152,7 @@
          LAMBDA1 4.112865
          LAMBDA2 2.525305
          LAMBDA3 0.0
-         N 2.42635
+         N 2.42395
          RCUT 10
          #
        &END TERSOFF
@@ -228,7 +228,7 @@
          LAMBDA1 4.692585
          LAMBDA2 3.25286
          LAMBDA3 0.0
-         N 2.42635
+         N 2.42395
          RCUT 10
          #
        &END TERSOFF
@@ -285,7 +285,7 @@
          LAMBDA1 4.72787
          LAMBDA2 2.566085
          LAMBDA3 0.0
-         N 2.42635
+         N 2.42395
          RCUT 10
          #
        &END TERSOFF
