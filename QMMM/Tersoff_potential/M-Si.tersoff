@@ -84,7 +84,7 @@
          A    243.595103
          ALPHA 0.0
          B    7.04298555
-         BETA 4
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -103,7 +103,7 @@
          A    947.439362
          ALPHA 0.0
          B    14.3000171
-         BETA 4
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -122,7 +122,7 @@
          A    1524.94457
          ALPHA 0.0
          B    17.2841824
-         BETA 4
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -141,7 +141,7 @@
          A    2067.83177
          ALPHA 0.0
          B    19.8710688
-         BETA 4
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -160,7 +160,7 @@
          A    594.493459
          ALPHA 0.0
          B    10.7967238
-         BETA 2
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -179,7 +179,7 @@
          A    688.238764
          ALPHA 0.0
          B    16.6876434
-         BETA 2
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -198,7 +198,7 @@
          A    1416.29493
          ALPHA 0.0
          B    23.5246459
-         BETA 2
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -217,7 +217,7 @@
          A    1897.20265
          ALPHA 0.0
          B    29.5175786
-         BETA 2
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -236,7 +236,7 @@
          A    1897.20265
          ALPHA 0.0
          B    29.5175786
-         BETA 2
+         BETA 1
          BIGD 0.0
          BIGR 8.0
          C  0
