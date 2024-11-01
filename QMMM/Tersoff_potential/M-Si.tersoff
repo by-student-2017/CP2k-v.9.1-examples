@@ -79,12 +79,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Na Si
          A    243.595103
          ALPHA 0.0
          B    7.04298555
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -98,12 +99,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS K Si
          A    947.439362
          ALPHA 0.0
          B    14.3000171
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -117,12 +119,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Rb Si
          A    1524.94457
          ALPHA 0.0
          B    17.2841824
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -136,12 +139,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Cs Si
          A    2067.83177
          ALPHA 0.0
          B    19.8710688
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -155,12 +159,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Mg Si
          A    594.493459
          ALPHA 0.0
          B    10.7967238
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -174,12 +179,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Ca Si
          A    688.238764
          ALPHA 0.0
          B    16.6876434
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -193,12 +199,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Sr Si
          A    1416.29493
          ALPHA 0.0
          B    23.5246459
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -212,12 +219,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Ba Si
          A    1897.20265
          ALPHA 0.0
          B    29.5175786
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
@@ -231,12 +239,13 @@
          #
        &END TERSOFF
        
+       # The Morse potential function form can be regarded as analogous to the Tersoff potential (c = h = beta = D = 0, d = n = 1).
        &TERSOFF
          ATOMS Ba Ga
          A    1897.20265
          ALPHA 0.0
          B    29.5175786
-         BETA 1
+         BETA 0.0
          BIGD 0.0
          BIGR 8.0
          C  0
