@@ -70,6 +70,11 @@
 # Diamond-Al (Morse): https://link.springer.com/article/10.1007/s11249-021-01414-0
 # [lammps-users] How to add a numeric term to Morse potential function in LAMMPS: https://matsci.org/t/lammps-users-how-to-add-a-numeric-term-to-morse-potential-function-in-lammps/34933
 # Lichang Wang, "Molecular Dynamics: Studies of Synthetic and Biological Macromolecules"
+# R (Co, T) 12 (R= Er or Dy, T= V, Ti, Cr, Mo, Mn, Nb, Ni, Cu): https://doi.org/10.1016/S0925-8388(03)00733-3
+# Nd(Fe,T)12 with Nd(Fe,Ti)12Nx: https://doi.org/10.1016/S0375-9601(02)00371-7
+# Sm(Co,M)12 (M = Cr, Ti, V, Nb, Fe): https://doi.org/10.1016/j.jallcom.2004.07.045
+# R2Co17 (R=Y, Ce, Pr, Nd, Sm, Gd, Tb, Dy, Ho, Er) and R2Co17T (T=Be, C): https://doi.org/10.1016/j.jpcs.2004.02.011
+# R3(Fe,T)29 (R=Nd, Sm; T=V, Ti, Cr, Cu, Nb, Mo, Ag): https://doi.org/10.1016/S0925-8388(01)01863-1
 #-------------------------------------------------------------------------------
 # Other potential
 # LJ+Ecoul: https://doi.org/10.1063/1.3103886
