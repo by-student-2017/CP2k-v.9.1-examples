@@ -170,11 +170,6 @@ chimera
 - https://github.com/by-student-2017/AmberTools
 
 
-## Acknowledgment
-- This project (modified version) is/was partially supported by the following :
-  + ATSUMITEC Co., Ltd.
-
-
 ## PC specs used for test
 - OS: Microsoft Windows 11 Home 64 bit
 - BIOS: 1.14.0
