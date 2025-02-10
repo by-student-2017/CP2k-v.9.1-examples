@@ -157,6 +157,7 @@ chimera
 
 ## Information
 - cp2k_how_to: https://github.com/ishikawa-group/cp2k_how_to/tree/main (Japanese)
+- https://doi.org/10.1021/acsami.4c11275 (CP2k and Lammps input)
 
 
 ## Preparing to run biomolecular QM/MM simulations with CP2K using AmberTools
